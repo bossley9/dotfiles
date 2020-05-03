@@ -16,3 +16,6 @@ vim-plug
 pulseaudio
 pulseaudio-alsa
 pulseaudio-ctl
+
+# compositor
+picom-tryone-git

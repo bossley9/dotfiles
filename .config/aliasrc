@@ -34,7 +34,7 @@ alias \
 # core
 alias \
   p="sudo pacman" \
-  y="yay --norebuild --noredownload" \
+  y="unset GIT_CONFIG && yay --norebuild --noredownload" \
   system="sudo systemctl" \
   vim="nvim" \
   wifi="$XDG_SCRIPT_HOME/networkmanager_dmenu" \

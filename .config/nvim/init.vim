@@ -106,6 +106,5 @@ autocmd VimEnter *
   \|   PlugInstall --sync | q
   \| endif
 
-" visual highlight
-hi Visual ctermbg=White guibg=White
-hi Visual ctermfg=Black guifg=Black
+" make visual highlight more visible
+hi Visual cterm=reverse gui=reverse

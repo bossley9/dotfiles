@@ -15,7 +15,7 @@ $XDG_SCRIPT_HOME/tui/redshift "$(cat $REDSHIFT_LAST)"
 sxhkd &
 
 # compositor
-picom &
+picom --experimental-backends &
 
 # status bar
 $BAR_ARGS &
