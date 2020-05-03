@@ -360,3 +360,4 @@ Below are a list of things in no particular order that I plan to do but haven't 
 - edit /etc/issue and store changes in dotfiles 
 - store `brave` settings, or switch to a different browser (`firefox`?)
 - configure `picom` to make blurry (or transparent) terminals and other windows (e.g. `discord`)
+- hide `brave` ads
