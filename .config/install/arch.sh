@@ -39,7 +39,7 @@ PKGS="${PKGS} mandoc"
 PKGS="${PKGS} neovim ripgrep nodejs npm fzf"
 PKGS="${PKGS} vifm"
 
-# development languages
+# development
 PKGS="${PKGS} abook"
 # PKGS="${PKGS} clang"
 PKGS="${PKGS} typescript"
@@ -81,6 +81,7 @@ PKGA="${PKGA} firefox-tridactyl"
 AURA="${AURA} firefox-tridactyl-native"
 AURA="${AURA} firefox-ublock-origin"
 AURA="${AURA} firefox-extension-multi-account-containers"
+
 PKGS="${PKGS} firejail"
 
 PKGS="${PKGS} feh"

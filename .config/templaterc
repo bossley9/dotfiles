@@ -1,4 +1,6 @@
 $XDG_CONFIG_HOME/aria2/template.aria2.conf
+$FIREJAIL_PROFILE_DIR/template.default.inc
+$FIREJAIL_PROFILE_DIR/template.discord.profile
 $FIREJAIL_PROFILE_DIR/template.firefox.profile
 $XDG_CONFIG_HOME/gtk-2.0/template.gtkrc
 $XDG_CONFIG_HOME/gtk-3.0/template.bookmarks
