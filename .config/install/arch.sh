@@ -146,6 +146,10 @@ fi
 # packages cannot be quoted
 sudo pacman -S $PKGS
 
+# doas permissions (assuming it's not already setup)
+doasConf="${ETC}/doas.conf"
+sudo cp -v "${XDG_CONFIG_HOME}${doasConf}" "$doasConf"
+
 rustup default stable # rust configuration
 
 for AUR in $AURS; do
