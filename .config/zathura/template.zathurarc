@@ -1,3 +1,5 @@
+# vim: set ft=sh :
+
 # remove extra padding
 set statusbar-h-padding 0
 set statusbar-v-padding 0
@@ -17,6 +19,8 @@ map <M-k> scroll half-up
 map <M-j> scroll half-down
 map <M-u> scroll full-up
 map <M-d> scroll full-down
+
+map n toggle_statusbar
 
 # copying to clipboard
 set selection-clipboard clipboard
