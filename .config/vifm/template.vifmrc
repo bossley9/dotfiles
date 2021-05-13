@@ -415,9 +415,13 @@ set vifminfo=
 " fast navigation
 nnoremap <M-j> ${VI_NAV_JUMP}j
 nnoremap <M-k> ${VI_NAV_JUMP}k
+vnoremap <M-j> ${VI_NAV_JUMP}j
+vnoremap <M-k> ${VI_NAV_JUMP}k
 
 nnoremap <M-d> ${VI_NAV_JUMP_LARGE}j
 nnoremap <M-u> ${VI_NAV_JUMP_LARGE}k
+vnoremap <M-d> ${VI_NAV_JUMP_LARGE}j
+vnoremap <M-u> ${VI_NAV_JUMP_LARGE}k
 
 " disable irritating pane switching
 nnoremap <Space> <Esc>
