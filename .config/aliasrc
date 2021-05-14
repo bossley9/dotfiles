@@ -406,6 +406,15 @@ pdfmerge() {
   gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$out" $in
 }
 
+pdfcompress() {
+  if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "${RED}USAGE: pdfcompress output.pdf input.pdf${NC}"
+    exit 1
+  fi
+
+  gs -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -q -o "$1" "$2"
+}
+
 # list all open windows
 alias windows="wmctrl -l"
 
