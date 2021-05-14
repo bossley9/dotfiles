@@ -392,8 +392,9 @@ clearcache() {
       doas journalctl --vacuum-time=1d
 
       # clear any files in trash
-      rm -r ${XDG_DATA_HOME}/Trash/* 2> "$NULL"
-      rm -r ${XDG_DATA_HOME}/vifm/Trash/* 2> "$NULL"
+      # absolute paths bc I'm too scared for anything else
+      rm -rvf ~/.local/share/Trash/* 2> "$NULL"
+      rm -rvf ~/.local/share/vifm/Trash/* 2> "$NULL"
       ;;
   esac
 }
