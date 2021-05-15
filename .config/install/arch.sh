@@ -184,7 +184,7 @@ sudo make install
 sudo ln -sfT "dash" "/usr/bin/sh"
 PACMAN_HOOK_DIR="${ETC}/pacman.d/hooks"
 sudo mkdir -p "$PACMAN_HOOK_DIR"
-sudo cp "${XDG_CONFIG_HOME}${PACMAN_HOOK_DIR}/binsh.hook" "$PACMAN_HOOK_DIR"
+sudo cp -v "${XDG_CONFIG_HOME}${PACMAN_HOOK_DIR}/binsh.hook" "$PACMAN_HOOK_DIR"
 
 # add color to /etc/pacman.conf
 sudo sed -i 's/#\s*Color/Color/' "${ETC}/pacman.conf"
