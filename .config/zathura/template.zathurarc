@@ -20,8 +20,6 @@ map <M-j> scroll half-down
 map <M-u> scroll full-up
 map <M-d> scroll full-down
 
-map n toggle_statusbar
-
 # copying to clipboard
 set selection-clipboard clipboard
 

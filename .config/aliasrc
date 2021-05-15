@@ -412,7 +412,8 @@ pdfcompress() {
     exit 1
   fi
 
-  gs -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -q -o "$1" "$2"
+  gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$1" "$2"
+  # gs -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -q -o "$1" "$2"
 }
 
 # list all open windows
