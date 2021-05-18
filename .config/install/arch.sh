@@ -92,6 +92,7 @@ PKGS="${PKGS} youtube-dl"
 PKGS="${PKGS} xclip"
 PKGS="${PKGS} slop"
 PKGS="${PKGS} zathura girara zathura-pdf-mupdf"
+PKGS="${PKGS} imagemagick" # vector image viewing
 # PKGS="${PKGS} gimp inkscape"
 PKGS="${PKGS} mpd ncmpcpp"
 AURS="${AURS} ncspot"

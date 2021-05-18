@@ -410,11 +410,20 @@ pdfmerge() {
 pdfcompress() {
   if [ -z "$1" ] || [ -z "$2" ]; then
     echo "${RED}USAGE: pdfcompress output.pdf input.pdf${NC}"
-    exit 1
+    return
   fi
 
   gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$1" "$2"
   # gs -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -q -o "$1" "$2"
+}
+
+pdfcut() {
+  if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ]; then
+    echo "${RED}USAGE: pdfcut output.pdf input.pdf firstpage lastpage${NC}"
+    return
+  fi
+
+  gs -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$1" -dFirstPage=$3 -dLastPage=$4 -sDEVICE=pdfwrite "$2"
 }
 
 # list all open windows

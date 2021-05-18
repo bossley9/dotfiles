@@ -13,4 +13,4 @@ fi
 FILE="$1"
 INFO=";file %f"
 
-feh --start-at "$FILE" --info "$INFO" --no-menus --scale-down
+feh --start-at "$FILE" --info "$INFO" --no-menus --scale-down --conversion-timeout 1

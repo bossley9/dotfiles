@@ -14,7 +14,7 @@
 
 **I'm assuming from this point forward that you know your way around Unix distributions, not to mentions disk images and ISOs.**
 
-- Download the [latest NixOS iso](https://nixos.org/download.html). I evidently chose the minimal ISO version `20.09 x86_64`. I would highly recommend using the provided checksum verification to validate the integrity of the ISO before proceeding.
+- Download the [latest NixOS iso](https://nixos.org/download.html). I chose the minimal ISO version `20.09 x86_64`. I would highly recommend using the provided checksum verification to validate the integrity of the ISO before proceeding.
 - Burn the ISO onto a disk. If you are unsure of what tools to use, try looking at my [Archlinux installation](./arch.md#setup).
 
 4. Boot the computer from the live usb. This may require manual BIOS tweaking depending on your machine. Be sure to boot with UEFI if you plan on dual booting with Windows in the future.
@@ -81,7 +81,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
   fdisk -l
   ```
-- Use the GNU `parted` utility to use a gpt partition table and create a boot partition of size 2 MB:
+- Use the GNU `parted` utility to use a gpt partition table and create a boot partition of size 200 MB:
   ```
   parted /dev/sda mklabel gpt
   parted /dev/sda mkpart non-fs 0% 200
