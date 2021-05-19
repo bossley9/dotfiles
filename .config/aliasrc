@@ -413,8 +413,8 @@ pdfcompress() {
     return
   fi
 
-  gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$1" "$2"
-  # gs -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -q -o "$1" "$2"
+  gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$1" "$2" && echo "quality: ebook"
+  # gs -sDEVICE=pdfwrite -dPDFSETTINGS=/screen -q -o "$1" "$2" && echo "quality: screen"
 }
 
 pdfcut() {

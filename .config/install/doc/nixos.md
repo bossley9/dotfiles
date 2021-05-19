@@ -186,6 +186,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
 - Then install the operating system.
   ```
   nixos-rebuild switch
+  # the installation will prompt you for a root password
   nixos-install
   ```
 - Shutdown the system.
@@ -195,10 +196,6 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   Then safely remove the usb drive.
 - Power on the machine. You likely need to change the BIOS/UEFI settings of your machine in order to tell your motherboard the location of the efi boot partition. If the boot lands on a login prompt, you have successfully completed the initial installation!
 - Log in to root using `root` as the username and the password you created earlier.
-- Sync the clock to the time zone specified.
-  ```
-  hwclock --systohc
-  ```
 
 ## Creating a User <a name="creating-a-user"></a>
 
