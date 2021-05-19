@@ -16,7 +16,7 @@ export DISTRO_GENTOO="Gentoo"
 export DISTRO_NIXOS="NixOS"
 
 if [ "$OS" = "$OS_LINUX" ]; then
-  distro="$(cat /etc/*-release | grep "*NAME=" | cut -d "=" -f 2)"
+  distro="$(cat /etc/*-release | grep "^NAME=" | cut -d "=" -f 2)"
   case "$(uname -r)" in
     *Arch*)     export DISTRO="$DISTRO_ARCHLINUX" ;;
     *gentoo*)   export DISTRO="$DISTRO_GENTOO" ;;

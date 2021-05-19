@@ -176,15 +176,12 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
 - Edit `/mnt/etc/nixos/configuration.nix` to edit the NixOS configuration file and add the following settings. You will also be creating a new user in the process:
   ```
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/efi";
+  boot.loader.systemd-boot.enable = true;
   boot.supportedFilesystems = [ "zfs" ];
   boot.initrd.supportedFilesystems = ["zfs"]; # boot from zfs
-  boot.loader.efi.efiSysMountPoint = "/efi";
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.zfsSupport = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.device = "nodev";
+  services.zfs.autoScrub.enable = true;
   ...
   networking.hostId = "HOST_ID_HERE";
   ...
@@ -192,7 +189,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
     createHome = true;
     extraGroups = [ "wheel" ];
     home = "/home/USER_NAME_HERE";
-    initialPassword = "test1234";
+    initialPassword = "test";
     isNormalUser = true;
     shell = pkgs.mksh;
   };
@@ -209,7 +206,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
   Then safely remove the usb drive.
 - Power on the machine. You likely need to change the BIOS/UEFI settings of your machine in order to tell your motherboard the location of the efi boot partition. If the boot lands on a login prompt, you have successfully completed the initial installation!
-- Log in to the new user you created in the configuration file, using the temporary `test1234` password.
+- Log in to the new user you created in the configuration file, using the temporary `test` password.
 - Change the user password.
   ```
   passwd
