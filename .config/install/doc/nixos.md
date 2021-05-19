@@ -179,6 +179,9 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   boot.supportedFilesystems = [ "zfs" ];
   boot.initrd.supportedFilesystems = ["zfs"]; # boot from zfs
   boot.loader.efi.efiSysMountPoint = "/efi";
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
   boot.loader.grub.zfsSupport = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
