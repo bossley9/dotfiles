@@ -27,7 +27,7 @@
   networking.wireless.enable = true;
 
   # localization
-  time.timeZone = "${TIMEZONE:"America/Los_Angeles}";
+  time.timeZone = "${TIMEZONE:"America/Los_Angeles"}";
   i18n.defaultLocale = "${LOCALE:"en_US.UTF-8"}"
   console = {
     font = "Lat2-Terminus16";
