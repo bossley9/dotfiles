@@ -66,10 +66,6 @@ esac
 
 # package manager
 case "$OS" in
-  "$OS_LINUX")
-    alias p="doas pacman"
-    alias y="paru"
-    ;;
   "$OS_FREEBSD")
     alias p="sudo pkg"
     alias y="sudo portsnap"
@@ -83,6 +79,15 @@ case "$OS" in
     y() {
       p $@
     }
+    ;;
+esac
+case "$DISTRO" in
+  "$DISTRO_ARCHLINUX")
+    alias p="doas pacman"
+    alias y="paru"
+    ;;
+  "$DISTRO_NIXOS")
+    alias p="sudo nix-env"
     ;;
 esac
 
@@ -126,6 +131,10 @@ case "$OS" in
       system="doas systemctl"
     ;;
 esac
+
+if [ "$DISTRO" = "$DISTRO_NIXOS" ]; then
+  alias rebuild="sudo nixos-rebuild switch"
+fi
 
 # latex compilation
 lat() {

@@ -9,6 +9,8 @@
 - [ZFS Installation](#zfs-installation)
 - [Operating System Installation](#operating-system-installation)
 - [Creating a User](#creating-a-user)
+- [Core](#core)
+- [Cloning](#cloning)
 
 ## Setup <a name="setup"></a>
 
@@ -182,6 +184,11 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   boot.loader.grub.device = "nodev";
   ...
   networking.hostId = "HOST_ID_HERE";
+  ...
+  users.extraUsers.USER_NAME_HERE = {
+    shell = pkgs.mksh;
+    extraGroups = [ "wheel" ];
+  };
   ```
 - Then install the operating system.
   ```
@@ -206,3 +213,26 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   passwd sam
   ```
   Then logout and log back in as the newly created user.
+
+## Core <a name="core"></a>
+
+- Install git and other required utilities.
+  ```
+  sudo nix-env -i bc envsubst git vim
+  ```
+
+## Cloning <a name="cloning"></a>
+
+- Clone this repository to your home folder using the steps outlined below.
+  ```sh
+  cd $HOME
+  # this action is irreversible - be careful!
+  rm -rf .*
+  # security permissions
+  umask 0077
+  git clone --recursive https://github.com/bossley9/dotfiles.git .
+  ```
+- Log out and log back in. You will get some warnings but we can ignore them since they will be resolved once all packages are installed.
+  ```
+  exit
+  ```

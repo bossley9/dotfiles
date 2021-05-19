@@ -13,11 +13,14 @@ export OS_OPENBSD="OpenBSD"
 
 export DISTRO_ARCHLINUX="Archlinux"
 export DISTRO_GENTOO="Gentoo"
+export DISTRO_NIXOS="NixOS"
 
 if [ "$OS" = "$OS_LINUX" ]; then
+  distro="$(cat /etc/*-release | grep "*NAME=" | cut -d "=" -f 2)"
   case "$(uname -r)" in
-    *arch*)     export DISTRO="$DISTRO_ARCHLINUX" ;;
+    *Arch*)     export DISTRO="$DISTRO_ARCHLINUX" ;;
     *gentoo*)   export DISTRO="$DISTRO_GENTOO" ;;
+    *NixOS*)    export DISTRO="$DISTRO_NIXOS" ;;
     *)          export DISTRO="" ;;
   esac
 fi
