@@ -32,7 +32,7 @@
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
-  }
+  };
 
   # global useDHCP flag is deprecated and set to false explicitly
   networking.useDHCP = false;
