@@ -41,15 +41,22 @@
 
   # list packages installed in system profile.
   # to search, run 'nix search wget'
-  # environment.systemPackages = with pkgs; [
-  #   wget vim
-  #   firefox
-  # ]
+  environment.systemPackages = with pkgs; [
+    doas
+    git
+    vim
+    bc
+
+    mandoc
+    neovim ripgrep nodejs nodePackages.npm fzf
+    vifm
+    sc-im
+  ];
 
   # X11
-  services.xserver.enable = true;
-  services.xserver.layout = "us";
-  services.xserver.libinput.enable = true;
+  # services.xserver.enable = true;
+  # services.xserver.layout = "us";
+  # services.xserver.libinput.enable = true;
 
   # audio
   sound.enable = true;

@@ -1,0 +1,8 @@
+#!/bin/sh
+# an alias to scim. Purely for compatibility with NixOS
+
+if [ -f "${BIN}/sc-im" ]; then
+  ${BIN}/sc-im $@
+else
+  ${BIN}/scim $@
+fi

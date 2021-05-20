@@ -221,7 +221,9 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   TIMEZONE="America/Los_Angeles" \
   sh nixos.sh
   ```
-  The following script will create a basic `configuration.nix` file in the current directory. Use any text editor to tweak the configuration as necessary, then replace the current configuration, rebuild, and reboot to view changes.
+  The following script will create a basic `configuration.nix` file in the current directory.
+- Use any text editor to tweak the configuration as necessary. If you use an ethernet connection, you will need to explicitly enable DHCP for the specified interface. You can view interfaces with `ip a`.
+- Replace the current configuration, rebuild, and reboot to view changes.
   ```
   mv configuration.nix /etc/nixos/
   nixos-rebuild switch
@@ -240,7 +242,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   umask 0077
   git clone --recursive https://github.com/bossley9/dotfiles.git .
   ```
-- Log out and log back in.
+- Reboot the system for the configuration to take effect.
   ```
-  exit
+  reboot
   ```
