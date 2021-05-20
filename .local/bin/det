@@ -1,1 +1,19 @@
-detemplate
+#!/bin/sh
+
+if [ -z $1 ]; then
+  echo -e "${RED}USAGE: detemplate [template file]${NC}"
+  exit 1
+fi
+
+template=$(basename $1)
+directory=$(dirname $1)
+
+case $template in
+  template*)
+    filename=$(echo $template | sed -E 's/^template\.//')
+    output="$directory/$filename"
+    envsubst < $1 > $output
+    # echo "envsubst < $1 > $output"
+    ;;
+  *) echo -e "${RED}template file \"$1\" is invalid.${NC}";
+esac

@@ -27,7 +27,7 @@ The boot process should eventually land on a virtual terminal prompt.
 
 - Verify the boot mode is UEFI by confirming the output of `ls /sys/firmware/efi/efivars` exists.
 
-- In order to be able to install or setup anything, we need to be able to access elevated privileges. Set the passwords for both the install user and the root user. Don't worry, the actual passwords can be changed later.
+- In order to be able to install or setup anything, we need to be able to access elevated privileges. Set the passwords for both the install user and the root user. Don't worry about the actual passwords - they can be changed later.
   ```
   passwd
   sudo passwd root
@@ -83,7 +83,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
   fdisk -l
   ```
-- Use the GNU `parted` utility to use a gpt partition table and create a boot partition of size 200 MB:
+- Use the GNU `parted` utility to use a gpt partition table and create a boot partition of size ~200 MB:
   ```
   parted /dev/sda mklabel gpt
   parted /dev/sda mkpart non-fs 0% 200
@@ -101,17 +101,16 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
   modprobe zfs
   ```
-- Make note of the partition device names.
+- Make note of the partition device names. In my case, my efi partition is `/dev/sda1` and my root partition is `/dev/sda2`. I will reference these hereafter.
   ```
   fdisk -l
   ```
-- We need to make note of the id corresponding to the root partition. It is possible for the disk identifiers to change during boot, which will cause ZFS to fail. Using partition ids ensure that ZFS will never fail. In my case, my root partition is `/dev/sda2`:
+- We need to make note of the id corresponding to the root partition. It is possible for the disk identifiers to change during boot, which will cause ZFS to fail. Using partition ids ensure that ZFS will never fail.
   ```
   ls -l /dev/disk/by-partuuid | grep sda2
   ```
   Remember this value.
-- Create a ZFS pool with compression and encryption using the partition uuid we noted earlier.
-  All these options are recommended and will save you headaches later.
+- Create a ZFS pool with compression and encryption using the partition uuid we noted earlier. All these ZFS options are recommended and will likely save you headaches later. You will be prompted for a encryption passphrase for the filesystem.
   ```
   zpool create -f -o ashift=12         \
              -O acltype=posixacl       \
@@ -129,7 +128,8 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
              -O keylocation=prompt     \
              zroot /dev/disk/by-partuuid/PART_UUID_HERE
   ```
-- Create datasets as "pseudo partitions" to separate data from system files. This is extremely useful for snapshots and boot environments.
+  You can use `zfs list` to verify the zpool was successfully created.
+- Create datasets as "pseudo partitions" to separate data from system files. This is extremely useful for snapshots and boot environments. We need to use legacy mountpoints for NixOS to mount them in the correct order on boot.
   ```
   zfs create -o mountpoint=legacy zroot/root
   zfs create -o mountpoint=none zroot/data
@@ -141,11 +141,11 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   zpool export zroot
   zpool import -d /dev/disk/by-partuuid/PART_UUID_HERE -R /mnt zroot -N
   ```
-- Load zfs key for native encryption.
+- Load the zfs key you specified earlier for native encryption.
   ```
   zfs load-key zroot
   ```
-- Then mount all datasets, where `/dev/sda1` is the EFI partition created earlier.
+- Then mount all datasets, including the EFI partition created earlier.
   ```
   mount -t zfs zroot/root /mnt
   mkdir /mnt/home
@@ -155,6 +155,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   mkdir /mnt/efi
   mount /dev/sda1 /mnt/efi -o nodev,nosuid,noexec
   ```
+  You can use `mount` to verify all datasets (in addition to the efi partition) have been mounted properly.
 - Set the bootfs property for bootloaders.
   ```
   zpool set bootfs=zroot/root zroot
@@ -170,33 +171,26 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
   nixos-generate-config --root /mnt
   ```
-- Generate a unique identifier to use as the host id:
+- Generate a unique identifier to use as the host id. This is require for ZFS:
   ```
   head -c 8 /etc/machine-id
   ```
-- Edit `/mnt/etc/nixos/configuration.nix` to edit the NixOS configuration file and add the following settings. You will also be creating a new user in the process:
+- Edit `/mnt/etc/nixos/configuration.nix` to edit the NixOS configuration file and add (or modify) the following settings using the host id generated earlier.
   ```
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/efi";
   boot.loader.systemd-boot.enable = true;
+  boot.loader.grub.efiInstallAsRemovable = false;
+  boot.loader.grub.enable = false;
+  boot.loader.grub.device = "nodev";
+  ...
   boot.supportedFilesystems = [ "zfs" ];
-  boot.initrd.supportedFilesystems = ["zfs"]; # boot from zfs
-  services.zfs.autoScrub.enable = true;
+  boot.initrd.supportedFilesystems = [ "zfs" ];
   ...
   networking.hostId = "HOST_ID_HERE";
-  ...
-  users.extraUsers.USER_NAME_HERE = {
-    createHome = true;
-    extraGroups = [ "wheel" ];
-    home = "/home/USER_NAME_HERE";
-    initialPassword = "test";
-    isNormalUser = true;
-    shell = pkgs.mksh;
-  };
   ```
 - Then install the operating system.
   ```
-  nixos-rebuild switch
   # the installation will prompt you for a root password
   nixos-install
   ```
