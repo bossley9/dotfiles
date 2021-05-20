@@ -4,5 +4,5 @@
 if [ -f "${BIN}/sc-im" ]; then
   ${BIN}/sc-im $@
 else
-  ${BIN}/scim $@
+  $(command -v "scim") $@
 fi
