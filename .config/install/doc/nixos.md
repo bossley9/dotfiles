@@ -9,7 +9,7 @@
 - [ZFS Installation](#zfs-installation)
 - [Operating System Installation](#operating-system-installation)
 - [Creating a User](#creating-a-user)
-- [Core](#core)
+- [Configuration Tweaking](#configuration-tweaking)
 - [Cloning](#cloning)
 
 ## Setup <a name="setup"></a>
@@ -206,12 +206,28 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   passwd
   ```
 
-## Core <a name="core"></a>
+## Configuration Tweaking <a name="configuration-tweaking"></a>
 
-- Install git and other required utilities.
+- Install envsubst for configuration variable substitution. I also recommend installing vim to make editing the configuration easier.
   ```
-  sudo nix-env -i bc envsubst git vim
+  nix-env -i envsubst vim
   ```
+- Download my template NixOS configuration, substituting the corresponding variables as necessary.
+  ```
+  curl https://raw.githubusercontent.com/bossley9/dotfiles/master/.config/install/nixos.sh -o nixos.sh
+  # substitute the variables below with your own variables
+  USER=sam \
+  HOSTNAME=hello \
+  TIMEZONE="America/Los_Angeles" \
+  nixos.sh
+  ```
+  The following script will create a basic `configuration.nix` file in the current directory. Use any text editor to tweak the configuration as necessary, then replace the current configuration, rebuild, and reboot to view changes.
+  ```
+  mv configuration.nix /etc/nixos/
+  nixos-rebuild switch
+  reboot
+  ```
+- Log into the user account using the username you provided earlier and the password `test`. You can now change your password.
 
 ## Cloning <a name="cloning"></a>
 
@@ -224,7 +240,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   umask 0077
   git clone --recursive https://github.com/bossley9/dotfiles.git .
   ```
-- Log out and log back in. You will get some warnings but we can ignore them since they will be resolved once all packages are installed.
+- Log out and log back in.
   ```
   exit
   ```
