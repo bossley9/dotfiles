@@ -219,7 +219,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   USER=sam \
   HOSTNAME=hello \
   TIMEZONE="America/Los_Angeles" \
-  nixos.sh
+  sh nixos.sh
   ```
   The following script will create a basic `configuration.nix` file in the current directory. Use any text editor to tweak the configuration as necessary, then replace the current configuration, rebuild, and reboot to view changes.
   ```

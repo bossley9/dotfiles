@@ -11,7 +11,7 @@ template_script="${HOME}/template.configuration.nix"
 curl "$detemplate_url" -o "$detemplate_script"
 curl "$template_url" -o "$template_script"
 
-HOSTID="$(head -c "/etc/machine-id")" \
+HOSTID="$(head -c 8 "/etc/machine-id")" \
 LOCALE="en_US.UTF-8" \
   sh "$detemplate_script" "$template_script"
 
