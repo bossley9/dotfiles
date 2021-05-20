@@ -50,7 +50,7 @@
     mandoc
     neovim ripgrep nodejs nodePackages.npm fzf
     vifm
-    sc-im
+    # sc-im requires manual building
   ];
 
   # X11
