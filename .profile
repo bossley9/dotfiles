@@ -227,6 +227,12 @@ case "$OS" in
     export SHELL="/bin/${SHELL_NAME}"
     ;;
 esac
+case "$DISTRO" in
+  "$DISTRO_NIXOS")
+    export SHELL_NAME="mksh"
+    export SHELL="$(command -v mksh)"
+    ;;
+esac
 export UID="$(id -u)"
 export VI_NAV_JUMP="5"
 export VI_NAV_JUMP_LARGE="25"

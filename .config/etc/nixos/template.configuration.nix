@@ -3,6 +3,12 @@
 
 { config, pkgs, ... }:
 
+let
+  user =      "sam";
+  hostname =  "sunset";
+  timezone =  "America/Los_Angeles";
+  locale= =   "en_US.UTF-8";
+in
 {
 
   imports = [
@@ -20,15 +26,15 @@
   # recommended to automatically scrub pools once a week
   services.zfs.autoScrub.enable = true;
 
-  networking.hostName = "${HOSTNAME}";
+  networking.hostName = hostname;
   networking.hostId = "${HOSTID}";
 
   # wifi
   networking.wireless.enable = true;
 
   # localization
-  time.timeZone = "${TIMEZONE}";
-  i18n.defaultLocale = "${LOCALE}";
+  time.timeZone = timezone;
+  i18n.defaultLocale = locale;
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
@@ -63,10 +69,10 @@
   hardware.pulseaudio.enable = true;
 
   # user
-  users.extraUsers.${USER} = {
+  users.extraUsers.${user} = {
     createHome = true;
     extraGroups = [ "wheel" ];
-    home = "/home/${USER}";
+    home = "/home/" + user;
     initialPassword = "test";
     isNormalUser = true;
     shell = pkgs.mksh;
