@@ -171,23 +171,19 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
   nixos-generate-config --root /mnt
   ```
-- Generate a unique identifier to use as the host id. This is require for ZFS:
+- Generate a unique identifier to use as the host id. Setting the host id is required for ZFS:
   ```
   head -c 8 /etc/machine-id
   ```
-- Edit `/mnt/etc/nixos/configuration.nix` to edit the NixOS configuration file and add (or modify) the following settings using the host id generated earlier.
+- Determine your ethernet interface for your machine. This will be needed for ethernet DHCP:
   ```
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/efi";
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.grub.efiInstallAsRemovable = false;
-  boot.loader.grub.enable = false;
-  boot.loader.grub.device = "nodev";
-  ...
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.initrd.supportedFilesystems = [ "zfs" ];
-  ...
-  networking.hostId = "HOST_ID_HERE";
+  ip a
+  ```
+- Download my NixOS configuration and substitute the corresponding requried variables. The other variables are optional and can be adjusted if desired. Then replace the current configuration with the new configuration
+  ```
+  curl https://raw.githubusercontent.com/bossley9/dotfiles/master/.config/install/configuration.nix -o configuration.nix
+  # edit variables as necessary
+  sudo mv configuration.nix /etc/nixos/configuration.nix
   ```
 - Then install the operating system.
   ```
@@ -206,31 +202,6 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   passwd
   ```
 
-## Configuration Tweaking <a name="configuration-tweaking"></a>
-
-- Install envsubst for configuration variable substitution. I also recommend installing vim to make editing the configuration easier.
-  ```
-  nix-env -i envsubst vim
-  ```
-- Download my template NixOS configuration, substituting the corresponding variables as necessary.
-  ```
-  curl https://raw.githubusercontent.com/bossley9/dotfiles/master/.config/install/nixos.sh -o nixos.sh
-  # substitute the variables below with your own variables
-  USER=sam \
-  HOSTNAME=hello \
-  TIMEZONE="America/Los_Angeles" \
-  sh nixos.sh
-  ```
-  The following script will create a basic `configuration.nix` file in the current directory.
-- Use any text editor to tweak the configuration as necessary. If you use an ethernet connection, you will need to explicitly enable DHCP for the specified interface. You can view interfaces with `ip a`.
-- Replace the current configuration, rebuild, and reboot to view changes.
-  ```
-  mv configuration.nix /etc/nixos/
-  nixos-rebuild switch
-  reboot
-  ```
-- Log into the user account using the username you provided earlier and the password `test`. You can now change your password.
-
 ## Cloning <a name="cloning"></a>
 
 - Clone this repository to your home folder using the steps outlined below.
@@ -242,7 +213,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   umask 0077
   git clone --recursive https://github.com/bossley9/dotfiles.git .
   ```
-- Reboot the system for the configuration to take effect.
+- Log out and log back in as the main user.
   ```
-  reboot
+  exit
   ```
