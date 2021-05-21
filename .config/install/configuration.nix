@@ -33,6 +33,10 @@ in
   # boot.loader.grub.enable = false;
   # boot.loader.grub.device = "nodev";
 
+  # system hardening
+  boot.cleanTmpDir = true;
+  boo.tmpOnTmpfs = true;
+
   # networking
   networking.hostName = hostname;
   networking.hostId = hostid;
@@ -51,8 +55,12 @@ in
   };
 
   # zfs
+  # prevent external pointer errors
+  boot.loader.grub.copyKernels = true;
   # recommended to automatically scrub pools once a week
   services.zfs.autoScrub.enable = true;
+  # don't import all pools at once bc they can get corrupted
+  boot.zfs.forceImportAll = false;
 
   # user
   users.extraUsers.${user} = {
@@ -64,26 +72,119 @@ in
     shell = pkgs.mksh;
   };
 
-  # audio
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   # list packages installed in system profile.
   # to search, run 'nix search wget'
   environment.systemPackages = with pkgs; [
-    doas
-    git
-    vim
-    bc
+    # basics
+    mksh bc
+    doas git vim
 
+    # core
     mandoc
     neovim ripgrep nodejs nodePackages.npm fzf
     vifm
+    # TODO
     # sc-im requires manual building
+
+    # development
+    abook
+    nodePackages.typescript deno yarn
+    python
+    rustup
+    texlive.combined.scheme-full
+    # rss reader
+    newsboat
+    # ssh
+    openssh
+    # tuning and power management
+    tlp brightnessctl
+    # various utils
+    dash
+    mmv
+    unzip wget
+
+    # the hack
+    nethack
+
+    xorg.xorgserver xorg.xinit
+    xorg.xsetroot
+    xorg.xinput
+    xdotool
+    xorg.xev
+    # xorg.xf86videointel
+
+    bspwm sxhkd
+    polybar
+    # TODO picom ibhagwan
+
+    # TODO
+    firefox
+    # firefox-bin
+    # firefox-tridactyl
+    tridactyl-native
+    # firefox-ublock-origin
+    # firefox-extensions-multi-account-containers
+
+    firejail
+
+    feh
+    mpv
+    ffmpeg
+    screenkey
+    youtube-dl
+    xclip
+    slop
+    zathura girara mupdf
+    imagemagick
+    # gimp inkscape
+    mpd ncmpcpp
+    ncspot
+    # spotify
+    alsaUtils
+    pamixer
+    pulseaudio
+    # TODO
+    # pulseaudio-alsa
+    pavucontrol
+    # pipewire
+    # scrcpy
+    # lmms
+    # kdenlive
+    # TODO
+    # obs-studio
+    # linuxPackages-libre.v4l2loopback
+    # discord
+
+    # hsetroot
+    redshift
+    # liberation_ttf
+    source-code-pro
+    wqy_zenhei
+    # breeze-icons
+    adapta-gtk-theme
+    roboto
+
+    pandoc
+    networkmanager
+    # nm-connection-editor
+    aria
+    qrencode
+
+    # TODO ...
   ];
 
   # ssh
   services.openssh.enable = true;
+
+  # security
+  security.doas.enable = true;
+  security.doas.extraRules = [
+    { groups = [ "wheel" ]; noPass = false; keepEnv = true; }
+  ];
+
+  # audio
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # DO NOT change! Read the docs first
   system.stateVersion = "20.09";
