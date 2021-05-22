@@ -116,19 +116,26 @@ in
     # the hack
     nethack
 
+    # suckless utilities
+    (st.overrideAttrs (oldAttrs: rec {
+      src = fetchTarball {
+        url = "https://github.com/bossley9/st/archive/master.tar.gz";
+      };
+    }))
+
     xorg.xorgserver xorg.xinit
     xorg.xsetroot
     xorg.xinput
     xdotool
     xorg.xev
-    # xorg.xf86videointel
 
     bspwm sxhkd
     polybar
     # TODO picom ibhagwan
+    picom
 
-    # TODO
     firefox
+    # TODO
     # firefox-tridactyl
     tridactyl-native
     # firefox-ublock-origin
@@ -226,15 +233,19 @@ in
   # reduce the amount of journaling
   services.journald.extraConfig = "SystemMaxUse=250M";
   # power and lid events
-  services.logind.extraConfig = "HandlePowerKey=hibernate\nHandleLidSwitch=suspend\nHandleLidSwitchExternalPower=suspend\nHandleLidSwitchDocked=suspend";
+  services.logind.lidSwitch = "suspend";
+  services.logind.extraConfig = "HandlePowerKey=hibernate";
 
   # audio
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
   # miscellaneous services
+  services.xserver.windowManager.bspwm.enable = true;
+  services.xserver.autorun = false;
   services.tlp.enable = true;
   networking.networkmanager.enable = true;
+  # TODO services.xserver.xautolock.locker
 
   # OpenGL for 32-bit programs such as Wine
   hardware.opengl.driSupport32Bit = true;
