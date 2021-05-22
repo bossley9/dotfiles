@@ -33,10 +33,6 @@ in
   # boot.loader.grub.enable = false;
   # boot.loader.grub.device = "nodev";
 
-  # system hardening
-  boot.cleanTmpDir = true;
-  boo.tmpOnTmpfs = true;
-
   # networking
   networking.hostName = hostname;
   networking.hostId = hostid;
@@ -102,6 +98,9 @@ in
     dash
     mmv
     unzip wget
+    pfetch
+    # lxd
+    pwgen
 
     # the hack
     nethack
@@ -170,13 +169,18 @@ in
     aria
     qrencode
 
-    # TODO ...
+    # Unity development
+    # unityhub
+
+    # TODO extra installation
   ];
 
   # ssh
   services.openssh.enable = true;
 
-  # security
+  # security and system hardening
+  boot.cleanTmpDir = true;
+  boot.tmpOnTmpfs = true;
   security.doas.enable = true;
   security.doas.extraRules = [
     { groups = [ "wheel" ]; noPass = false; keepEnv = true; }
@@ -186,6 +190,6 @@ in
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  # DO NOT change! Read the docs first
-  system.stateVersion = "20.09";
+  # miscellaneous services
+  services.tlp.enable = true;
 }

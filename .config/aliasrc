@@ -133,7 +133,8 @@ case "$OS" in
 esac
 
 if [ "$DISTRO" = "$DISTRO_NIXOS" ]; then
-  alias rebuild="sudo nixos-rebuild switch"
+  alias \
+    rebuild="doas nixos-rebuild switch"
 fi
 
 # latex compilation
@@ -390,13 +391,19 @@ alias keygen="ssh-keygen -t rsa -b 4096"
 alias phone="devour scrcpy"
 
 clearcache() {
-  case "$OS" in
-    "$OS_LINUX")
+  case "$DISTRO" in
+    "$DISTRO_ARCHLINUX")
       # clear repository caches
       # if you want to clear the WHOLE cache, try -Scc (unrecommended)
       doas pacman -Sc
       paru -Sc
-
+      ;;
+    "$DISTRO_NIXOS")
+      nix-collect-garbage -d
+      ;;
+  esac
+  case "$OS" in
+    "$OS_LINUX")
       doas journalctl --rotate
       doas journalctl --vacuum-time=1d
 

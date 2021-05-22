@@ -122,7 +122,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
              -O canmount=off           \
              -O devices=off            \
              -R /mnt                   \
-             -O compression=lz4        \
+             -O compression=on         \
              -O encryption=aes-256-gcm \
              -O keyformat=passphrase   \
              -O keylocation=prompt     \
@@ -217,3 +217,17 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
   exit
   ```
+- Run the install script I have created:
+  ```sh
+  # security permissions
+  umask 0077
+  $XDG_CONFIG_HOME/install/nixos.sh
+  ```
+- Reboot to allow changes to take effect.
+  ```
+  reboot
+  ```
+- It is **highly** recommended to harden your BIOS post-installation. This includes, but is not limited to:
+  - setting a BIOS password
+  - removing unused boot options
+  - disabling unused ports or buses
