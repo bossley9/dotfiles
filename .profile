@@ -233,7 +233,9 @@ case "$DISTRO" in
     export SHELL="$(command -v mksh)"
     ;;
 esac
-export UID="$(id -u)"
+if [ -z "$UID" ]; then
+  export UID="$(id -u)"
+fi
 export VI_NAV_JUMP="5"
 export VI_NAV_JUMP_LARGE="25"
 export VIMINIT='source $MYVIMRC'

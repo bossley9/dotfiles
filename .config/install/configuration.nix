@@ -68,6 +68,15 @@ in
     shell = pkgs.mksh;
   };
 
+  environment.etc = {
+    profile = {
+      text = ''
+        # as recommended by the NSA
+        umask 0077
+        '';
+    };
+  };
+
   # list packages installed in system profile.
   # to search, run 'nix search wget'
   environment.systemPackages = with pkgs; [
@@ -95,6 +104,8 @@ in
     # tuning and power management
     tlp brightnessctl
     # various utils
+    # unable to relink /bin/sh to dash
+    # due to NixOS dependency on bash
     dash
     mmv
     unzip wget
@@ -179,11 +190,35 @@ in
   services.openssh.enable = true;
 
   # security and system hardening
+  # clear /tmp tmpfs
   boot.cleanTmpDir = true;
   boot.tmpOnTmpfs = true;
+  # doas
   security.doas.enable = true;
   security.doas.extraRules = [
     { groups = [ "wheel" ]; noPass = false; keepEnv = true; }
+  ];
+  # disable root ssh login
+  services.openssh.permitRootLogin = "no";
+  # resource limits
+  security.pam.loginLimits = [
+    # suppress mandatory code dump generation
+    { domain = "*"; item = "core"; type = "soft"; value = "0"; }
+    { domain = "*"; item = "core"; type = "hard"; value = "unlimited"; }
+    # maximum file size: 25 GB or 25000 MB or 25000000 KB
+    { domain = "*"; item = "fsize"; type = "hard"; value = "25000000"; }
+    # number of files able to be open by domain at once: 2^16
+    { domain = "*"; item = "nofile"; type = "soft"; value = "65536"; }
+    { domain = "*"; item = "nofile"; type = "hard"; value = "65536"; }
+    # maximum number of processes per user: 2^11 (root: 2^16)
+    { domain = "*"; item = "nproc"; type = "soft"; value = "2048"; }
+    { domain = "*"; item = "nproc"; type = "hard"; value = "2048"; }
+    { domain = "root"; item = "nproc"; type = "hard"; value = "65536"; }
+    # default niceness
+    { domain = "*"; item = "priority"; type = "soft"; value = "0"; }
+    # prevent non-root from running minimal niceness
+    { domain = "*"; item = "nice"; type = "hard"; value = "-19"; }
+    { domain = "root"; item = "nice"; type = "hard"; value = "-20"; }
   ];
 
   # audio
