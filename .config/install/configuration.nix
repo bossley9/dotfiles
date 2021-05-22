@@ -61,7 +61,7 @@ in
   # user
   users.extraUsers.${user} = {
     createHome = true;
-    extraGroups = [ "wheel", "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     home = "/home/" + user;
     initialPassword = "test";
     isNormalUser = true;
