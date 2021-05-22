@@ -61,7 +61,7 @@ in
   # user
   users.extraUsers.${user} = {
     createHome = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel", "networkmanager" ];
     home = "/home/" + user;
     initialPassword = "test";
     isNormalUser = true;
@@ -129,7 +129,6 @@ in
 
     # TODO
     firefox
-    # firefox-bin
     # firefox-tridactyl
     tridactyl-native
     # firefox-ublock-origin
@@ -220,6 +219,8 @@ in
     { domain = "*"; item = "nice"; type = "hard"; value = "-19"; }
     { domain = "root"; item = "nice"; type = "hard"; value = "-20"; }
   ];
+  # hide unowned processes
+  security.hideProcessInformation = true;
 
   # systemd
   # reduce the amount of journaling
@@ -233,4 +234,8 @@ in
 
   # miscellaneous services
   services.tlp.enable = true;
+  networking.networkmanager.enable = true;
+
+  # OpenGL for 32-bit programs such as Wine
+  hardware.opengl.driSupport32Bit = true;
 }
