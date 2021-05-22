@@ -5,7 +5,7 @@
 # SYSDSYS="${SYSD}/system"
 # FF_DIR="${HOME}/.mozilla"
 
-# mkdir -p "$BIN"
+mkdir -p "$BIN"
 # mkdir -p "$FF_DIR"
 # mkdir -p "$FONT_DIR"
 # mkdir -p "$ETC"
@@ -31,20 +31,10 @@ rustup default stable
 # ./configure
 # sudo make install clean
 
-# # system hardening
-# # add 5 second delay between failed login attempts
+# system hardening
+# add 5 second delay between failed login attempts
 # pamLogin="${ETC}/pam.d/system-login"
 # sudo cp -v "${XDG_CONFIG_HOME}${pamLogin}" "$pamLogin"
-
-# # systemd
-# # reduce the amount of journaling
-# journalConf="${SYSD}/journald.conf"
-# sudo cp -v "${XDG_CONFIG_HOME}${journalConf}" "$journalConf"
-# # power/lid events
-# loginConf="${SYSD}/logind.conf"
-# sudo cp -v "${XDG_CONFIG_HOME}${loginConf}" "$loginConf"
-
-# if [ "$GUI" = "1" ]; then
 
 # # suckless
 # sbuild "st"
@@ -85,8 +75,8 @@ rustup default stable
 # # make all
 # # sudo make install clean
 
-# # webcam
-# sudo ln -sf "${XDG_SCRIPT_HOME}/webcam" "${BIN}/webcam"
+# webcam
+doas ln -sf "${XDG_SCRIPT_HOME}/webcam" "${BIN}/webcam"
 
 # spicetify with spotify
 # sudo chown -R sam:wheel "${OPT_DIR}/spotify"
@@ -103,20 +93,10 @@ rustup default stable
 # postinstall rec: https://github.com/fireice-uk/xmr-stak
 
 # # firefox profile
-# ln -sf "${XDG_CONFIG_HOME}/mozilla/firefox" "${FF_DIR}/firefox"
+ln -sf "${XDG_CONFIG_HOME}/mozilla/firefox" "${FF_DIR}/firefox"
 
-# # font update
-# fc-cache -f -v
-
-# fi
-
-# sudo pacman -S $PKGA
-
-# for AUR in $AURA; do
-#   git clone "https://aur.archlinux.org/${AUR}.git" "${TMPDIR}/${AUR}"
-#   cd "${TMPDIR}/${AUR}"
-#   makepkg -si
-# done
+# font update
+fc-cache -f -v
 
 # # grub
 # # timeout
@@ -125,4 +105,4 @@ rustup default stable
 # # regenerate
 # sudo grub-mkconfig -o "/boot/grub/grub.cfg"
 
-# echo "${YELLOW}It is recommended to reboot the system directly after running this script.${NC}"
+echo "${YELLOW}It is recommended to reboot the system directly after running this script.${NC}"

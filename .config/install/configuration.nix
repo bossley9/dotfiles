@@ -221,6 +221,12 @@ in
     { domain = "root"; item = "nice"; type = "hard"; value = "-20"; }
   ];
 
+  # systemd
+  # reduce the amount of journaling
+  services.journald.extraConfig = "SystemMaxUse=250M";
+  # power and lid events
+  services.logind.extraConfig = "HandlePowerKey=hibernate\nHandleLidSwitch=suspend\nHandleLidSwitchExternalPower=suspend\nHandleLidSwitchDocked=suspend";
+
   # audio
   sound.enable = true;
   hardware.pulseaudio.enable = true;
