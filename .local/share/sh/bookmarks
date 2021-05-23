@@ -1,16 +1,12 @@
-config,     $XDG_CONFIG_HOME
-cache,      $XDG_CACHE_HOME
 scripts,    $XDG_SCRIPT_HOME
-local,      $HOME/.local
 data,       $HOME/Data
 repos,      $XDG_REPO_HOME
 downloads,  $HOME/Downloads
 music,      $HOME/Music
 ports,      /usr/ports
 pl,         $HOME/Data/Media/Playlists
-etc,        /etc
 school,     $HOME/Data/School/OSU/Year-4/Spring
 unity,      $HOME/Documents/Unity/Projects
 roguelike,  $HOME/Documents/Unity/Projects/Untitled_Roguelike
-crimesolver,$HOME/Documents/Unity/Projects/CrimeSolver-Unity
 grade docs, $HOME/Data/Grade/Documents
+thoughts,   $HOME/Data/Thoughts

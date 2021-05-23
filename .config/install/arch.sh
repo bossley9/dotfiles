@@ -252,7 +252,7 @@ amixer sset Master unmute
 # make all
 # sudo make install clean
 
-# webcam
+# make webcam script accessible by launcher
 sudo ln -sf "${XDG_SCRIPT_HOME}/webcam" "${BIN}/webcam"
 
 # spicetify with spotify
