@@ -222,6 +222,10 @@ case "$OS" in
     export SHELL_NAME="sh"
     export SHELL="/bin/${SHELL_NAME}"
     ;;
+  "$OS_MACOS")
+    export SHELL_NAME="mksh"
+    export SHELL="$(command -v mksh)"
+    ;;
   *)
     export SHELL_NAME="sh"
     export SHELL="/bin/${SHELL_NAME}"
