@@ -11,6 +11,8 @@ AURS=""
 # installed after
 PKGA=""
 AURA=""
+# functional nix
+NIXS=""
 
 ETC="/etc"
 SYSD="/${ETC}/systemd"
@@ -29,6 +31,12 @@ mkdir -p "$OPT_DIR"
 # AUR package management
 git clone "https://aur.archlinux.org/paru-bin.git" "${TMPDIR}/paru"
 cd "${TMPDIR}/paru" && makepkg -si
+
+# NIX package management (multi-user)
+nix_script="${TMPDIR}/nixos.sh"
+curl -L "https://nixos.org/nix/install" -o "$nix_script"
+chmod +x "$nix_script"
+$nix_script --daemon
 
 #
 # core
@@ -138,6 +146,11 @@ PKGS="${PKGS} qrencode"
 # AURS="${AURS} mono-basic"
 # PKGS="${PKGS} dotnet-runtime dotnet-sdk"
 
+# gemini browser
+# NIXS="${NIXS} castor"
+# NIXS="${NIXS} asuka"
+# NIXS="${NIXS} bombadillo"
+
 fi
 
 #
@@ -158,6 +171,12 @@ for AUR in $AURS; do
   cd "${TMPDIR}/${AUR}"
   makepkg -si
 done
+
+NIXPKGS=""
+for PKG in $NIXS; do
+  NIXPKGS="${NIXPKGS} nixpkgs.${PKG}"
+done
+nix-env -iA $NIXPKGS
 
 # enable power management
 sudo systemctl enable --now tlp

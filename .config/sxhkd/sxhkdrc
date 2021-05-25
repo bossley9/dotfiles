@@ -25,8 +25,8 @@ super + u
   exec discord
 
 # slack (for actual productivity)
-# super + o
-#   slack
+super + o
+  slack
 
 # music
 super + m
