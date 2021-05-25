@@ -1,4 +1,5 @@
 $XDG_CONFIG_HOME/aria2/template.aria2.conf
+$XDG_CONFIG_HOME/etc/template.hosts
 $FIREJAIL_PROFILE_DIR/template.default.inc
 $FIREJAIL_PROFILE_DIR/template.discord.profile
 $FIREJAIL_PROFILE_DIR/template.firefox.profile

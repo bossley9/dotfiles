@@ -1,0 +1,9 @@
+# vim: set ft=conf :
+
+127.0.0.1 localhost
+::1 localhost
+# usually used as the machine FQDN
+127.0.1.1 ${HOSTNAME}.localdomain ${HOSTNAME}
+
+# porn
+0.0.0.0 pornhub.com

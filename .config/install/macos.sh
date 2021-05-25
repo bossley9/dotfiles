@@ -22,6 +22,7 @@ git restore "$GIT_CONFIG" # fix brew install errors
 #
 
 PKGS="${PKGS} envsubst"
+PKGS="${PKGS} mksh"
 
 PKGS="${PKGS} neovim ripgrep nodejs nodePackages.npm fzf"
 BREW="${BREW} vifm"
@@ -30,8 +31,8 @@ PKGS="${PKGS} scim"
 # development
 # PKGS="${PKGS} abook"
 PKGS="${PKGS} nodePackages.typescript deno yarn"
-PKGS="${PKGS} python3"
 # TODO symlink python to python3
+PKGS="${PKGS} python3"
 # PKGS="${PKGS} rustup"
 # PKGS="${PKGS} texlive-most biber"
 # rss reader
@@ -64,7 +65,12 @@ brew install $BREW
 brew install --cask $CASK
 
 # shenv
-ln -sf "$ENV" "${HOME}/.zshrc"
+# ln -sf "$ENV" "${HOME}/.zshrc"
+
+# set default shell
+ln -sf "${NIX_PROFILE}/bin/mksh" "${BIN}/mksh"
+grep -q "^${BIN}/mksh" "/etc/shells" || echo "${BIN}/mksh" | sudo tee -a "/etc/shells"
+chsh -s "${BIN}/mksh"
 
 echo "${YELLOW}WARNING: You will need to manually set keyboard mappings for this to work as intended. This can be done from the menu > System Preferences > Keyboard > Modifier Keys.${NC}"
 echo "${YELLOW}I usually map the following:\n\

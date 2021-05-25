@@ -247,6 +247,8 @@ filextype *.ora
 " spreadsheet
 filextype {*.csv,*.sc,*.xls,*.xlsx}
   \ sc-im %f
+filetype {*.csv,*.sc,*.xls,*.xlsx}
+  \ sc-im %f
 fileviewer {*.csv,*.sc,*.xls,*.xlsx}
   \ sc-im %f
 

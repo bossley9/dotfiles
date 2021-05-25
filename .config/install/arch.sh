@@ -222,6 +222,10 @@ sudo sed -i 's/#\s*PermitRootLogin.*/PermitRootLogin no/' "$sshConf"
 pamLogin="${ETC}/pam.d/system-login"
 sudo cp -v "${XDG_CONFIG_HOME}${pamLogin}" "$pamLogin"
 
+# replace hosts
+hosts="${ETC}/hosts"
+sudo cp -v "${XDG_CONFIG_HOME}${hosts}" "$hosts"
+
 # systemd
 # reduce the amount of journaling
 journalConf="${SYSD}/journald.conf"

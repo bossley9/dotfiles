@@ -194,6 +194,11 @@ case "$OS" in
 esac
 export DOLLAR="$" # vital for envsubst escaping
 export FF_PROFILE="default"
+if command -v "hostname" > "$NULL"; then
+  export HOSTNAME="$(hostname)"
+else
+  export HOSTNAME="$(cat "/etc/hostname")"
+fi
 # for use in mktemp templates
 export MK_TEMP="XXXXXXXXXXXXXX"
 export LANG="en_US.UTF-8"
@@ -267,6 +272,7 @@ export LESSKEY="$XDG_CACHE_HOME/lesskey_generated"
 export MOZ_LOG_FILE="${XDG_CACHE_HOME}/mozilla/mozilla.log"
 export NEWSBOAT_CONFIG="$XDG_CONFIG_HOME/newsboat"
 export NETHACKOPTIONS="@${XDG_CONFIG_HOME}/nethack/nethackrc"
+export NIX_PROFILE="${HOME}/.nix-profile"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export RUSTUP_HOME="${XDG_CONFIG_HOME}/rustup"
@@ -291,7 +297,7 @@ export PATH="${PATH}:/usr/local/jdk-11/bin"
 # rust
 export PATH="${PATH}:${CARGO_HOME}/bin"
 # nix
-export PATH="${HOME}/.nix-profile/bin:/nix/var/profiles/default/bin:${PATH}"
+export PATH="${NIX_PROFILE}/bin:/nix/var/profiles/default/bin:${PATH}"
 
 #
 # includes
