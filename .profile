@@ -223,8 +223,8 @@ case "$OS" in
     export SHELL="/bin/${SHELL_NAME}"
     ;;
   "$OS_MACOS")
-    export SHELL_NAME="mksh"
-    export SHELL="$(command -v mksh)"
+    export SHELL_NAME="zsh" # eh
+    export SHELL="/bin/${SHELL_NAME}"
     ;;
   *)
     export SHELL_NAME="sh"
@@ -290,6 +290,8 @@ export PATH="${XDG_SCRIPT_HOME}:${PATH}"
 export PATH="${PATH}:/usr/local/jdk-11/bin"
 # rust
 export PATH="${PATH}:${CARGO_HOME}/bin"
+# nix
+export PATH="${HOME}/.nix-profile/bin:/nix/var/profiles/default/bin:${PATH}"
 
 #
 # includes

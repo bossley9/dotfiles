@@ -5,23 +5,27 @@
 #
 
 PKGS=""
+BREW=""
+CASK=""
 
 # install nix
-sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
-. "/Users/${USER}/.nix-profile/etc/profile.d/nix.sh"
+# sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
+# . "/Users/${USER}/.nix-profile/etc/profile.d/nix.sh"
+sh <(curl -L https://nixos.org/nix/install) --daemon
 
 # install brew
-# curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+sh -c "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/master/install.sh")"
+git restore "$GIT_CONFIG" # fix brew install errors
 
 #
 # core
 #
 
 PKGS="${PKGS} envsubst"
-PKGS="${PKGS} mksh dash"
 
 PKGS="${PKGS} neovim ripgrep nodejs nodePackages.npm fzf"
-# PKGS="${PKGS} vifm"
+BREW="${BREW} vifm"
+PKGS="${PKGS} scim"
 
 # development
 # PKGS="${PKGS} abook"
@@ -40,16 +44,14 @@ PKGS="${PKGS} python3"
 # AURS="${AURS} mmv"
 PKGS="${PKGS} unzip wget"
 
-# brew install $PACKS
-
-# brew cask
-
-# PACKS=""
-# PACKS="${PACKS} iterm2"
+# PKGS="${PKGS} kitty"
+CASK="${CASK} iterm2"
 # PACKS="${PACKS} figma"
 # PACKS="${PACKS} firefox"
 
-# brew cask install $PACKS
+#
+# installation
+#
 
 NIXPKGS=""
 for PKG in $PKGS; do
@@ -57,5 +59,14 @@ for PKG in $PKGS; do
 done
 nix-env -iA $NIXPKGS
 
-# change shell to mksh
-chsh -s mksh
+brew install $BREW
+
+brew install --cask $CASK
+
+# shenv
+ln -sf "$ENV" "${HOME}/.zshrc"
+
+echo "${YELLOW}WARNING: You will need to manually set keyboard mappings for this to work as intended. This can be done from the menu > System Preferences > Keyboard > Modifier Keys.${NC}"
+echo "${YELLOW}I usually map the following:\n\
+  Function (fn) Key: Control
+${NC}"
