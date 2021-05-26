@@ -7,6 +7,7 @@ $XDG_CONFIG_HOME/gtk-2.0/template.gtkrc
 $XDG_CONFIG_HOME/gtk-3.0/template.bookmarks
 $XDG_CONFIG_HOME/gtk-3.0/template.settings.ini
 $XDG_CONFIG_HOME/herbe/template.config.h
+$XDG_CONFIG_HOME/kitty/template.kitty.conf
 $XDG_CONFIG_HOME/mozilla/firefox/template.profiles.ini
 $XDG_CONFIG_HOME/mozilla/firefox/template.installs.ini
 $XDG_CONFIG_HOME/mozilla/firefox/$FF_PROFILE/template.user.js

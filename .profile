@@ -228,8 +228,8 @@ case "$OS" in
     export SHELL="/bin/${SHELL_NAME}"
     ;;
   "$OS_MACOS")
-    export SHELL_NAME="zsh" # eh
-    export SHELL="/bin/${SHELL_NAME}"
+    export SHELL_NAME="mksh"
+    export SHELL="/usr/local/bin/${SHELL_NAME}"
     ;;
   *)
     export SHELL_NAME="sh"

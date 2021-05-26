@@ -20,10 +20,7 @@ This guide is made under the assumption that you have already booted and set up 
   git clone --recursive https://github.com/bossley9/dotfiles.git dotfiles
   mv -v dotfiles/* ./
   mv -v dotfiles/.* ./
-  ```
-- Redirect Zsh to the correct profile.
-  ```
-  ln -s .profile .zprofile
+  rm -r dotfiles
   ```
 - Log out and log back in from the MacOS menu in the top left corner.
 - Run the install script I have created:
