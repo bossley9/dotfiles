@@ -24,7 +24,7 @@ git restore "$GIT_CONFIG" # fix brew install errors
 PKGS="${PKGS} envsubst"
 PKGS="${PKGS} mksh"
 # rebinding
-PKGS="${PKGS} goku"
+CASK="${CASK} karabiner-elements"
 
 PKGS="${PKGS} neovim ripgrep nodejs nodePackages.npm fzf"
 BREW="${BREW} vifm"
@@ -47,8 +47,8 @@ PKGS="${PKGS} python3"
 # AURS="${AURS} mmv"
 PKGS="${PKGS} unzip wget"
 
-# PKGS="${PKGS} kitty"
-CASK="${CASK} iterm2"
+CASK="${CASK} kitty"
+# CASK="${CASK} iterm2"
 # PACKS="${PACKS} figma"
 # PACKS="${PACKS} firefox"
 
@@ -74,7 +74,4 @@ ln -sf "${NIX_PROFILE}/bin/mksh" "${BIN}/mksh"
 grep -q "^${BIN}/mksh" "/etc/shells" || echo "${BIN}/mksh" | sudo tee -a "/etc/shells"
 chsh -s "${BIN}/mksh"
 
-echo "${YELLOW}WARNING: You will need to manually set keyboard mappings for this to work as intended. This can be done from the menu > System Preferences > Keyboard > Modifier Keys.${NC}"
-echo "${YELLOW}I usually map the following:\n\
-  Function (fn) Key: Control
-${NC}"
+echo "${YELLOW}WARNING: You will need to manually give karabiner permissions to monitor keys for the keybindings to work as intended.${NC}"
