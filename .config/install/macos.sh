@@ -23,6 +23,8 @@ git restore "$GIT_CONFIG" # fix brew install errors
 
 PKGS="${PKGS} envsubst"
 PKGS="${PKGS} mksh"
+# rebinding
+PKGS="${PKGS} goku"
 
 PKGS="${PKGS} neovim ripgrep nodejs nodePackages.npm fzf"
 BREW="${BREW} vifm"

@@ -297,7 +297,7 @@ export PATH="${PATH}:/usr/local/jdk-11/bin"
 # rust
 export PATH="${PATH}:${CARGO_HOME}/bin"
 # nix
-export PATH="${NIX_PROFILE}/bin:/nix/var/profiles/default/bin:${PATH}"
+export PATH="${NIX_PROFILE}/bin:/nix/var/nix/profiles/default/bin:${PATH}"
 
 #
 # includes
