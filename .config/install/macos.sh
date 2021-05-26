@@ -39,7 +39,9 @@ PKGS="${PKGS} python3"
 PKGS="${PKGS} unzip wget"
 
 CASK="${CASK} kitty"
-# PACKS="${PACKS} figma"
+CASK="${CASK} brave-browser"
+CASK="${CASK} firefox"
+CASK="${CASK} figma"
 # screen recording utility
 CASK="${CASK} kap"
 
