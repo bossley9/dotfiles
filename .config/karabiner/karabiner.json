@@ -157,40 +157,57 @@
         },
         {
           "from": {
-            "key_code": "open_bracket",
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": ["left_command", "left_shift"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f",
+              "modifiers": ["left_command", "left_option", "left_shift"]
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "semicolon",
             "modifiers": {
               "mandatory": ["left_command"]
             }
           },
           "to": [
             {
-              "consumer_key_code": "volume_decrement"
+              "key_code": "semicolon",
+              "modifiers": ["left_command", "left_option"]
             }
           ]
         },
         {
           "from": {
-            "key_code": "close_bracket",
+            "key_code": "p",
             "modifiers": {
               "mandatory": ["left_command"]
             }
           },
           "to": [
             {
-              "consumer_key_code": "volume_increment"
+              "key_code": "p",
+              "modifiers": ["left_command", "left_option"]
             }
           ]
         },
         {
           "from": {
-            "key_code": "open_bracket",
+            "key_code": "b",
             "modifiers": {
-              "mandatory": ["left_command", "control", "shift"]
+              "mandatory": ["left_command"]
             }
           },
           "to": [
             {
-              "consumer_key_code": "display_brightness_decrement"
+              "key_code": "b",
+              "modifiers": ["left_command", "left_option"]
             }
           ]
         },
@@ -209,6 +226,117 @@
         },
         {
           "from": {
+            "key_code": "close_bracket",
+            "modifiers": {
+              "mandatory": ["left_command", "left_control"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "volume_increment"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "close_bracket",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "close_bracket",
+              "modifiers": ["left_command", "left_option"]
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "d",
+              "modifiers": ["left_control"]
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "grave_accent_and_tilde",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "grave_accent_and_tilde",
+              "modifiers": ["left_command", "left_option"]
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "h",
+              "modifiers": ["left_command", "left_option"]
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "j",
+              "modifiers": ["left_command", "left_option"]
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "k",
+              "modifiers": ["left_command", "left_option"]
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "l",
+              "modifiers": ["left_command", "left_option"]
+            }
+          ]
+        },
+        {
+          "from": {
             "key_code": "left_option",
             "modifiers": {
               "optional": ["any"]
@@ -218,6 +346,74 @@
             {
               "key_code": "left_option",
               "modifiers": ["left_command", "fn"]
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "o",
+              "modifiers": ["left_command", "left_option"]
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": ["left_command", "control", "shift"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "display_brightness_decrement"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": ["left_command", "left_control"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "volume_decrement"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "open_bracket",
+              "modifiers": ["left_command", "left_option"]
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "u",
+              "modifiers": ["left_command", "left_option"]
             }
           ]
         }
