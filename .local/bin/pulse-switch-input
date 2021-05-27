@@ -1,5 +1,4 @@
 #!/bin/sh
-# redirect 
 # set the default pulseaudio input
 
 NA="N/A"
@@ -30,4 +29,5 @@ output="$(pacmd "list-sinks" | grep -A 1 "\*.*index:" | awk '/name:/{print subst
 
 pactl "load-module" "module-null-sink" sink_name="$PULSE_VIRT_MIC" sink_properties="device.description=${PULSE_VIRT_MIC}-null-sink"
 pactl "load-module" "module-loopback" source="$input" sink="$PULSE_VIRT_MIC" latency_msec=20
+pactl "set-sink-volume" "$PULSE_VIRT_MIC" "150%"
 # pacmd "move-sink-input" "$PULSE_VIRT_MIC" "$output"

@@ -130,6 +130,11 @@ super + shift + {w,q}
 super + {shift + t,shift + p,shift + space,f}
     bspc node -t '~{tiled,pseudo_tiled,floating,fullscreen}'
 
+# super + shift + {m,x,y,z}
+#   	bspc node -g {marked,locked,sticky,private}
+super + shift + a
+  	bspc node -g sticky
+
 #
 # workspace management
 #
