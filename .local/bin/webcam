@@ -2,9 +2,13 @@
 # opens a webcam stream if available
 
 dev="$(ls "/dev/video"* | shellmenu)"
+opts=""
 
-if command -v "v4l2-ctl" > "$NULL"; then
+if command -v "v4l2-ctl" > "$NULL" && ! pgrep "obs" > "$NULL"; then
   v4l2-ctl -d "$dev" --set-fmt-video=width=1920,height=1080,pixelformat=MJPG
+  opts="${opts} --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg"
 fi
 
-mpv "av://v4l2:${dev}" --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg --profile=low-latency --untimed --no-resume-playback
+opts="${opts} --profile=low-latency --untimed --no-resume-playback"
+
+mpv "av://v4l2:${dev}" $opts
