@@ -157,34 +157,6 @@
         },
         {
           "from": {
-            "key_code": "h",
-            "modifiers": {
-              "mandatory": ["control"],
-              "optional": ["caps_lock", "option"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "delete_or_backspace"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "j",
-            "modifiers": {
-              "mandatory": ["control"],
-              "optional": ["caps_lock", "option"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "return_or_enter"
-            }
-          ]
-        },
-        {
-          "from": {
             "key_code": "open_bracket",
             "modifiers": {
               "mandatory": ["left_command"]
