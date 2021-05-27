@@ -5,5 +5,43 @@
 # usually used as the machine FQDN
 127.0.1.1 ${HOSTNAME}.localdomain ${HOSTNAME}
 
-# porn
+# google analytics
+ssl.google-analytics.com
+www.google-analytics.com
+www.googletagmanager.com
+
+# strictly porn
+0.0.0.0 hentaihaven.com
 0.0.0.0 pornhub.com
+0.0.0.0 xvideos.com
+
+# ads
+0.0.0.0 adskeeper.com
+0.0.0.0 bebi.com
+0.0.0.0 foowafoa.com
+0.0.0.0 g.jwpsrv.com
+0.0.0.0 go.bebi.com
+0.0.0.0 gogoanimetv.disqus.cogogoanimetv.disqus.com
+0.0.0.0 imp9.bidgear.com
+0.0.0.0 imp-dsp.bidgear.com
+0.0.0.0 jsc.adskeeper.com
+0.0.0.0 links.services.disqus.com
+0.0.0.0 louchees.net
+0.0.0.0 mt.rtmark.net
+0.0.0.0 my.rtmark.net
+0.0.0.0 onmarshtompor.com
+0.0.0.0 platform.bidgear.com
+0.0.0.0 prd.jwpltx.com
+0.0.0.0 redir.bebi.com
+0.0.0.0 referrer.disqus.com
+0.0.0.0 rtmark.net
+0.0.0.0 s-img.adskeeper.com
+0.0.0.0 servicer.adskeeper.com
+0.0.0.0 source.bidgear.com
+0.0.0.0 srv.bebi.com
+0.0.0.0 ssl.p.jwpcdn.com
+0.0.0.0 st.bebi.com
+0.0.0.0 toglooman.com
+0.0.0.0 turboadblocker.com
+0.0.0.0 viatepigan.com
+0.0.0.0 viglink.com
