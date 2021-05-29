@@ -8,14 +8,15 @@
 # change these variables as desired
 let
   # required
-  hostid =    "12345678";
-  eth_interface =    "eth0";
+  hostid = "12345678";
+  eth_interface = "eth0";
   # optional
-  user =      "sam";
-  hostname =  "sunset";
-  timezone =  "America/Los_Angeles";
-  locale  =   "en_US.UTF-8";
+  user = "sam";
+  hostname = "sunset";
+  timezone = "America/Los_Angeles";
+  locale  = "en_US.UTF-8";
   wifi_enable = false;
+  ssh_port = 2067;
 in
 {
   imports = [
@@ -26,12 +27,15 @@ in
   # boot
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/efi";
-  boot.loader.systemd-boot.enable = true;
   boot.supportedFilesystems = [ "zfs" ];
   boot.initrd.supportedFilesystems = [ "zfs" ]; # boot from zfs
+
+  boot.loader.systemd-boot.enable = true;
   # boot.loader.grub.efiInstallAsRemovable = false;
   # boot.loader.grub.enable = false;
   # boot.loader.grub.device = "nodev";
+  # prevent external pointer errors
+  boot.loader.grub.copyKernels = true;
 
   # networking
   networking.hostName = hostname;
@@ -51,8 +55,6 @@ in
   };
 
   # zfs
-  # prevent external pointer errors
-  boot.loader.grub.copyKernels = true;
   # recommended to automatically scrub pools once a week
   services.zfs.autoScrub.enable = true;
   # don't import all pools at once bc they can get corrupted
@@ -193,13 +195,15 @@ in
   ];
 
   # ssh
-  services.openssh.enable = true;
+  services.sshd.enable = true;
+  services.openssh.ports = [ ssh_port ];
 
   # security and system hardening
   # clear /tmp tmpfs
   boot.cleanTmpDir = true;
   boot.tmpOnTmpfs = true;
   # doas
+  security.sudo.enable = false;
   security.doas.enable = true;
   security.doas.extraRules = [
     { groups = [ "wheel" ]; noPass = false; keepEnv = true; }
