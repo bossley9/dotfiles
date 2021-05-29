@@ -31,11 +31,8 @@ in
   boot.initrd.supportedFilesystems = [ "zfs" ]; # boot from zfs
 
   boot.loader.systemd-boot.enable = true;
-  # boot.loader.grub.efiInstallAsRemovable = false;
-  # boot.loader.grub.enable = false;
-  # boot.loader.grub.device = "nodev";
-  # prevent external pointer errors
-  boot.loader.grub.copyKernels = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.systemd-boot.editor = false;
 
   # networking
   networking.hostName = hostname;
@@ -55,6 +52,8 @@ in
   };
 
   # zfs
+  # prevent external pointer errors
+  boot.loader.grub.copyKernels = true;
   # recommended to automatically scrub pools once a week
   services.zfs.autoScrub.enable = true;
   # don't import all pools at once bc they can get corrupted
@@ -64,6 +63,7 @@ in
   users.extraUsers.${user} = {
     createHome = true;
     extraGroups = [ "wheel" "networkmanager" ];
+    # try /usr/home/user BSD pattern
     home = "/home/" + user;
     initialPassword = "test";
     isNormalUser = true;
@@ -75,8 +75,9 @@ in
       text = ''
         # as recommended by the NSA
         umask 0077
-        '';
+      '';
     };
+    issue.enable = false;
   };
 
   # list packages installed in system profile.
@@ -249,7 +250,6 @@ in
   services.xserver.autorun = false;
   services.tlp.enable = true;
   networking.networkmanager.enable = true;
-  # TODO services.xserver.xautolock.locker
 
   # OpenGL for 32-bit programs such as Wine
   hardware.opengl.driSupport32Bit = true;
