@@ -83,16 +83,16 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
   fdisk -l
   ```
-- Use the GNU `parted` utility to use a gpt partition table and create a boot partition of size ~200 MB:
+- Use the GNU `parted` utility to use a gpt partition table and create a boot partition of size ~100 MB:
   ```
   parted /dev/sda mklabel gpt
-  parted /dev/sda mkpart non-fs 0% 200
+  parted /dev/sda mkpart non-fs 0% 100
   parted /dev/sda set 1 boot on
   mkfs.fat -F32 /dev/sda1
   ```
 - Create a root partition to install ZFS.
   ```
-  parted /dev/sda mkpart primary 200 100%
+  parted /dev/sda mkpart primary 100 100%
   ```
 
 ## ZFS Installation <a name="zfs-installation"></a>
@@ -147,12 +147,12 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
 - Then mount all datasets, including the EFI partition created earlier.
   ```
+  mkdir -p /mnt/efi
+  mkdir -p /mnt/usr/home
+  mkdir -p /mnt/root
   mount -t zfs zroot/root /mnt
-  mkdir /mnt/home
-  mount -t zfs zroot/data/home /mnt/home
-  mkdir /mnt/root
+  mount -t zfs zroot/data/home /mnt/usr/home
   mount -t zfs zroot/data/root /mnt/root
-  mkdir /mnt/efi
   mount /dev/sda1 /mnt/efi -o nodev,nosuid,noexec
   ```
   You can use `mount` to verify all datasets (in addition to the efi partition) have been mounted properly.
@@ -183,11 +183,11 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
   curl https://raw.githubusercontent.com/bossley9/dotfiles/master/.config/install/configuration.nix -o configuration.nix
   # edit variables as necessary
-  sudo mv configuration.nix /etc/nixos/configuration.nix
+  vim configuration.nix
+  mv configuration.nix /mnt/etc/nixos/configuration.nix
   ```
-- Then install the operating system.
+- Then install the operating system. This may take a while. You will also be prompted for a root password.
   ```
-  # the installation will prompt you for a root password
   nixos-install
   ```
 - Shutdown the system.
@@ -207,10 +207,6 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
 - Clone this repository to your home folder using the steps outlined below.
   ```sh
   cd $HOME
-  # this action is irreversible - be careful!
-  rm -rf .*
-  # security permissions
-  umask 0077
   git clone --recursive https://github.com/bossley9/dotfiles.git .
   ```
 - Log out and log back in as the main user.
@@ -219,9 +215,8 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
 - Run the install script I have created:
   ```sh
-  # security permissions
-  umask 0077
-  $XDG_CONFIG_HOME/install/nixos.sh
+  chmod +x $XDG_CONFIG_HOME/install/nixos.sh
+  sh $XDG_CONFIG_HOME/install/nixos.sh
   ```
 - Reboot to allow changes to take effect.
   ```

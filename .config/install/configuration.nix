@@ -63,8 +63,7 @@ in
   users.extraUsers.${user} = {
     createHome = true;
     extraGroups = [ "wheel" "networkmanager" ];
-    # try /usr/home/user BSD pattern
-    home = "/home/" + user;
+    home = "/usr/home/" + user;
     initialPassword = "test";
     isNormalUser = true;
     shell = pkgs.mksh;
@@ -84,6 +83,7 @@ in
   # to search, run 'nix search wget'
   environment.systemPackages = with pkgs; [
     # basics
+    envsubst
     mksh bc
     doas git vim
 

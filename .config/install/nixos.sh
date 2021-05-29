@@ -3,16 +3,19 @@
 # ETC="/etc"
 # SYSD="/${ETC}/systemd"
 # SYSDSYS="${SYSD}/system"
-# FF_DIR="${HOME}/.mozilla"
+FF_DIR="${HOME}/.mozilla"
 
-mkdir -p "$BIN"
-# mkdir -p "$FF_DIR"
+doas mkdir -p "$BIN"
+mkdir -p "$FF_DIR"
 # mkdir -p "$FONT_DIR"
 # mkdir -p "$ETC"
 # mkdir -p "$SYSD"
 # mkdir -p "$SYSDSYS"
 # mkdir -p "$TMPDIR"
 # mkdir -p "$OPT_DIR"
+
+# symlink home
+doas ln -sf "$HOME" "/home/${USER}"
 
 # rust configuration
 rustup default stable
@@ -96,7 +99,7 @@ doas ln -sf "${XDG_SCRIPT_HOME}/webcam" "${BIN}/webcam"
 ln -sf "${XDG_CONFIG_HOME}/mozilla/firefox" "${FF_DIR}/firefox"
 
 # font update
-fc-cache -f -v
+doas fc-cache -f -v
 
 # # grub
 # # timeout
