@@ -399,7 +399,8 @@ clearcache() {
       paru -Sc
       ;;
     "$DISTRO_NIXOS")
-      nix-collect-garbage -d
+      doas nix-collect-garbage -d
+      doas nixos-rebuild boot
       ;;
   esac
   case "$OS" in
