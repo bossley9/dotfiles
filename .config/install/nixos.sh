@@ -14,9 +14,6 @@ mkdir -p "$FF_DIR"
 # mkdir -p "$TMPDIR"
 # mkdir -p "$OPT_DIR"
 
-# symlink home
-doas ln -sf "$HOME" "/home/${USER}"
-
 # rust configuration
 rustup default stable
 

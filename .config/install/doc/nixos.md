@@ -148,10 +148,10 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
 - Then mount all datasets, including the EFI partition created earlier.
   ```
   mkdir -p /mnt/efi
-  mkdir -p /mnt/usr/home
+  mkdir -p /mnt/home
   mkdir -p /mnt/root
   mount -t zfs zroot/root /mnt
-  mount -t zfs zroot/data/home /mnt/usr/home
+  mount -t zfs zroot/data/home /mnt/home
   mount -t zfs zroot/data/root /mnt/root
   mount /dev/sda1 /mnt/efi -o nodev,nosuid,noexec
   ```
@@ -215,7 +215,6 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
 - Run the install script I have created:
   ```sh
-  chmod +x $XDG_CONFIG_HOME/install/nixos.sh
   sh $XDG_CONFIG_HOME/install/nixos.sh
   ```
 - Reboot to allow changes to take effect.

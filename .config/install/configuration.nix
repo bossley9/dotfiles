@@ -63,7 +63,7 @@ in
   users.extraUsers.${user} = {
     createHome = true;
     extraGroups = [ "wheel" "networkmanager" ];
-    home = "/usr/home/" + user;
+    home = "/home/" + user;
     initialPassword = "test";
     isNormalUser = true;
     shell = pkgs.mksh;
