@@ -38,6 +38,7 @@ in
   networking.hostName = hostname;
   networking.hostId = hostid;
   networking.wireless.enable = wifi_enable;
+  networking.networkmanager.enable = wifi_enable;
   # global useDHCP flag is deprecated and set to false explicitly
   networking.useDHCP = false;
   # need to explicitly enable DHCP for each eth interface
@@ -115,10 +116,16 @@ in
     pfetch
     # lxd
     pwgen
+    (htop.overrideAttrs (oldAttrs: rec {
+      src = fetchTarball {
+        url = "https://github.com/bossley9/htop/archive/master.tar.gz";
+      };
+    }))
 
     # the hack
     nethack
 
+    # TODO
     # suckless utilities
     (st.overrideAttrs (oldAttrs: rec {
       src = fetchTarball {
@@ -134,8 +141,11 @@ in
 
     bspwm sxhkd
     polybar
-    # TODO picom ibhagwan
-    picom
+    (picom.overrideAttrs (oldAttrs: rec {
+      src = fetchTarball {
+        url = "https://github.com/ibhagwan/picom/archive/master.tar.gz";
+      };
+    }))
 
     firefox
     # TODO
@@ -185,7 +195,6 @@ in
 
     pandoc
     networkmanager
-    # nm-connection-editor
     aria
     qrencode
 
@@ -249,7 +258,6 @@ in
   services.xserver.windowManager.bspwm.enable = true;
   services.xserver.autorun = false;
   services.tlp.enable = true;
-  networking.networkmanager.enable = true;
 
   # OpenGL for 32-bit programs such as Wine
   hardware.opengl.driSupport32Bit = true;

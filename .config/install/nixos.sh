@@ -5,7 +5,7 @@
 # SYSDSYS="${SYSD}/system"
 FF_DIR="${HOME}/.mozilla"
 
-doas mkdir -p "$BIN"
+mkdir -p "$BIN"
 mkdir -p "$FF_DIR"
 # mkdir -p "$FONT_DIR"
 # mkdir -p "$ETC"
@@ -22,13 +22,6 @@ rustup default stable
 # cd "${TMPDIR}/sc-im/src"
 # cp "${XDG_CONFIG_HOME}/sc-im/Makefile" "${TMPDIR}/sc-im/src/"
 # make
-# sudo make install clean
-
-# # system profiler
-# git clone "https://github.com/bossley9/htop.git" "${TMPDIR}/htop"
-# cd "${TMPDIR}/htop"
-# ./autogen.sh
-# ./configure
 # sudo make install clean
 
 # system hardening
@@ -96,13 +89,6 @@ doas ln -sf "${XDG_SCRIPT_HOME}/webcam" "${BIN}/webcam"
 ln -sf "${XDG_CONFIG_HOME}/mozilla/firefox" "${FF_DIR}/firefox"
 
 # font update
-doas fc-cache -f -v
-
-# # grub
-# # timeout
-# grubConf="${ETC}/default/grub"
-# sudo sed -i 's/GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' "$grubConf"
-# # regenerate
-# sudo grub-mkconfig -o "/boot/grub/grub.cfg"
+fc-cache -f -v
 
 echo "${YELLOW}It is recommended to reboot the system directly after running this script.${NC}"

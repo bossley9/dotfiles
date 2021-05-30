@@ -136,7 +136,7 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   zfs create -o mountpoint=legacy zroot/data/home
   zfs create -o mountpoint=legacy zroot/data/root
   ```
-- Export and reimport the datasets to validate the configurations. This is required.
+- Export and reimport the datasets to validate the configurations. This is required. To get easy access to the partition uuid without having to type it all out, use `ls /dev/disk/by-partuuid`.
   ```
   zpool export zroot
   zpool import -d /dev/disk/by-partuuid/PART_UUID_HERE -R /mnt zroot -N
@@ -147,12 +147,12 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
   ```
 - Then mount all datasets, including the EFI partition created earlier.
   ```
-  mkdir -p /mnt/efi
-  mkdir -p /mnt/home
-  mkdir -p /mnt/root
   mount -t zfs zroot/root /mnt
+  mkdir -p /mnt/home
   mount -t zfs zroot/data/home /mnt/home
+  mkdir -p /mnt/root
   mount -t zfs zroot/data/root /mnt/root
+  mkdir -p /mnt/efi
   mount /dev/sda1 /mnt/efi -o nodev,nosuid,noexec
   ```
   You can use `mount` to verify all datasets (in addition to the efi partition) have been mounted properly.
