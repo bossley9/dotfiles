@@ -80,8 +80,8 @@ in
     issue.enable = false;
   };
 
-  # list packages installed in system profile.
-  # to search, run 'nix search wget'
+  # system-wide packages
+  # nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # basics
     envsubst
@@ -114,7 +114,6 @@ in
     mmv
     unzip wget
     pfetch
-    # lxd
     pwgen
     (htop.overrideAttrs (oldAttrs: rec {
       src = fetchTarball {
@@ -122,7 +121,6 @@ in
       };
     }))
 
-    # the hack
     nethack
 
     # TODO
@@ -165,10 +163,9 @@ in
     slop
     zathura girara mupdf
     imagemagick
-    # gimp inkscape
+    gimp inkscape
     mpd ncmpcpp
     ncspot
-    # spotify
     alsaUtils
     pamixer
     pulseaudio
@@ -176,23 +173,14 @@ in
     # pulseaudio-alsa
     pavucontrol
     # pipewire
-    # scrcpy
-    # lmms
-    # kdenlive
-    # TODO
-    # obs-studio
-    # linuxPackages-libre.v4l2loopback
-    # discord
 
-    # hsetroot
     redshift
-    # liberation_ttf
     source-code-pro
     wqy_zenhei
-    # breeze-icons
     adapta-gtk-theme
     roboto
 
+    # discord
     pandoc
     networkmanager
     aria
