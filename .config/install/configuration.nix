@@ -37,7 +37,6 @@ in
   # networking
   networking.hostName = hostname;
   networking.hostId = hostid;
-  networking.wireless.enable = wifi_enable;
   networking.networkmanager.enable = wifi_enable;
   # global useDHCP flag is deprecated and set to false explicitly
   networking.useDHCP = false;
@@ -45,12 +44,21 @@ in
   networking.interfaces.${eth_interface}.useDHCP = true;
 
   # localization
+  services.timesyncd.enable = true;
   time.timeZone = timezone;
   i18n.defaultLocale = locale;
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
+  fonts = {
+    enableFontDir = true;
+    fonts = with pkgs; [
+      roboto
+      source-code-pro
+      wqy_zenhei
+    ]
+  }
 
   # zfs
   # prevent external pointer errors
@@ -132,6 +140,7 @@ in
     }))
 
     xorg.xorgserver xorg.xinit
+    xorg.xauth
     xorg.xsetroot
     xorg.xinput
     xdotool
@@ -175,10 +184,7 @@ in
     # pipewire
 
     redshift
-    source-code-pro
-    wqy_zenhei
     adapta-gtk-theme
-    roboto
 
     # discord
     pandoc
@@ -193,7 +199,7 @@ in
   ];
 
   # ssh
-  services.sshd.enable = true;
+  services.openssh.enable = true;
   services.openssh.ports = [ ssh_port ];
 
   # security and system hardening
@@ -233,7 +239,10 @@ in
 
   # systemd
   # reduce the amount of journaling
-  services.journald.extraConfig = "SystemMaxUse=250M";
+  services.journald.extraConfig = ``
+    SystemMaxUse=250M
+    MaxRetentionSec=7day
+  ``;
   # power and lid events
   services.logind.lidSwitch = "suspend";
   services.logind.extraConfig = "HandlePowerKey=hibernate";

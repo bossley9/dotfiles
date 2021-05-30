@@ -6,9 +6,9 @@
 127.0.1.1 ${HOSTNAME}.localdomain ${HOSTNAME}
 
 # google analytics
-ssl.google-analytics.com
-www.google-analytics.com
-www.googletagmanager.com
+0.0.0.0 ssl.google-analytics.com
+0.0.0.0 www.google-analytics.com
+0.0.0.0 www.googletagmanager.com
 
 # strictly porn
 0.0.0.0 hentaihaven.com
