@@ -143,7 +143,7 @@ in
     polybar
     (picom.overrideAttrs (oldAttrs: rec {
       src = fetchTarball {
-        url = "https://github.com/ibhagwan/picom/archive/master.tar.gz";
+        url = "https://github.com/ibhagwan/picom/archive/next-rebase.tar.gz";
       };
     }))
 
