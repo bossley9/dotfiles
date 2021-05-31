@@ -34,6 +34,9 @@ in
   boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.systemd-boot.editor = false;
 
+  # prevent external pointer errors
+  boot.loader.grub.copyKernels = true;
+
   # networking
   networking.hostName = hostname;
   networking.hostId = hostid;
@@ -57,12 +60,10 @@ in
       roboto
       source-code-pro
       wqy_zenhei
-    ]
-  }
+    ];
+  };
 
   # zfs
-  # prevent external pointer errors
-  boot.loader.grub.copyKernels = true;
   # recommended to automatically scrub pools once a week
   services.zfs.autoScrub.enable = true;
   # don't import all pools at once bc they can get corrupted
@@ -239,10 +240,10 @@ in
 
   # systemd
   # reduce the amount of journaling
-  services.journald.extraConfig = ``
+  services.journald.extraConfig = ''
     SystemMaxUse=250M
     MaxRetentionSec=7day
-  ``;
+  '';
   # power and lid events
   services.logind.lidSwitch = "suspend";
   services.logind.extraConfig = "HandlePowerKey=hibernate";
