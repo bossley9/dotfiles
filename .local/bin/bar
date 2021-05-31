@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# uniformly manage status bars
+
+if command -v "xrandr" > "$NULL"; then 
+  for m in $(xrandr | grep "\sconnected" | cut -d " " -f 1); do
+    MONITOR="$m" $BAR -r main &
+  done
+fi

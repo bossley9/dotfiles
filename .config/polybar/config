@@ -14,6 +14,7 @@ width = ${env:W_WIDTH}
 height = ${env:BAR_HEIGHT}
 offset-x = ${env:W_GAPS}
 offset-y = ${env:W_GAPS}
+monitor = ${env:MONITOR}
 
 ; always display below fullscreen windows
 override-redirect = true

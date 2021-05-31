@@ -129,7 +129,7 @@ case "$OS" in
   "$OS_LINUX"|"$OS_FREEBSD"|"$OS_OPENBSD")
     # updated further in apprc file
     export BAR="polybar"
-    export BAR_ARGS="${BAR} -r main"
+    export BAR_ARGS="bar"
     export BAR_UPDATE=""
     ;;
   *)
