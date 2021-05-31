@@ -18,7 +18,13 @@ screens=""
 # it's easier to parse into an array by switching spaces to another delimiter
 getAllScreens="$(xrandr | grep "connected" | tr ' ' ';' | cut -d ';' -f 1-3)"
 
-primary="$(echo "$getAllScreens" | grep -w "primary" | cut -d ';' -f 1)"
+primary="$(echo "$getAllScreens" | grep -w "primary")"
+
+# is primary monitor disconnected?
+case "$primary" in
+  *"disconnected"*) primary="$(echo "$getAllScreens" | grep -w "connected")" ;;
+esac
+primary="$(echo "$primary" | cut -d ';' -f 1)"
 
 for screen in $getAllScreens; do
   screenName="$(echo "$screen" | cut -d ';' -f 1)"
@@ -48,6 +54,8 @@ case "$numAltScreens" in
     # monitor output
     xrandr --output "$primary" --primary --mode "${RES_WIDTH}x${RES_HEIGHT}"
     xrandr --output "$secondary" --mode "${RES_WIDTH}x${RES_HEIGHT}" --right-of "$primary"
+    echo primary is $primary
+    echo secondary is $secondary
 
     # workspaces
     bspc monitor "$primary" -d I II III IV V
@@ -65,3 +73,7 @@ esac
 
 # update background for (potentially) different resolutions
 $BACKGROUND > "$NULL"
+
+# update bar
+pkill bar
+$BAR_ARGS &
