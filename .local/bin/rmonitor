@@ -18,11 +18,24 @@ screens=""
 # it's easier to parse into an array by switching spaces to another delimiter
 getAllScreens="$(xrandr | grep "connected" | tr ' ' ';' | cut -d ';' -f 1-3)"
 
-primary="$(echo "$getAllScreens" | grep -w "primary")"
+primary=""
 
-# is primary monitor disconnected?
+case "$1" in
+  "set")
+    # connectedScreens="$(xrandr | grep -w "connected" | tr ' ' ';' | cut -d ';' -f 1)"
+    connectedScreens="$(echo "$getAllScreens" | grep -w "connected")"
+    primaryName="$(echo "$connectedScreens" | cut -d ';' -f 1 | shellmenu)"
+    primary="$(echo "$connectedScreens" | grep -w "$primaryName")"
+    ;;
+  *)
+    primary="$(echo "$getAllScreens" | grep -w "primary")"
+    ;;
+esac
+
+# is primary monitor disconnected or not available?
 case "$primary" in
-  *"disconnected"*) primary="$(echo "$getAllScreens" | grep -w "connected")" ;;
+  *"disconnected"*) primary="$(echo "$getAllScreens" | grep -w -m 1 "connected")" ;;
+  "") primary="$(echo "$getAllScreens" | grep -w -m 1 "connected")" ;;
 esac
 primary="$(echo "$primary" | cut -d ';' -f 1)"
 

@@ -148,11 +148,11 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
 - Then mount all datasets, including the EFI partition created earlier.
   ```
   mount -t zfs zroot/root /mnt
-  mkdir -p /mnt/home
+  mkdir /mnt/home
   mount -t zfs zroot/data/home /mnt/home
-  mkdir -p /mnt/root
+  mkdir /mnt/root
   mount -t zfs zroot/data/root /mnt/root
-  mkdir -p /mnt/efi
+  mkdir /mnt/efi
   mount /dev/sda1 /mnt/efi -o nodev,nosuid,noexec
   ```
   You can use `mount` to verify all datasets (in addition to the efi partition) have been mounted properly.
@@ -204,6 +204,10 @@ Since we will be using ZFS as our filesystem, we will not need to heavily partit
 
 ## Cloning <a name="cloning"></a>
 
+- If you are using wifi, connect to a networking using NetworkManager:
+  ```
+  nmtui
+  ```
 - Clone this repository to your home folder using the steps outlined below.
   ```sh
   cd $HOME
