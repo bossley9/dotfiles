@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -o vi
+set -o posix
+
+. "${XDG_CONFIG_HOME}/aliasrc"
+
+clear
+
+export PS1="$(echo "\033[1;30m")@ $(echo "\033[0m")"

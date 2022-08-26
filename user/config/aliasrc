@@ -1,0 +1,88 @@
+#!/bin/sh
+# vim:fdm=marker
+
+# core {{{
+
+alias \
+  cp="cp -v" \
+  ls="ls --color" \
+  md="mkdir -p" \
+  mv="mv -v" \
+  rm="rm -v"
+cd() {
+  builtin cd "$@" && ls
+}
+
+alias \
+  reboot="doas reboot" \
+  shutdown="doas shutdown -h now"
+
+# }}}
+
+# common {{{
+
+alias \
+  g="git" \
+  nr="doas nixos-rebuild -I nixos-config=${DOTDIR}/system/configuration.nix" \
+  search="w3m google.com" \
+  zr=". ${ENV}"
+
+# }}}
+
+# navigation {{{
+
+b() {
+  bookmarkFile="${XDG_DATA_HOME}/sh/bookmarks"
+
+  md "$(dirname "$bookmarkFile")"
+  ! test -f "$bookmarkFile" && \
+    touch "$bookmarkFile"
+  if [ -n "$1" ]; then
+    $EDITOR "$bookmarkFile"
+    return
+  fi
+  bpath="$(cat "$bookmarkFile" | \
+    fzf | \
+    cut -d ',' -f 2)"
+  bpath="$(eval "echo $bpath")"
+
+  if ! test -e "$bpath"; then
+    echo \
+"Error: invalid bookmark.
+Add new bookmarks to ${bookmarkFile}
+with the format 'identifier, path'"
+  else
+    cd "$bpath"
+  fi
+}
+
+rp() {
+  md "$XDG_REPO_HOME"
+  repo="$(ls --color=no "$XDG_REPO_HOME" | fzf)"
+  cd "${XDG_REPO_HOME}/${repo}"
+}
+
+# }}}
+
+# environments {{{
+
+ns() {
+  shellpath="${DOTDIR}/user/shells"
+  nixshell="$(ls "$shellpath" | fzf)"
+  if [ -z "$nixshell" ]; then
+    echo "Error: nix shell '${nixshell}' is not a valid shell."
+    return
+  fi
+
+  nix-shell "${shellpath}/${nixshell}"
+}
+
+# }}}
+
+# security {{{
+
+pwgen() {
+  tr -dc "[:alnum:]" < /dev/urandom | fold -w 50 | head -n 25 | sed 's/.\{10\}/& /g'
+}
+
+# }}}
