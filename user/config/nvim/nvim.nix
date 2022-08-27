@@ -10,5 +10,10 @@
     (lib.strings.fileContents ./vars.vim)
     (lib.strings.fileContents ./scripts/explorer.vim)
     (lib.strings.fileContents ./scripts/sessions.vim)
+    (lib.strings.fileContents ./scripts/terminals.vim)
+    (lib.strings.fileContents ./scripts/highlights.vim)
+  ];
+  plugins = with pkgs.vimPlugins; [
+    nord-vim
   ];
 }

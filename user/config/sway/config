@@ -104,7 +104,8 @@ exec swaymsg gaps inner 10
 exec swaymsg gaps outer 0
 
 # wallpaper
-output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg "#3b4252" solid_color
 
 # status bar
 bar {

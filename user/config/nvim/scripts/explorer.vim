@@ -13,6 +13,7 @@ let g:netrw_liststyle=3
 
 fu! s:expandExplorer()
   exe 'Lex ' . g:projectDir
+  nmap <buffer> l <CR>
 endfunction
 
 fu! s:contractExplorer()
