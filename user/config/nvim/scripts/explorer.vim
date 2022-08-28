@@ -1,6 +1,8 @@
 " Simple file explorer using netrw. Made to be vifm-like.
 " vim:fdm=marker
 
+" file explorer {{{
+
 " settings {{{
 
 let g:netrw_banner=0 " hide banner
@@ -73,5 +75,14 @@ fu! ToggleExplorer()
 endfunction
 
 nnoremap <silent> <M-b> :call ToggleExplorer()<CR>
+
+" }}}
+
+" }}}
+
+" fuzzy finders {{{
+
+nnoremap <M-p> :GFiles<CR>
+nnoremap <M-F> :Rg<CR>
 
 " }}}

@@ -22,6 +22,7 @@ in
 
     home.packages = with pkgs; [
       # functional
+      fzf ripgrep
       less
       htop
       neofetch # For asserting dominance

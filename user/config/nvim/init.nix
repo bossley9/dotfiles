@@ -13,9 +13,11 @@
     (lib.strings.fileContents ./scripts/terminals.vim)
     (lib.strings.fileContents ./scripts/highlights.vim)
   ];
+  # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vim/plugins/generated.nix
   plugins = with pkgs.vimPlugins; [
     # functional
     FixCursorHold-nvim
+    fzf-vim
     # cosmetic
     nord-vim
   ];
