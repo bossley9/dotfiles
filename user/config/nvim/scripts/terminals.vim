@@ -28,7 +28,8 @@ fu! s:createTerminal()
 endfunction
 
 fu! g:ExitTerminal(job_id, code, event) dict
-  bw!
+  bw! " kill terminal window
+  bw! " kill bg window
   let s:termList[s:window.index] = -1
   let s:window.isOpen = 0
   let s:window.win = -1

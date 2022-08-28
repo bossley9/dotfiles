@@ -16,5 +16,8 @@ Then create a `secrets.nix` file containing secrets such as:
   email = "email";
   hostname = "hostname";
   cpu = "intel or amd";
+  ethInterface = "em0";
+  wifiEnabled = true;
+  wifiInterface = "iwm0";
 }
 ```

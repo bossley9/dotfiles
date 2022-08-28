@@ -31,6 +31,8 @@ set scrolloff=0            " number of lines above and below cursor
 
 " trailing space characters
 set list listchars=tab:\ \ ,trail:·
+" effectively remove end of buffer tildes
+set fillchars+=eob:\ 
 
 set mouse=a                " mouse input
 

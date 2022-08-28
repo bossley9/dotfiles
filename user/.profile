@@ -13,4 +13,4 @@ export DOTDIR="${HOME}/.dots"
 
 if [ -n "$DISPLAY" ] || [ "$(tty)" != "/dev/tty1" ]; then return; fi
 
-exec sway > "/dev/null" 2>&1
+exec Hyprland > "/dev/null" 2>&1

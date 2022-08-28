@@ -1,10 +1,13 @@
 # See home-configuration.nix(5) for more information.
+# vim:fdm=marker
 
 { config, pkgs, ... }@args:
 
 let
   secrets = import ../secrets.nix;
   nvim = import ./config/nvim/init.nix args;
+  fzf = import ./config/fzf/fzf.nix args;
+  foot = import ./config/foot/foot.nix args;
 in
   assert secrets.username != "";
   assert secrets.email    != "";
@@ -12,9 +15,8 @@ in
 {
   imports = [
     <home-manager/nixos>
+    ./extras/hyprland.nix
   ];
-
-  programs.sway.enable = true;
 
   home-manager.users."${secrets.username}" = {
     home.username = secrets.username;
@@ -22,14 +24,19 @@ in
 
     home.packages = with pkgs; [
       # functional
-      fzf ripgrep
+      ripgrep
       less
       htop
       neofetch # For asserting dominance
 
       # ui
       swaybg
+      wl-clipboard
+      bat # for fzf previews
+      jetbrains-mono
     ];
+
+    # workflow {{{
 
     # shell initialization
     home.file.".profile" = {
@@ -49,13 +56,7 @@ in
       source = ./config/aliasrc;
       executable = true;
     };
-
-    programs.fzf = {
-      enable = true;
-      enableBashIntegration = false;
-      enableFishIntegration = false;
-      enableZshIntegration = false;
-    };
+    programs.fzf = fzf;
 
     # editor
     programs.neovim = nvim;
@@ -73,48 +74,17 @@ in
       };
     };
 
-    # ui
-    home.file.".config/sway/config".source = ./config/sway/config;
+    # }}}
 
-    programs.foot = {
-      enable = true;
-      settings = {
-        main = {
-          font = "monospace:size=10";
-          pad = "8x8";
-        };
-        colors = {
-          background = "2e3440";
-          regular0 = "2e3440";
-          regular1 = "3b4252";
-          regular2 = "434c5e";
-          regular3 = "4c566a";
-          regular4 = "d8dee9";
-          foreground = "d8dee9";
-          regular5 = "e5e9f0";
-          regular6 = "eceff4";
-          regular7 = "8fbcbb";
-          bright0 = "88c0d0";
-          bright1 = "81a1c1";
-          bright2 = "5e81ac";
-          bright3 = "bf616a";
-          bright4 = "d08770";
-          bright5 = "ebcb8b";
-          bright6 = "a3be8c";
-          bright7 = "b48ead";
-        };
-        key-bindings = {
-          font-increase = "Control+Shift+k";
-          font-decrease = "Control+Shift+j";
-          scrollback-up-half-page = "Control+Shift+u";
-          scrollback-down-half-page = "Control+Shift+d";
-        };
-        tweak = {
-          font-monospace-warn = "no"; # reduce startup time
-          sixel = "yes";
-        };
-      };
+    # window manager {{{
+
+    home.file.".config/startw" = {
+      source = ./config/startw;
+      executable = true;
     };
+    home.file.".config/hypr/hyprland.conf".source = ./config/hypr/hyprland.conf;
+
+    programs.foot = foot;
 
     programs.chromium = {
       enable = true;
@@ -122,6 +92,8 @@ in
         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       ];
     };
+
+    # }}}
 
     home.stateVersion = "22.05";
     programs.home-manager.enable = true;

@@ -82,7 +82,15 @@ nnoremap <silent> <M-b> :call ToggleExplorer()<CR>
 
 " fuzzy finders {{{
 
-nnoremap <M-p> :GFiles<CR>
-nnoremap <M-F> :Rg<CR>
+let g:fzf_layout = {
+  \'window': {
+    \'width': 1,
+    \'height': 1,
+    \'border': 'sharp',
+  \}
+\}
+
+nnoremap <silent> <M-p> :Files<CR>
+nnoremap <silent> <M-F> :Rg<CR>
 
 " }}}

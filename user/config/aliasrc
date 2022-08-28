@@ -4,11 +4,13 @@
 # core {{{
 
 alias \
+  bc="bc -w -q" \
   cp="cp -v" \
   ls="ls --color" \
   md="mkdir -p" \
   mv="mv -v" \
-  rm="rm -v"
+  rm="rm -v" \
+  sed="sed --posix"
 cd() {
   builtin cd "$@" && ls
 }

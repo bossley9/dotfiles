@@ -1,47 +1,47 @@
 " Vim syntax file
-" Language:    gemini
-" Maintainer:  sloum < sloum AT rawtext.club >
-" URL:         https://tildegit.org/sloum/gemini-vim-syntax
+" Language:    Gemini Text
+" Maintainer:  Byron Torres (@torresjrjr) <b@torresjrjr.com>
+" Last Change: 2022-08-27
+" Filenames:   *.{gemini,gmi}
+" URL:         https://git.sr.ht/~torresjrjr/gemini.vim
+" Modified by Sam Bossley
 
 if exists("b:current_syntax")
-  finish
+	finish
 endif
 
-" Handle monospaced blocks
-syn region gmiMono start=/^```/ end=/^```/
+" Matches
+syn match link_prefix    /^=>\s*/    nextgroup=link
+syn match link           /\S*/       nextgroup=link_comment contained
+syn match link_comment   /.*$/       contained
 
-" Handle between one and three heading levels
-syn match gmiHeader /^#\{1,3}[^#].*$/
+syn match heading_prefix /^##\?#\?/  nextgroup=heading_text
+syn match heading_text   /.*$/       contained
 
-" Start a link line
-syn match gmiLinkStart /^=>/ nextgroup=gmiLinkUrl skipwhite
+syn match pre_toggle     /^```.*/    contained
 
-" An extremely naive way of handling the URL portion of the link line
-" This is left naive in a deliberate attempt to be unambiguous about
-" what part of a link line gemini considers to be the URL, regardless
-" of whether or not it is a valid URL
-syn match gmiLinkUrl /\S\+/ contained nextgroup=gmiLinkTitle skipwhite
+syn match unordered_list /^*.*/
+syn match blockquote     /^>.*/
 
-" Skipping whitespace from the URL match all text, including whitespace,
-" until the end of the line
-syn match gmiLinkTitle /.*$/ contained
+syn match completed_box  /^-\s\[x\].*/
 
-" Handle list items
-syn match gmiListItem /^\* .*$/
+" Regions
+syn region pre_block   start=/^```/ end=/^```/ fold contains=pre_toggle keepend
 
-" Handle quotes
-syn match gmiQuoteLine /^>.*/
-
-" Handle TODOs
-syn match gmiTodo /TODO/
-
+" Highlighting
 let b:current_syntax = "gemini"
 
-hi def link gmiMono Special
-hi def link gmiHeader Constant
-hi def link gmiLinkStart Identifier
-hi def link gmiLinkUrl Underlined
-hi def link gmiLinkTitle String
-hi def link gmiListItem Identifier
-hi def link gmiQuoteLine Comment
-hi def link gmiTodo Todo
+hi def link  link_prefix    Underlined
+hi def link  link           Underlined
+hi def link  link_comment   Constant
+
+hi def link  pre_block      PreProc
+hi def link  pre_toggle     Comment
+
+hi def link  heading_prefix Special
+hi def link  heading_text   Constant
+
+hi def link  unordered_list Statement
+hi def link  blockquote     Comment
+
+hi def link completed_box   Comment

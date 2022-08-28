@@ -1,0 +1,3 @@
+#!/bin/sh
+
+swaybg -c "#292E39" &

@@ -58,6 +58,11 @@ inoremap <S-Tab> <C-d>
 nnoremap <S-Tab> <<
 vnoremap <S-Tab> <gv
 
+" code commenting
+imap <M-/> <Esc>gc<Right><Right>i
+nmap <M-/> <Esc>gc<Right>
+vmap <M-/> gcgv
+
 " clipboard
 vnoremap <C-c> "+ygv
 nnoremap <C-c> "+ygv
