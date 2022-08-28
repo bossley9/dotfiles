@@ -14,6 +14,9 @@
     (lib.strings.fileContents ./scripts/highlights.vim)
   ];
   plugins = with pkgs.vimPlugins; [
+    # functional
+    FixCursorHold-nvim
+    # cosmetic
     nord-vim
   ];
 }

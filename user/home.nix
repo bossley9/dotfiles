@@ -4,7 +4,7 @@
 
 let
   secrets = import ../secrets.nix;
-  nvim = import ./config/nvim/nvim.nix args;
+  nvim = import ./config/nvim/init.nix args;
 in
   assert secrets.username != "";
   assert secrets.email    != "";

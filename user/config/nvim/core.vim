@@ -51,6 +51,13 @@ nnoremap = <C-w>=
 nnoremap ZZ :up<CR>:qa!<CR>
 nnoremap ZQ :qa!<CR>
 
+" indentation
+nnoremap <Tab> >>
+vnoremap <Tab> >gv
+inoremap <S-Tab> <C-d>
+nnoremap <S-Tab> <<
+vnoremap <S-Tab> <gv
+
 " clipboard
 vnoremap <C-c> "+ygv
 nnoremap <C-c> "+ygv
