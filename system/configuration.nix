@@ -37,7 +37,19 @@ in
 
   hardware = {
     enableRedistributableFirmware = true;
+    bluetooth.enable = false;
     cpu."${secrets.cpu}".updateMicrocode = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+      # better hardware acceleration
+      extraPackages = with pkgs; [
+        intel-media-driver
+        vaapiIntel
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
   };
 
   # }}}
@@ -60,15 +72,24 @@ in
 
   # }}}
 
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  # audio {{{
 
-  # environment {{{
+  sound.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = false;
+    pulse.enable = true;
+  };
+
+  # }}}
+
+  # user environment and packages {{{
 
   environment.systemPackages = with pkgs; [
-    # editor
+    # core
     vim
+    pinentry-curses # for gnupg
     # utils
     bc w3m
     # nix-specific utils
@@ -78,7 +99,7 @@ in
   users.users."${secrets.username}" = {
     isNormalUser = true;
     initialPassword = "test1234";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
 
   # shell configuration
@@ -131,6 +152,18 @@ in
   # disable loading kernel modules after boot
   security.lockKernelModules = true;
 
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "no";
+  };
+
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "curses";
+    enableSSHSupport = true;
+  };
+
   # }}}
 
   # systemd
@@ -145,21 +178,6 @@ in
   #services.logind.lidSwitch = "suspend";
   #services.logind.extraConfig = "HandlePowerKey=hibernate";
   #services.tlp.enable = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  services.openssh = {
-    enable = true;
-    permitRootLogin = "no";
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

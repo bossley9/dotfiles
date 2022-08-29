@@ -1,0 +1,18 @@
+{
+  "layer": "top",
+  "height": 32,
+  "modules-left": ["hyprland/window"],
+  "modules-center": [],
+  "modules-right": ["pulseaudio", "clock"],
+
+  "hyprland/window": {
+    "format": "Focused: {}"
+  },
+
+  "pulseaudio": {
+    "format": "{volume}%"
+  },
+  "clock": {
+    "format": "{:%a %b %d %H:%M}"
+  }
+}

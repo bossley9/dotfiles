@@ -3,6 +3,8 @@
 
 { config, pkgs, ... }@args:
 
+# imports {{{
+
 let
   secrets = import ../secrets.nix;
   nvim = import ./config/nvim/init.nix args;
@@ -18,9 +20,13 @@ in
     ./extras/hyprland.nix
   ];
 
+  # }}}
+
   home-manager.users."${secrets.username}" = {
     home.username = secrets.username;
     home.homeDirectory = "/home/${secrets.username}";
+
+    # packages {{{
 
     home.packages = with pkgs; [
       # functional
@@ -28,13 +34,32 @@ in
       less
       htop
       neofetch # For asserting dominance
+      vifm
 
       # ui
       swaybg
       wl-clipboard
       bat # for fzf previews
       jetbrains-mono
+      waybar
+
+      # utils
+      wev
+      wlr-randr
+
+      # multimedia
+      grim slurp
+      (writeScriptBin "scene" (lib.strings.fileContents ./bin/scene))
+      imv
+      wob
+      pamixer
+      pavucontrol
+      mpv
+      yt-dlp
+      newsboat
     ];
+
+    # }}}
 
     # workflow {{{
 
@@ -49,8 +74,10 @@ in
     };
     home.sessionVariables = {
       EDITOR = "nvim";
+      VISUAL="nvim";
       ENV = "$XDG_CONFIG_HOME/sh/shrc";
       PAGER = "less";
+      MANPAGER = "nvim -u NORC +Man!";
     };
     home.file.".config/aliasrc" = {
       source = ./config/aliasrc;
@@ -74,6 +101,9 @@ in
       };
     };
 
+    # symlinking the directory otherwise vifm can't find the colorschemes
+    home.file.".config/vifm".source = ./config/vifm;
+
     # }}}
 
     # window manager {{{
@@ -93,7 +123,21 @@ in
       ];
     };
 
+    home.file.".config/imv/config".source = ./config/imv/config;
+
     # }}}
+
+    # status bar {{{
+
+    home.file.".config/waybar/config".source = ./config/waybar/config;
+    home.file.".config/waybar/style.css".source = ./config/waybar/style.css;
+
+    # }}}
+
+    home.file.".config/mpv".source = ./config/mpv;
+    home.file.".config/yt-dlp/config".source = ./config/yt-dlp/config;
+
+    home.file.".config/newsboat".source = ./config/newsboat;
 
     home.stateVersion = "22.05";
     programs.home-manager.enable = true;

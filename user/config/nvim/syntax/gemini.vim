@@ -25,6 +25,8 @@ syn match blockquote     /^>.*/
 
 syn match completed_box  /^-\s\[x\].*/
 
+syn keyword gemTodo FIXME NOTE TODO OPTIMIZE XXX HACK TEMP
+
 " Regions
 syn region pre_block   start=/^```/ end=/^```/ fold contains=pre_toggle keepend
 
@@ -45,3 +47,5 @@ hi def link  unordered_list Statement
 hi def link  blockquote     Comment
 
 hi def link completed_box   Comment
+
+hi def link gemTodo					Todo

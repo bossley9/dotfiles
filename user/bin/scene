@@ -1,0 +1,47 @@
+#!/bin/sh
+# vim:fdm=marker
+# screenshot utility
+
+SCENE_SNAP_DIR="${HOME}/Pictures"
+FORMAT="+%y-%m-%d_%H-%M-%S"
+
+# utilities {{{
+
+getOutputFile() {
+  category="$1"
+  ext="$2"
+
+  dir="$SCENE_SNAP_DIR"
+  mkdir -p "$dir"
+
+  echo "${dir}/${category}-$(date "$FORMAT").${ext}"
+}
+
+copyToClipboard() {
+  wl-copy < "$1"
+}
+
+# }}}
+
+# functions {{{
+
+crop() {
+  out="$(getOutputFile "snap" "png")"
+  grim -g "$(slurp)" "$out"
+  copyToClipboard "$out"
+}
+
+snap() {
+  out="$(getOutputFile "snap" "png")"
+  grim "$out"
+  copyToClipboard "$out"
+}
+
+# }}}
+
+case "$1" in
+  "crop") crop ;;
+  "snap") snap ;;
+  *) echo "USAGE: scene [crop | snap]" ;;
+esac
+

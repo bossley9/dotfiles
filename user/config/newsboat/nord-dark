@@ -1,0 +1,20 @@
+# colors
+# bottom status bar
+color background          color7   default
+# list items
+color listnormal          color7   default
+color listnormal_unread   color6   default
+color listfocus           color14  color0
+color listfocus_unread    color14  color0 bold
+# top status bar
+color info                color4   default
+# article
+color article             color15  default
+
+# highlights
+highlight article "^(Feed|Link):.*$" color6 default bold
+highlight article "^(Title|Date|Author):.*$" color6 default bold
+highlight article "https?://[^ ]+" color5 default underline
+highlight article "\\[[0-9]+\\]" color12 default bold
+highlight article "\\[image\\ [0-9]+\\]" color14 default bold
+highlight feedlist "^─.*$" color11 color11 bold

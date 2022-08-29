@@ -25,13 +25,24 @@ alias \
 
 alias \
   g="git" \
+  n="newsboat" \
   nr="doas nixos-rebuild -I nixos-config=${DOTDIR}/system/configuration.nix" \
+  pl="mpv" \
   search="w3m google.com" \
   zr=". ${ENV}"
 
 # }}}
 
 # navigation {{{
+
+fm() {
+  fm="$(mktemp)"
+  vifm --choose-dir="$fm"
+  dir="$(cat "$fm" | tr ' ' '\ ')"
+  rm -f "$fm" > "/dev/null"
+  cd "$dir"
+}
+alias r="fm"
 
 b() {
   bookmarkFile="${XDG_DATA_HOME}/sh/bookmarks"
@@ -86,5 +97,13 @@ ns() {
 pwgen() {
   tr -dc "[:alnum:]" < /dev/urandom | fold -w 50 | head -n 25 | sed 's/.\{10\}/& /g'
 }
+
+# }}}
+
+# media {{{
+
+alias \
+  ytmp3="yt-dlp -x --audio-format mp3" \
+  ytmp4="yt-dlp"
 
 # }}}

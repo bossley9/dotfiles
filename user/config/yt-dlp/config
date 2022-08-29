@@ -1,0 +1,16 @@
+# vim:ft=conf
+
+--ignore-errors
+# prevent future errors with non-ascii chars and spaces
+--restrict-filenames
+
+--add-metadata
+
+# default
+-f 22/bestvideo+bestaudio/best
+
+--write-subs
+# uncomment for yt auto-generated subtitles
+# --write-auto-subs
+--sub-langs en
+--convert-subs srt

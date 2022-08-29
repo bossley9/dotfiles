@@ -1,0 +1,30 @@
+[options]
+background = 2e3440
+loop_input = true
+suppress_default_binds = true
+
+overlay = true
+overlay_position_bottom = true
+overlay_font = JetBrainsMono:10
+overlay_text = $(stat)
+overlay_text_color = e5e9f0
+overlay_background_color = 2e3440
+overlay_background_alpha = ff
+
+[binds]
+q = quit
+i = overlay
+
+<Ctrl+Shift+K> = zoom 10
+<Ctrl+Shift+J> = zoom -10
+
+<Meta+k> = pan 0 50
+<Meta+j> = pan 0 -50
+<Meta+h> = pan 50 0
+<Meta+l> = pan -50 0
+
+h = prev
+l = next
+
+<bracketright> = rotate by 45
+<bracketleft> = rotate by -45

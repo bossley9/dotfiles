@@ -1,0 +1,97 @@
+" vim:ft=vim:fdm=marker
+
+" info {{{
+
+" The standard ncurses colors are:
+" Default = -1 = None, can be used for transparency or default color
+" Black = 0
+" Red = 1
+" Green = 2
+" Yellow = 3
+" Blue = 4
+" Magenta = 5
+" Cyan = 6
+" White = 7
+
+" Light versions of colors are also available (set bold attribute):
+" LightBlack = 8
+" LightRed = 9
+" LightGreen = 10
+" LightYellow = 11
+" LightBlue = 12
+" LightMagenta = 13
+" LightCyan = 14
+" LightWhite = 15
+
+" Available attributes (some of them can be combined):
+" bold
+" underline
+" reverse or inverse
+" standout
+" italic (on unsupported systems becomes reverse)
+" none
+
+" }}}
+
+highlight clear
+
+" window {{{
+
+hi Win cterm=none ctermbg=none ctermfg=7
+" top line bg
+highlight TopLine ctermbg=-1
+" top line fg
+highlight TopLineSel cterm=none ctermfg=7
+" side border lines
+highlight Border cterm=none ctermbg=-1
+" bottom line
+highlight StatusLine cterm=none ctermbg=-1 ctermfg=7
+
+highlight WildMenu cterm=underline,reverse ctermfg=7 ctermbg=-1
+highlight CmdLine cterm=none ctermfg=14 ctermbg=-1
+highlight ErrorMsg cterm=bold ctermbg=-1 ctermfg=1
+
+highlight OtherLine ctermfg=default ctermbg=default
+highlight JobLine cterm=bold,reverse ctermfg=black ctermbg=white
+highlight SuggestBox cterm=bold ctermfg=default ctermbg=default
+highlight CmpMismatch cterm=bold ctermfg=white ctermbg=red
+highlight AuxWin ctermfg=default ctermbg=default
+highlight TabLine cterm=none ctermfg=white ctermbg=black
+highlight TabLineSel cterm=bold,reverse ctermfg=default ctermbg=default
+highlight User1 ctermfg=default ctermbg=default
+highlight User2 ctermfg=default ctermbg=default
+highlight User3 ctermfg=default ctermbg=default
+highlight User4 ctermfg=default ctermbg=default
+highlight User5 ctermfg=default ctermbg=default
+highlight User6 ctermfg=default ctermbg=default
+highlight User7 ctermfg=default ctermbg=default
+highlight User8 ctermfg=default ctermbg=default
+highlight User9 ctermfg=default ctermbg=default
+highlight OtherWin ctermfg=default ctermbg=default
+highlight LineNr ctermfg=default ctermbg=default
+highlight OddLine ctermfg=default ctermbg=default
+
+" }}}
+
+" selection {{{
+
+" visual
+highlight Selected cterm=bold ctermbg=0 ctermfg=5
+
+" current
+highlight CurrLine cterm=none ctermbg=0
+
+" }}}
+
+" filetypes {{{
+
+highlight Directory cterm=bold ctermfg=4
+highlight Link cterm=bold ctermfg=6
+highlight HardLink cterm=bold ctermfg=6
+highlight BrokenLink cterm=bold ctermfg=1
+highlight Socket cterm=bold ctermfg=3
+highlight Device cterm=bold ctermfg=3
+highlight Fifo cterm=bold ctermfg=5
+highlight Executable cterm=none ctermfg=2
+
+" }}}

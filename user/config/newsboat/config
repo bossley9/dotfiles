@@ -1,0 +1,59 @@
+# vim: set filetype=sh :
+# vim: set syntax=dosini :
+
+# gpg --full-gen-key
+# gpg --encrypt --default-recipient-self --output ~/.local/share/nflux
+# type the password, ^J, then ^D
+urls-source "miniflux"
+miniflux-url "https://samukun.in"
+miniflux-login "admin"
+miniflux-passwordeval "gpg --decrypt ~/.local/share/nflux"
+
+auto-reload yes
+# show-read-feeds no
+reload-threads 40
+
+confirm-mark-all-feeds-read no
+confirm-mark-feed-read no
+
+define-filter "unread" "unread_count > 0"
+define-filter "this week" "age between 0:7"
+
+# determines prefix for all other macros
+# macro-prefix ,
+
+browser "chromium %u"
+macro , set browser "mpv --really-quiet --no-terminal %u &" ; open-in-browser ; set browser "chromium %u"
+macro c set browser "printf %u | wl-copy" ; open-in-browser ; set browser "chromium %u"
+
+# vim bindings
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key G end
+bind-key g home
+bind-key d pagedown
+bind-key ^D pagedown
+bind-key u pageup
+bind-key ^U pageup
+
+bind-key n next-unread
+bind-key N prev-unread
+
+bind-key SPACE open-in-browser
+
+show-keymap-hint no
+
+feedlist-title-format "Feeds (%u unread, %t total)%?F? matching filter `%F'&?%?T? - tag `%T'&?"
+articlelist-title-format "%T (%u unread, %t total)%?F? matching filter `%F'&?%?T? - tag `%T'&?"
+searchresult-title-format "Search (%u unread, %t total)%?F? matching filter `%F'&?"
+selecttag-title-format "Select Tag"
+selectfilter-title-format "Select Filter"
+itemview-title-format "-- %T --"
+
+include nord-dark

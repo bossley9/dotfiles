@@ -1,0 +1,149 @@
+" vim:ft=vim:fdm=marker:sw=2
+
+" options {{{
+
+" file editor
+set vicmd=nvim
+" use rg instead of grep
+set grepprg='rg %a %s'
+
+" use vifm's internal file operation utilities
+set syscalls
+
+" use a trash directory
+" without this, you won't be able to delete and paste with p
+set trash
+" how many directories to store in history
+set history=30
+" max number of undos
+set undolevels=10
+
+" don't resolve symbolic files or move to a new dir, just open them
+set nofollowlinks
+
+" sort semantic versioning naturally
+set sortnumbers
+
+" use a vim-style help page
+set vimhelp
+
+" don't run executables
+set norunexec
+
+" show list of matches on tab completion in command-line mode
+set wildmenu
+" display completions in a form of popup with descriptions of the matches
+set wildstyle=popup
+
+" Display suggestions in normal, visual and view modes for keys, marks and
+" registers (at most 5 files).  In other view, when available.
+set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+
+" smart case matching
+set ignorecase
+set smartcase
+
+" incremental and no highlight search
+set incsearch
+set nohlsearch
+
+" scroll to top or bottom of window
+set scrolloff=0
+
+" prevent directory previews from wrapping file names and creating jumbled text
+set invwrap
+
+" }}}
+
+" appearance {{{
+
+only
+set millerview
+set milleroptions=csize:2,rsize:1
+
+" colorscheme
+colorscheme vifm_nord
+
+" time format for files
+set timefmt=%a\ %Y-%m-%d\ %H:%M
+
+" set custom status line
+set statusline=" %A %7u:%g %= %d "
+
+" }}}
+
+" commands {{{
+
+" :com[mand][!] command_name action
+" The following macros can be used in a command
+" %a is replaced with the user arguments.
+" %c the current file under the cursor.
+" %C the current file under the cursor in the other directory.
+" %f the current selected file, or files.
+" %F the current selected file, or files in the other directory.
+" %b same as %f %F.
+" %d the current directory name.
+" %D the other window directory name.
+" %m run the command in a menu window
+command! md mkdir -p %a
+command! reload :write | restart full
+command link ln -s %d/%f %d/%f2
+
+" }}}
+
+" mappings {{{
+
+" fast navigation
+nnoremap <M-j> 5j
+nnoremap <M-k> 5k
+vnoremap <M-j> 5j
+vnoremap <M-k> 5k
+
+nnoremap <M-d> 25j
+nnoremap <M-u> 25k
+vnoremap <M-d> 25j
+vnoremap <M-u> 25k
+
+" disable pane switching
+nnoremap <Space> <Esc>
+
+" toggle hidden files
+nnoremap <C-h> za
+nnoremap <M-h> za
+
+" quit on q
+nnoremap q :quit<cr>
+
+" sort
+nnoremap s :sort<cr>
+
+" resize panels because I can't resize them automatically apparently
+nnoremap - <C-w>5<
+nnoremap _ <C-w>5>
+
+" clipboard
+" Yank current directory path into primary and selection clipboards
+nnoremap yd :!echo -n %d | wl-copy<CR>
+" Yank current file path into into primary and selection clipboards
+nnoremap yf :!echo -n %c:p | wl-copy<CR>
+
+" mappings for faster renaming
+nnoremap I cw<c-a>
+nnoremap cc cw<c-u>
+nnoremap A cw
+
+" }}}
+
+" file openers {{{
+
+" fileviewer is for previews
+" filetype is for CLI applications
+" filextype is for GUI applications
+
+" see commands section for macro definitions
+
+" images
+filextype {*.bmp,*.gif,*.jpg,*.jpeg,*.png,*.svg,*.webp,*.xpm},<image/*>
+  \ imv %c
+
+" }}}
