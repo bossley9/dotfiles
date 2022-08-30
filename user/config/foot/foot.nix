@@ -36,6 +36,7 @@
       bright7 = "ECEFF4";
     };
     key-bindings = {
+      show-urls-launch = "none"; # clear existing bindings we want to use
       font-increase = "Control+Shift+k";
       font-decrease = "Control+Shift+j";
       scrollback-up-half-page = "Control+Shift+u";

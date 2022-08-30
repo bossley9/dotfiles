@@ -26,6 +26,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+escape exit
 
+bindsym Alt+space exec wofi
+
 # focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down

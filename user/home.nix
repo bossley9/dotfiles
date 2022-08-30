@@ -45,6 +45,7 @@ in
       jetbrains-mono
       font-awesome
       waybar
+      wofi
 
       # utils
       wev
@@ -115,7 +116,7 @@ in
 
     # }}}
 
-    # window manager {{{
+    # window manager essentials {{{
 
     home.file.".config/sway/config".source = ./config/sway/config;
 
@@ -128,22 +129,36 @@ in
       ];
     };
 
-    home.file.".config/imv/config".source = ./config/imv/config;
-    home.file.".config/ncspot/config.toml".source = ./config/ncspot/config.toml;
-
-    # }}}
-
-    # status bar {{{
-
     home.file.".config/waybar/config".source = ./config/waybar/config;
     home.file.".config/waybar/style.css".source = ./config/waybar/style.css;
 
+    home.file.".config/wofi/config".source = ./config/wofi/config;
+    home.file.".config/wofi/style.css".source = ./config/wofi/style.css;
+
     # }}}
+
+    # theming {{{
+    gtk = {
+      enable = true;
+      theme = {
+        package = pkgs.nordic;
+        name = "Nordic";
+      };
+    };
+    # }}}
+
+    # multimedia {{{
+
+    home.file.".config/imv/config".source = ./config/imv/config;
+
+    home.file.".config/ncspot/config.toml".source = ./config/ncspot/config.toml;
 
     home.file.".config/mpv".source = ./config/mpv;
     home.file.".config/yt-dlp/config".source = ./config/yt-dlp/config;
 
     home.file.".config/newsboat".source = ./config/newsboat;
+
+    # }}}
 
     home.stateVersion = "22.05";
     programs.home-manager.enable = true;

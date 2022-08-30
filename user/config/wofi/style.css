@@ -1,0 +1,34 @@
+/* reset styles */
+#window,
+#outer-box,
+#input,
+#entry,
+#selected,
+#unselected,
+#text {
+  background-color: transparent;
+}
+#window {
+  border-radius: 0;
+}
+#input {
+  border: none;
+}
+#entry {
+  border-radius: 0;
+}
+
+/* new styles */
+#window {
+  background-color: #2e3440;
+  border-top: 2px solid #81A1C1;
+  border-bottom: 2px solid #81A1C1;
+}
+#text {
+  color: #E5E9F0;
+  font-family: 'Jetbrains Mono';
+  font-size: 14px;
+}
+#entry:selected {
+  background-color: #81A1C1;
+}
