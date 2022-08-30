@@ -30,6 +30,7 @@ alias \
   pl="mpv" \
   search="w3m google.com" \
   sp="ncspot" \
+  ss="sc-im" \
   zr=". ${ENV}"
 
 # }}}

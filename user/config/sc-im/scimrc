@@ -1,0 +1,42 @@
+# case insensitive
+set ignorecase
+
+# xlsx exporting
+set xlsx_readformulas
+
+nnoremap "ZZ" ":x!<CR>:q!<CR>"
+nnoremap "ZQ" ":q!<CR>"
+nnoremap "gx" "gf"
+inoremap "<C-h>" "<BS>"
+inoremap "<M-h>" "<BS>"
+
+# row/col headings
+color "type=HEADINGS            fg=WHITE bg=DEFAULT_COLOR"
+# alternating col headings
+color "type=HEADINGS_ODD        fg=WHITE bg=DEFAULT_COLOR"
+
+# current row/colum
+color "type=CELL_SELECTION      fg=MAGENTA bg=BLACK bold"
+# current cell
+color "type=CELL_SELECTION_SC   fg=DEFAULT_COLOR bg=BLACK"
+# current cell (top corner)
+color "type=CELL_ID             fg=BLUE bg=DEFAULT_COLOR"
+
+# the cell format such as "(10 2 0)"
+color "type=CELL_FORMAT         fg=BLUE bg=DEFAULT_COLOR"
+
+# vim mode
+color "type=MODE                fg=CYAN bg=DEFAULT_COLOR"
+
+# command prompt
+color "type=ERROR_MSG           fg=RED bg=DEFAULT_COLOR"
+color "type=INFO_MSG            fg=BLUE bg=DEFAULT_COLOR"
+
+# strings
+color "type=STRG                fg=WHITE bg=DEFAULT_COLOR"
+# numbers
+color "type=NUMB                fg=CYAN bg=DEFAULT_COLOR"
+# dates
+color "type=DATEF               fg=BLUE bg=DEFAULT_COLOR"
+# expressions
+color "type=EXPRESSION          fg=GREEN bg=DEFAULT_COLOR"

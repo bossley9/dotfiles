@@ -91,9 +91,9 @@ in
     vim
     pinentry-curses # for gnupg
     # utils
-    bc w3m
+    bc w3m file gzip
     # nix-specific utils
-    nix-index
+    nix-index # for nix-locate
   ];
 
   users.users."${secrets.username}" = {

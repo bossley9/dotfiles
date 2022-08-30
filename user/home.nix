@@ -22,6 +22,7 @@ in
   # }}}
 
   programs.sway.enable = true;
+  programs.firejail.enable = true;
 
   home-manager.users."${secrets.username}" = {
     home.username = secrets.username;
@@ -36,6 +37,7 @@ in
       htop
       neofetch # For asserting dominance
       vifm
+      sc-im
 
       # ui
       sway
@@ -86,7 +88,7 @@ in
       ENV = "$XDG_CONFIG_HOME/sh/shrc";
       PAGER = "less";
       MANPAGER = "nvim -u NORC +Man!";
-      BROWSER = "chromium --enable-features=UseOzonePlatform --ozone-platform=wayland";
+      BROWSER = "firejail chromium --enable-features=UseOzonePlatform --ozone-platform=wayland";
 
     };
     home.file.".config/aliasrc" = {
@@ -113,6 +115,8 @@ in
 
     # symlinking the directory otherwise vifm can't find the colorschemes
     home.file.".config/vifm".source = ./config/vifm;
+
+    home.file.".config/sc-im/scimrc".source = ./config/sc-im/scimrc;
 
     # }}}
 
@@ -157,6 +161,12 @@ in
     home.file.".config/yt-dlp/config".source = ./config/yt-dlp/config;
 
     home.file.".config/newsboat".source = ./config/newsboat;
+
+    # }}}
+
+    # security {{{
+
+    home.file.".config/firejail".source = ./config/firejail;
 
     # }}}
 
