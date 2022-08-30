@@ -22,9 +22,9 @@ define-filter "this week" "age between 0:7"
 # determines prefix for all other macros
 # macro-prefix ,
 
-browser "chromium %u"
-macro , set browser "mpv --really-quiet --no-terminal %u &" ; open-in-browser ; set browser "chromium %u"
-macro c set browser "printf %u | wl-copy" ; open-in-browser ; set browser "chromium %u"
+browser "$BROWSER %u"
+macro , set browser "mpv --really-quiet --no-terminal %u &" ; open-in-browser ; set browser "$BROWSER %u"
+macro c set browser "printf %u | wl-copy" ; open-in-browser ; set browser "$BROWSER %u"
 
 # vim bindings
 unbind-key j

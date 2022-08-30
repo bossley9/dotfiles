@@ -29,6 +29,7 @@ alias \
   nr="doas nixos-rebuild -I nixos-config=${DOTDIR}/system/configuration.nix" \
   pl="mpv" \
   search="w3m google.com" \
+  sp="ncspot" \
   zr=". ${ENV}"
 
 # }}}

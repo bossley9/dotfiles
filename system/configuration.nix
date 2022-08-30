@@ -59,7 +59,7 @@ in
   networking.hostName = secrets.hostname;
   networking.useDHCP = false; # False recommended for security reasons.
   networking.networkmanager.enable = secrets.wifiEnabled;
-  networking.interfaces.${secrets.ethInterface}.useDHCP = true;
+  networking.interfaces.${secrets.ethInterface}.useDHCP = secrets.ethEnabled;
   networking.interfaces."${secrets.wifiInterface}".useDHCP = true;
 
   services.timesyncd.enable = true; # slightly more lightweight than ntpd

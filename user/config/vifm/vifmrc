@@ -145,5 +145,8 @@ nnoremap A cw
 " images
 filextype {*.bmp,*.gif,*.jpg,*.jpeg,*.png,*.svg,*.webp,*.xpm},<image/*>
   \ imv %c
+" videos
+filextype {*.avi,*.divx,*.m4v,*.mkv,*.mov,*.mp4,*.mpeg,*.mpg,*.vob,*.webm,*.wmv},<video/*>
+  \ mpv %c
 
 " }}}

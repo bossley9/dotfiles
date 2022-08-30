@@ -1,0 +1,43 @@
+flip_status_indicators = true
+gapless = true
+
+[saved_state]
+volume = 100
+repeat = "playlist"
+shuffle = false
+
+[theme]
+primary = "white"
+secondary = "background"
+title = "cyan"
+playing = "blue"
+playing_selected = "cyan"
+playing_bg = "background"
+highlight = "white"
+highlight_bg = "black"
+error = "red"
+error_bg = "background"
+statusbar = "white"
+statusbar_progress = "cyan"
+statusbar_progress_bg = "black"
+cmdline = "white"
+cmdline_bg = "background"
+search_match = "red"
+
+[keybindings]
+"n" = "next"
+"b" = "previous"
+"1" = "focus library"
+"2" = "focus queue"
+"3" = "focus search"
+"Shift+j" = "move down 5"
+"Shift+k" = "move up 5"
+"d" = "move down 25"
+"u" = "move up 25"
+"g" = "move up 500"
+"Shift+g" = "move down 500"
+"a" = "queue"
+"Space" = "playpause"
+"Shift+h" = "back"
+"Ctrl+h" = "seek -10000"
+"Ctrl+l" = "seek +10000"

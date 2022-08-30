@@ -2,7 +2,7 @@
 # bottom status bar
 color background          color7   default
 # list items
-color listnormal          color7   default
+color listnormal          color0   default
 color listnormal_unread   color6   default
 color listfocus           color14  color0
 color listfocus_unread    color14  color0 bold

@@ -66,3 +66,9 @@ vmap <M-/> gcgv
 " clipboard
 vnoremap <C-c> "+ygv
 nnoremap <C-c> "+ygv
+
+" replace window preview (fzf.vim)
+com! W w
+
+" gx browser
+nnoremap gx :silent! exe '!$BROWSER '.expand('<cWORD>')<CR>

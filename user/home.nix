@@ -17,10 +17,11 @@ in
 {
   imports = [
     <home-manager/nixos>
-    ./extras/hyprland.nix
   ];
 
   # }}}
+
+  programs.sway.enable = true;
 
   home-manager.users."${secrets.username}" = {
     home.username = secrets.username;
@@ -37,10 +38,12 @@ in
       vifm
 
       # ui
+      sway
       swaybg
       wl-clipboard
       bat # for fzf previews
       jetbrains-mono
+      font-awesome
       waybar
 
       # utils
@@ -57,7 +60,11 @@ in
       mpv
       yt-dlp
       newsboat
+      ncspot
     ];
+
+    # required for fontconfig to find home fonts
+    fonts.fontconfig.enable = true;
 
     # }}}
 
@@ -78,6 +85,8 @@ in
       ENV = "$XDG_CONFIG_HOME/sh/shrc";
       PAGER = "less";
       MANPAGER = "nvim -u NORC +Man!";
+      BROWSER = "chromium --enable-features=UseOzonePlatform --ozone-platform=wayland";
+
     };
     home.file.".config/aliasrc" = {
       source = ./config/aliasrc;
@@ -108,11 +117,7 @@ in
 
     # window manager {{{
 
-    home.file.".config/startw" = {
-      source = ./config/startw;
-      executable = true;
-    };
-    home.file.".config/hypr/hyprland.conf".source = ./config/hypr/hyprland.conf;
+    home.file.".config/sway/config".source = ./config/sway/config;
 
     programs.foot = foot;
 
@@ -124,6 +129,7 @@ in
     };
 
     home.file.".config/imv/config".source = ./config/imv/config;
+    home.file.".config/ncspot/config.toml".source = ./config/ncspot/config.toml;
 
     # }}}
 

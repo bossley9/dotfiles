@@ -1,18 +1,86 @@
+// vim:ft=json5:sw=2:fdm=marker
+
 {
+  // init {{{
   "layer": "top",
-  "height": 32,
-  "modules-left": ["hyprland/window"],
-  "modules-center": [],
-  "modules-right": ["pulseaudio", "clock"],
+  "height": 24,
+  "spacing": 16,
+  // }}}
 
-  "hyprland/window": {
-    "format": "Focused: {}"
+  // module listing {{{
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode"
+  ],
+  "modules-center": [
+    "sway/window"
+  ],
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "clock"
+  ],
+  // }}}
+
+  // sway/workspaces {{{
+  "sway/workspaces": {
+    "format": "{name}",
+    "disable-scroll": true,
+    "tooltip": false,
   },
+  // }}}
 
+  // sway/mode {{{
+  "sway/mode": {
+    "format": "{}",
+    "tooltip": false
+  },
+  // }}}
+
+  // sway/window {{{
+  "sway/window": {
+    "format": "{title}",
+    "tooltip": false,
+  },
+  // }}}
+
+  // network {{{
+  "network": {
+    "format-icons": {
+      "linked": "",
+      "ethernet": "",
+      "wifi": "",
+    },
+    "tooltip": false,
+
+    "format-disconnected": "disconnected",
+    "format-linked": "{ifname} (No IP) {icon}",
+    "format-ethernet": "{ipaddr}/{cidr} {icon}",
+    "format-wifi": "{essid} ({signalStrength}%) {icon}",
+    "format-alt": "{ifname}: {ipaddr}/{cidr} {icon}"
+  },
+  // }}}
+
+  // pulseaudio {{{
   "pulseaudio": {
-    "format": "{volume}%"
+    "format": "{volume}% {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "default": ""
+    },
+    "scroll-step": 0,
+    "on-click": "pavucontrol"
   },
+  // }}}
+
+  // clock {{{
   "clock": {
-    "format": "{:%a %b %d %H:%M}"
+    "timezone": "America/Los_Angeles",
+    "format": "{:%a %b %d %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   }
+  // }}}
 }
