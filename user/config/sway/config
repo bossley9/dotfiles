@@ -160,13 +160,14 @@ bindsym $mod+t exec pkill -SIGUSR1 waybar
 bindsym $mod+b exec "$BROWSER"
 
 # audio
-bindsym $mod+bracketright exec pamixer -ui 5 && pamixer --get-volume > $WOBSOCK
-bindsym $mod+bracketleft exec pamixer -ud 5 && pamixer --get-volume > $WOBSOCK
-bindsym $mod+backslash exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
+bindsym $mod+bracketright exec pamixer -ui 5
+bindsym $mod+bracketleft exec pamixer -ud 5
+bindsym $mod+backslash exec pamixer --toggle-mute
 
 # screen capture
 bindsym Shift+Alt+3 exec scene snap
 bindsym Shift+Alt+4 exec scene crop
+bindsym Shift+Alt+9 exec scene togglekeys
 
 # }}}
 
@@ -174,8 +175,5 @@ bindsym Shift+Alt+4 exec scene crop
 
 # prevent GTK apps from taking forever to load (pavucontrol)
 exec systemctl --user import-environment
-# notification/update bar
-exec mkfifo "$WOBSOCK"
-exec tail -f "$WOBSOCK" | wob &
 
 # }}}

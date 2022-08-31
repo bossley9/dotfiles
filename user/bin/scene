@@ -37,11 +37,23 @@ snap() {
   copyToClipboard "$out"
 }
 
+togglekeys() {
+  pid="/tmp/wshowkeys.pid"
+  if [ -f "$pid" ]; then
+    pkill wshowkeys
+    rm "$pid"
+  else 
+    echo "running" >> "$pid"
+    wshowkeys -b "#292E39" &
+  fi
+}
+
 # }}}
 
 case "$1" in
   "crop") crop ;;
   "snap") snap ;;
-  *) echo "USAGE: scene [crop | snap]" ;;
+  "togglekeys") togglekeys ;;
+  *) echo "USAGE: scene [crop | snap | togglekeys]" ;;
 esac
 

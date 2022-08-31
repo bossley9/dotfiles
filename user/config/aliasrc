@@ -19,6 +19,9 @@ alias \
   reboot="doas reboot" \
   shutdown="doas shutdown -h now"
 
+alias \
+  nixsearch="nix search nixpkgs"
+
 # }}}
 
 # common {{{

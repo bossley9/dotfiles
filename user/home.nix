@@ -10,6 +10,7 @@ let
   nvim = import ./config/nvim/init.nix args;
   fzf = import ./config/fzf/fzf.nix args;
   foot = import ./config/foot/foot.nix args;
+  chromium = import ./config/browser/chromium.nix args;
 in
   assert secrets.username != "";
   assert secrets.email    != "";
@@ -23,6 +24,7 @@ in
 
   programs.sway.enable = true;
   programs.firejail.enable = true;
+  programs.wshowkeys.enable = true;
 
   home-manager.users."${secrets.username}" = {
     home.username = secrets.username;
@@ -57,7 +59,6 @@ in
       grim slurp
       (writeScriptBin "scene" (lib.strings.fileContents ./bin/scene))
       imv
-      wob
       pamixer
       pavucontrol
       mpv
@@ -88,8 +89,7 @@ in
       ENV = "$XDG_CONFIG_HOME/sh/shrc";
       PAGER = "less";
       MANPAGER = "nvim -u NORC +Man!";
-      BROWSER = "firejail chromium --enable-features=UseOzonePlatform --ozone-platform=wayland";
-
+      BROWSER = "firejail chromium";
     };
     home.file.".config/aliasrc" = {
       source = ./config/aliasrc;
@@ -126,12 +126,7 @@ in
 
     programs.foot = foot;
 
-    programs.chromium = {
-      enable = true;
-      extensions = [
-        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-      ];
-    };
+    programs.chromium = chromium;
 
     home.file.".config/waybar/config".source = ./config/waybar/config;
     home.file.".config/waybar/style.css".source = ./config/waybar/style.css;
