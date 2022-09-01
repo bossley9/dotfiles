@@ -44,7 +44,7 @@ in
       # ui
       sway
       swaybg
-      wl-clipboard
+      wl-clipboard xdg_utils # xdg-mime is required for clipboard MIME support (images)
       bat # for fzf previews
       jetbrains-mono
       font-awesome

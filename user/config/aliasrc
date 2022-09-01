@@ -105,6 +105,14 @@ pwgen() {
   tr -dc "[:alnum:]" < /dev/urandom | fold -w 50 | head -n 25 | sed 's/.\{10\}/& /g'
 }
 
+ge() {
+  gpg --encrypt --sign --armor --default-recipient-self "$1"
+  mv "./${1}.asc" "$1"
+}
+gd() {
+  gpg --output "$1" --yes --decrypt "$1"
+}
+
 # }}}
 
 # media {{{
