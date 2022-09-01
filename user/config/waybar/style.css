@@ -31,12 +31,13 @@ window#waybar {
     color: #EBCB8B;
 }
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+/* FAQ says 3px horizontal padding but seems to need 4px */
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
     background: transparent;
     border: transparent;
-    padding: 0 3px;
+    padding: 0 4px;
 }
 /* }}} */
 
