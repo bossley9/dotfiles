@@ -59,12 +59,12 @@ in
       grim slurp
       (writeScriptBin "scene" (lib.strings.fileContents ./bin/scene))
       imv
-      pamixer
-      pavucontrol
-      mpv
-      yt-dlp
+      pamixer pavucontrol
+      mpv yt-dlp
       newsboat
       ncspot
+      zathura mupdf
+      amfora # gemini browser
     ];
 
     # required for fontconfig to find home fonts
@@ -156,6 +156,11 @@ in
     home.file.".config/yt-dlp/config".source = ./config/yt-dlp/config;
 
     home.file.".config/newsboat".source = ./config/newsboat;
+
+    home.file.".config/zathura/zathurarc".source = ./config/zathura/zathurarc;
+
+    home.file.".config/amfora/config.toml".source = ./config/amfora/config.toml;
+    home.file.".config/amfora/newtab.gmi".source = ./config/amfora/newtab.gmi;
 
     # }}}
 

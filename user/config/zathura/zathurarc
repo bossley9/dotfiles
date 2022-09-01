@@ -1,0 +1,77 @@
+# vim:ft=conf:fdm=marker
+
+# settings {{{
+
+# remove extra padding
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+
+# padding between pages in px
+set page-padding 1
+
+# view side by side first page on the left
+set first-page-column 1:1
+
+# clipboard
+set selection-clipboard clipboard
+set selection-notification false
+
+# hide status by default
+set guioptions ""
+
+# use file name as window title
+set window-title-basename true
+
+# }}}
+
+# colors {{{
+
+# dark mode
+set recolor
+
+set default-bg "#2e3440"
+set default-fg "#e5e9f0"
+
+set notification-bg "#2e3440"
+set notification-fg "#e5e9f0"
+
+set completion-bg "#2e3440"
+set completion-fg "#e5e9f0"
+set completion-group-bg "#2e3440"
+set completion-group-fg "#e5e9f0"
+
+# color_8
+set completion-highlight-bg "#88c0d0"
+set completion-highlight-fg "#e5e9f0"
+
+set highlight-color "#e5e9f0"
+set highlight-active-color "#88c0d0"
+set highlight-transparency 0.8
+
+set inputbar-bg "#2e3440"
+set inputbar-fg "#e5e9f0"
+set statusbar-bg "#2e3440"
+set statusbar-fg "#e5e9f0"
+
+# will make pdf bg transparent (equivalent of bg color with alpha)
+# set default-bg "rgba(46,52,64,0.6)"
+set recolor-lightcolor "rgba(0,0,0,0)"
+set recolor-darkcolor "#e5e9f0"
+
+# }}}
+
+# bindings {{{
+
+map i recolor
+
+map r rotate
+
+map <C-K> zoom in
+map <C-J> zoom out
+
+map <M-k> scroll half-up
+map <M-j> scroll half-down
+map <M-u> scroll full-up
+map <M-d> scroll full-down
+
+# }}}

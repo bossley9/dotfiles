@@ -148,5 +148,8 @@ filextype {*.bmp,*.gif,*.jpg,*.jpeg,*.png,*.svg,*.webp,*.xpm},<image/*>
 " videos
 filextype {*.avi,*.divx,*.m4v,*.mkv,*.mov,*.mp4,*.mpeg,*.mpg,*.vob,*.webm,*.wmv},<video/*>
   \ mpv %c
+" pdfs
+filextype {*.epub,*.pdf},<application/pdf>
+  \ zathura %c
 
 " }}}

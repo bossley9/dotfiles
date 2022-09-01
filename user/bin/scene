@@ -42,7 +42,7 @@ togglekeys() {
   if [ -f "$pid" ]; then
     pkill wshowkeys
     rm "$pid"
-  else 
+  else
     echo "running" >> "$pid"
     wshowkeys -b "#292E39" &
   fi
