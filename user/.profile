@@ -6,6 +6,7 @@ umask 0077
 # xdg specification {{{
 
 export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CACHE_HOME="${HOME}/.cache"
 XDG_PREFIX="${HOME}/.local"
 export XDG_DATA_HOME="${XDG_PREFIX}/share"
 export XDG_REPO_HOME="${HOME}/Repos"

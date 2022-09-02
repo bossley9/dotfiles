@@ -94,6 +94,7 @@ in
     bc w3m file gzip
     # nix-specific utils
     nix-index # for nix-locate
+    nix-prefetch nix-prefetch-scripts # for nix-prefetch and nix-prefetch-git
   ];
 
   users.users."${secrets.username}" = {

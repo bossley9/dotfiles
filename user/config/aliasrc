@@ -20,7 +20,7 @@ alias \
   shutdown="doas shutdown -h now"
 
 alias \
-  nixsearch="nix search nixpkgs"
+  pq="nix search nixpkgs"
 
 # }}}
 

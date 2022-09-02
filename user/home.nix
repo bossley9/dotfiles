@@ -11,6 +11,7 @@ let
   fzf = import ./config/fzf/fzf.nix args;
   foot = import ./config/foot/foot.nix args;
   chromium = import ./config/browser/chromium.nix args;
+  sn = import ./derivations/sn.nix;
 in
   assert secrets.username != "";
   assert secrets.email    != "";
@@ -40,6 +41,9 @@ in
       neofetch # For asserting dominance
       vifm
       sc-im
+
+      # derivations
+      sn
 
       # ui
       sway
