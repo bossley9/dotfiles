@@ -71,4 +71,4 @@ nnoremap <C-c> "+ygv
 com! W w
 
 " gx browser
-nnoremap gx :silent! exe '!$BROWSER '.expand('<cWORD>')<CR>
+nnoremap gx :silent! exe '!$BROWSER '.fnameescape(expand('<cWORD>'))<CR>
