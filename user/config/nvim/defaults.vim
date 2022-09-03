@@ -1,5 +1,10 @@
 set noswapfile             " disable swapfiles
+set nobackup
+set nowritebackup
 filetype plugin on         " browse filetypes for file syntax
+
+set updatetime=300         " rate at which buffers/gutters refresh
+set signcolumn=yes         " always display gutters
 
 let g:netrw_dirhistmax=0   " don't save netrw history
 

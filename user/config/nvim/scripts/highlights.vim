@@ -50,6 +50,9 @@ hi NonText ctermfg=0
 " fix terminal background
 hi Pmenu ctermbg=none
 
+" coc autocompletion menu
+hi CocMenuSel ctermfg=0 ctermbg=6
+
 " }}}
 
 " status line {{{

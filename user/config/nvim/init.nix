@@ -28,4 +28,23 @@
     vim-polyglot
     nord-vim
   ];
+  coc = {
+    enable = true;
+    pluginConfig = (lib.strings.fileContents ./scripts/coc.vim);
+    settings = {
+      "suggest.autoTrigger" = "trigger";
+      "coc.preferences.extensionUpdateCheck" = "never";
+      "coc.preferences.messageLevel" = "warning";
+      "coc.preferences.formatOnSaveFiletypes" = [
+        "cs"
+        "css"
+        "javascript"
+        "json"
+        "markdown"
+        "scss"
+        "typescript"
+        "typescriptreact"
+      ];
+    };
+  };
 }

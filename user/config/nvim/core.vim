@@ -6,8 +6,6 @@ inoremap <M-;> <Esc>
 vnoremap <M-;> <Esc>
 cnoremap <M-;> <Esc>
 
-inoremap <M-j> <CR>
-
 inoremap <M-h> <BS>
 
 " normal mode space
