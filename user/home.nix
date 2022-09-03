@@ -11,7 +11,10 @@ let
   fzf = import ./config/fzf/fzf.nix args;
   foot = import ./config/foot/foot.nix args;
   chromium = import ./config/browser/chromium.nix args;
+  # derivations
   sn = import ./derivations/sn.nix;
+  webcord = import ./derivations/webcord/default.nix;
+
 in
   assert secrets.username != "";
   assert secrets.email    != "";
@@ -42,9 +45,6 @@ in
       vifm
       sc-im
 
-      # derivations
-      sn
-
       # ui
       sway
       swaybg
@@ -66,9 +66,11 @@ in
       pamixer pavucontrol
       mpv yt-dlp
       newsboat
+      sn
       ncspot
       zathura mupdf
       amfora # gemini browser
+      webcord
     ];
 
     # required for fontconfig to find home fonts

@@ -48,6 +48,7 @@ in
         vaapiIntel
         vaapiVdpau
         libvdpau-va-gl
+        amdvlk
       ];
     };
   };

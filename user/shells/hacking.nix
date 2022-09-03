@@ -2,7 +2,10 @@
 
 pkgs.mkShell {
   nativeBuildInputs = with pkgs; [
-    deno
+    # web development
+    nodejs
+    # prototyping and small projects
+    go deno
   ];
 }
 

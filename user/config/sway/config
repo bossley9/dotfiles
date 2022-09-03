@@ -158,6 +158,7 @@ bindsym $mod+t exec pkill -SIGUSR1 waybar
 # application and config bindings {{{
 
 bindsym $mod+b exec "$BROWSER"
+bindsym $mod+u exec webcord
 
 # audio
 bindsym $mod+bracketright exec pamixer -ui 5

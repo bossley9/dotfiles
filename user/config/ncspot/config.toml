@@ -21,8 +21,8 @@ statusbar = "white"
 statusbar_progress = "cyan"
 statusbar_progress_bg = "black"
 cmdline = "white"
-cmdline_bg = "background"
-search_match = "red"
+cmdline_bg = "black"
+search_match = "magenta"
 
 [keybindings]
 "n" = "next"
