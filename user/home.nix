@@ -14,6 +14,7 @@ let
   # derivations
   sn = import ./derivations/sn.nix;
   webcord = import ./derivations/webcord/default.nix;
+  customhugo = import ./derivations/hugo.nix;
 
 in
   assert secrets.username != "";
@@ -59,6 +60,9 @@ in
       wev
       wlr-randr
 
+      gnumake
+      customhugo
+
       # multimedia
       grim slurp
       (writeScriptBin "scene" (lib.strings.fileContents ./bin/scene))
@@ -71,6 +75,8 @@ in
       zathura mupdf
       amfora # gemini browser
       webcord
+      # editing
+      inkscape
     ];
 
     # required for fontconfig to find home fonts
