@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
 
-pkgs.mkShell {
-  nativeBuildInputs = with pkgs; [
+with pkgs; mkShell {
+  nativeBuildInputs = [
     # web development
     nodejs
     # prototyping and small projects

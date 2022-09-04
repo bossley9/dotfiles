@@ -86,16 +86,8 @@ rp() {
 
 # environments {{{
 
-ns() {
-  shellpath="${DOTDIR}/user/shells"
-  nixshell="$(ls "$shellpath" | fzf)"
-  if [ -z "$nixshell" ]; then
-    echo "Error: nix shell '${nixshell}' is not a valid shell."
-    return
-  fi
-
-  nix-shell "${shellpath}/${nixshell}"
-}
+alias \
+  ns="nix-shell ${DOTDIR}/user/shells/hacking.nix"
 
 # }}}
 

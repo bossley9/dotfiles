@@ -112,8 +112,11 @@ hi Constant ctermfg=5
 " }}}
 
 augroup highlights
-  au Filetype css setlocal iskeyword-=- " overrides default behaviour of ignoring dashes as word boundaries
-  au! BufRead,BufNewFile *.{gemini,gmi}  set filetype=gemini textwidth=0 wrap
-  au! Filetype json5 setl commentstring=//\ %s
-  au Filetype nix setlocal iskeyword-=- " overrides default behaviour of ignoring dashes as word boundaries
+  au!
+  " "setl iskeyword-=-" overrides default behaviour of ignoring dashes as word boundaries
+  au Filetype css setl iskeyword-=-
+  au BufRead,BufNewFile *.{gemini,gmi} set ft=gemini textwidth=0 wrap
+  au Filetype json5 setl commentstring=//\ %s
+  au BufRead,BufNewFile *.m3u setl ft=m3u
+  au Filetype nix setl iskeyword-=-
 augroup end

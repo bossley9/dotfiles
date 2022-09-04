@@ -48,7 +48,6 @@ in
 
       # ui
       sway
-      swaybg
       wl-clipboard xdg_utils # xdg-mime is required for clipboard MIME support (images)
       bat # for fzf previews
       jetbrains-mono
@@ -57,9 +56,11 @@ in
       wofi
 
       # utils
+      unzip
       wev
       wlr-randr
 
+      # web
       gnumake
       customhugo
 
@@ -75,8 +76,12 @@ in
       zathura mupdf
       amfora # gemini browser
       webcord
+
       # editing
       inkscape
+
+      # streaming
+      (writeShellScriptBin "stream" "nix-shell $DOTDIR/user/shells/streamidle.nix --run obs")
     ];
 
     # required for fontconfig to find home fonts
@@ -111,8 +116,7 @@ in
 
     # editor
     programs.neovim = nvim;
-    home.file.".config/nvim/syntax/nix.vim".source = ./config/nvim/syntax/nix.vim;
-    home.file.".config/nvim/syntax/gemini.vim".source = ./config/nvim/syntax/gemini.vim;
+    home.file.".config/nvim/syntax".source = ./config/nvim/syntax;
 
     programs.git = {
       enable = true;
