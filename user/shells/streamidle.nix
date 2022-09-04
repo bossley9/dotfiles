@@ -4,11 +4,17 @@ with pkgs; mkShell {
   name = "streamidle";
 
   nativeBuildInputs = [
-    obs-studio
-    # plugins
-    obs-studio-plugins.obs-pipewire-audio-capture
-    obs-studio-plugins.obs-vkcapture
-    obs-studio-plugins.wlrobs
+    (wrapOBS.override { obs-studio = pkgs.obs-studio; } {
+      plugins = with obs-studio-plugins; [
+        wlrobs
+        obs-pipewire-audio-capture
+        obs-vkcapture
+      ];
+    })
   ];
+
+  shellHook = ''
+    export QT_QPA_PLATFORM=wayland
+  '';
 }
 
