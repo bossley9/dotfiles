@@ -16,7 +16,8 @@ x11 none # disable xorg access, using wayland
 # 3. noblacklist
 # 4. blacklist
 
-whitelist ${HOME}/Downloads
+# can't whitelist Downloads because it messes up things like DRM
+# whitelist ${HOME}/Downloads
 
 # system critical
 blacklist /boot

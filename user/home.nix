@@ -30,6 +30,7 @@ in
   programs.sway.enable = true;
   programs.firejail.enable = true;
   programs.wshowkeys.enable = true;
+  nixpkgs.config.chromium.enableWideVine = true; # for DRM content
 
   home-manager.users."${secrets.username}" = {
     home.username = secrets.username;

@@ -1,9 +1,9 @@
 # vim:ft=sh
+# NOTE BEFORE MODIFYING THIS FILE:
+# be sure that the changes still allow DRM playback (spotify, netflix, youtube...)
 
 include chromium.local
 include globals.local
-
-include ${CFG}/chromium.profile
 
 caps.drop all # remove all root privileges
 disable-mnt # remove access to mounted media
