@@ -16,6 +16,7 @@ cd() {
 }
 
 alias \
+  sus="systemctl suspend" \
   reboot="doas reboot" \
   shutdown="doas shutdown -h now"
 

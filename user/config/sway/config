@@ -125,6 +125,18 @@ focus output HDMI-A-1
 
 # }}}
 
+# locker {{{
+
+# lock screen after 2 min
+# suspend after 5 min
+# lock screen before suspending
+exec swayidle -w \
+  timeout 120 'swaylock' \
+  timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+  before-sleep 'swaylock'
+
+# }}}
+
 # cosmetics {{{
 
 # borders and gaps {{{

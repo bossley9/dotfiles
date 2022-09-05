@@ -1,0 +1,40 @@
+# settings
+ignore-empty-password
+daemonize
+# caps lock key is replaced anyways
+disable-caps-lock-text
+font=JetBrainsMono
+font-size=20
+
+# background
+color=292E39
+inside-color=292E39
+inside-clear-color=292E39
+inside-caps-lock-color=292E39
+inside-ver-color=292E39
+inside-wrong-color=292E39
+line-color=292E39
+line-clear-color=292E39
+line-caps-lock-color=292E39
+line-ver-color=292E39
+line-wrong-color=292E39
+text-color=292E39
+text-clear-color=292E39
+text-caps-lock-color=292E39
+text-ver-color=292E39
+text-wrong-color=292E39
+
+# indicator
+indicator-radius=150
+indicator-thickness=30
+line-uses-inside
+ring-color=434C5E
+separator-color=434C5E
+ring-clear-color=EBCB8B
+ring-caps-lock-color=EBCB8B
+ring-ver-color=81A1C1
+ring-wrong-color=BF616A
+bs-hl-color=EBCB8B
+
+# segment
+key-hl-color=81A1C1
