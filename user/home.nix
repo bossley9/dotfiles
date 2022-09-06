@@ -73,16 +73,18 @@ in
       mpv yt-dlp
       newsboat
       sn
-      ncspot
+      ncspot cava
       zathura mupdf
-      amfora # gemini browser
+      amfora
       webcord
 
       # editing
       inkscape
+      gimp # requires xwayland
 
       # streaming
       (writeShellScriptBin "stream" "nix-shell $DOTDIR/user/shells/streamidle.nix --run obs")
+      (writeShellScriptBin "minecraft" "nix-shell $DOTDIR/user/shells/minecraft.nix --run polymc") # requires xwayland
     ];
 
     # required for fontconfig to find home fonts

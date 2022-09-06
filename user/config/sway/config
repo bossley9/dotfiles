@@ -12,7 +12,8 @@ set $right l
 
 set $term foot
 
-xwayland disable
+# TODO disable once xwayland pkgs have functional wayland alternatives
+# xwayland disable
 
 # mouse
 mouse_warping none

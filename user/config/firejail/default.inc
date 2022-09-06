@@ -1,7 +1,8 @@
 # vim:ft=sh:fdm=marker
 
 # options {{{
-x11 none # disable xorg access, using wayland
+# TODO uncomment once xwayland is disabled
+# x11 none
 # }}}
 
 # block/allow lists {{{
