@@ -123,6 +123,7 @@ in
       enable = true;
       extraConfig = {
         init.defaultBranch = "main";
+        pull.rebase = false;
         user = {
           name = secrets.username;
           email = secrets.email;
