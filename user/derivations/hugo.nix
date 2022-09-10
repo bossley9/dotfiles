@@ -8,11 +8,11 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "bossley9";
     repo = pname;
-    rev = "8906bf2da5b202d7250d46a5856a87967dfcd456";
-    sha256 = "0n9sdsksg0vbcd5gccy45v6vbqpyd83d2xni293s9190qrwhzp2c";
+    rev = "321216116ccda4e4274fc27db5d40ca59e331ea9";
+    sha256 = "15h30y6q9njcvspgaalg6jgdi0jjqbjw91rrq9fh7nkydrbls5wi";
   };
 
-  vendorSha256 = "PoPsdV6rtohu/Un1jllBn08reMRLz17R6Ku7vB+3jFc=";
+  vendorSha256 = "sha256-5yYsELOYhZPcLyot5uJV26Uhh1zrtTCjOffL/L7BS7A=";
 
   doCheck = false;
 

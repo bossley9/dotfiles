@@ -17,4 +17,3 @@ with pkgs; mkShell {
     export QT_QPA_PLATFORM=wayland
   '';
 }
-

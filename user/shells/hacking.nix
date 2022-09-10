@@ -5,7 +5,12 @@ with pkgs; mkShell {
     # web development
     nodejs
     # prototyping and small projects
-    go deno
+    deno
   ];
+
+  shellHook = ''
+    umask 0077
+    set -o vi
+  '';
 }
 
