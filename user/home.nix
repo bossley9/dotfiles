@@ -15,6 +15,7 @@ let
   sn = import ./derivations/sn.nix;
   webcord = import ./derivations/webcord/default.nix;
   customhugo = import ./derivations/hugo.nix;
+  swayaudioidleinhibit = import ./derivations/sway-audio-idle-inhibit.nix;
 
 in
   assert secrets.username != "";
@@ -55,6 +56,7 @@ in
       font-awesome
       waybar
       wofi
+      swayaudioidleinhibit
 
       # utils
       unzip

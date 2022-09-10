@@ -190,4 +190,7 @@ bindsym Shift+Alt+9 exec scene togglekeys
 # prevent GTK apps from taking forever to load (pavucontrol)
 exec systemctl --user import-environment
 
+# enable inhibit idle while playing audio (prevent suspend)
+exec sway-audio-idle-inhibit
+
 # }}}
