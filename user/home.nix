@@ -16,6 +16,7 @@ let
   webcord = import ./derivations/webcord/default.nix;
   customhugo = import ./derivations/hugo.nix;
   swayaudioidleinhibit = import ./derivations/sway-audio-idle-inhibit.nix;
+  customncspot = import ./derivations/ncspot.nix;
 
 in
   assert secrets.username != "";
@@ -68,6 +69,8 @@ in
       customhugo
       # projects
       go
+      # fun
+      nethack
 
       # multimedia
       grim slurp
@@ -77,7 +80,7 @@ in
       mpv yt-dlp
       newsboat
       sn
-      ncspot cava
+      customncspot cava
       zathura mupdf
       amfora
       webcord

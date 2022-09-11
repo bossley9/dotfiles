@@ -21,7 +21,7 @@ alias \
   shutdown="doas shutdown -h now"
 
 alias \
-  pq="nix search nixpkgs"
+  pq="nix search nixpkgs --offline"
 
 # }}}
 
@@ -30,6 +30,7 @@ alias \
 alias \
   am="amfora" \
   g="git" \
+  hack="nethack" \
   n="newsboat" \
   nr="doas nixos-rebuild -I nixos-config=${DOTDIR}/system/configuration.nix" \
   pl="mpv" \

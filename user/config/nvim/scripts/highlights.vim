@@ -115,7 +115,7 @@ augroup highlights
   au!
   " "setl iskeyword-=-" overrides default behaviour of ignoring dashes as word boundaries
   au Filetype css setl iskeyword-=-
-  au BufRead,BufNewFile *.{gemini,gmi} set ft=gemini textwidth=0 wrap
+  au BufRead,BufNewFile *.{gemini,gmi} set ft=gemini commentstring=-\ [\ ]\ %s
   au Filetype json5 setl commentstring=//\ %s
   au BufRead,BufNewFile *.m3u setl ft=m3u
   au Filetype nix setl iskeyword-=-

@@ -143,16 +143,17 @@ nnoremap A cw
 " see commands section for macro definitions
 
 " images
-filextype {*.bmp,*.gif,*.jpg,*.jpeg,*.png,*.svg,*.webp,*.xpm},<image/*>
-  \ imv %c
+exe 'filextype <image/*>{*.avif} '.expand('$BROWSER').' %c'
+filextype <image/*>{*.avif,*.bmp,*.gif,*.jpg,*.jpeg,*.png,*.svg,*.webp,*.xpm}
+  \ imv %c,
 " audio files
-filextype {*.m3u,*.m4a,*.mp3,*.ogg,*.wav},<audio/*>
+filextype <audio/*>{*.m3u,*.m4a,*.mp3,*.ogg,*.wav}
   \ mpv %c
 " videos
-filextype {*.avi,*.divx,*.m4v,*.mkv,*.mov,*.mp4,*.mpeg,*.mpg,*.vob,*.webm,*.wmv},<video/*>
+filextype <video/*>{*.avi,*.divx,*.m4v,*.mkv,*.mov,*.mp4,*.mpeg,*.mpg,*.vob,*.webm,*.wmv}
   \ mpv %c
 " pdfs
-filextype {*.epub,*.pdf},<application/pdf>
+filextype <application/pdf>{*.epub,*.pdf}
   \ zathura %c
 " spreadsheets
 filextype {*.sc,*.xlsx}

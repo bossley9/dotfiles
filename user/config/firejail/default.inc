@@ -1,7 +1,6 @@
 # vim:ft=sh:fdm=marker
 
 # options {{{
-# TODO uncomment once xwayland is disabled
 # x11 none
 # }}}
 
