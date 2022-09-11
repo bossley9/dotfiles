@@ -131,9 +131,9 @@ focus output HDMI-A-1
 # suspend after 5 min
 # lock screen before suspending
 exec swayidle -w \
-  timeout 120 'swaylock' \
-  timeout 300 'systemctl suspend' \
-  before-sleep 'swaylock'
+  timeout 180 'swaylock' \
+  timeout 600 'systemctl suspend' \
+  before-sleep 'doas -L; wl-copy -c; swaylock'
 
 # }}}
 

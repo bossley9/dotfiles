@@ -147,6 +147,10 @@ in
 
     home.file.".config/sc-im/scimrc".source = ./config/sc-im/scimrc;
 
+    home.file.".w3m/config".text = ''
+      extbrowser sh -c 'printf %s "$0" | wl-copy'
+    '';
+
     # }}}
 
     # window manager essentials {{{
