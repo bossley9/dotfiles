@@ -127,13 +127,13 @@ focus output HDMI-A-1
 
 # locker {{{
 
-# lock screen after 2 min
-# suspend after 5 min
+# lock screen after 3 min
+# suspend after 10 min
 # lock screen before suspending
 exec swayidle -w \
-  timeout 180 'swaylock' \
+  timeout 180 'swaylock -f' \
   timeout 600 'systemctl suspend' \
-  before-sleep 'doas -L; wl-copy -c; swaylock'
+  before-sleep 'doas -L; wl-copy -c; swaylock -f'
 
 # }}}
 

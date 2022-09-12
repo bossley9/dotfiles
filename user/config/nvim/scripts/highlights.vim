@@ -72,6 +72,12 @@ let g:buffermodes = {
 fu! g:SetStatusLine(is_focused)
   setlocal statusline=
 
+  " hide statusline for file explorer
+  if &ft == 'fern'
+    setlocal statusline=\ 
+    return
+  en
+
   if a:is_focused
     setlocal statusline+=%#StatusLineMode#
   en
@@ -113,8 +119,9 @@ hi Constant ctermfg=5
 
 augroup highlights
   au!
-  " "setl iskeyword-=-" overrides default behaviour of ignoring dashes as word boundaries
+  " setl iskeyword-=- overrides default behaviour of ignoring dashes as word boundaries
   au Filetype css setl iskeyword-=-
+  au Filetype fern setl nonumber
   au BufRead,BufNewFile *.{gemini,gmi} set ft=gemini commentstring=-\ [\ ]\ %s
   au Filetype json5 setl commentstring=//\ %s
   au BufRead,BufNewFile *.m3u setl ft=m3u

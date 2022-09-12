@@ -48,7 +48,7 @@ fu! s:deleteHiddenBuffers()
     en
 
     " file explorers
-    if l:type == 'directory' || l:name == 'NetrwTreeListing'
+    if l:type == 'directory' || l:name == 'NetrwTreeListing' || l:name =~ "^fern://"
       call nvim_buf_delete(l:buf, l:opts)
       continue
     en

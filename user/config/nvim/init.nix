@@ -24,6 +24,7 @@
     git-blame-nvim
     vim-commentary
     vim-surround
+    fern-vim
     # cosmetic
     vim-polyglot
     nord-vim

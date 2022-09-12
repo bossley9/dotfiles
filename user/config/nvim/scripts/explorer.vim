@@ -3,80 +3,57 @@
 
 " file explorer {{{
 
-" settings {{{
-
+" netrw
 let g:netrw_banner=0 " hide banner
-let g:netrw_liststyle=3 " display tree
 let g:netrw_use_errorwindow = 0 " hide error window
-let g:netrw_browse_split = 0
 let g:netrw_list_hide = netrw_gitignore#Hide() . ',.git'
 
-" do not modify
-let s:explorerName = "NetrwTreeListing"
-let s:prevWin = -1
+let s:hide_dirs = '^\%(\.git\|node_modules\|result\)$'
+let s:hide_files = '\%(result\)\+'
+let g:fern#default_exclude = s:hide_dirs.'\|'.s:hide_files
 
-hi! link netrwMarkFile Search
+let g:fern#hide_cursor = 1
+let g:fern#drawer_width = 40
 
-" }}}
+exe 'nnoremap <silent> <M-b> :Fern '.g:projectDir.' -drawer -reveal=% -toggle<CR><C-w>='
 
-" expand and contract {{{
+let g:fern#disable_default_mappings = 1
+function! s:init_fern() abort
+  nmap <buffer> a <Plug>(fern-action-new-path)
+  nmap <buffer> m <Plug>(fern-action-move)
+  nmap <buffer> M <Plug>(fern-action-rename)
+  nmap <buffer> D <Plug>(fern-action-remove)
+  nmap <buffer> v <Plug>(fern-action-mark:toggle)
+  nmap <buffer> r <Plug>(fern-action-reload)
 
-fu! s:expandExplorer()
-  let l:buf = bufnr(s:explorerName)
-  let s:prevWin = nvim_get_current_win()
+  nmap <buffer><nowait> h <Plug>(fern-action-collapse)
+  nmap <buffer><nowait> h <Plug>(fern-action-collapse)
+  nmap <buffer><nowait> l <Plug>(fern-action-open-or-expand)
 
-  40Vex
+  nmap <buffer> <M-h> <Plug>(fern-action-hidden:toggle)
 
-  if l:buf >= 0
-    call nvim_set_current_buf(l:buf)
-  endif
-
-  let b:isExplorer = 1
-  nmap <buffer> l <CR>
-  nmap <buffer> h -
+  " mouse support
+  nmap <buffer><expr>
+        \ <Plug>(fern-my-open-expand-collapse)
+        \ fern#smart#leaf(
+        \   "\<Plug>(fern-action-open:select)",
+        \   "\<Plug>(fern-action-expand)",
+        \   "\<Plug>(fern-action-collapse)",
+        \ )
+  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> <RightMouse> <Plug>(fern-action-mark:toggle)
 endfunction
 
-fu! s:contractExplorer()
-  let l:buf = bufnr(s:explorerName)
-  if l:buf >= 0
-    call nvim_buf_delete(l:buf, { 'force': 1 })
-    call nvim_set_current_win(s:prevWin)
-  endif
-endfunction
-
-" }}}
-
-" netrw buffer listeners {{{
-
-fu! g:OnLeaveExplorer()
-  let s:isExpanded = 0
-  call s:contractExplorer()
-endfunction
-
-augroup explorer
-  au!
-  exe 'au BufLeave '.s:explorerName.' if exists("b:isExplorer") | call OnLeaveExplorer() | en'
+augroup fern
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
 augroup end
 
-" }}}
-
-" toggle {{{
-
-let s:isExpanded = 0
-
-fu! ToggleExplorer()
-  if s:isExpanded
-    let s:isExpanded = 0
-    call s:contractExplorer()
-  else
-    let s:isExpanded = 1
-    call s:expandExplorer()
-  endif
-endfunction
-
-nnoremap <silent> <M-b> :call ToggleExplorer()<CR>
-
-" }}}
+" cosmetics
+let g:fern#renderer#default#leading = "  "
+let g:fern#renderer#default#leaf_symbol = ""
+let g:fern#renderer#default#collapsed_symbol = ""
+let g:fern#renderer#default#expanded_symbol = ""
 
 " }}}
 
