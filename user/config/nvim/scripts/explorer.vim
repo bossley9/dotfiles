@@ -17,6 +17,9 @@ let g:fern#drawer_width = 40
 
 exe 'nnoremap <silent> <M-b> :Fern '.g:projectDir.' -drawer -reveal=% -toggle<CR><C-w>='
 
+" open file and close drawer
+nnoremap <Plug>(fern-close-drawer) :<C-U>FernDo close -drawer -stay<CR>
+
 let g:fern#disable_default_mappings = 1
 function! s:init_fern() abort
   nmap <buffer> a <Plug>(fern-action-new-path)
@@ -27,21 +30,20 @@ function! s:init_fern() abort
   nmap <buffer> r <Plug>(fern-action-reload)
 
   nmap <buffer><nowait> h <Plug>(fern-action-collapse)
-  nmap <buffer><nowait> h <Plug>(fern-action-collapse)
-  nmap <buffer><nowait> l <Plug>(fern-action-open-or-expand)
+  " close on open
+  nmap <buffer><silent> <Plug>(fern-action-open-and-close)
+    \ <Plug>(fern-action-open)
+    \ <Plug>(fern-close-drawer)
+  nmap <buffer><expr>
+    \ <Plug>(fern-my-open-or-expand-or-collapse)
+    \ fern#smart#leaf(
+    \ "\<Plug>(fern-action-open-and-close)",
+    \ "\<Plug>(fern-action-expand)",
+    \ "\<Plug>(fern-action-collapse)",
+    \ )
+  nmap <buffer><nowait> l <Plug>(fern-my-open-or-expand-or-collapse)
 
   nmap <buffer> <M-h> <Plug>(fern-action-hidden:toggle)
-
-  " mouse support
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-open-expand-collapse)
-        \ fern#smart#leaf(
-        \   "\<Plug>(fern-action-open:select)",
-        \   "\<Plug>(fern-action-expand)",
-        \   "\<Plug>(fern-action-collapse)",
-        \ )
-  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> <RightMouse> <Plug>(fern-action-mark:toggle)
 endfunction
 
 augroup fern

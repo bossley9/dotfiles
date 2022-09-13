@@ -29,7 +29,6 @@ set noshowcmd              " hide partial command from cmd prompt
 set noshowmode             " hide mode from cmd prompt
 
 set number                 " line numbers
-set cursorline             " highlight line number
 set showmatch              " matching brackets
 set splitright             " open vertical windows to the right
 set scrolloff=0            " number of lines above and below cursor

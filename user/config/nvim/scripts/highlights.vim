@@ -35,23 +35,29 @@ com! DebugSynGroup call DebugSynGroup()
 " }}}
 
 colorscheme nord
+" set termguicolors
 
 " interface {{{
 
 " line
-hi CursorLine ctermbg=none
+hi CursorLine guibg=0 ctermbg=0
 
 " folds
-hi Folded cterm=none ctermfg=4 ctermbg=none
+hi Folded gui=none cterm=none guifg=4 ctermfg=4 guibg=none ctermbg=none
 
 " trailing characters
-hi NonText ctermfg=0
+hi NonText guibg=0 ctermfg=0
 
 " fix terminal background
-hi Pmenu ctermbg=none
+hi Pmenu guibg=none ctermbg=none
 
 " coc autocompletion menu
-hi CocMenuSel ctermfg=0 ctermbg=6
+hi CocMenuSel guifg=0 ctermfg=0 guifg=6 ctermbg=6
+hi FgCocNotificationProgressBgNormal guifg=7 ctermfg=7 guibg=none ctermbg=none
+
+" coc error messages
+hi FgCocErrorFloatBgCocFloating guifg=1 ctermfg=1 guibg=none ctermbg=none
+hi WarningMsg guifg=3 ctermfg=3 guibg=none ctermbg=none
 
 " }}}
 
@@ -102,11 +108,11 @@ augroup status_line
   au WinLeave * call SetStatusLine(0)
 augroup end
 
-hi StatusLineNC ctermbg=none ctermfg=0 cterm=none
-hi StatusLine ctermbg=none ctermfg=7 cterm=none
-hi StatusLineMode ctermbg=none ctermfg=6 cterm=none
-hi StatusLineInactiveMode ctermbg=0 ctermfg=2
-hi ErrorMsg ctermbg=none ctermfg=1
+hi StatusLineNC guibg=none ctermbg=none guifg=0 ctermfg=0 cterm=none
+hi StatusLine guibg=none ctermbg=none guifg=7 ctermfg=7 gui=none cterm=none
+hi StatusLineMode guibg=none ctermbg=none guifg=none ctermfg=6 gui=none cterm=none
+hi StatusLineInactiveMode guibg=0 ctermbg=0 guifg=2 ctermfg=2
+hi ErrorMsg guibg=none ctermbg=none guifg=1 ctermfg=1
 
 " }}}
 
