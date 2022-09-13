@@ -21,7 +21,7 @@ set signcolumn=yes
 
 " gitblame {{{
 
-let g:gitblame_ignored_filetypes = [ 'fern' ]
+let g:gitblame_ignored_filetypes = [ 'fern', 'netrw' ]
 
 com! CopySHA GitBlameCopySHA
 
