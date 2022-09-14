@@ -13,6 +13,8 @@ export XDG_REPO_HOME="${HOME}/Repos"
 
 # }}}
 
+export PATH="${PATH}:${HOME}/.cargo/bin"
+
 # application variables {{{
 
 export WOBSOCK="/tmp/wobpipe"

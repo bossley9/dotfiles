@@ -69,6 +69,9 @@ in
       customhugo
       # projects
       go
+      clang
+      rustup
+      python3 # webservers with python3 -m http.server
       # fun
       nethack
 

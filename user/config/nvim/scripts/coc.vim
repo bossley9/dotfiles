@@ -53,4 +53,5 @@ let g:coc_global_extensions = [
   \ 'coc-clangd',
   \ 'coc-go',
   \ 'coc-json',
+  \ 'coc-rust-analyzer',
   \ ]

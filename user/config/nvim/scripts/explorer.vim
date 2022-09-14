@@ -41,6 +41,7 @@ function! s:init_fern() abort
     \ "\<Plug>(fern-action-expand)",
     \ "\<Plug>(fern-action-collapse)",
     \ )
+  nmap <buffer><nowait> <CR> <Plug>(fern-my-open-or-expand-or-collapse)
   nmap <buffer><nowait> l <Plug>(fern-my-open-or-expand-or-collapse)
 
   nmap <buffer> <M-h> <Plug>(fern-action-hidden:toggle)
