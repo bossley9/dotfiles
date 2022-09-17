@@ -13,17 +13,22 @@ export XDG_REPO_HOME="${HOME}/Repos"
 
 # }}}
 
-export PATH="${PATH}:${HOME}/.cargo/bin"
+# path {{{
 
-# application variables {{{
+addToPATH() {
+  if ! echo "$PATH" | grep -q "$1"; then
+    export PATH="${1}:${PATH}"
+  fi
+}
 
-export WOBSOCK="/tmp/wobpipe"
+addToPATH "${HOME}/.cargo/bin"
 
 # }}}
 
 # final initialization {{{
 
 export DOTDIR="${HOME}/.dots"
+export NIXOS_SYSTEM_CONFIGURATION="${DOTDIR}/system/configuration.nix"
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" # allow home-manager to manage shell
 
 # }}}
@@ -32,6 +37,7 @@ export DOTDIR="${HOME}/.dots"
 
 if [ -n "$DISPLAY" ] || [ "$(tty)" != "/dev/tty1" ]; then return; fi
 
-exec sway > "/dev/null" 2>&1
+pgrep -x sway > "/dev/null" || \
+  exec sway > "/dev/null" 2>&1
 
 # }}}

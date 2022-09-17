@@ -29,3 +29,4 @@ After booting for the first time, there are a few configurations that are cannot
 
 1. Open Chromium and ensure that the extensions are loaded. Chromium (Chrome) likes to disable automatically-installed extensions.
 2. Open `chrome://settings` in Chromium and change each option to sane defaults (be sure to look at all options - many are hidden under menus and sections).
+3. Generate new ssh and gpg keys to be used on all machines.

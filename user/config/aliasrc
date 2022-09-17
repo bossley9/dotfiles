@@ -32,7 +32,7 @@ alias \
   g="git" \
   hack="nethack" \
   n="newsboat" \
-  nr="doas nixos-rebuild -I nixos-config=${DOTDIR}/system/configuration.nix" \
+  nr="doas nixos-rebuild -I nixos-config=${NIXOS_SYSTEM_CONFIGURATION}" \
   pl="mpv" \
   search="w3m google.com" \
   server="${HOME}/Data/Code/server.sh" \

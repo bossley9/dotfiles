@@ -156,7 +156,7 @@ filextype <video/*>{*.avi,*.divx,*.m4v,*.mkv,*.mov,*.mp4,*.mpeg,*.mpg,*.vob,*.we
 filextype <application/pdf>{*.epub,*.pdf}
   \ zathura %c
 " spreadsheets
-filextype {*.sc,*.xlsx}
+filextype {*.csv,*.sc,*.xlsx}
   \ sc-im %c
 
 " }}}
