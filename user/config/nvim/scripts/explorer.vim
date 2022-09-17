@@ -22,8 +22,9 @@ nnoremap <Plug>(fern-close-drawer) :<C-U>FernDo close -drawer -stay<CR>
 
 let g:fern#disable_default_mappings = 1
 function! s:init_fern() abort
-  nmap <buffer> a <Plug>(fern-action-new-path)
-  nmap <buffer> m <Plug>(fern-action-move)
+  nmap <buffer> ma <Plug>(fern-action-new-path)
+  nmap <buffer> mc <Plug>(fern-action-copy)
+  nmap <buffer> mm <Plug>(fern-action-move)
   nmap <buffer> M <Plug>(fern-action-rename)
   nmap <buffer> D <Plug>(fern-action-remove)
   nmap <buffer> v <Plug>(fern-action-mark:toggle)

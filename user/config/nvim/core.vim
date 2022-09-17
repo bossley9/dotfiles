@@ -64,6 +64,7 @@ vmap <M-/> gcgv
 " clipboard
 vnoremap <C-c> "+ygv
 nnoremap <C-c> "+ygv
+com! File exe 'silent !echo '.expand('%').' | wl-copy'
 
 " replace window preview (fzf.vim)
 com! W w
