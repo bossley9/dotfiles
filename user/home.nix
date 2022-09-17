@@ -51,7 +51,7 @@ in
 
       # ui
       sway
-      wl-clipboard xdg_utils # xdg-mime is required for clipboard MIME support (images)
+      wl-clipboard xdg_utils # xdg_utils is required for clipboard XDG MIME support (images)
       bat # for fzf previews
       jetbrains-mono
       font-awesome
@@ -128,6 +128,8 @@ in
       executable = true;
     };
     programs.fzf = fzf;
+    home.file.".config/rg/rgrc".source = ./config/rg/rgrc;
+    home.file.".config/bat/config".source = ./config/bat/config;
 
     # editor
     programs.neovim = nvim;

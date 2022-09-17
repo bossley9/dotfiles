@@ -25,6 +25,13 @@ addToPATH "${HOME}/.cargo/bin"
 
 # }}}
 
+# application variables {{{
+
+export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/rg/rgrc"
+export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config"
+
+# }}}
+
 # final initialization {{{
 
 export DOTDIR="${HOME}/.dots"

@@ -1,0 +1,5 @@
+# vim: ft=conf
+--follow
+--glob=!.git
+--hidden
+--smart-case
