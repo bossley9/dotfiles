@@ -25,8 +25,8 @@ function! s:init_fern() abort
   nmap <buffer> ma <Plug>(fern-action-new-path)
   nmap <buffer> mc <Plug>(fern-action-copy)
   nmap <buffer> mm <Plug>(fern-action-move)
-  nmap <buffer> M <Plug>(fern-action-rename)
-  nmap <buffer> D <Plug>(fern-action-remove)
+  nmap <buffer> mr <Plug>(fern-action-rename)
+  nmap <buffer> md <Plug>(fern-action-remove)
   nmap <buffer> v <Plug>(fern-action-mark:toggle)
   nmap <buffer> r <Plug>(fern-action-reload)
 

@@ -2,6 +2,7 @@
 
 {
   enable = true;
+  server.enable = true;
   settings = {
     main = {
       font = "JetBrainsMono:size=10";

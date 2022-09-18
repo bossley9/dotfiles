@@ -31,6 +31,7 @@ alias \
   am="amfora" \
   g="git" \
   hack="nethack" \
+  lofi="pl https://youtu.be/jfKfPfyJRdk" \
   n="newsboat" \
   nr="doas nixos-rebuild -I nixos-config=${NIXOS_SYSTEM_CONFIGURATION}" \
   pl="mpv" \
