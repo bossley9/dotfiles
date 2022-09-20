@@ -71,3 +71,5 @@ com! W w
 
 " gx browser
 nnoremap gx :silent! exe '!$BROWSER '.fnameescape(expand('<cWORD>'))<CR>
+" Nixpkgs browser
+com! Nix silent exe '!$BROWSER https://github.com/NixOS/nixpkgs/blob/master/'.substitute(substitute(expand('<cWORD>'), '<nixpkgs/', '', ''), '>', '', '')
