@@ -126,6 +126,7 @@ hi Constant ctermfg=5
 augroup highlights
   au!
   " setl iskeyword-=- overrides default behaviour of ignoring dashes as word boundaries
+  au BufRead,BufNewFile *.babel setl ft=javascript
   au Filetype css setl iskeyword-=-
   au Filetype fern setl nonumber
   au BufRead,BufNewFile *.{gemini,gmi} set ft=gemini commentstring=-\ [\ ]\ %s

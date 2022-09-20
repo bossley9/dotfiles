@@ -116,8 +116,6 @@ in
 
   # security {{{
 
-  security.acme.acceptTerms = true;
-
   # elevated privileges
   security.sudo.enable = false;
   security.doas = {
@@ -166,6 +164,12 @@ in
     enableSSHSupport = true;
   };
 
+  networking.firewall = {
+    enable = true;
+    # allowedTCPPorts = [ ... ];
+    # allowedUDPPorts = [ ... ];
+  };
+
   # }}}
 
   # systemd
@@ -180,12 +184,6 @@ in
   #services.logind.lidSwitch = "suspend";
   #services.logind.extraConfig = "HandlePowerKey=hibernate";
   #services.tlp.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   system.stateVersion = "22.05";
 }
