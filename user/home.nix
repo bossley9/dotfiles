@@ -10,7 +10,7 @@ let
   nvim = import ./config/nvim/init.nix args;
   fzf = import ./config/fzf/fzf.nix args;
   foot = import ./config/foot/foot.nix args;
-  chromium = import ./config/browser/chromium.nix args;
+  firefox = import ./config/browser/firefox.nix args;
   # derivations
   sn = import ./derivations/sn.nix;
   webcord = import ./derivations/webcord/default.nix;
@@ -58,6 +58,7 @@ in
       waybar
       wofi
       swayaudioidleinhibit
+      gnome.adwaita-icon-theme # required for cursors in Firefox
 
       # utils
       unzip
@@ -121,7 +122,7 @@ in
       ENV = "$XDG_CONFIG_HOME/sh/shrc";
       PAGER = "less";
       MANPAGER = "nvim -u NORC +Man!";
-      BROWSER = "firejail chromium";
+      BROWSER = "firejail firefox";
     };
     home.file.".config/aliasrc" = {
       source = ./config/aliasrc;
@@ -164,7 +165,7 @@ in
 
     programs.foot = foot;
 
-    programs.chromium = chromium;
+    programs.firefox = firefox;
 
     home.file.".config/waybar/config".source = ./config/waybar/config;
     home.file.".config/waybar/style.css".source = ./config/waybar/style.css;

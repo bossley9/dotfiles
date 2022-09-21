@@ -172,13 +172,19 @@ in
 
   # }}}
 
-  # systemd
+  # optimization {{{
   # reduce the amount of systemd journaling
   services.journald.extraConfig =
   ''
     SystemMaxUse=250M
     MaxRetentionSec=7day
   '';
+  # automatically garbage collect nix
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+  };
+  # }}}
 
   # power consumption and lid events
   #services.logind.lidSwitch = "suspend";

@@ -25,6 +25,15 @@ addToPATH "${HOME}/.cargo/bin"
 
 # }}}
 
+# environment variables {{{
+
+export MOZ_DBUS_REMOTE=1
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM="wayland"
+export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+
+# }}}
+
 # application variables {{{
 
 export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/rg/rgrc"

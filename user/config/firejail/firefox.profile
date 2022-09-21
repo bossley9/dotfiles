@@ -2,7 +2,7 @@
 # NOTE BEFORE MODIFYING THIS FILE:
 # be sure that the changes still allow DRM playback (spotify, netflix, youtube...)
 
-include chromium.local
+include firefox.local
 include globals.local
 
 caps.drop all # remove all root privileges

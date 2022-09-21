@@ -27,6 +27,10 @@ Then create a `secrets.nix` file containing secrets such as:
 
 After booting for the first time, there are a few configurations that are cannot automatically be applied. This section is mostly reminders for me in the case I need to reclone my configuration.
 
-1. Open Chromium and ensure that the extensions are loaded. Chromium (Chrome) likes to disable automatically-installed extensions.
-2. Open `chrome://settings` in Chromium and change each option to sane defaults (be sure to look at all options - many are hidden under menus and sections).
+1. Open `about:preferences#search` in Firefox and set the default search engine to a more privacy-respecting search engine (maybe DuckDuckGo).
+2. Install the following extensions for Firefox, making sure all run in private windows if applicable:
+    * uBlock Origin by Raymond Hill
+    * Firefox Multi-Account Containers by Mozilla Firefox
+    * Bitwarden - Free Password Manager by Bitwarden Inc. (make sure to set the server URL)
+    * Vimium-FF by Stephen Blott and Phil Crosby
 3. Generate new ssh and gpg keys to be used on all machines.

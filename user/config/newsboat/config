@@ -5,7 +5,7 @@
 # gpg --encrypt --default-recipient-self --output ~/.local/share/nflux
 # type the password, ^J, then ^D
 urls-source "miniflux"
-miniflux-url "https://samukun.in"
+miniflux-url "https://news.samukun.in"
 miniflux-login "admin"
 miniflux-passwordeval "gpg --decrypt ~/.local/share/nflux"
 
