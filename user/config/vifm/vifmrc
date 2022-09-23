@@ -148,7 +148,7 @@ filextype <image/*>{*.avif,*.bmp,*.gif,*.jpg,*.jpeg,*.png,*.svg,*.webp,*.xpm}
   \ imv %c,
 " audio files
 filextype <audio/*>{*.m3u,*.m4a,*.mp3,*.ogg,*.wav}
-  \ mpv %c
+  \ mpv --terminal %c
 " videos
 filextype <video/*>{*.avi,*.divx,*.m4v,*.mkv,*.mov,*.mp4,*.mpeg,*.mpg,*.vob,*.webm,*.wmv}
   \ mpv %c

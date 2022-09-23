@@ -1,16 +1,12 @@
 # vim: set filetype=sh :
 # vim: set syntax=dosini :
 
-# gpg --full-gen-key
-# gpg --encrypt --default-recipient-self --output ~/.local/share/nflux
-# type the password, ^J, then ^D
 urls-source "miniflux"
 miniflux-url "https://news.samukun.in"
 miniflux-login "admin"
-miniflux-passwordeval "gpg --decrypt ~/.local/share/nflux"
+miniflux-passwordeval "bw get password news.samukun.in"
 
 auto-reload yes
-# show-read-feeds no
 reload-threads 40
 
 confirm-mark-all-feeds-read no

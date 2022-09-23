@@ -48,6 +48,7 @@ in
       neofetch # For asserting dominance
       vifm
       sc-im
+      bitwarden-cli
 
       # ui
       sway

@@ -33,4 +33,5 @@ After booting for the first time, there are a few configurations that are cannot
     * Firefox Multi-Account Containers by Mozilla Firefox
     * Bitwarden - Free Password Manager by Bitwarden Inc. (make sure to set the server URL)
     * Vimium-FF by Stephen Blott and Phil Crosby
-3. Generate new ssh and gpg keys to be used on all machines.
+3. Set your Bitwarden server: `bw config server https://myvault.example.com`.
+4. Copy over Yubikey ecdsa keys using `ssh-keygen -K`.
