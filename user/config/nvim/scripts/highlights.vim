@@ -120,12 +120,22 @@ hi ErrorMsg guibg=none ctermbg=none guifg=1 ctermfg=1
 
 hi Special ctermfg=5
 hi Constant ctermfg=5
+hi Italic cterm=italic
 
 " }}}
 
+" vim-markdown {{{
+
+let g:vim_markdown_folding_disabled = 1 " disable header folding
+let g:vim_markdown_no_default_key_mappings = 1 " disable keybinds
+let g:vim_markdown_frontmatter = 1 " enable frontmatter highlighting
+let g:vim_markdown_strikethrough = 1 " enable strikethrough highlighting
+
+" }}}
+
+" setl iskeyword-=- overrides default behaviour of ignoring dashes as word boundaries
 augroup highlights
   au!
-  " setl iskeyword-=- overrides default behaviour of ignoring dashes as word boundaries
   au BufRead,BufNewFile *.babel setl ft=javascript
   au Filetype css setl iskeyword-=-
   au Filetype fern setl nonumber

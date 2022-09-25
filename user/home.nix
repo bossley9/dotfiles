@@ -14,7 +14,6 @@ let
   # derivations
   sn = import ./derivations/sn.nix;
   webcord = import ./derivations/webcord/default.nix;
-  customhugo = import ./derivations/hugo.nix;
   swayaudioidleinhibit = import ./derivations/sway-audio-idle-inhibit.nix;
   customncspot = import ./derivations/ncspot.nix;
 
@@ -68,7 +67,7 @@ in
 
       # web
       gnumake
-      customhugo
+      hugo
       # projects
       go
       clang
@@ -136,6 +135,7 @@ in
     # editor
     programs.neovim = nvim;
     home.file.".config/nvim/syntax".source = ./config/nvim/syntax;
+    home.file.".config/nvim/after/syntax".source = ./config/nvim/after/syntax;
 
     programs.git = {
       enable = true;

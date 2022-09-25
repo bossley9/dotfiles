@@ -13,6 +13,8 @@
       "browser.shell.checkDefaultBrowser" = false; # always check if Firefox is your default browser
       # tabs
       "browser.ctrlTab.recentlyUsedOrder" = false; # ctrl + tab cycles through tabs in recently used order
+      # website appearance
+      "layout.css.prefers-color-scheme.content-override" = 0; # choose which color scheme you'd like to use
       # language
       "layout.spellcheckDefault" = 0; # check your spelling as your type
       # DRM content
@@ -35,6 +37,15 @@
       "browser.search.suggest.enabled" = false;
       # enhanced tracking protection
       "privacy.donottrackheader.enabled" = true; # always send websites a "Do Not Track" signal that you don't want to be tracked
+      # cookies and site data
+      # NOTE these settings delete cookies and site data once Firefox is closed
+      "privacy.clearOnShutdown.downloads" = false;
+      "privacy.clearOnShutdown.formdata" = false;
+      "privacy.clearOnShutdown.history" = false;
+      "privacy.clearOnShutdown.offlineApps" = true;
+      "privacy.clearOnShutdown.sessions" = false;
+      "privacy.sanitize.pending" = "[{\"id\":\"shutdown\",\"itemsToClear\":[\"cache\",\"cookies\",\"offlineApps\"],\"options\":{}}]";
+      "privacy.sanitize.sanitizeOnShutdown" = true;
       # logins and passwords
       "signon.rememberSignons" = false; # ask to save logins and passwords for websites
       "signon.autofillForms" = false; # autofill logins and passwords
@@ -53,6 +64,8 @@
       "browser.urlbar.suggest.openpage" = false; # open tabs
       "browser.urlbar.suggest.topsites" = false; # shortcuts
       "browser.urlbar.suggest.engines" = false; # search engines
+      "browser.urlbar.suggest.quicksuggest.nonsponsored" = false; # suggestions from the web
+      "browser.urlbar.suggest.quicksuggest.sponsored" = false; # suggestions from sponsors
       # firefox data collection and use
       "datareporting.healthreport.uploadEnabled" = false; # allow firefox to send technical and interaction data to mozilla
       "browser.discovery.enabled" = false; # allow firefox to make personalized extension recommendations
@@ -172,6 +185,7 @@
       # default download directory
       "dom.input.fallbackUploadDir" = "~/Downloads";
       # }}}
+
     };
     userChrome = "";
     userContent = "";

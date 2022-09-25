@@ -25,6 +25,7 @@
     vim-commentary
     vim-surround
     fern-vim
+    vim-markdown
     # cosmetic
     vim-polyglot
     nord-vim
