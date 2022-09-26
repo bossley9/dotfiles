@@ -23,7 +23,7 @@ in
   enableBashIntegration = false;
   enableFishIntegration = false;
   enableZshIntegration = false;
-  defaultCommand = "rg --files --hidden --follow --glob '!.git/*'";
+  defaultCommand = "rg --files";
   defaultOptions = [
     bindings
     colors

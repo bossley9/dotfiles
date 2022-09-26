@@ -1,5 +1,9 @@
 # vim: ft=conf
 --follow
 --glob=!.git
+--glob=!node_modules
+--glob=!public
+--glob=!resources
+--glob=!result
 --hidden
 --smart-case
