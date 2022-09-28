@@ -5,5 +5,10 @@
 --glob=!public
 --glob=!resources
 --glob=!result
+--glob=!*.gif
+--glob=!*.jpg
+--glob=!*.png
+--glob=!*.pdf
 --hidden
+--no-binary
 --smart-case
