@@ -9,8 +9,6 @@ in
   assert secrets.username != "";
   assert secrets.hostname != "";
   assert with secrets; arch == "amd" || arch == "intel";
-  assert secrets.wifiInterface != "";
-  assert secrets.ethInterface != "";
 
 {
   imports = [
@@ -81,9 +79,14 @@ in
 
   networking.hostName = secrets.hostname;
   networking.useDHCP = false; # False recommended for security reasons.
-  networking.networkmanager.enable = secrets.wifiEnabled;
-  networking.interfaces.${secrets.ethInterface}.useDHCP = secrets.ethEnabled;
-  networking.interfaces."${secrets.wifiInterface}".useDHCP = true;
+  networking.networkmanager.enable = if secrets.wifiInterface != "" then true else false;
+  networking.interfaces = builtins.removeAttrs {
+    ${secrets.ethInterface}.useDHCP = true;
+    ${secrets.wifiInterface}.useDHCP = true;
+  } (builtins.concatLists [
+    (if secrets.ethInterface == "" then [ secrets.ethInterface ] else [])
+    (if secrets.wifiInterface == "" then [ secrets.wifiInterface ] else [])
+  ]);
 
   services.timesyncd.enable = true; # slightly more lightweight than ntpd
   time.timeZone = "America/Los_Angeles";

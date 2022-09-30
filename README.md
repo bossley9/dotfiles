@@ -84,9 +84,7 @@ ip a
   email = "email"; # used for git
   hostname = "hostname";
   arch = "intel or amd";
-  ethEnabled = true;
-  ethInterface = "em0"; # any ethernet interface
-  wifiEnabled = true;
+  ethInterface = ""; # any ethernet interface
   wifiInterface = "iwm0"; # any wifi interface
   isDesktop = true; # optimize for performance
 }
