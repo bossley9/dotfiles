@@ -117,3 +117,17 @@ alias \
   ytmp4="yt-dlp"
 
 # }}}
+
+# misc {{{
+
+ch() {
+  swaymsg input type:pointer events disabled
+  swaymsg input type:trackpad events disabled
+}
+
+cs() {
+  swaymsg input type:pointer events enabled
+  swaymsg input type:trackpad events enabled
+}
+
+# }}}
