@@ -44,7 +44,6 @@ export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config"
 # final initialization {{{
 
 export DOTDIR="${HOME}/.dots"
-export NIXOS_SYSTEM_CONFIGURATION="${DOTDIR}/system/configuration.nix"
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" # allow home-manager to manage shell
 
 # }}}

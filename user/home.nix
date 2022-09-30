@@ -48,10 +48,11 @@ in
       vifm
       sc-im
       bitwarden-cli
+      yubikey-manager
 
       # ui
       sway
-      wl-clipboard xdg_utils # xdg_utils is required for clipboard XDG MIME support (images)
+      wl-clipboard xdg-utils # xdg-utils is required for clipboard XDG MIME support (images)
       bat # for fzf previews
       jetbrains-mono
       font-awesome

@@ -33,7 +33,7 @@ alias \
   hack="nethack" \
   lofi="pl https://youtu.be/jfKfPfyJRdk" \
   n="newsboat" \
-  nr="doas nixos-rebuild -I nixos-config=${NIXOS_SYSTEM_CONFIGURATION}" \
+  nr="doas nixos-rebuild" \
   pl="mpv --terminal" \
   search="w3m google.com" \
   server="${HOME}/Data/Code/server.sh" \

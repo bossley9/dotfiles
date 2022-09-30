@@ -114,14 +114,14 @@ input type:pointer {
 }
 
 input type:touchpad {
-    dwt enabled
-    tap enabled
-    natural_scroll enabled
+  dwt enabled
+  tap enabled
+  natural_scroll enabled
+  accel_profile "adaptive"
+  pointer_accel 1
 }
 
-output HDMI-A-1 resolution 1920x1080 position 0,0
-output DP-1 resolution 1920x1080 position -1920,0
-focus output HDMI-A-1
+exec wlr-randr --output eDP-1 --scale 1.3
 
 # }}}
 

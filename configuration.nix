@@ -4,18 +4,18 @@
 { config, pkgs, ... }:
 
 let
-  secrets = import ../secrets.nix;
+  secrets = import ./secrets.nix;
 in
   assert secrets.username != "";
   assert secrets.hostname != "";
-  assert with secrets; cpu == "amd" || cpu == "intel";
+  assert with secrets; arch == "amd" || arch == "intel";
   assert secrets.wifiInterface != "";
   assert secrets.ethInterface != "";
 
 {
   imports = [
     ./hardware-configuration.nix
-    ../user/home.nix
+    ./user/home.nix
   ];
 
   # enable flakes
@@ -23,12 +23,34 @@ in
 
   # hardware and boot {{{
 
+  boot.initrd.availableKernelModules = builtins.concatLists [
+    # load cryptroot modules first to make boot disk decryption fast
+    (if secrets.arch == "intel" then [ "aesni_intel" ] else [])
+    [ "cryptd" ]
+  ];
+  boot.kernelModules = builtins.concatLists [
+    (if secrets.arch == "amd" then [ "kvm_amd" ] else [])
+    (if secrets.arch == "intel" then [ "kvm_intel" ] else [])
+    # camera and microphone
+    [ "v4l2loopback" "snd-aloop" ]
+  ];
+  # https://www.reddit.com/r/NixOS/comments/p8bqvu/how_to_install_v4l2looback_kernel_module/
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.v4l2loopback.out
+  ];
+  boot.extraModprobeConfig = ''
+    # exclusive_caps: only show device when actually streaming
+    # card_label: name
+    # https://github.com/umlaeute/v4l2loopback
+    options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+  '';
+
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 5;
     editor = false; # False recommended for security reasons.
   };
-  boot.loader.timeout = 3;
+  boot.loader.timeout = 1;
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.cleanTmpDir = true;
@@ -38,7 +60,7 @@ in
   hardware = {
     enableRedistributableFirmware = true;
     bluetooth.enable = false;
-    cpu."${secrets.cpu}".updateMicrocode = true;
+    cpu."${secrets.arch}".updateMicrocode = true;
     opengl = {
       enable = true;
       driSupport = true;
@@ -187,9 +209,9 @@ in
   # }}}
 
   # power consumption and lid events
-  #services.logind.lidSwitch = "suspend";
-  #services.logind.extraConfig = "HandlePowerKey=hibernate";
-  #services.tlp.enable = true;
+  services.logind.lidSwitch = "suspend";
+  services.logind.extraConfig = "HandlePowerKey=hibernate";
+  services.tlp.enable = !secrets.isDesktop;
 
   system.stateVersion = "22.05";
 }
