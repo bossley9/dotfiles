@@ -6,7 +6,7 @@
 2. [Installation](#installation)
 3. [Post Install](#post-install)
 
-## Forward
+## Foreward
 
 This is a collection of all my dotfiles I've accumulated and configured over the years after hopping across many distros and operating systems (MacOS, Linux, BSDs, etc). The following instructions are mostly personal instructions for me in the case I need to reclone my configuration elsewhere.
 
@@ -30,14 +30,15 @@ quit
 ping nixos.org # sanity check
 
 fdisk -l
-dd if=/dev/urandom of=/dev/MY_DRIVE bs=1m # TODO write random data to disk
+dd if=/dev/urandom of=/dev/MY_DRIVE bs=1M status=progress # write random data to disk
 parted /dev/MY_DRIVE -- mklabel gpt
 parted /dev/MY_DRIVE -- mkpart primary 512MB -8GB
 parted /dev/MY_DRIVE -- mkpart primary linux-swap -8GB 100%
 parted /dev/MY_DRIVE -- mkpart ESP fat32 1MB 512MB
 parted /dev/MY_DRIVE -- set 3 esp on
 
-cryptsetup luksFormat /dev/ROOT_PARTITION
+fdisk -l
+cryptsetup luksFormat /dev/ROOT_PARTITION # type in disk password
 cryptsetup luksOpen /dev/ROOT_PARTITION cryptroot
 
 mkfs.ext4 -L nixos /dev/mapper/cryptroot
@@ -64,13 +65,14 @@ reboot # unplug usb and harden BIOS
 Upon logging back in:
 
 ```sh
+nmtui # internet connection if needed
 git clone https://git.sr.ht/~bossley9/dotfiles nixos
 cp /etc/nixos/hardware-configuration.nix nixos/
 rm -r /etc/nixos
 mv nixos /etc/
 ```
 
-Then create a `secrets.nix` file containing secrets:
+Then create a `/etc/nixos/secrets.nix` file containing secrets:
 
 ```
 ip a
@@ -86,7 +88,7 @@ ip a
   ethInterface = "em0"; # any ethernet interface
   wifiEnabled = true;
   wifiInterface = "iwm0"; # any wifi interface
-  isDesktop = false; # optimize for performance
+  isDesktop = true; # optimize for performance
 }
 ```
 
@@ -97,6 +99,7 @@ nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
 nixos-rebuild switch
+reboot
 ```
 
 ## Post Install
@@ -108,11 +111,21 @@ After booting for the first time, there are a few configurations that are cannot
     ```sh
       doas chown -R USERNAME:wheel /etc/nixos
     ```
-3. Open `about:preferences#search` in Firefox and set the default search engine to a more privacy-respecting search engine (maybe DuckDuckGo).
-4. Install the following extensions for Firefox, making sure all run in private windows if applicable:
+3. Open `about:preferences#search` in Firefox and set the default search engine to a more privacy-respecting search engine.
+4. Install the following extensions for Firefox, making sure all run in private windows if applicable.
     * uBlock Origin by Raymond Hill
     * Firefox Multi-Account Containers by Mozilla Firefox
     * Bitwarden - Free Password Manager by Bitwarden Inc. (make sure to set the server URL)
     * Vimium-FF by Stephen Blott and Phil Crosby
-5. Set your Bitwarden server: `bw config server https://myvault.example.com`.
-6. Copy over all Yubikey ecdsa keys using `ssh-keygen -K`.
+5. Set your Bitwarden server.
+    ```sh
+      bw config server https://myvault.example.com
+      bw login
+    ```
+6. Copy over all Yubikey ecdsa keys.
+    ```sh
+      mkdir -p ~/.ssh
+      cd ~/.ssh
+      ssh-keygen -K # without passphrase
+      # then rename keys
+    ```

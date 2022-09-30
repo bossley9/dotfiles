@@ -118,7 +118,7 @@ input type:touchpad {
   tap enabled
   natural_scroll enabled
   accel_profile "adaptive"
-  pointer_accel 1
+  pointer_accel 0.3
 }
 
 exec wlr-randr --output eDP-1 --scale 1.3
