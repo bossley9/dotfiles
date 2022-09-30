@@ -60,6 +60,7 @@ in
       wofi
       swayaudioidleinhibit
       gnome.adwaita-icon-theme # required for cursors in Firefox
+      brightnessctl
 
       # utils
       unzip

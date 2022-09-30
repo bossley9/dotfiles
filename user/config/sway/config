@@ -165,6 +165,9 @@ bar swaybar_command waybar
 # toggle bar
 bindsym $mod+t exec pkill -SIGUSR1 waybar
 
+# base brightness
+exec brightnessctl s 15%
+
 # }}}
 
 # application and config bindings {{{
@@ -176,6 +179,9 @@ bindsym $mod+u exec webcord
 bindsym $mod+bracketright exec pamixer -ui 5
 bindsym $mod+bracketleft exec pamixer -ud 5
 bindsym $mod+backslash exec pamixer --toggle-mute
+
+bindsym $mod+Shift+Control+bracketright exec brightnessctl s +5%
+bindsym $mod+Shift+Control+bracketleft exec brightnessctl s 5%-
 
 # screen capture
 bindsym Shift+Alt+3 exec scene snap
