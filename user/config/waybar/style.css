@@ -65,6 +65,12 @@ window#waybar {
 }
 /* }}} */
 
+/* battery {{{ */
+#battery.charging {
+    color: #8FBCBB;
+}
+/* }}} */
+
 /* clock {{{ */
 /* nothing here! */
 /* }}} */

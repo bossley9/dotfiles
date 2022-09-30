@@ -18,6 +18,7 @@
   "modules-right": [
     "network",
     "pulseaudio",
+    "battery",
     "clock"
   ],
   // }}}
@@ -56,7 +57,7 @@
     "format-disconnected": "disconnected",
     "format-linked": "{ifname} (No IP) {icon}",
     "format-ethernet": "{ipaddr}/{cidr} {icon}",
-    "format-wifi": "{essid} ({signalStrength}%) {icon}",
+    "format-wifi": "{essid}/{signalStrength}% {icon}",
     "format-alt": "{ifname}: {ipaddr}/{cidr} {icon}"
   },
   // }}}
@@ -73,6 +74,16 @@
     },
     "scroll-step": 0,
     "on-click": "pavucontrol"
+  },
+  // }}}
+
+  // battery {{{
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-icons": [
+      "", "", "", "", ""
+    ],
   },
   // }}}
 
