@@ -8,10 +8,10 @@
 let
   secrets = import ../secrets.nix;
   nvim = import ./config/nvim/init.nix args;
-  fzf = import ./config/fzf/fzf.nix args;
   foot = import ./config/foot/foot.nix args;
   firefox = import ./config/browser/firefox.nix args;
   # derivations
+  fzf = import ./derivations/fzf.nix;
   sn = import ./derivations/sn.nix;
   webcord = import ./derivations/webcord/default.nix;
   swayaudioidleinhibit = import ./derivations/sway-audio-idle-inhibit.nix;
@@ -41,7 +41,7 @@ in
 
     home.packages = with pkgs; [
       # functional
-      ripgrep
+      fzf ripgrep
       less
       htop
       neofetch # For asserting dominance
@@ -70,6 +70,7 @@ in
       # web
       gnumake
       hugo
+      rsync
       # projects
       go
       clang
@@ -130,7 +131,6 @@ in
       source = ./config/aliasrc;
       executable = true;
     };
-    programs.fzf = fzf;
     home.file.".config/rg/rgrc".source = ./config/rg/rgrc;
     home.file.".config/bat/config".source = ./config/bat/config;
 

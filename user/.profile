@@ -38,12 +38,27 @@ export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 
 export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/rg/rgrc"
 export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config"
+export FZF_DEFAULT_OPTS="\
+--bind \"alt-k:up,\
+alt-j:down,\
+alt-u:half-page-up,\
+alt-d:half-page-down,\
+alt-h:backward-delete-char,\
+alt-q:abort,\
+alt-l:accept\" \
+--color \"bg+:-1,\
+pointer:#81A1C1,\
+hl:#81A1C1,\
+hl+:#B48EAD,\
+info:#A3BE8C\" \
+--ansi"
+export FZF_DEFAULT_COMMAND="rg --files"
 
 # }}}
 
 # final initialization {{{
 
-export DOTDIR="${HOME}/.dots"
+export DOTDIR="/etc/nixos"
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" # allow home-manager to manage shell
 
 # }}}
