@@ -126,7 +126,7 @@ in
   users.users."${secrets.username}" = {
     isNormalUser = true;
     initialPassword = "test1234";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "plugdev" ];
   };
 
   # shell configuration
@@ -209,6 +209,10 @@ in
     automatic = true;
     dates = "weekly";
   };
+  # }}}
+
+  # keyboard layout {{{
+  hardware.keyboard.zsa.enable = true;
   # }}}
 
   # power consumption and lid events

@@ -66,6 +66,8 @@ in
       unzip
       wev
       wlr-randr
+      dig
+      wally-cli
 
       # web
       gnumake
