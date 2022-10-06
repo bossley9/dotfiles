@@ -122,12 +122,12 @@ alias \
 
 ch() {
   swaymsg input type:pointer events disabled
-  swaymsg input type:trackpad events disabled
+  swaymsg input type:touchpad events disabled
 }
 
 cs() {
   swaymsg input type:pointer events enabled
-  swaymsg input type:trackpad events enabled
+  swaymsg input type:touchpad events enabled
 }
 
 # }}}
