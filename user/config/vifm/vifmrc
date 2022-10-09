@@ -153,7 +153,7 @@ filextype <audio/*>{*.m3u,*.m4a,*.mp3,*.ogg,*.wav}
 filextype <video/*>{*.avi,*.divx,*.m4v,*.mkv,*.mov,*.mp4,*.mpeg,*.mpg,*.vob,*.webm,*.wmv}
   \ mpv %c
 " pdfs
-filextype <application/pdf>{*.epub,*.pdf}
+filextype {*.epub,*.pdf}
   \ zathura %c
 " spreadsheets
 filextype {*.csv,*.sc,*.xlsx}
