@@ -1,48 +1,56 @@
-set noswapfile             " disable swapfiles
-set nobackup
-set nowritebackup
-filetype plugin on         " browse filetypes for file syntax
+lua << EOF
+local set = vim.opt
 
-set updatetime=300         " rate at which buffers/gutters refresh
-set signcolumn=yes         " always display gutters
+set.swapfile = false -- disable swapfiles
+set.backup = false
+set.writebackup = false
 
-let g:netrw_dirhistmax=0   " don't save netrw history
+-- enabled by default
+-- filetype plugin on -- browse filetypes for file syntax
 
-set ignorecase             " case-sensitive search only with capitals
-set smartcase
+set.updatetime = 300 -- rate at which buffers/gutters refresh
+set.signcolumn = 'yes' -- always display gutters
 
-set incsearch              " search while typing
-set hlsearch               " highlight search
+vim.g['netrw_dirhistmax'] = 0 -- don't save netrw history
 
-" indent tab width
-filetype plugin indent on
-set expandtab              " use spaces instead of tabs
-set shiftround             " round indent
-set smartindent
-set autoindent
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set.ignorecase = true -- case-sensitive search only with capitals
+set.smartcase = true
 
-set shortmess=at           " truncate cmd prompt messages
-set noshowcmd              " hide partial command from cmd prompt
-set noshowmode             " hide mode from cmd prompt
+set.incsearch = true -- search while typing
+set.hlsearch = true -- highlight search
 
-set number                 " line numbers
-set showmatch              " matching brackets
-set splitright             " open vertical windows to the right
-set scrolloff=0            " number of lines above and below cursor
+-- enabled by default
+-- filetype plugin indent on -- indent tab width
 
-" trailing space characters
-set list listchars=tab:\ \ ,trail:·
-" effectively remove end of buffer tildes
-set fillchars+=eob:\ 
+set.expandtab = true -- use spaces instead of tabs
+set.shiftround = true -- round indent
+set.smartindent = true
+set.autoindent = true
+set.tabstop = 2
+set.shiftwidth = 2
+set.softtabstop = 2
 
-set mouse=a                " mouse input
+set.shortmess = 'at' -- truncate cmd prompt messages
+set.showcmd = false -- hide partial command from cmd prompt
+set.showmode = false -- hide mode from cmd prompt
 
-" prevent comments from continuing to new lines
-" must be done in autocommand to get set after
-" plugins load
-au FileType * setlocal formatoptions-=cro
+set.number = true -- line numbers
+set.showmatch = true -- matching brackets
+set.splitright = true -- open vertical windows to the right
+set.scrolloff = 0 -- number of lines above and below cursor
 
-set encoding=utf8          " set encoding
+-- trailing space characters
+set.list = true
+set.listchars = 'tab:  ,trail:·'
+
+set.fillchars = set.fillchars + 'eob: ' -- remove end of buffer tildes
+
+set.mouse = 'a' -- mouse input
+
+-- prevent comments from continuing to new lines
+-- must be done in autocommand to get set after
+-- plugins load
+vim.cmd('au FileType * setlocal formatoptions-=cro')
+
+set.encoding = 'utf8' -- set encoding
+EOF

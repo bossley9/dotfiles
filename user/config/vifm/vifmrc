@@ -144,13 +144,13 @@ nnoremap A cw
 
 " images
 exe 'filextype <image/*>{*.avif} '.expand('$BROWSER').' %c'
-filextype <image/*>{*.avif,*.bmp,*.gif,*.jpg,*.jpeg,*.png,*.svg,*.webp,*.xpm}
+filextype {*.avif,*.bmp,*.gif,*.jpg,*.jpeg,*.png,*.svg,*.webp,*.xpm}
   \ imv %c,
 " audio files
-filextype <audio/*>{*.m3u,*.m4a,*.mp3,*.ogg,*.wav}
+filextype {*.m3u,*.m4a,*.mp3,*.ogg,*.wav}
   \ mpv --terminal %c
 " videos
-filextype <video/*>{*.avi,*.divx,*.m4v,*.mkv,*.mov,*.mp4,*.mpeg,*.mpg,*.vob,*.webm,*.wmv}
+filextype {*.avi,*.divx,*.m4v,*.mkv,*.mov,*.mp4,*.mpeg,*.mpg,*.vob,*.webm,*.wmv}
   \ mpv %c
 " pdfs
 filextype {*.epub,*.pdf}
