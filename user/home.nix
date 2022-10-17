@@ -138,6 +138,7 @@ in
 
     # editor
     programs.neovim = nvim;
+    home.file.".config/nvim/lua".source = ./config/nvim/lua;
     home.file.".config/nvim/syntax".source = ./config/nvim/syntax;
     home.file.".config/nvim/after/syntax".source = ./config/nvim/after/syntax;
 

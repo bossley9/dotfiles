@@ -5,7 +5,12 @@
   viAlias = true;
   vimAlias = true;
   extraConfig = builtins.concatStringsSep "\n" [
-    (lib.strings.fileContents ./defaults.vim)
+    ''
+    lua << EOF
+    require('defaults')
+    require('plugins')
+    EOF
+    ''
     (lib.strings.fileContents ./core.vim)
     (lib.strings.fileContents ./vars.vim)
     (lib.strings.fileContents ./scripts/explorer.vim)
@@ -17,9 +22,6 @@
   ];
   # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vim/plugins/generated.nix
   plugins = with pkgs.vimPlugins; [
-    # functional
-    FixCursorHold-nvim
-    fzf-vim
     vim-gitgutter
     git-blame-nvim
     vim-commentary

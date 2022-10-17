@@ -1,4 +1,3 @@
-lua << EOF
 local set = vim.opt
 
 set.swapfile = false -- disable swapfiles
@@ -53,4 +52,3 @@ set.mouse = 'a' -- mouse input
 vim.cmd('au FileType * setlocal formatoptions-=cro')
 
 set.encoding = 'utf8' -- set encoding
-EOF
