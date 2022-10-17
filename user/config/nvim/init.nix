@@ -8,10 +8,10 @@
     ''
     lua << EOF
     require('defaults')
+    require('core')
     require('plugins')
     EOF
     ''
-    (lib.strings.fileContents ./core.vim)
     (lib.strings.fileContents ./vars.vim)
     (lib.strings.fileContents ./scripts/explorer.vim)
     (lib.strings.fileContents ./scripts/sessions.vim)
@@ -19,18 +19,6 @@
     (lib.strings.fileContents ./scripts/highlights.vim)
     (lib.strings.fileContents ./scripts/vcs.vim)
     (lib.strings.fileContents ./scripts/formatter.vim)
-  ];
-  # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vim/plugins/generated.nix
-  plugins = with pkgs.vimPlugins; [
-    vim-gitgutter
-    git-blame-nvim
-    vim-commentary
-    vim-surround
-    fern-vim
-    vim-markdown
-    # cosmetic
-    vim-polyglot
-    nord-vim
   ];
   coc = {
     enable = true;
