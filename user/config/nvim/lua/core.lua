@@ -62,9 +62,11 @@ map('n', '<S-Tab>', '<<')
 map('v', '<S-Tab>', '<gv')
 
 -- code commenting
-map('i', '<M-/>', '<Esc>gc<Right><Right>i', { noremap = false })
-map('n', '<M-/>', '<Esc>gc<Right>', { noremap = false })
-map('v', '<M-/>', 'gcgv', { noremap = false })
+vim.cmd([[
+  imap <M-/> <Esc>gc<Right><Right>i
+  nmap <M-/> <Esc>gc<Right>
+  vmap <M-/> gcgv
+]])
 
 -- clipboard
 map('v', '<C-c>', '"+ygv')

@@ -1,5 +1,7 @@
-" Automatic session management. No configuration needed!
-" vim:fdm=marker
+-- Automatic session management. No configuration needed!
+-- vim:fdm=marker
+
+vim.cmd([[
 
 " directory setup {{{
 
@@ -82,3 +84,5 @@ augroup sessions
 augroup end
 
 " }}}
+
+]])

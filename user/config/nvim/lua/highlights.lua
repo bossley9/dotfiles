@@ -1,4 +1,6 @@
-" vim:fdm=marker
+-- vim:fdm=marker
+
+vim.cmd([[
 
 " debug {{{
 
@@ -144,3 +146,5 @@ augroup highlights
   au BufRead,BufNewFile *.m3u setl ft=m3u
   au Filetype nix setl iskeyword-=-
 augroup end
+
+]])

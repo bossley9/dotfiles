@@ -1,4 +1,6 @@
-" vim:fdm=marker
+-- vim:fdm=marker
+
+vim.cmd([[
 
 " gitgutter {{{
 
@@ -26,3 +28,5 @@ let g:gitblame_ignored_filetypes = [ 'fern', 'netrw' ]
 com! CopySHA GitBlameCopySHA
 
 " }}}
+
+]])

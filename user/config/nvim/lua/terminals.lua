@@ -1,5 +1,7 @@
-" Easier terminal buffers, similar to VSCode's terminal popup window.
-" vim:fdm=marker
+-- Easier terminal buffers, similar to VSCode's terminal popup window.
+-- vim:fdm=marker
+
+vim.cmd([[
 
 " setup and variables {{{
 
@@ -137,3 +139,5 @@ for i in range(s:numTerminals)
 endfor
 
 " }}}
+
+]])

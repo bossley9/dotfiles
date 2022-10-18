@@ -10,7 +10,7 @@ set.writebackup = false
 set.updatetime = 300 -- rate at which buffers/gutters refresh
 set.signcolumn = 'yes' -- always display gutters
 
-vim.g['netrw_dirhistmax'] = 0 -- don't save netrw history
+vim.g.netrw_dirhistmax = 0 -- don't save netrw history
 
 set.ignorecase = true -- case-sensitive search only with capitals
 set.smartcase = true

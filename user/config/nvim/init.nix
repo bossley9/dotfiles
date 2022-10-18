@@ -4,22 +4,20 @@
   enable = true;
   viAlias = true;
   vimAlias = true;
-  extraConfig = builtins.concatStringsSep "\n" [
-    ''
+  extraConfig = ''
     lua << EOF
     require('defaults')
     require('core')
+    require('vars')
     require('plugins')
+    require('explorer')
+    require('sessions')
+    require('terminals')
+    require('highlights')
+    require('vcs')
+    require('formatter')
     EOF
-    ''
-    (lib.strings.fileContents ./vars.vim)
-    (lib.strings.fileContents ./scripts/explorer.vim)
-    (lib.strings.fileContents ./scripts/sessions.vim)
-    (lib.strings.fileContents ./scripts/terminals.vim)
-    (lib.strings.fileContents ./scripts/highlights.vim)
-    (lib.strings.fileContents ./scripts/vcs.vim)
-    (lib.strings.fileContents ./scripts/formatter.vim)
-  ];
+  '';
   coc = {
     enable = true;
     pluginConfig = (lib.strings.fileContents ./scripts/coc.vim);

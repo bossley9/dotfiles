@@ -1,5 +1,7 @@
-" Simple file explorer using netrw. Made to be vifm-like.
-" vim:fdm=marker
+-- Simple file explorer using netrw. Made to be vifm-like.
+-- vim:fdm=marker
+
+vim.cmd([[
 
 " file explorer {{{
 
@@ -75,3 +77,5 @@ nnoremap <silent> <M-p> :Files<CR>
 nnoremap <silent> <M-F> :Rg<CR>
 
 " }}}
+
+]])

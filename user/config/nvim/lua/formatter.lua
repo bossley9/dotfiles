@@ -1,3 +1,5 @@
+vim.cmd([[
+
 let s:formatting_enabled = 1
 
 fu! g:SetFormat(value)
@@ -29,3 +31,5 @@ augroup formatter
   au!
   au BufWritePost * if s:formatting_enabled | call g:Format() | en
 augroup end
+
+]])
