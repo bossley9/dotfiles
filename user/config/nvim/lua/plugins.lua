@@ -47,6 +47,10 @@ return require('packer').startup(function(use)
     'preservim/vim-markdown',
     commit = 'c3f83ebb43b560af066d2a5d66bc77c6c05293b1',
   }
+  use {
+    'neoclide/coc.nvim',
+    tag = 'v0.0.82',
+  }
   -- cosmetic
   use {
     'sheerun/vim-polyglot',

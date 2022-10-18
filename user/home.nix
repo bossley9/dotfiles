@@ -137,10 +137,12 @@ in
     home.file.".config/bat/config".source = ./config/bat/config;
 
     # editor
-    programs.neovim = nvim;
-    home.file.".config/nvim/lua".source = ./config/nvim/lua;
-    home.file.".config/nvim/syntax".source = ./config/nvim/syntax;
-    home.file.".config/nvim/after/syntax".source = ./config/nvim/after/syntax;
+    programs.neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+    };
+    home.file.".config/nvim".source = ./config/nvim;
 
     programs.git = {
       enable = true;

@@ -1,3 +1,5 @@
+vim.cmd([[
+
 " don't display warnings about old vim/node versions
 let g:coc_disable_startup_warning = 1
 
@@ -55,3 +57,5 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-rust-analyzer',
   \ ]
+
+]])
