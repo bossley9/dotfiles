@@ -106,6 +106,10 @@ input * {
 
   repeat_delay 200
   repeat_rate 100
+  # to set the repeat delay and repeat rate in MacOS respectively,
+  # run the following commands then log out and back in:
+  # defaults write -g InitialKeyRepeat -int 10
+  # defaults write -g KeyRepeat -int 1
 }
 
 input type:pointer {

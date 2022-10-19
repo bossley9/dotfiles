@@ -141,6 +141,7 @@ in
       enable = true;
       viAlias = true;
       vimAlias = true;
+      withNodeJs = true;
     };
     home.file.".config/nvim".source = ./config/nvim;
 

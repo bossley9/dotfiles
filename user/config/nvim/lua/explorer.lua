@@ -73,7 +73,8 @@ let g:fzf_layout = {
   \}
 \}
 
-nnoremap <silent> <M-p> :Files<CR>
+nnoremap <silent> <M-p> :GFiles<CR>
+nnoremap <silent> <M-P> :Files<CR>
 nnoremap <silent> <M-F> :Rg<CR>
 
 " }}}

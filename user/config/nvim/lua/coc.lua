@@ -40,22 +40,13 @@ fu! s:showDocumentation()
   endif
 endfunction
 
-" M-f and M-b for scrolling in popups
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <M-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<M-f>"
-  nnoremap <silent><nowait><expr> <M-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<M-b>"
-  inoremap <silent><nowait><expr> <M-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <M-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <M-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<M-f>"
-  vnoremap <silent><nowait><expr> <M-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<M-b>"
-endif
-
 " default extensions to install
 let g:coc_global_extensions = [
-  \ 'coc-clangd',
-  \ 'coc-go',
   \ 'coc-json',
-  \ 'coc-rust-analyzer',
   \ ]
+" try the following:
+" coc-clangd
+" coc-go
+" coc-rust-analyzer
 
 ]])
