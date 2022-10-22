@@ -79,7 +79,11 @@ in
 
   networking.hostName = secrets.hostname;
   networking.useDHCP = false; # False recommended for security reasons.
-  networking.networkmanager.enable = if secrets.wifiInterface != "" then true else false;
+  networking.wireless = {
+    enable = if secrets.wifiInterface != "" then true else false;
+    interfaces = (if secrets.wifiInterface != "" then [ secrets.wifiInterface ] else []);
+    networks = (if secrets.wifiNetworks != null then secrets.wifiNetworks else {});
+  };
   networking.interfaces = builtins.removeAttrs {
     ${secrets.ethInterface}.useDHCP = true;
     ${secrets.wifiInterface}.useDHCP = true;
