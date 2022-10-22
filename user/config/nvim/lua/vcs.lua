@@ -21,12 +21,46 @@ set signcolumn=yes
 
 " }}}
 
-" gitblame {{{
-
-let g:gitblame_ignored_filetypes = [ 'fern', 'netrw' ]
-
-com! CopySHA GitBlameCopySHA
-
-" }}}
-
 ]])
+
+-- gitblame {{{
+
+vim.g.gitblame_ignored_filetypes = { 'fern', 'netrw' }
+vim.g.gitblame_date_format = '%a %d %b %Y %H:%M'
+
+vim.api.nvim_create_user_command('CopySHA', 'GitBlameCopySHA', {})
+
+local utils = require('utils')
+
+-- OpenGitUrl {{{
+
+local remoteHandle = io.popen('git config --get remote.origin.url')
+local remote = remoteHandle:read'*a':gsub('\r?\n', ''):gsub('.git$', '')
+remoteHandle:close()
+
+vim.api.nvim_create_user_command(
+  'OpenGitUrl',
+  function()
+    local ln = vim.api.nvim_win_get_cursor(0)[1]
+    local file = vim.api.nvim_eval('expand("%:p")')
+
+    local shaCmd = 'git --no-pager blame ' .. file .. ' -lL' .. ln .. ',' .. ln
+    local shaHandle = io.popen(shaCmd)
+    local shaOutput = shaHandle:read'*a'
+    local sha = shaOutput:sub(1, shaOutput:find(' '))
+    shaHandle:close()
+
+    local baseURL = remote
+    local domain, path = string.match(remote, "git%@(.*)%:(.*)")
+    if domain and path then
+      baseURL = 'https://' .. domain .. '/' .. path
+    end
+
+    utils.openURL(baseURL .. '/commit/' .. sha)
+  end,
+  {}
+)
+
+-- }}}
+
+-- }}}
