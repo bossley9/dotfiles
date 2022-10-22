@@ -56,7 +56,8 @@ vim.api.nvim_create_user_command(
       baseURL = 'https://' .. domain .. '/' .. path
     end
 
-    utils.openURL(baseURL .. '/commit/' .. sha)
+    local url = baseURL .. '/commit/' .. sha
+    utils.openURL(url:gsub(' ', ''))
   end,
   {}
 )
