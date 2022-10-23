@@ -1,5 +1,9 @@
 local M = {}
 
+function M.getcWORD()
+  return vim.api.nvim_eval("expand('<cWORD>')")
+end
+
 -- adapted from https://stackoverflow.com/a/18864453/9714875
 -- and https://github.com/f-person/git-blame.nvim/blob/master/lua/gitblame/utils.lua
 local open_cmd -- this must stay outside the function to preserve the value

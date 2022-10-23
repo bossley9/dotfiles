@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true }
   if opts then
@@ -62,6 +64,7 @@ map('n', '<S-Tab>', '<<')
 map('v', '<S-Tab>', '<gv')
 
 -- code commenting
+-- must not be recursive
 vim.cmd([[
   imap <M-/> <Esc>gc<Right><Right>i
   nmap <M-/> <Esc>gc<Right>
@@ -71,13 +74,26 @@ vim.cmd([[
 -- clipboard
 map('v', '<C-c>', '"+ygv')
 map('n', '<C-c>', '"+ygv')
-vim.cmd("com! File exe 'silent !echo '.expand('%').' | wl-copy'")
-
--- replace window preview (fzf.vim)
-vim.cmd('com! W w')
+vim.api.nvim_create_user_command('File', "exe 'silent !echo '.expand('%').' | wl-copy'", {})
 
 -- gx browser
-map('n', 'gx', ":silent! exe '!$BROWSER '.fnameescape(expand('<cWORD>'))<CR>")
+vim.api.nvim_create_user_command(
+  'GXBrowse',
+  function()
+    local url = utils.getcWORD()
+    utils.openURL(url)
+  end,
+  {}
+)
+map('n', 'gx', ":GXBrowse<CR>")
 
 -- Nixpkgs browser
-vim.cmd("com! Nix silent exe '!$BROWSER https://github.com/NixOS/nixpkgs/blob/master/'.substitute(substitute(expand('<cWORD>'), '<nixpkgs/', '', ''), '>', '', '')")
+vim.api.nvim_create_user_command(
+  'Nix',
+  function()
+    local baseURL = 'https://github.com/NixOS/nixpkgs/blob/master/'
+    local path = utils.getcWORD():gsub('^<nixpkgs/', ''):gsub('>$', '')
+    utils.openURL(baseURL .. path)
+  end,
+  {}
+)
