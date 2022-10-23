@@ -65,3 +65,22 @@ vim.api.nvim_create_user_command(
 -- }}}
 
 -- }}}
+
+-- diff {{{
+
+vim.api.nvim_create_user_command(
+  'Diff',
+  function()
+    local file = utils.expand('%:p')
+
+    local diffCmd = 'git --no-pager diff ' .. file
+    local diffHandle = io.popen(diffCmd)
+    local diff = diffHandle:read'*a'
+    diffHandle:close()
+
+    utils.copyToClipboard(diff)
+  end,
+  {}
+)
+
+-- }}}
