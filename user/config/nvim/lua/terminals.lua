@@ -130,11 +130,7 @@ endfunction
 
 " }}}
 
-]])
-
--- keymaps {{{
-
-vim.cmd([[
+" keymaps {{{
 
 for i in range(s:numTerminals)
   let s:n = i + 1
