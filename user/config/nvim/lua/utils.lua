@@ -1,8 +1,10 @@
 local M = {}
 
-function M.getcWORD()
-  return vim.api.nvim_eval("expand('<cWORD>')")
-end
+function M.expand(expr) return vim.api.nvim_eval('expand("' .. expr .. '")') end
+
+function M.getcWORD() return M.expand('<cWORD>') end
+
+function M.copyToClipboard(content) vim.fn.setreg('+', content) end
 
 -- adapted from https://stackoverflow.com/a/18864453/9714875
 -- and https://github.com/f-person/git-blame.nvim/blob/master/lua/gitblame/utils.lua

@@ -74,7 +74,11 @@ vim.cmd([[
 -- clipboard
 map('v', '<C-c>', '"+ygv')
 map('n', '<C-c>', '"+ygv')
-vim.api.nvim_create_user_command('File', "exe 'silent !echo '.expand('%').' | wl-copy'", {})
+vim.api.nvim_create_user_command(
+  'File',
+  function() utils.copyToClipboard(utils.expand('%')) end,
+  {}
+)
 
 -- gx browser
 vim.api.nvim_create_user_command(

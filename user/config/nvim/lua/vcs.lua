@@ -1,5 +1,7 @@
 -- vim:fdm=marker
 
+local utils = require('utils')
+
 vim.cmd([[
 
 " gitgutter {{{
@@ -30,8 +32,6 @@ vim.g.gitblame_date_format = '%a %d %b %Y %H:%M'
 
 vim.api.nvim_create_user_command('CopySHA', 'GitBlameCopySHA', {})
 
-local utils = require('utils')
-
 -- OpenGitUrl {{{
 
 local remoteHandle = io.popen('git config --get remote.origin.url')
@@ -42,7 +42,7 @@ vim.api.nvim_create_user_command(
   'OpenGitUrl',
   function()
     local ln = vim.api.nvim_win_get_cursor(0)[1]
-    local file = vim.api.nvim_eval('expand("%:p")')
+    local file = utils.expand('%:p')
 
     local shaCmd = 'git --no-pager blame ' .. file .. ' -lL' .. ln .. ',' .. ln
     local shaHandle = io.popen(shaCmd)
