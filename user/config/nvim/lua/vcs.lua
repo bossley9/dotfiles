@@ -1,29 +1,26 @@
 -- vim:fdm=marker
 
 local utils = require('utils')
+local set = vim.opt
 
-vim.cmd([[
+-- gitgutter {{{
 
-" gitgutter {{{
+local vcs = '│'
 
-let s:vcs = '│'
+-- disable gutter mappings
+vim.g.gitgutter_map_keys = 0
+-- gutter refresh rate
+set.updatetime = 300
+-- gutter symbols
+vim.g.gitgutter_sign_added = vcs
+vim.g.gitgutter_sign_modified = vcs
+vim.g.gitgutter_sign_removed = vcs
+vim.g.gitgutter_sign_removed_first_line = vcs
+vim.g.gitgutter_sign_modified_removed = vcs
 
-" disable gutter mappings
-let g:gitgutter_map_keys = 0
-" gutter refresh rate
-set updatetime=300
-" gutter symbols
-let g:gitgutter_sign_added = s:vcs
-let g:gitgutter_sign_modified = s:vcs
-let g:gitgutter_sign_removed = s:vcs
-let g:gitgutter_sign_removed_first_line = s:vcs
-let g:gitgutter_sign_modified_removed = s:vcs
+set.signcolumn = 'yes'
 
-set signcolumn=yes
-
-" }}}
-
-]])
+-- }}}
 
 -- gitblame {{{
 

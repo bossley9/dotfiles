@@ -73,6 +73,10 @@ in
       gnumake
       hugo
       rsync
+      aspell
+      aspellDicts.en
+      aspellDicts.en-computers
+      aspellDicts.en-science
       # projects
       go
       clang
