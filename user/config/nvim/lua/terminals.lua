@@ -1,6 +1,8 @@
 -- Easier terminal buffers, similar to VSCode's terminal popup window.
 -- vim:fdm=marker
 
+local map = require('utils').map
+
 vim.cmd([[
 
 " setup and variables {{{
@@ -128,16 +130,20 @@ endfunction
 
 " }}}
 
-" keymaps {{{
+]])
 
-nnoremap <silent> <M-`> :call g:ToggleTermWindow()<CR>
-tnoremap <silent> <M-`> <C-\><C-n>:call g:ToggleTermWindow()<CR>
+-- keymaps {{{
+
+vim.cmd([[
 
 for i in range(s:numTerminals)
   let s:n = i + 1
   exe 'tnoremap <silent> <M-'.s:n.'> <C-\><C-n>:call g:FocusTerminal('.i.')<CR>' 
 endfor
 
-" }}}
-
 ]])
+
+map('n', '<M-`>', ':call g:ToggleTermWindow()<CR>', { silent = true })
+map('t', '<M-`>', '<C-\\><C-n>:call g:ToggleTermWindow()<CR>', { silent = true })
+
+-- }}}

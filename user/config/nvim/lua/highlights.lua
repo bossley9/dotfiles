@@ -1,40 +1,52 @@
 -- vim:fdm=marker
 
+-- debug {{{
+
+vim.api.nvim_create_user_command(
+  'DebugHighlights',
+  function() vim.cmd('so $VIMRUNTIME/syntax/hitest.vim') end,
+  {}
+)
+
+vim.api.nvim_create_user_command(
+  'DebugColor',
+  function() vim.cmd('so $VIMRUNTIME/syntax/colortest.vim') end,
+  {}
+)
+
+vim.api.nvim_create_user_command(
+  'DebugColor256',
+  function()
+    vim.cmd([[
+      new
+      let num = 255
+      while num >= 0
+        exec 'hi col_'.num.' ctermbg='.num.' ctermfg=white'
+        exec 'syn match col_'.num.' "ctermbg='.num.':...." containedIn=ALL'
+        call append(0, 'ctermbg='.num.':....')
+        let num = num - 1
+      endwhile
+      set ro
+      set nomodified
+    ]])
+  end,
+  {}
+)
+
+vim.api.nvim_create_user_command(
+  'DebugSynGroup',
+  function()
+    vim.cmd([[
+      let s = synID(line('.'), col('.'), 1)
+      echo synIDattr(s, 'name') . ' -> ' . synIDattr(synIDtrans(s), 'name')
+    ]])
+  end,
+  {}
+)
+
+-- }}}
+
 vim.cmd([[
-
-" debug {{{
-
-fu! g:DebugHighlights()
-  so $VIMRUNTIME/syntax/hitest.vim
-endfunction
-com! DebugHighlights call DebugHighlights()
-
-fu! g:DebugColor()
-  so $VIMRUNTIME/syntax/colortest.vim
-endfunction
-com! DebugColor call DebugColor()
-
-fu! g:DebugColor256()
-  new
-  let num = 255
-  while num >= 0
-    exec 'hi col_'.num.' ctermbg='.num.' ctermfg=white'
-    exec 'syn match col_'.num.' "ctermbg='.num.':...." containedIn=ALL'
-    call append(0, 'ctermbg='.num.':....')
-    let num = num - 1
-  endwhile
-  set ro
-  set nomodified
-endfunction
-com! DebugColor256 call DebugColor256()
-
-fu! g:DebugSynGroup()
-  let l:s = synID(line('.'), col('.'), 1)
-  echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-endfunction
-com! DebugSynGroup call DebugSynGroup()
-
-" }}}
 
 colorscheme nord
 " set termguicolors

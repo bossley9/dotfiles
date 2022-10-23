@@ -1,6 +1,8 @@
 -- Simple file explorer using netrw. Made to be vifm-like.
 -- vim:fdm=marker
 
+local map = require('utils').map
+
 vim.cmd([[
 
 " file explorer {{{
@@ -63,20 +65,20 @@ let g:fern#renderer#default#expanded_symbol = ""
 
 " }}}
 
-" fuzzy finders {{{
-
-let g:fzf_layout = {
-  \'window': {
-    \'width': 1,
-    \'height': 1,
-    \'border': 'sharp',
-  \}
-\}
-
-nnoremap <silent> <M-p> :GFiles<CR>
-nnoremap <silent> <M-P> :Files<CR>
-nnoremap <silent> <M-F> :Rg<CR>
-
-" }}}
-
 ]])
+
+-- fuzzy finders {{{
+
+vim.g.fzf_layout = {
+  window = {
+    width = 1,
+    height = 1,
+    border = 'sharp',
+  }
+}
+
+map('n', '<M-p>', ':GFiles<CR>', { silent = true })
+map('n', '<M-P>', ':Files<CR>', { silent = true })
+map('n', '<M-F>', ':Rg<CR>', { silent = true })
+
+-- }}}
