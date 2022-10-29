@@ -87,13 +87,6 @@ rp() {
 
 # }}}
 
-# environments {{{
-
-alias \
-  ns="nix-shell ${DOTDIR}/user/shells/hacking.nix"
-
-# }}}
-
 # security {{{
 
 pwgen() {

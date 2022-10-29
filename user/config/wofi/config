@@ -14,5 +14,5 @@ layer=overlay
 orientation=horizontal
 key_left=Alt_L-h
 key_right=Alt_L-l
-key_submit=Alt_L-j
-key_exit=Alt_L-q
+key_submit=Return
+key_exit=Escape

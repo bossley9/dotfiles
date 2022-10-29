@@ -26,7 +26,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+escape exit
 
-bindsym Alt+space exec wofi
+bindsym $mod+space exec wofi
 
 # focus
 bindsym $mod+$left focus left
@@ -75,7 +75,7 @@ bindsym $mod+Shift+t layout tabbed
 bindsym $mod+Shift+p layout toggle all
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Control+space focus mode_toggle
 bindsym $mod+Shift+a sticky toggle
 
 # }}}

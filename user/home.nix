@@ -79,8 +79,8 @@ in
       aspellDicts.en-science
       # projects
       go
-      clang
-      rustup
+      deno
+      nodejs
       python3 # webservers with python3 -m http.server
       # fun
       nethack
@@ -105,7 +105,7 @@ in
       # streaming
       (writeShellScriptBin "stream" "nix-shell $DOTDIR/user/shells/streamidle.nix --run obs")
       (writeShellScriptBin "zoom" "NIXPKGS_ALLOW_UNFREE=1 nix-shell --impure $DOTDIR/user/shells/zoom.nix --run \"firejail zoom\"") # requires xwayland
-      (writeShellScriptBin "minecraft" "nix-shell $DOTDIR/user/shells/minecraft.nix --run polymc") # requires xwayland
+      (writeShellScriptBin "minecraft" "nix-shell $DOTDIR/user/shells/minecraft.nix --run prismlauncher") # requires xwayland
       (writeShellScriptBin "vedit" "nix-shell $DOTDIR/user/shells/videoediting.nix --run kdenlive")
     ];
 
