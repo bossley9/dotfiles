@@ -16,6 +16,7 @@ let
   webcord = import ./derivations/webcord/default.nix;
   swayaudioidleinhibit = import ./derivations/sway-audio-idle-inhibit.nix;
   customncspot = import ./derivations/ncspot.nix;
+  sc-im = import ./config/sc-im/sc-im.nix;
 
 in
   assert secrets.username != "";
