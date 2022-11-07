@@ -64,11 +64,15 @@ in
       brightnessctl
 
       # utils
-      unzip
       wev
       wlr-randr
       dig
       wally-cli
+      pdftk
+      # archiving utils
+      unzip
+      zip
+      p7zip
 
       # web
       gnumake
@@ -100,6 +104,7 @@ in
       webcord
 
       # editing
+      tenacity
       inkscape
       gimp # requires xwayland
 
@@ -108,6 +113,10 @@ in
       (writeShellScriptBin "zoom" "NIXPKGS_ALLOW_UNFREE=1 nix-shell --impure $DOTDIR/user/shells/zoom.nix --run \"firejail zoom\"") # requires xwayland
       (writeShellScriptBin "minecraft" "nix-shell $DOTDIR/user/shells/minecraft.nix --run prismlauncher") # requires xwayland
       (writeShellScriptBin "vedit" "nix-shell $DOTDIR/user/shells/videoediting.nix --run kdenlive")
+
+      # wine support
+      # wineWowPackages.stable
+      # winetricks
     ];
 
     # required for fontconfig to find home fonts
