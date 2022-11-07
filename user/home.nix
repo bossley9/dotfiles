@@ -216,7 +216,10 @@ in
 
     home.file.".config/ncspot/config.toml".source = ./config/ncspot/config.toml;
 
-    home.file.".config/mpv".source = ./config/mpv;
+    # do not symlink entire mpv directory for watch_later feature to work properly
+    home.file.".config/mpv/scripts".source = ./config/mpv/scripts;
+    home.file.".config/mpv/input.conf".source = ./config/mpv/input.conf;
+    home.file.".config/mpv/mpv.conf".source = ./config/mpv/mpv.conf;
     home.file.".config/yt-dlp/config".source = ./config/yt-dlp/config;
 
     home.file.".config/newsboat".source = ./config/newsboat;
