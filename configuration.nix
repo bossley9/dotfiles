@@ -82,6 +82,10 @@ in
   networking.wireless = {
     enable = if secrets.wifiInterface != "" then true else false;
     interfaces = (if secrets.wifiInterface != "" then [ secrets.wifiInterface ] else []);
+    userControlled = {
+      enable = true; # allow cli to control networks
+      group = "network";
+    };
     networks = (if secrets.wifiNetworks != null then secrets.wifiNetworks else {});
   };
   networking.interfaces = builtins.removeAttrs {
@@ -130,7 +134,7 @@ in
   users.users."${secrets.username}" = {
     isNormalUser = true;
     initialPassword = "test1234";
-    extraGroups = [ "wheel" "networkmanager" "plugdev" ];
+    extraGroups = [ "wheel" "network" "networkmanager" "plugdev" ];
   };
 
   # shell configuration
