@@ -86,11 +86,6 @@ ip a
   arch = "intel or amd";
   ethInterface = ""; # any ethernet interface
   wifiInterface = "iwm0"; # any wifi interface
-  wifiNetworks = {
-    "mySSID" = {
-      psk = "myPSK";
-    };
-  };
   isDesktop = true; # optimize for performance
 }
 ```

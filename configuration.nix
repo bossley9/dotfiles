@@ -53,7 +53,8 @@ in
 
   boot.cleanTmpDir = true;
   boot.tmpOnTmpfs = true;
-  boot.tmpOnTmpfsSize = "10%";
+  # if too small, builds will fail with "no space left on device"
+  boot.tmpOnTmpfsSize = "30%";
 
   hardware = {
     enableRedistributableFirmware = true;
@@ -79,15 +80,8 @@ in
 
   networking.hostName = secrets.hostname;
   networking.useDHCP = false; # False recommended for security reasons.
-  networking.wireless = {
-    enable = if secrets.wifiInterface != "" then true else false;
-    interfaces = (if secrets.wifiInterface != "" then [ secrets.wifiInterface ] else []);
-    userControlled = {
-      enable = true; # allow cli to control networks
-      group = "network";
-    };
-    networks = (if secrets.wifiNetworks != null then secrets.wifiNetworks else {});
-  };
+  networking.wireless.enable = false;
+  networking.networkmanager.enable = if secrets.wifiInterface != "" then true else false;
   networking.interfaces = builtins.removeAttrs {
     ${secrets.ethInterface}.useDHCP = true;
     ${secrets.wifiInterface}.useDHCP = true;
