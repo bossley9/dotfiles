@@ -102,6 +102,8 @@ in
       zathura mupdf
       amfora
       webcord
+      (writeShellScriptBin "chromium" "nix-shell -p chromium --run \"chromium --incognito\"")
+      transmission-gtk
 
       # editing
       tenacity
