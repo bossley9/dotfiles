@@ -56,6 +56,11 @@ map('i', '<S-Tab>', '<C-d>')
 map('n', '<S-Tab>', '<<')
 map('v', '<S-Tab>', '<gv')
 
+-- brace completion
+map('i', '[', '[]<Esc>i')
+map('i', '{', '{}<Esc>i')
+map('i', '(', '()<Esc>i')
+
 -- code commenting
 -- must not be recursive
 vim.cmd([[
