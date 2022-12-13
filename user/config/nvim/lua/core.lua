@@ -57,9 +57,9 @@ map('n', '<S-Tab>', '<<')
 map('v', '<S-Tab>', '<gv')
 
 -- brace completion
-map('i', '[', '[]<Esc>i')
-map('i', '{', '{}<Esc>i')
-map('i', '(', '()<Esc>i')
+map('i', '[', '[]<Left>')
+map('i', '{', '{}<Left>')
+map('i', '(', '()<Left>')
 
 -- code commenting
 -- must not be recursive
