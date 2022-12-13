@@ -74,6 +74,8 @@ in
       zip
       p7zip
 
+      # documents
+      texlive.combined.scheme-full
       # web
       gnumake
       hugo
