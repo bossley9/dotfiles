@@ -51,6 +51,11 @@ return require('packer').startup(function(use)
     'neoclide/coc.nvim',
     tag = 'v0.0.82',
   }
+  -- depends on $OPENAI_API_KEY https://beta.openai.com/account/api-keys
+  use {
+    'aduros/ai.vim',
+    commit = '7051afa7a5f43b3fe79b7ad20d976d75e07e4e48',
+  }
   -- cosmetic
   use {
     'sheerun/vim-polyglot',

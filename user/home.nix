@@ -146,6 +146,7 @@ in
       PAGER = "less";
       MANPAGER = "nvim -u NORC +Man!";
       BROWSER = "firejail firefox";
+      OPENAI_API_KEY = secrets.openAiKey;
     };
     home.file.".config/aliasrc" = {
       source = ./config/aliasrc;
