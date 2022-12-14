@@ -2,13 +2,13 @@ with (import <nixpkgs> {});
 
 buildGoModule rec {
   pname = "sn";
-  version = "1.7.1";
+  version = "1.9.0";
 
   src = fetchFromSourcehut {
     owner = "~bossley9";
     repo = "${pname}";
     rev = "v${version}";
-    sha256 = "12fa8l0w5h9g0mzdvfh0csika8n5j2c9b10yl3x4yqcwh5jrzlxf";
+    sha256 = "1z0yym469ja6cxlna3srz9ravqwk8h2z22q3z2bmyizdr1ay2vvv";
   };
   tags = [ "production" ];
 
