@@ -29,7 +29,6 @@ alias \
 
 alias \
   am="amfora" \
-  g="git" \
   hack="nethack" \
   lofi="pl https://youtu.be/jfKfPfyJRdk" \
   n="newsboat" \
@@ -40,6 +39,18 @@ alias \
   sp="ncspot" \
   ss="sc-im" \
   zr=". ${ENV}"
+
+alias \
+  g="git" \
+  ga="git add" \
+  gc="git commit" \
+  gcl="git clone" \
+  gcm="git checkout main" \
+  gco="git checkout" \
+  gd="git diff" \
+  gds="git diff --staged" \
+  gp="git pull" \
+  gs="git status"
 
 # }}}
 
@@ -93,11 +104,11 @@ pwgen() {
   tr -dc "[:alnum:]" < /dev/urandom | fold -w 50 | head -n 25 | sed 's/.\{10\}/& /g'
 }
 
-ge() {
+genc() {
   gpg --encrypt --sign --armor --default-recipient-self "$1"
   mv "./${1}.asc" "$1"
 }
-gd() {
+gdec() {
   gpg --output "$1" --yes --decrypt "$1"
 }
 
