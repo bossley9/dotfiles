@@ -152,10 +152,7 @@ in
   security.doas = {
     enable = true;
     extraRules = [
-      { groups = [ "wheel" ]; noPass = false; keepEnv = true; }
-      { groups = [ "wheel" ]; cmd = "nixos-rebuild"; noPass = true; keepEnv = true; }
-      { groups = [ "wheel" ]; cmd = "shutdown"; noPass = true; keepEnv = true; }
-      { groups = [ "wheel" ]; cmd = "reboot"; noPass = true; keepEnv = true; }
+      { groups = [ "wheel" ]; noPass = true; keepEnv = true; }
     ];
   };
 
