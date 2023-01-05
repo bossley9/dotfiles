@@ -146,6 +146,8 @@ nnoremap A cw
 exe 'filextype <image/*>{*.avif} '.expand('$BROWSER').' %c'
 filextype {*.avif,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.svg,*.webp,*.xpm}
   \ imv %c,
+filextype {*.xcf}
+  \ gimp %c
 " audio files
 filextype {*.m3u,*.m4a,*.mp3,*.ogg,*.wav}
   \ mpv --terminal %c

@@ -56,6 +56,7 @@ in
       wl-clipboard xdg-utils # xdg-utils is required for clipboard XDG MIME support (images)
       bat # for fzf previews
       jetbrains-mono
+      open-sans # spotify playlist covers and typefaces
       font-awesome
       waybar
       wofi
@@ -106,6 +107,7 @@ in
       webcord
       (writeShellScriptBin "chromium" "nix-shell -p chromium --run \"chromium --incognito\"")
       transmission-gtk
+      gscan2pdf
 
       # editing
       tenacity

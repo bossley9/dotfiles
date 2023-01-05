@@ -49,8 +49,7 @@ alias \
   gco="git checkout" \
   gd="git diff" \
   gds="git diff --staged" \
-  gp="git pull" \
-  gs="git status"
+  gp="git pull"
 
 # }}}
 
