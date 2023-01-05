@@ -81,7 +81,11 @@ in
   networking.hostName = secrets.hostname;
   networking.useDHCP = false; # False recommended for security reasons.
   networking.wireless.enable = false;
-  networking.networkmanager.enable = if secrets.wifiInterface != "" then true else false;
+  networking.networkmanager = {
+    enable = if secrets.wifiInterface != "" then true else false;
+    # randomizing mac addresses messes up most wifi connections
+    wifi.scanRandMacAddress = false;
+  };
   networking.interfaces = builtins.removeAttrs {
     ${secrets.ethInterface}.useDHCP = true;
     ${secrets.wifiInterface}.useDHCP = true;
