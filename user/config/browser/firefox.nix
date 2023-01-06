@@ -8,182 +8,111 @@
     isDefault = true;
     settings = {
       # about:preferences {{{
-      # startup
-      "browser.startup.page" = 3; # restore previous session
-      "browser.shell.checkDefaultBrowser" = false; # always check if Firefox is your default browser
-      # tabs
-      "browser.ctrlTab.recentlyUsedOrder" = false; # ctrl + tab cycles through tabs in recently used order
-      # website appearance
-      "layout.css.prefers-color-scheme.content-override" = 0; # choose which color scheme you'd like to use
-      # language
-      "layout.spellcheckDefault" = 0; # check your spelling as your type
-      # DRM content
-      "media.eme.enabled" = true; # play DRM-controlled content
-      # browsing
-      "general.smoothScroll" = false; # use smooth scrolling
-      "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false; # recommend extensions as your browse
-      "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false; # recommend features as your browse
-      # new windows and tabs
-      "browser.startup.homepage" = "about:blank"; # homepage and new windows
-      # firefox home content
-      "browser.newtabpage.activity-stream.showSearch" = false; # web search
-      "browser.newtabpage.activity-stream.feeds.topsites" = false; # shortcuts
-      "browser.newtabpage.activity-stream.feeds.section.topstories" = false; # recommended by pocket
-      "browser.newtabpage.activity-stream.feeds.section.highlights" = false; # highlights
-      "browser.newtabpage.activity-stream.feeds.snippets" = false; # snippets
-      # default search engine
+      # Startup
+      "browser.startup.page" = 3; # Open previous windows and tabs
+      "browser.shell.checkDefaultBrowser" = false; # Always check if Firefox is your default browser
+      # Language
+      "layout.spellcheckDefault" = 0; # Check your spelling as you type
+      # Digital Rights Management (DRM) Content
+      "media.eme.enabled" = true; # Play DRM-controlled content
+      # Browsing
+      "general.smoothScroll" = false; # Use smooth scrolling
+      "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false; # Recommend extensions as your browse
+      "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false; # Recommend features as your browse
+      # New Windows and Tabs
+      "browser.startup.homepage" = "about:blank"; # Homepage and new windows
+      "browser.newtabpage.enabled" = false; # New tabs
+      # Firefox Home Content
+      "browser.newtabpage.activity-stream.showSearch" = false; # Web Search
+      "browser.newtabpage.activity-stream.feeds.topsites" = false; # Shortcuts
+      "browser.newtabpage.activity-stream.feeds.section.topstories" = false; # Recommended by Pocket
+      # Default Search Engine
       # NOTE can no longer be set in about:config for security reasons
-      # search suggestions
-      "browser.search.suggest.enabled" = false;
-      # enhanced tracking protection
-      "privacy.donottrackheader.enabled" = true; # always send websites a "Do Not Track" signal that you don't want to be tracked
-      # cookies and site data
-      # NOTE these settings delete cookies and site data once Firefox is closed
+      # Search Suggestions
+      "browser.search.suggest.enabled" = false; # Provide search suggestions
+      # Enhanced Tracking Protection
+      "privacy.donottrackheader.enabled" = true; # Always send websites a "Do Not Track" signal that you don't want to be tracked
+      # Cookies and Site Data
+      # NOTE these settings delete cookies and site data when Firefox is closed
       "privacy.clearOnShutdown.downloads" = false;
       "privacy.clearOnShutdown.formdata" = false;
       "privacy.clearOnShutdown.history" = false;
       "privacy.clearOnShutdown.offlineApps" = true;
       "privacy.clearOnShutdown.sessions" = false;
+      "privacy.history.custom" = true;
       "privacy.sanitize.pending" = "[{\"id\":\"shutdown\",\"itemsToClear\":[\"cache\",\"cookies\",\"offlineApps\"],\"options\":{}}]";
       "privacy.sanitize.sanitizeOnShutdown" = true;
-      # logins and passwords
-      "signon.rememberSignons" = false; # ask to save logins and passwords for websites
-      "signon.autofillForms" = false; # autofill logins and passwords
-      "signon.generation.enabled" = false; # suggest and generate strong passwords
-      "signon.management.page.breach-alerts.enabled" = false; # show alerts about passwords for breached websites
-      # forms and autofill
-      "extensions.formautofill.addresses.enabled" = false; # autofill addresses
-      "extensions.formautofill.creditCards.enabled" = false; # autofill credit cards
-      # history
-      "places.history.enabled" = false; # remember browsing and download history
-      "browser.formfill.enable" = false; # remember search and form history
-      # address bar
-      # when using the address bar = suggest
-      "browser.urlbar.suggest.history" = false; # browsing history
-      "browser.urlbar.suggest.bookmark" = false; # bookmarks
-      "browser.urlbar.suggest.openpage" = false; # open tabs
-      "browser.urlbar.suggest.topsites" = false; # shortcuts
-      "browser.urlbar.suggest.engines" = false; # search engines
-      "browser.urlbar.suggest.quicksuggest.nonsponsored" = false; # suggestions from the web
-      "browser.urlbar.suggest.quicksuggest.sponsored" = false; # suggestions from sponsors
-      # firefox data collection and use
-      "datareporting.healthreport.uploadEnabled" = false; # allow firefox to send technical and interaction data to mozilla
-      "browser.discovery.enabled" = false; # allow firefox to make personalized extension recommendations
-      "app.shield.optoutstudies.enabled" = false; # allow firefox to run and install studies
-      # deceptive content and dangerous software protection
-      "browser.safebrowsing.malware.enabled" = false; # block dangerous aand deceptive content (1)
-      "browser.safebrowsing.phishing.enabled" = false; # block dangerous aand deceptive content (2)
-      "browser.safebrowsing.downloads.enabled" = false; # block dangerous downloads
-      "browser.safebrowsing.downloads.remote.block_potentially_unwanted" = false; # warn you about unwanted and uncommon software (1)
-      "browser.safebrowsing.downloads.remote.block_uncommon" = false; # warn you about unwanted and uncommon software (2)
-      # HTTPS-only mode
-      "dom.security.https_only_mode" = true; # enable https-only mode in all windows (1)
-      "dom.security.https_only_mode_ever_enabled" = true; # enable https-only mode in all windows (2)
+      # Logins and Passwords
+      "signon.rememberSignons" = false; # Ask to save logins and passwords for websites
+      "signon.management.page.breach-alerts.enabled" = false; # Show alerts about passwords for breached websites
+      # Forms and Autofill
+      "extensions.formautofill.addresses.enabled" = false; # Autofill addresses
+      "extensions.formautofill.creditCards.enabled" = false; # Autofill credit cards
+      # History
+      "places.history.enabled" = false; # Remember browsing and download history
+      "browser.formfill.enable" = false; # Remember search and form history
+      # Address Bar - Firefox Suggest
+      # Choose the type of suggestions that appear in the address bar:
+      "browser.urlbar.suggest.history" = false; # Browsing history
+      "browser.urlbar.suggest.bookmark" = false; # Bookmarks
+      "browser.urlbar.suggest.openpage" = false; # Open tabs
+      "browser.urlbar.suggest.topsites" = false; # Shortcuts
+      "browser.urlbar.suggest.engines" = false; # Search engines
+      "browser.urlbar.suggest.quicksuggest.nonsponsored" = false; # Suggestions from the web
+      "browser.urlbar.suggest.quicksuggest.sponsored" = false; # Suggestions from sponsors
+      # Firefox Data Collection and Use
+      "datareporting.healthreport.uploadEnabled" = false; # Allow Firefox to send technical and interaction data to Mozilla
+      "app.shield.optoutstudies.enabled" = false; # Allow Firefox to install and run studies
+      # Deceptive Content and Dangerous Software Protection
+      "browser.safebrowsing.malware.enabled" = false; # Block dangerous aand deceptive content (1)
+      "browser.safebrowsing.phishing.enabled" = false; # Block dangerous aand deceptive content (2)
+      # HTTPS-Only Mode
+      "dom.security.https_only_mode" = true; # Enable HTTPS-Only Mode in all windows (1)
+      "dom.security.https_only_mode_ever_enabled" = true; # Enable HTTPS-Only Mode in all windows (2)
       # }}}
 
       # telemetry and privacy {{{
-      "toolkit.telemetry.reportingpolicy.firstRun" = false;
-      "toolkit.telemetry.enabled" = false;
       "browser.newtabpage.activity-stream.feeds.telemetry" = false;
-      "devtools.onboarding.telemetry.logged" = false;
-      "toolkit.telemetry.updatePing.enabled" = false;
       "browser.newtabpage.activity-stream.telemetry" = false;
       "browser.ping-centre.telemetry" = false;
+      "browser.urlbar.eventTelemetry.enabled" = false;
+      "dom.security.unexpected_system_load_telemetry_enabled" = false;
+      "network.trr.confirmation_telemetry_enabled" = false;
+      "privacy.trackingprotection.origin_telemetry.enabled" = false;
+      "security.app_menu.recordEventTelemetry" = false;
+      "security.certerrors.recordEventTelemetry" = false;
+      "security.identitypopup.recordEventTelemetry" = false;
+      "security.protectionspopup.recordEventTelemetry" = false;
+      "telemetry.origin_telemetry_test_mode.enabled" = false;
+      "toolkit.telemetry.archive.enabled" = false;
       "toolkit.telemetry.bhrPing.enabled" = false;
       "toolkit.telemetry.firstShutdownPing.enabled" = false;
-      "toolkit.telemetry.hybridContent.enabled" = false;
       "toolkit.telemetry.newProfilePing.enabled" = false;
+      "toolkit.telemetry.pioneer-new-studies-available" = false;
+      "toolkit.telemetry.reportingpolicy.firstRun" = false;
       "toolkit.telemetry.shutdownPingSender.enabled" = false;
+      "toolkit.telemetry.shutdownPingSender.enabledFirstSession" = false;
+      "toolkit.telemetry.testing.overrideProductsCheck" = false;
       "toolkit.telemetry.unified" = false;
-      "toolkit.telemetry.archive.enabled" = false;
+      "toolkit.telemetry.updatePing.enabled" = false;
       "toolkit.telemetry.cachedClientID" = "";
-      "datareporting.policy.dataSubmissionEnabled" = false;
-      "datareporting.sessions.current.clean" = true;
-      # turn off syncing
-      "services.sync.prefs.sync.app.shield.optoutstudies.enabled" = false;
-      "services.sync.prefs.sync.browser.discovery.enabled" = false;
-      "services.sync.prefs.sync.browser.formfill.enable" = false;
-      "services.sync.engine.passwords" = false;
-      # syncing
-      "services.sync.declinedEngines" = "passwords,addresses,creditcards";
-      # telemetry master
-      "app.normandy.enabled" = false;
-      "privacy.trackingprotection.enabled" = true;
-      "browser.send_pings" = false;
-      "browser.send_pings.require_same_host" = true;
-      # why are websites reading my battery info tho
-      "dom.battery.enabled" = false;
-      # cookies
-      "network.cookie.alwaysAcceptSessionCookies" = false;
-      "network.cookie.cookieBehavior" = 0;
-      # sites should not be able to see installed plugins
-      "plugins.enumerable_names" = "";
-      # disable geolocation
-      "geo.enabled" = false;
-      "geo.wifi.uri" = "";
-      "browser.search.geoip.url" = "";
-      # extensions
-      "extensions.logging.enabled" = false;
       # }}}
 
       # miscellaneous {{{
-      # meta
-      "browser.aboutConfig.showWarning" = false;
-      # tabs
-      "browser.tabs.warnOnClose" = false;
-      "browser.tabs.warnOnCloseOtherTabs" = false;
-      # disabling junk Mozilla defaults
-      "browser.messaging-system.whatsNewPanel.enabled" = false;
-      "extensions.htmlaboutaddons.recommendations.enabled" = false;
-      # devtools
-      "devtools.toolbox.host" = "right";
-      # media playback
-      "dom.media.autoplay.autoplay-policy-api" = false;
-      "media.autoplay.default" = 1;
-      "media.autoplay.enabled" = false;
-      "media.block-autoplay-until-in-foreground" = true;
-      "media.autoplay.allow-muted" = false;
-      # opengl
-      "gfx.webrender.all" = true;
-      # force acceleration
-      "layers.acceleration.force-enabled" = true;
-      # downloads
-      # display download panel on download
-      "browser.download.panel.shown" = true;
-      # always display download icon in bar
-      "browser.download.autohideButton" = false;
-      # performance
-      # reducing memory footprint
-      "browser.sessionstore.max_tabs_undo" = 5;
-      # max urls you can traverse with forward/back
-      "browser.sessionhistory.max_entries" = 5;
-      # animations
-      "browser.tabs.animate" = false;
-      "browser.download.animateNotifications" = false;
-      "toolkit.cosmeticAnimations.enabled" = false;
-      # fullscreen animations
-      "full-screen-api.transition-duration.enter" = "0 0";
-      "full-screen-api.transition-duration.leave" = "0 0";
-      "ui.prefersReducedMotion" = 1;
-      # hide fullscreen warning
-      "full-screen-api.warning.timeout" = 0;
-      # move Firefox disk cache completely to RAM
-      "browser.cache.disk.parent_directory" = "/run/";
-      "browser.cache.memory.enable" = true;
-      "browser.cache.disk.enable" = false;
-      # extensions
-      "extensions.update.enabled" = false;
-      "extensions.update.autoUpdateEnabled" = false;
-
+      "devtools.toolbox.host" = "right"; # open devtools to the right of the window
+      "media.autoplay.enabled" = false; # do not autoplay media/videos
+      "browser.download.autohideButton" = false; # never hide download icon in bar
+      "full-screen-api.warning.timeout" = 0; # hide fullscreen warning
       "browser.urlbar.placeholderName" = "Firefox";
       "browser.urlbar.placeholderName.private" = "Firefox";
-      # hardcode user agent
-      # warning: this can seriously affect the layout of some websites
-      # but it's required for certain sites (e.g. zoom = outlook, chase)
-      # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent/Firefox
-      # "general.useragent.override" = "Mozilla/5.0 (X11; Linux amd64; rv:95.0) Gecko/20100101 Firefox/95.0";
-      # default download directory
-      "dom.input.fallbackUploadDir" = "~/Downloads";
+      "gfx.webrender.all" = true; # enable OpenGL
+      "layers.acceleration.force-enabled" = true; # force hardware acceleration for performance
+      "browser.sessionstore.max_tabs_undo" = 5; # only undo up to 5 tabs to reduce memory footprint
+      "browser.sessionhistory.max_entries" = 5; # only 5 history entries to reduce memory footprint
+      # move Firefox disk cache completely to RAM
+      "browser.cache.disk.enable" = false;
+      "browser.cache.memory.enable" = true;
+      "dom.input.fallbackUploadDir" = "~/Downloads"; # set upload directory to help gtk find dirs
       # }}}
 
     };
