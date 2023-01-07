@@ -220,7 +220,7 @@ in
 
   # power consumption and lid events
   services.logind.lidSwitch = "suspend";
-  services.logind.extraConfig = "HandlePowerKey=hibernate";
+  services.logind.extraConfig = "HandlePowerKey=suspend";
   services.tlp.enable = !secrets.isDesktop;
 
   system.stateVersion = "22.05";

@@ -118,7 +118,7 @@ After booting for the first time, there are a few configurations that are cannot
 5. Set your Bitwarden server.
     ```sh
       bw config server https://myvault.example.com
-      bw login
+      bw login # be sure to log out after every use as it does not re-prompt MFA.
     ```
 6. Copy over all Yubikey ecdsa keys.
     ```sh
