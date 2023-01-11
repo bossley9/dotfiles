@@ -14,6 +14,12 @@ in
   imports = [
     ./hardware-configuration.nix
     ./user/home.nix
+    # temporary tarball commit pin until switch to flake
+    # this is the first necessary step
+    "${builtins.fetchTarball {
+      url = "https://github.com/Mic92/sops-nix/archive/2253120d2a6147e57bafb5c689e086221df8032f.tar.gz";
+      sha256 = "05r26mgd3vmgqjyfabiqb0x40l2fynwr2akdpkxg4ngkyh8lw7w1";
+    }}/modules/sops"
   ];
 
   # enable flakes
