@@ -70,6 +70,7 @@ in
       dig
       wally-cli
       pdftk
+      tesseract5
       # archiving utils
       unzip
       zip

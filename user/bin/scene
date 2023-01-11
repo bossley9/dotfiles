@@ -48,12 +48,20 @@ togglekeys() {
   fi
 }
 
+transcribe() {
+  out="$(getOutputFile "snap" "png")"
+  grim -g "$(slurp)" "$out"
+  wl-copy "$(tesseract "$out" -)"
+  rm -f "$out"
+}
+
 # }}}
 
 case "$1" in
   "crop") crop ;;
   "snap") snap ;;
   "togglekeys") togglekeys ;;
-  *) echo "USAGE: scene [crop | snap | togglekeys]" ;;
+  "transcribe") transcribe ;;
+  *) echo "USAGE: scene [crop | snap | togglekeys | transcribe]" ;;
 esac
 

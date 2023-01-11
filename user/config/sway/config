@@ -190,6 +190,7 @@ bindsym $mod+Shift+Control+bracketleft exec brightnessctl s 5%-
 # screen capture
 bindsym Shift+Alt+3 exec scene snap
 bindsym Shift+Alt+4 exec scene crop
+bindsym Shift+Alt+6 exec scene transcribe
 bindsym Shift+Alt+9 exec scene togglekeys
 
 # }}}
