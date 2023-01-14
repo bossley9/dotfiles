@@ -1,0 +1,18 @@
+#!/bin/sh
+# vim:fdm=marker
+# window swallowing workaround in sway
+# NOTE: this solution doesn't scale with multiple windows.
+
+args=$@
+
+if [ -z "$1" ]; then
+  echo "No program to swallow. Exiting."
+  exit 1
+fi
+
+swaymsg move container to scratchpad
+
+$args
+
+swaymsg scratchpad show
+swaymsg floating toggle

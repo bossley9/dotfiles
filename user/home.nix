@@ -95,6 +95,7 @@ in
       # multimedia
       grim slurp
       (writeScriptBin "scene" (lib.strings.fileContents ./bin/scene))
+      (writeScriptBin "swallow" (lib.strings.fileContents ./bin/swallow))
       imv
       pamixer pavucontrol
       mpv yt-dlp
