@@ -6,7 +6,8 @@
 # imports {{{
 
 let
-  secrets = import ../secrets.nix;
+  username = "sam";
+  email = "bossley.samuel@gmail.com";
   nvim = import ./config/nvim/init.nix args;
   foot = import ./config/foot/foot.nix args;
   firefox = import ./config/browser/firefox.nix args;
@@ -19,9 +20,6 @@ let
   sc-im = import ./config/sc-im/sc-im.nix;
 
 in
-  assert secrets.username != "";
-  assert secrets.email    != "";
-
 {
   imports = [
     <home-manager/nixos>
@@ -34,9 +32,9 @@ in
   programs.wshowkeys.enable = true;
   nixpkgs.config.chromium.enableWideVine = true; # for DRM content
 
-  home-manager.users."${secrets.username}" = {
-    home.username = secrets.username;
-    home.homeDirectory = "/home/${secrets.username}";
+  home-manager.users."${username}" = {
+    home.username = username;
+    home.homeDirectory = "/home/${username}";
 
     # packages {{{
 
@@ -172,8 +170,8 @@ in
         init.defaultBranch = "main";
         pull.rebase = false;
         user = {
-          name = secrets.username;
-          email = secrets.email;
+          name = username;
+          email = email;
         };
       };
     };

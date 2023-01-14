@@ -4,12 +4,13 @@
 { config, pkgs, ... }:
 
 let
-  secrets = import ./secrets.nix;
+  username = "sam";
+  hostname = "bastion";
+  arch = "amd";
+  ethInterface = "enp34s0";
+  wifiInterface = "";
+  isDesktop = true;
 in
-  assert secrets.username != "";
-  assert secrets.hostname != "";
-  assert with secrets; arch == "amd" || arch == "intel";
-
 {
   imports = [
     ./hardware-configuration.nix
@@ -29,12 +30,12 @@ in
 
   boot.initrd.availableKernelModules = builtins.concatLists [
     # load cryptroot modules first to make boot disk decryption fast
-    (if secrets.arch == "intel" then [ "aesni_intel" ] else [])
+    (if arch == "intel" then [ "aesni_intel" ] else [])
     [ "cryptd" ]
   ];
   boot.kernelModules = builtins.concatLists [
-    (if secrets.arch == "amd" then [ "kvm_amd" ] else [])
-    (if secrets.arch == "intel" then [ "kvm_intel" ] else [])
+    (if arch == "amd" then [ "kvm_amd" ] else [])
+    (if arch == "intel" then [ "kvm_intel" ] else [])
     # camera and microphone
     [ "v4l2loopback" "snd-aloop" ]
   ];
@@ -65,7 +66,7 @@ in
   hardware = {
     enableRedistributableFirmware = true;
     bluetooth.enable = false;
-    cpu."${secrets.arch}".updateMicrocode = true;
+    cpu."${arch}".updateMicrocode = true;
     opengl = {
       enable = true;
       driSupport = true;
@@ -84,20 +85,20 @@ in
 
   # networking and localization {{{
 
-  networking.hostName = secrets.hostname;
+  networking.hostName = hostname;
   networking.useDHCP = false; # False recommended for security reasons.
   networking.wireless.enable = false;
   networking.networkmanager = {
-    enable = if secrets.wifiInterface != "" then true else false;
+    enable = if wifiInterface != "" then true else false;
     # randomizing mac addresses messes up most wifi connections
     wifi.scanRandMacAddress = false;
   };
   networking.interfaces = builtins.removeAttrs {
-    ${secrets.ethInterface}.useDHCP = true;
-    ${secrets.wifiInterface}.useDHCP = true;
+    ${ethInterface}.useDHCP = true;
+    ${wifiInterface}.useDHCP = true;
   } (builtins.concatLists [
-    (if secrets.ethInterface == "" then [ secrets.ethInterface ] else [])
-    (if secrets.wifiInterface == "" then [ secrets.wifiInterface ] else [])
+    (if ethInterface == "" then [ ethInterface ] else [])
+    (if wifiInterface == "" then [ wifiInterface ] else [])
   ]);
 
   services.timesyncd.enable = true; # slightly more lightweight than ntpd
@@ -135,7 +136,7 @@ in
     nix-prefetch nix-prefetch-scripts # for nix-prefetch and nix-prefetch-git
   ];
 
-  users.users."${secrets.username}" = {
+  users.users."${username}" = {
     isNormalUser = true;
     initialPassword = "test1234";
     extraGroups = [ "wheel" "network" "networkmanager" "plugdev" ];
@@ -227,7 +228,7 @@ in
   # power consumption and lid events
   services.logind.lidSwitch = "suspend";
   services.logind.extraConfig = "HandlePowerKey=suspend";
-  services.tlp.enable = !secrets.isDesktop;
+  services.tlp.enable = !isDesktop;
 
   system.stateVersion = "22.05";
 }

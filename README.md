@@ -72,24 +72,6 @@ rm -r /etc/nixos
 mv nixos /etc/
 ```
 
-Then create a `/etc/nixos/secrets.nix` file containing secrets:
-
-```
-ip a
-```
-
-```nix
-{
-  username = "username";
-  email = "email"; # used for git
-  hostname = "hostname";
-  arch = "intel or amd";
-  ethInterface = ""; # any ethernet interface
-  wifiInterface = "iwm0"; # any wifi interface
-  isDesktop = true; # optimize for performance
-}
-```
-
 Finally, subscribe to the following channels and build the configuration:
 
 ```sh
@@ -120,7 +102,7 @@ After booting for the first time, there are a few configurations that are cannot
       bw config server https://myvault.example.com
       bw login # be sure to log out after every use as it does not re-prompt MFA.
     ```
-6. Copy over all Yubikey ecdsa keys.
+6. Copy over all Yubikey ECC/RSA keys.
     ```sh
       mkdir -p ~/.ssh
       cd ~/.ssh
