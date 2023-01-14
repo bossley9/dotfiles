@@ -119,6 +119,9 @@ alias \
   ytmp3="yt-dlp -x --audio-format mp3" \
   ytmp4="yt-dlp"
 
+# yt auto-generated subtitles
+alias ytmp4s="ytmp4 --write-auto-subs"
+
 # }}}
 
 # misc {{{

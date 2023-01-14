@@ -10,7 +10,5 @@
 -f 22/bestvideo+bestaudio/best
 
 --write-subs
-# uncomment for yt auto-generated subtitles
-# --write-auto-subs
 --sub-langs en
 --convert-subs srt
