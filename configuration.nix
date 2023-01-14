@@ -127,7 +127,8 @@ in
 
   environment.systemPackages = with pkgs; [
     # core
-    vim
+    git # required for flakes
+    neovim
     pinentry-curses # for gnupg
     # utils
     bc w3m file gzip
