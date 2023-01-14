@@ -1,6 +1,7 @@
 # See home-configuration.nix(5) for more information.
 # vim:fdm=marker
 
+{ home-manager, ... }:
 { config, pkgs, ... }@args:
 
 # imports {{{
@@ -22,7 +23,7 @@ let
 in
 {
   imports = [
-    <home-manager/nixos>
+    home-manager.nixosModules.home-manager
   ];
 
   # }}}

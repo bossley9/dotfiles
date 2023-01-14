@@ -14,7 +14,6 @@ in
 {
   imports = [
     ./machines/hardware-configuration.nix
-    ./user/home.nix
     # temporary tarball commit pin until switch to flake
     # this is the first necessary step
     "${builtins.fetchTarball {
