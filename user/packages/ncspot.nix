@@ -1,6 +1,6 @@
 # adapted from https://github.com/NixOS/nixpkgs/blob/994fa61c56c3be575eaa0680c93e829d231f8a85/pkgs/applications/audio/ncspot/default.nix
 # for share_clipboard capability
-with (import <nixpkgs> {});
+{ dbus, fetchFromGitHub, lib, libpulseaudio, ncurses, openssl, pkg-config, python3, rustPlatform, xorg, ... }:
 
 rustPlatform.buildRustPackage rec {
   pname = "ncspot";

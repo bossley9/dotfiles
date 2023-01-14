@@ -11,13 +11,13 @@ let
   nvim = import ./config/nvim/init.nix args;
   foot = import ./config/foot/foot.nix args;
   firefox = import ./config/browser/firefox.nix args;
-  # derivations
-  fzf = import ./derivations/fzf.nix;
-  sn = import ./derivations/sn.nix;
-  webcord = import ./derivations/webcord/default.nix;
-  swayaudioidleinhibit = import ./derivations/sway-audio-idle-inhibit.nix;
-  customncspot = import ./derivations/ncspot.nix;
-  sc-im = import ./config/sc-im/sc-im.nix;
+  # packages
+  fzf = pkgs.callPackage ./packages/fzf.nix {};
+  sn = pkgs.callPackage ./packages/sn.nix {};
+  webcord = pkgs.callPackage ./packages/webcord/default.nix {};
+  swayaudioidleinhibit = pkgs.callPackage ./packages/sway-audio-idle-inhibit.nix {};
+  customncspot = pkgs.callPackage ./packages/ncspot.nix {};
+  sc-im = pkgs.callPackage ./config/sc-im/sc-im.nix {};
 
 in
 {

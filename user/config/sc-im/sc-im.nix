@@ -1,6 +1,6 @@
 # adapted from https://github.com/NixOS/nixpkgs/blob/350fd0044447ae8712392c6b212a18bdf2433e71/pkgs/applications/misc/sc-im/default.nix
 # for custom scopen capability
-with (import <nixpkgs> {});
+{ bison, fetchFromGitHub, gnuplot, lib, libxls, libxlsxwriter, libxml2, libzip, makeWrapper, ncurses, pkg-config, stdenv, which, ... }:
 
 stdenv.mkDerivation rec {
   pname = "sc-im";

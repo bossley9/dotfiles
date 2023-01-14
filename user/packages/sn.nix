@@ -1,4 +1,4 @@
-with (import <nixpkgs> {});
+{ buildGoModule, fetchFromSourcehut, lib, ... }:
 
 buildGoModule rec {
   pname = "sn";

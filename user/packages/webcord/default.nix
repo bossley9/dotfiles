@@ -1,4 +1,4 @@
-with (import <nixpkgs> {});
+{ appimageTools, coreutils, fetchurl, ... }:
 
 derivation {
   name = "webcord";
@@ -16,5 +16,5 @@ derivation {
 
   inherit coreutils;
 
-  system = builtins.currentSystem;
+  system = "x86_64-linux";
 }

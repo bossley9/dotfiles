@@ -1,5 +1,5 @@
 # packaged fzf throws memory error
-with (import <nixpkgs> {});
+{ fetchFromGitHub, buildGoModule, lib, ncurses, perl, runtimeShell, writeText, ... }:
 
 buildGoModule rec {
   pname = "fzf";

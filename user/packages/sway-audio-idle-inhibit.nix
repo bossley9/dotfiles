@@ -1,4 +1,4 @@
-with (import <nixpkgs> {});
+{ fetchFromGitHub, libpulseaudio, meson, ninja, pkg-config, stdenv, wayland, wayland-protocols, ... }:
 
 stdenv.mkDerivation rec {
   pname = "sway-audio-idle-inhibit";
