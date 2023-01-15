@@ -5,6 +5,7 @@
 1. [Foreward](#foreward)
 2. [Installation](#installation)
 3. [Post Install](#post-install)
+4. [Available Configurations](#available-configurations)
 
 ## Foreward
 
@@ -105,3 +106,10 @@ After booting for the first time, there are a few configurations that are cannot
     ssh-keygen -K # without passphrase
     # see https://sam.bossley.us/thoughts/22/11/enhancing-security-with-yubikeys for details
     ```
+
+## Available Configurations
+
+These are the configurations I have defined for my devices:
+
+* **bastion**: a powerful desktop with an AMD Ryzen 9 core and AMD Radeon GPU
+* **aegir**: an 11th-gen Framework laptop
