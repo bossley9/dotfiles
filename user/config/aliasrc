@@ -136,4 +136,9 @@ cs() {
   swaymsg input type:touchpad events enabled
 }
 
+pruneSystem() {
+  rm -rvf ${XDG_DATA_HOME}/vifm/Trash/*
+  nix-collect-garbage -d
+}
+
 # }}}
