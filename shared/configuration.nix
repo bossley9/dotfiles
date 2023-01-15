@@ -3,41 +3,12 @@
 
 { config, pkgs, ... }:
 
-let
-  username = "sam";
-  hostname = "bastion";
-  arch = "amd";
-  ethInterface = "enp34s0";
-  wifiInterface = "";
-  isDesktop = true;
-in
 {
-  imports = [
-    ./machines/hardware-configuration.nix
-    # temporary tarball commit pin until switch to flake
-    # this is the first necessary step
-    "${builtins.fetchTarball {
-      url = "https://github.com/Mic92/sops-nix/archive/2253120d2a6147e57bafb5c689e086221df8032f.tar.gz";
-      sha256 = "05r26mgd3vmgqjyfabiqb0x40l2fynwr2akdpkxg4ngkyh8lw7w1";
-    }}/modules/sops"
-  ];
-
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # hardware and boot {{{
 
-  boot.initrd.availableKernelModules = builtins.concatLists [
-    # load cryptroot modules first to make boot disk decryption fast
-    (if arch == "intel" then [ "aesni_intel" ] else [])
-    [ "cryptd" ]
-  ];
-  boot.kernelModules = builtins.concatLists [
-    (if arch == "amd" then [ "kvm_amd" ] else [])
-    (if arch == "intel" then [ "kvm_intel" ] else [])
-    # camera and microphone
-    [ "v4l2loopback" "snd-aloop" ]
-  ];
   # https://www.reddit.com/r/NixOS/comments/p8bqvu/how_to_install_v4l2looback_kernel_module/
   boot.extraModulePackages = [
     config.boot.kernelPackages.v4l2loopback.out
@@ -65,7 +36,6 @@ in
   hardware = {
     enableRedistributableFirmware = true;
     bluetooth.enable = false;
-    cpu."${arch}".updateMicrocode = true;
     opengl = {
       enable = true;
       driSupport = true;
@@ -84,21 +54,8 @@ in
 
   # networking and localization {{{
 
-  networking.hostName = hostname;
   networking.useDHCP = false; # False recommended for security reasons.
   networking.wireless.enable = false;
-  networking.networkmanager = {
-    enable = if wifiInterface != "" then true else false;
-    # randomizing mac addresses messes up most wifi connections
-    wifi.scanRandMacAddress = false;
-  };
-  networking.interfaces = builtins.removeAttrs {
-    ${ethInterface}.useDHCP = true;
-    ${wifiInterface}.useDHCP = true;
-  } (builtins.concatLists [
-    (if ethInterface == "" then [ ethInterface ] else [])
-    (if wifiInterface == "" then [ wifiInterface ] else [])
-  ]);
 
   services.timesyncd.enable = true; # slightly more lightweight than ntpd
   time.timeZone = "America/Los_Angeles";
@@ -136,7 +93,7 @@ in
     nix-prefetch nix-prefetch-scripts # for nix-prefetch and nix-prefetch-git
   ];
 
-  users.users."${username}" = {
+  users.users.sam = {
     isNormalUser = true;
     initialPassword = "test1234";
     extraGroups = [ "wheel" "network" "networkmanager" "plugdev" ];
@@ -228,7 +185,6 @@ in
   # power consumption and lid events
   services.logind.lidSwitch = "suspend";
   services.logind.extraConfig = "HandlePowerKey=suspend";
-  services.tlp.enable = !isDesktop;
 
   system.stateVersion = "22.05";
 }

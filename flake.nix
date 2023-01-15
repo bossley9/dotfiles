@@ -22,7 +22,17 @@
       bastion = lib.nixosSystem {
         inherit system;
         modules = [
-          ./configuration.nix
+          ./machines/bastion/hardware-configuration.nix
+          ./shared/configuration.nix
+          ./machines/bastion/bastion.nix
+          (import ./user/home.nix inputs)
+        ];
+      };
+      aegir = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./shared/configuration.nix
+          ./machines/aegir/aegir.nix
           (import ./user/home.nix inputs)
         ];
       };

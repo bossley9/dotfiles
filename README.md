@@ -25,9 +25,9 @@ add_network
 set_network 0 ssid "WIFI_NAME"
 set_network 0 psk "WIFI_PASSWORD"
 set_network 0 key_mgmt WPA-PSK
-enable_network 0
+enable_network 0 # wait for connection to be logged
 quit
-ping nixos.org # sanity check
+ping google.com # sanity check
 
 fdisk -l
 dd if=/dev/urandom of=/dev/MY_DRIVE bs=1M status=progress # write random data to disk
@@ -38,8 +38,8 @@ parted /dev/MY_DRIVE -- mkpart ESP fat32 1MB 512MB
 parted /dev/MY_DRIVE -- set 3 esp on
 
 fdisk -l
-cryptsetup luksFormat /dev/ROOT_PARTITION # type in disk password
-cryptsetup luksOpen /dev/ROOT_PARTITION cryptroot
+cryptsetup luksFormat /dev/MAIN_PARTITION # type in disk password
+cryptsetup luksOpen /dev/MAIN_PARTITION cryptroot
 
 mkfs.ext4 -L nixos /dev/mapper/cryptroot
 mkswap -L swap /dev/SWAP_PARTITION
@@ -58,27 +58,26 @@ vim /mnt/etc/nixos/configuration.nix
 Ensure that you add system packages `vim` and `git`. Be sure to enable `NetworkManager`.
 
 ```sh
-nixos-install # type in root password
+nixos-install # type in a temporary root password. This password will be erased later.
 reboot # unplug usb and harden BIOS
 ```
 
-Upon logging back in:
+Upon logging back in as root:
 
 ```sh
 nmtui # internet connection if needed
 git clone https://git.sr.ht/~bossley9/dotfiles nixos
-cp /etc/nixos/hardware-configuration.nix nixos/
+# create a new flake configuration and copy over the hardware configuration here if necessary.
 rm -r /etc/nixos
 mv nixos /etc/
 ```
 
-Finally, subscribe to the following channels and build the configuration:
+Finally, build the configuration:
 
 ```sh
-nix-channel --add https://nixos.org/channels/nixos-unstable nixos
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-nixos-rebuild switch
+cd /etc/nixos
+# where NAME is the name of the configuration:
+nixos-rebuild switch --flake .#NAME
 reboot
 ```
 
@@ -86,7 +85,8 @@ reboot
 
 After booting for the first time, there are a few configurations that are cannot automatically be applied.
 
-1. Set your user password after using the initial password to log in.
+1. Set your user password with `passwd` after using the initial password to log in.
+2. Implicitly remove the root password with `doas passwd -l root`.
 2. Change the permissions of the configuration directory.
     ```sh
       doas chown -R USERNAME:wheel /etc/nixos
