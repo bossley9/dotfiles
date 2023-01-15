@@ -85,7 +85,7 @@ After booting for the first time, there are a few configurations that are cannot
 2. Implicitly remove the root password with `doas passwd -l root`.
 2. Change the permissions of the configuration directory.
     ```sh
-      doas chown -Rv USERNAME:wheel /etc/nixos
+    doas chown -Rv USERNAME:wheel /etc/nixos
     ```
 3. Open `about:preferences#search` in Firefox and set the default search engine to a more privacy-respecting search engine.
 4. Install the following extensions for Firefox, making sure all run in private windows if applicable.
@@ -95,13 +95,13 @@ After booting for the first time, there are a few configurations that are cannot
     * Vimium-FF by Stephen Blott and Phil Crosby
 5. Set your Bitwarden server.
     ```sh
-      bw config server https://myvault.example.com
-      bw login # be sure to log out after every use as it does not re-prompt MFA.
+    bw config server https://myvault.example.com
+    bw login # be sure to log out after every use as it does not re-prompt MFA.
     ```
 6. Copy over all Yubikey ECC/RSA keys.
     ```sh
-      mkdir -p ~/.ssh
-      cd ~/.ssh
-      ssh-keygen -K # without passphrase
-      # see https://sam.bossley.us/thoughts/22/11/enhancing-security-with-yubikeys for details
+    mkdir -p ~/.ssh
+    cd ~/.ssh
+    ssh-keygen -K # without passphrase
+    # see https://sam.bossley.us/thoughts/22/11/enhancing-security-with-yubikeys for details
     ```
