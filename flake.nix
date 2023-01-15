@@ -31,6 +31,7 @@
       aegir = lib.nixosSystem {
         inherit system;
         modules = [
+          ./machines/aegir/hardware-configuration.nix
           ./shared/configuration.nix
           ./machines/aegir/aegir.nix
           (import ./user/home.nix inputs)

@@ -52,12 +52,8 @@ mount /dev/disk/by-label/boot /mnt/boot
 
 nixos-generate-config --root /mnt
 cat /mnt/etc/nixos/hardware-configuration.nix # sanity check
-vim /mnt/etc/nixos/configuration.nix
-```
+vim /mnt/etc/nixos/configuration.nix # ensure that you add system packages neovim and git, and enable Network Manager.
 
-Ensure that you add system packages `vim` and `git`. Be sure to enable `NetworkManager`.
-
-```sh
 nixos-install # type in a temporary root password. This password will be erased later.
 reboot # unplug usb and harden BIOS
 ```
@@ -89,7 +85,7 @@ After booting for the first time, there are a few configurations that are cannot
 2. Implicitly remove the root password with `doas passwd -l root`.
 2. Change the permissions of the configuration directory.
     ```sh
-      doas chown -R USERNAME:wheel /etc/nixos
+      doas chown -Rv USERNAME:wheel /etc/nixos
     ```
 3. Open `about:preferences#search` in Firefox and set the default search engine to a more privacy-respecting search engine.
 4. Install the following extensions for Firefox, making sure all run in private windows if applicable.
@@ -107,5 +103,5 @@ After booting for the first time, there are a few configurations that are cannot
       mkdir -p ~/.ssh
       cd ~/.ssh
       ssh-keygen -K # without passphrase
-      # then rename keys
+      # see https://sam.bossley.us/thoughts/22/11/enhancing-security-with-yubikeys for details
     ```
