@@ -33,6 +33,7 @@ alias \
   lofi="pl https://youtu.be/jfKfPfyJRdk" \
   n="newsboat" \
   nr="doas nixos-rebuild" \
+  nrs="doas nixos-rebuild switch --flake .#" \
   pl="mpv --terminal" \
   search="w3m google.com" \
   server="${HOME}/Data/Code/server.sh" \

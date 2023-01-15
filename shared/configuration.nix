@@ -87,10 +87,15 @@
     neovim
     pinentry-curses # for gnupg
     # utils
-    bc w3m file gzip
+    bc
+    w3m
+    file
+    gzip
     # nix-specific utils
     nix-index # for nix-locate
-    nix-prefetch nix-prefetch-scripts # for nix-prefetch and nix-prefetch-git
+    # for nix-prefetch and nix-prefetch-git
+    nix-prefetch
+    nix-prefetch-scripts
   ];
 
   users.users.sam = {
@@ -167,10 +172,10 @@
   # optimization {{{
   # reduce the amount of systemd journaling
   services.journald.extraConfig =
-  ''
-    SystemMaxUse=250M
-    MaxRetentionSec=7day
-  '';
+    ''
+      SystemMaxUse=250M
+      MaxRetentionSec=7day
+    '';
   # automatically garbage collect nix
   nix.gc = {
     automatic = true;

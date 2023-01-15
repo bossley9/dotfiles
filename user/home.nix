@@ -9,16 +9,15 @@
 let
   username = "sam";
   email = "bossley.samuel@gmail.com";
-  nvim = import ./config/nvim/init.nix args;
   foot = import ./config/foot/foot.nix args;
   firefox = import ./config/browser/firefox.nix args;
   # packages
-  fzf = pkgs.callPackage ./packages/fzf.nix {};
-  sn = pkgs.callPackage ./packages/sn.nix {};
-  webcord = pkgs.callPackage ./packages/webcord/default.nix {};
-  swayaudioidleinhibit = pkgs.callPackage ./packages/sway-audio-idle-inhibit.nix {};
-  customncspot = pkgs.callPackage ./packages/ncspot.nix {};
-  sc-im = pkgs.callPackage ./config/sc-im/sc-im.nix {};
+  fzf = pkgs.callPackage ./packages/fzf.nix { };
+  sn = pkgs.callPackage ./packages/sn.nix { };
+  webcord = pkgs.callPackage ./packages/webcord/default.nix { };
+  swayaudioidleinhibit = pkgs.callPackage ./packages/sway-audio-idle-inhibit.nix { };
+  customncspot = pkgs.callPackage ./packages/ncspot.nix { };
+  sc-im = pkgs.callPackage ./config/sc-im/sc-im.nix { };
 
 in
 {
@@ -41,7 +40,8 @@ in
 
     home.packages = with pkgs; [
       # functional
-      fzf ripgrep
+      fzf
+      ripgrep
       less
       htop
       neofetch # For asserting dominance
@@ -52,7 +52,8 @@ in
 
       # ui
       sway
-      wl-clipboard xdg-utils # xdg-utils is required for clipboard XDG MIME support (images)
+      wl-clipboard
+      xdg-utils # xdg-utils is required for clipboard XDG MIME support (images)
       bat # for fzf previews
       jetbrains-mono
       open-sans # spotify playlist covers and typefaces
@@ -70,6 +71,7 @@ in
       wally-cli
       pdftk
       tesseract5
+      nixpkgs-fmt
       # archiving utils
       unzip
       zip
@@ -94,16 +96,21 @@ in
       nethack
 
       # multimedia
-      grim slurp
+      grim
+      slurp
       (writeScriptBin "scene" (lib.strings.fileContents ./bin/scene))
       (writeScriptBin "swallow" (lib.strings.fileContents ./bin/swallow))
       imv
-      pamixer pavucontrol
-      mpv yt-dlp
+      pamixer
+      pavucontrol
+      mpv
+      yt-dlp
       newsboat
       sn
-      customncspot cava
-      zathura mupdf
+      customncspot
+      cava
+      zathura
+      mupdf
       amfora
       webcord
       (writeShellScriptBin "chromium" "nix-shell -p chromium --run \"chromium --incognito\"")
@@ -144,7 +151,7 @@ in
     };
     home.sessionVariables = {
       EDITOR = "nvim";
-      VISUAL="nvim";
+      VISUAL = "nvim";
       ENV = "$XDG_CONFIG_HOME/sh/shrc";
       PAGER = "less";
       MANPAGER = "nvim -u NORC +Man!";
