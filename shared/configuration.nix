@@ -89,6 +89,7 @@
     # utils
     bc
     w3m
+    wget
     file
     gzip
     # nix-specific utils

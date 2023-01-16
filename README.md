@@ -92,7 +92,7 @@ After booting for the first time, there are a few configurations that are cannot
 4. Install the following extensions for Firefox, making sure all run in private windows if applicable.
     * uBlock Origin by Raymond Hill
     * Firefox Multi-Account Containers by Mozilla Firefox
-    * Bitwarden - Free Password Manager by Bitwarden Inc. (make sure to set the server URL)
+    * Bitwarden - Free Password Manager by Bitwarden Inc. (make sure to set the server URL, set vault timeout action to log out, and other options)
     * Vimium-FF by Stephen Blott and Phil Crosby
 5. Set your Bitwarden server.
     ```sh

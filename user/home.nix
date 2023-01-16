@@ -73,9 +73,11 @@ in
       tesseract5
       nixpkgs-fmt
       # archiving utils
-      unzip
+      unzip # *.zip
       zip
       p7zip
+      libarchive # bsdtar - *.tar*
+      unar # *.rar
 
       # documents
       texlive.combined.scheme-full

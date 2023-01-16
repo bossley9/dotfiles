@@ -53,6 +53,7 @@ hl+:#B48EAD,\
 info:#A3BE8C\" \
 --ansi"
 export FZF_DEFAULT_COMMAND="rg --files"
+export GPG_TTY=$(tty)
 
 # }}}
 
