@@ -12,7 +12,6 @@ let
   foot = import ./config/foot/foot.nix args;
   firefox = import ./config/browser/firefox.nix args;
   # packages
-  fzf = pkgs.callPackage ./packages/fzf.nix { };
   sn = pkgs.callPackage ./packages/sn.nix { };
   webcord = pkgs.callPackage ./packages/webcord/default.nix { };
   swayaudioidleinhibit = pkgs.callPackage ./packages/sway-audio-idle-inhibit.nix { };
