@@ -3,8 +3,7 @@
 
 urls-source "miniflux"
 miniflux-url "https://news.samukun.in"
-miniflux-login "admin"
-miniflux-passwordeval "bw get password news.samukun.in"
+miniflux-tokenfile "~/Data/Media/Feed/miniflux-token"
 
 auto-reload yes
 reload-threads 40
