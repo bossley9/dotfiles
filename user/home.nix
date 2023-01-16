@@ -16,7 +16,12 @@ let
   webcord = pkgs.callPackage ./packages/webcord/default.nix { };
   swayaudioidleinhibit = pkgs.callPackage ./packages/sway-audio-idle-inhibit.nix { };
   customncspot = pkgs.callPackage ./packages/ncspot.nix { };
-  sc-im = pkgs.callPackage ./config/sc-im/sc-im.nix { };
+  sc-im = pkgs.sc-im.overrideAttrs (finalAttrs: previousAttrs: {
+    postInstall = builtins.concatStringsSep "\n" [
+      previousAttrs.postInstall
+      "cp -v ${./config/sc-im/scopen} $out/bin/scopen"
+    ];
+  });
 
 in
 {
