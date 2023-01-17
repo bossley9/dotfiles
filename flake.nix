@@ -24,7 +24,7 @@
           inherit system;
           modules = [
             ./machines/bastion/hardware-configuration.nix
-            ./shared/configuration.nix
+            (import ./shared/configuration.nix inputs)
             ./machines/bastion/bastion.nix
             (import ./user/home.nix inputs)
           ];
@@ -34,7 +34,7 @@
           modules = [
             ./machines/aegir/hardware-configuration.nix
             nixos-hardware.nixosModules.framework
-            ./shared/configuration.nix
+            (import ./shared/configuration.nix inputs)
             ./machines/aegir/aegir.nix
             (import ./user/home.nix inputs)
           ];

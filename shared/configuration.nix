@@ -1,11 +1,17 @@
 # See configuration.nix(5) or run 'nixos-help' for more information.
 # vim:fdm=marker
 
+{ nixpkgs, ... }:
 { config, pkgs, ... }:
 
 {
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # use the system configuration nixpkgs for flakes
+  nix.registry.nixpkgs.flake = nixpkgs;
+  # use the system configuration nixpkgs for nix shells
+  nix.nixPath = [ "nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
+  environment.etc."channels/nixpkgs".source = nixpkgs.outPath;
 
   # hardware and boot {{{
 
