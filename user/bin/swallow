@@ -1,18 +1,44 @@
 #!/bin/sh
 # vim:fdm=marker
 # window swallowing workaround in sway
-# NOTE: this solution doesn't scale with multiple windows.
+# NOTE: assumes scratchpad is never explicitly used by user
 
-args=$@
+program=$@
+STATE_FILE="/tmp/swallow-index"
 
 if [ -z "$1" ]; then
   echo "No program to swallow. Exiting."
   exit 1
 fi
 
-swaymsg move container to scratchpad
+if ! [ -f "$STATE_FILE" ]; then
+  echo "0" > "$STATE_FILE"
+  chmod 600 "$STATE_FILE"
+fi
 
-$args
+startIndex="$(cat "$STATE_FILE")"
+
+swaymsg move container to scratchpad
+echo `expr $startIndex + 1` > "$STATE_FILE"
+
+$program
+
+currentIndex="$(cat "$STATE_FILE")"
+
+# cycle through initial scratchpad items for window
+for x in `seq $startIndex`; do
+  swaymsg scratchpad show
+  swaymsg move container to scratchpad
+done
 
 swaymsg scratchpad show
 swaymsg floating toggle
+
+# cycle through remaining scratchpad items to reset index
+remaining=`expr $currentIndex - $startIndex - 1`
+for x in `seq $remaining`; do
+  swaymsg scratchpad show
+  swaymsg move container to scratchpad
+done
+
+echo `expr $currentIndex - 1` > "$STATE_FILE"
