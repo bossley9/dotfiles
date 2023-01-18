@@ -6,6 +6,7 @@
   profiles."main" = {
     id = 0;
     isDefault = true;
+    search.default = "DuckDuckGo";
     settings = {
       # about:preferences {{{
       # Startup
