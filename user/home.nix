@@ -179,17 +179,7 @@ in
     };
     home.file.".config/nvim".source = ./config/nvim;
 
-    programs.git = {
-      enable = true;
-      extraConfig = {
-        init.defaultBranch = "main";
-        pull.rebase = false;
-        user = {
-          name = username;
-          email = email;
-        };
-      };
-    };
+    home.file.".config/git/config".source = ./config/git/config;
 
     # symlinking the directory otherwise vifm can't find the colorschemes
     home.file.".config/vifm".source = ./config/vifm;

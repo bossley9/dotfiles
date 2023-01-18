@@ -1,0 +1,24 @@
+[alias]
+  a = "add"
+  aa = "add :"
+  c = "commit -m"
+  d = "diff"
+  ds = "diff --staged"
+  m = "!git checkout main && git pull"
+  n = "checkout -b"
+  o = "checkout"
+  s = "status"
+  zzz = "!git restore --staged : && git restore :"
+
+[init]
+  defaultBranch = "main"
+
+[pull]
+  rebase = false
+
+[push]
+  autoSetupRemote = true
+
+[user]
+  email = "bossley.samuel@gmail.com"
+  name = "Sam Bossley"

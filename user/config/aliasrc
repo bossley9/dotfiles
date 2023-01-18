@@ -41,18 +41,7 @@ alias \
   ss="sc-im" \
   zr=". ${ENV}"
 
-alias \
-  g="git" \
-  ga="git add" \
-  gc="git commit" \
-  gcl="git clone" \
-  gcm="git checkout main" \
-  gco="git checkout" \
-  gd="git diff" \
-  gds="git diff --staged" \
-  gp="git pull"
-
-# }}}
+alias g="git"
 
 # navigation {{{
 
