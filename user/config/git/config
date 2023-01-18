@@ -10,6 +10,9 @@
   s = "status"
   zzz = "!git restore --staged : && git restore :"
 
+[core]
+  editor = "nvim"
+
 [init]
   defaultBranch = "main"
 
