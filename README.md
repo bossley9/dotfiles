@@ -84,10 +84,11 @@ After booting for the first time, there are a few configurations that are cannot
 
 1. Set your user password with `passwd` after using the initial password to log in.
 2. Implicitly remove the root password with `doas passwd -l root`.
-3. Change the permissions of the configuration directory.
+2. Change the permissions of the configuration directory.
     ```sh
     doas chown -Rv USERNAME:wheel /etc/nixos
     ```
+3. Open `about:preferences#search` in Firefox and set the default search engine to a more privacy-respecting search engine.
 4. Install the following extensions for Firefox, making sure all run in private windows if applicable.
     * uBlock Origin by Raymond Hill
     * Firefox Multi-Account Containers by Mozilla Firefox
