@@ -50,7 +50,9 @@ alt-l:accept\" \
 pointer:#81A1C1,\
 hl:#81A1C1,\
 hl+:#B48EAD,\
-info:#A3BE8C\" \
+info:#A3BE8C,\
+separator:#3B4252,\
+spinner:#8FBCBB\" \
 --ansi"
 export FZF_DEFAULT_COMMAND="rg --files"
 

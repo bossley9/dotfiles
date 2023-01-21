@@ -18,7 +18,7 @@ cd() {
 alias \
   sus="systemctl suspend" \
   reboot="doas reboot" \
-  shutdown="doas shutdown -h now"
+  shutdown="doas shutdown now"
 
 alias \
   pq="nix search nixpkgs --offline"
@@ -32,12 +32,10 @@ alias \
   hack="nethack" \
   lofi="pl https://youtu.be/jfKfPfyJRdk" \
   n="newsboat" \
-  nr="doas nixos-rebuild" \
   nrs="doas nixos-rebuild switch --flake .#" \
-  pl="mpv --terminal" \
+  pl="swallow mpv --terminal" \
   search="w3m google.com" \
-  server="${HOME}/Data/Code/server.sh" \
-  sp="ncspot" \
+  sp="systemd-inhibit ncspot" \
   ss="sc-im" \
   zr=". ${ENV}"
 
