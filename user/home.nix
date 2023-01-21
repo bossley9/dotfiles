@@ -98,6 +98,10 @@ in
       deno
       nodejs
       python3 # webservers with python3 -m http.server
+      cargo
+      gcc # required for rust toolchain
+      rustc
+      rustfmt
       # fun
       nethack
 
