@@ -32,6 +32,7 @@ in
   # }}}
 
   programs.sway.enable = true;
+  xdg.portal.wlr.enable = true; # wlroots screen sharing
   programs.firejail.enable = true;
   programs.wshowkeys.enable = true;
   nixpkgs.config.chromium.enableWideVine = true; # for DRM content
