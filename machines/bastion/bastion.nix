@@ -2,16 +2,20 @@
 
 {
   # hardware and boot {{{
+
   boot.initrd.availableKernelModules = [
     # load cryptroot modules first to make boot disk decryption fast
     "cryptd"
   ];
   boot.kernelModules = [
-    "kvm_amd"
+    "kvm-amd"
     # camera and microphone
-    "v4l2loopback" "snd-aloop"
+    "v4l2loopback"
+    "snd-aloop"
   ];
   hardware.cpu.amd.updateMicrocode = true;
+  # virtualization
+  virtualisation.libvirtd.enable = true;
 
   # }}}
 

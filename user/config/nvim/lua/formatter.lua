@@ -16,6 +16,8 @@ fu! g:Format()
     exe 'silent !clang-format -i ' . expand('%:p')
   elseif ft == "go"
     exe 'silent !gofmt -w ' . expand('%:p')
+  elseif ft == "kotlin"
+    exe 'silent !ktlint -F ' . expand('%:p')
   elseif ft == "nix"
     exe 'silent !nixpkgs-fmt ' . expand('%:p')
   elseif ft == "rust"

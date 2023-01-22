@@ -77,7 +77,9 @@ in
       wally-cli
       pdftk
       tesseract5
+      # formatters
       nixpkgs-fmt
+      rustfmt
       # archiving utils
       unzip # *.zip
       zip
@@ -103,7 +105,6 @@ in
       cargo
       gcc # required for rust toolchain
       rustc
-      rustfmt
       # fun
       nethack
 

@@ -9,9 +9,10 @@
     "cryptd"
   ];
   boot.kernelModules = [
-    "kvm_intel"
+    "kvm-intel"
     # camera and microphone
-    "v4l2loopback" "snd-aloop"
+    "v4l2loopback"
+    "snd-aloop"
   ];
   hardware.cpu.intel.updateMicrocode = true;
 

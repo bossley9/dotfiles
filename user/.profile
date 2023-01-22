@@ -55,6 +55,7 @@ separator:#3B4252,\
 spinner:#8FBCBB\" \
 --ansi"
 export FZF_DEFAULT_COMMAND="rg --files"
+export _JAVA_AWT_WM_NONREPARENTING=1 # fixe java windows
 
 # }}}
 
