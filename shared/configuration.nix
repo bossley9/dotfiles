@@ -108,7 +108,7 @@
   users.users.sam = {
     isNormalUser = true;
     initialPassword = "test1234";
-    extraGroups = [ "wheel" "network" "networkmanager" "plugdev" ];
+    extraGroups = [ "wheel" "network" "networkmanager" "plugdev" "adbusers" ];
   };
 
   # shell configuration

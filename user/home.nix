@@ -36,6 +36,7 @@ in
   programs.firejail.enable = true;
   programs.wshowkeys.enable = true;
   nixpkgs.config.chromium.enableWideVine = true; # for DRM content
+  programs.adb.enable = true;
 
   home-manager.users."${username}" = {
     home.username = username;
