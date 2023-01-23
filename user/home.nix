@@ -69,6 +69,7 @@ in
       swayaudioidleinhibit
       gnome.adwaita-icon-theme # required for cursors in Firefox
       brightnessctl
+      (pkgs.callPackage ./packages/wlay.nix { })
 
       # utils
       wev
