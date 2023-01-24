@@ -77,6 +77,7 @@ in
       dig
       wally-cli
       pdftk
+      terminal-typeracer
       tesseract5
       # formatters
       nixpkgs-fmt
