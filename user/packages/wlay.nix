@@ -12,6 +12,7 @@ stdenv.mkDerivation {
     url = "https://github.com/atx/wlay.git";
     rev = version;
     sha256 = "sha256-bKnY1vpZUXyoX9pa6WPtXQr4L7Lv9Q2oT/w8WoDEkL4=";
+    deepClone = true;
     fetchSubmodules = true;
   };
 
