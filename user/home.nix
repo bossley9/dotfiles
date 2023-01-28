@@ -131,6 +131,7 @@ in
       (writeShellScriptBin "chromium" "nix-shell -p chromium --run \"chromium --incognito\"")
       transmission-gtk
       gscan2pdf
+      scrcpy
 
       # editing
       tenacity
