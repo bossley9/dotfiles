@@ -24,6 +24,9 @@
   networking.hostName = "bastion";
   networking.networkmanager.enable = false;
   networking.interfaces.enp34s0.useDHCP = true;
+  networking.firewall.allowedTCPPorts = [
+    19000 # expo server
+  ];
 
   # }}}
 }
