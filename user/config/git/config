@@ -2,6 +2,7 @@
   a = "add"
   aa = "add :"
   c = "commit -m"
+  ca = "commit --amend"
   d = "diff"
   ds = "diff --staged"
   m = "!git checkout main && git pull"
