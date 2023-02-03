@@ -8,7 +8,12 @@
   m = "!git checkout main && git pull"
   n = "checkout -b"
   o = "checkout"
+  r = "restore"
+  rs = "restore --staged"
   s = "status"
+  mom = "merge origin main"
+  mc = "merge --continue"
+  dd = "branch -D"
   zzz = "!git restore --staged : && git restore :"
 
 [core]
