@@ -33,7 +33,7 @@ alias \
   lofi="pl https://youtu.be/jfKfPfyJRdk" \
   n="newsboat" \
   nrs="doas nixos-rebuild switch --flake .#" \
-  pl="swallow mpv --terminal" \
+  pl="mpv --terminal" \
   search="w3m google.com" \
   sp="systemd-inhibit ncspot" \
   ss="sc-im" \
