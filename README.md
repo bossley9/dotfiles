@@ -89,11 +89,7 @@ After booting for the first time, there are a few configurations that are cannot
     doas chown -Rv USERNAME:wheel /etc/nixos
     ```
 4. Open `about:preferences#search` in Firefox and set the default search engine to a more privacy-respecting search engine.
-5. Install the following extensions for Firefox, making sure all run in private windows if applicable.
-    * uBlock Origin by Raymond Hill
-    * Firefox Multi-Account Containers by Mozilla Firefox
-    * Bitwarden - Free Password Manager by Bitwarden Inc. (make sure to set the server URL, set vault timeout action to log out, and other options)
-    * Vimium-FF by Stephen Blott and Phil Crosby
+5. Make sure all policy-installed extensions run in private windows if applicable.
 6. Set your Bitwarden server.
     ```sh
     bw config server https://myvault.example.com

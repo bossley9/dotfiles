@@ -31,6 +31,31 @@ in
 
   # }}}
 
+  # Firefox extensions
+  programs.firefox = {
+    enable = true;
+    policies = {
+      ExtensionSettings = {
+        "uBlock0@raymondhill.net" = {
+          "installation_mode" = "force_installed";
+          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+        };
+        "@testpilot-containers" = {
+          "installation_mode" = "force_installed";
+          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
+        };
+        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+          "installation_mode" = "force_installed";
+          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+        };
+        "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = {
+          "installation_mode" = "force_installed";
+          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
+        };
+      };
+    };
+  };
+
   programs.sway.enable = true;
   xdg.portal.wlr.enable = true; # wlroots screen sharing
   programs.firejail.enable = true;
