@@ -11,6 +11,34 @@ os.execute('mkdir -p ' .. sessionDir)
 
 -- }}}
 
+-- deleteHiddenBuffers {{{
+
+local manPrefix = "man://"
+local fernPrefix = "fern://"
+
+local function deleteHiddenBuffers()
+  for _, bufnr in pairs(vim.api.nvim_list_bufs()) do
+    local btype = vim.fn.getbufvar(bufnr, "&buftype")
+    local bname = vim.fn.bufname(bufnr)
+
+    if
+      -- if buffer is NOT a terminal (terminals break indices)
+      (btype ~= 'terminal') and (
+        -- if buffer is inactive
+        (not (vim.api.nvim_buf_is_valid(bufnr) and vim.fn.getbufvar(bufnr, '&buflisted') == 1)) or
+        -- if buffer is informational
+        (btype == 'help' or btype == 'quickfix' or bname:sub(1, #manPrefix) == manPrefix) or
+        -- if buffer is a file explorer
+        (btype == 'directory' or bname == 'NetrwTreeListing' or bname:sub(1, #fernPrefix) == fernPrefix)
+      )
+    then
+      vim.api.nvim_buf_delete(bufnr, { force = true })
+    end
+  end
+end
+
+-- }}}
+
 vim.cmd([[
 
 " deleteHiddenBuffers {{{
@@ -87,3 +115,18 @@ augroup end
 " }}}
 
 ]])
+
+-- ResetSession {{{
+
+
+vim.api.nvim_create_user_command(
+  'ResetSession',
+  function()
+    deleteHiddenBuffers()
+    os.execute('rm -f ' .. vim.g.sessionFile)
+    print("session was reset.")
+  end,
+  {}
+)
+
+-- }}}
