@@ -68,10 +68,10 @@ vim.api.nvim_create_user_command(
 
 -- }}}
 
--- diff {{{
+-- DiffFile {{{
 
 vim.api.nvim_create_user_command(
-  'Diff',
+  'DiffFile',
   function()
     local file = utils.expand('%:p')
 
