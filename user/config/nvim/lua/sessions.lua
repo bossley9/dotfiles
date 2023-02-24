@@ -1,16 +1,17 @@
 -- Automatic session management. No configuration needed!
 -- vim:fdm=marker
 
+-- directory setup {{{
+
+local sessionDir = vim.fn.stdpath('data') .. '/sessions' .. vim.g.projectDir
+-- TODO hide sessionFile from global scope once all session utils have been ported to lua
+vim.g.sessionFile = sessionDir .. '/se'
+
+os.execute('mkdir -p ' .. sessionDir)
+
+-- }}}
+
 vim.cmd([[
-
-" directory setup {{{
-
-let s:sessionDir = stdpath("data") . '/sessions' . g:projectDir
-let s:sessionFile = s:sessionDir . '/se'
-
-call mkdir(s:sessionDir, 'p')
-
-" }}}
 
 " deleteHiddenBuffers {{{
 
@@ -64,12 +65,12 @@ endfunction
 
 fu! s:saveSession()
   call s:deleteHiddenBuffers()
-  exe 'mksession! '.s:sessionFile
+  exe 'mksession! '.g:sessionFile
 endfunction
 
 fu! s:restoreSession()
-  if filereadable(s:sessionFile)
-    exe 'so '.s:sessionFile
+  if filereadable(g:sessionFile)
+    exe 'so '.g:sessionFile
   else
     " Folder is opened for the first time.
     " Delete the netrw buffer!
