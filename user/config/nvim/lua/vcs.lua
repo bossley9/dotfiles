@@ -5,7 +5,7 @@ local set = vim.opt
 
 local function getSHA()
   local ln = vim.api.nvim_win_get_cursor(0)[1]
-  local file = utils.expand('%:p')
+  local file = vim.fn.expand('%:p')
 
   local shaCmd = 'git --no-pager blame ' .. file .. ' -lL' .. ln .. ',' .. ln
   local shaHandle = io.popen(shaCmd)
@@ -73,7 +73,7 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command(
   'DiffFile',
   function()
-    local file = utils.expand('%:p')
+    local file = vim.fn.expand('%:p')
 
     local diffCmd = 'git --no-pager diff ' .. file
     local diffHandle = io.popen(diffCmd)

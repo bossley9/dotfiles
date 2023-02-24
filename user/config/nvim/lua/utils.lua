@@ -8,9 +8,7 @@ function M.map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, options)
 end
 
-function M.expand(expr) return vim.api.nvim_eval('expand("' .. expr .. '")') end
-
-function M.getcWORD() return M.expand('<cWORD>') end
+function M.getcWORD() return vim.fn.expand('<cWORD>') end
 
 function M.copyToClipboard(content) vim.fn.setreg('+', content) end
 
