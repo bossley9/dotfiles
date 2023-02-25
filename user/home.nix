@@ -107,6 +107,7 @@ in
       # formatters
       nixpkgs-fmt
       rustfmt
+      luaformatter
       # archiving utils
       unzip # *.zip
       zip
