@@ -72,30 +72,20 @@ vim.cmd([[
 -- clipboard
 map('v', '<C-c>', '"+ygv')
 map('n', '<C-c>', '"+ygv')
-vim.api.nvim_create_user_command(
-  'File',
-  function() utils.copyToClipboard(utils.expand('%')) end,
-  {}
-)
+vim.api.nvim_create_user_command('File', function()
+    utils.copyToClipboard(utils.expand('%'))
+end, {})
 
 -- gx browser
-vim.api.nvim_create_user_command(
-  'GXBrowse',
-  function()
+vim.api.nvim_create_user_command('GXBrowse', function()
     local url = utils.getcWORD()
     utils.openURL(url)
-  end,
-  {}
-)
+end, {})
 map('n', 'gx', ":GXBrowse<CR>")
 
 -- Nixpkgs browser
-vim.api.nvim_create_user_command(
-  'Nix',
-  function()
+vim.api.nvim_create_user_command('Nix', function()
     local baseURL = 'https://github.com/NixOS/nixpkgs/blob/master/'
     local path = utils.getcWORD():gsub('^<nixpkgs/', ''):gsub('>$', '')
     utils.openURL(baseURL .. path)
-  end,
-  {}
-)
+end, {})

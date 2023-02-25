@@ -1,22 +1,14 @@
 -- vim:fdm=marker
-
 -- debug {{{
+vim.api.nvim_create_user_command('DebugHighlights', function()
+    vim.cmd('so $VIMRUNTIME/syntax/hitest.vim')
+end, {})
 
-vim.api.nvim_create_user_command(
-  'DebugHighlights',
-  function() vim.cmd('so $VIMRUNTIME/syntax/hitest.vim') end,
-  {}
-)
+vim.api.nvim_create_user_command('DebugColor', function()
+    vim.cmd('so $VIMRUNTIME/syntax/colortest.vim')
+end, {})
 
-vim.api.nvim_create_user_command(
-  'DebugColor',
-  function() vim.cmd('so $VIMRUNTIME/syntax/colortest.vim') end,
-  {}
-)
-
-vim.api.nvim_create_user_command(
-  'DebugColor256',
-  function()
+vim.api.nvim_create_user_command('DebugColor256', function()
     vim.cmd([[
       new
       let num = 255
@@ -29,20 +21,14 @@ vim.api.nvim_create_user_command(
       set ro
       set nomodified
     ]])
-  end,
-  {}
-)
+end, {})
 
-vim.api.nvim_create_user_command(
-  'DebugSynGroup',
-  function()
+vim.api.nvim_create_user_command('DebugSynGroup', function()
     vim.cmd([[
       let s = synID(line('.'), col('.'), 1)
       echo synIDattr(s, 'name') . ' -> ' . synIDattr(synIDtrans(s), 'name')
     ]])
-  end,
-  {}
-)
+end, {})
 
 -- }}}
 

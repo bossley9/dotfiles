@@ -1,6 +1,5 @@
 -- Easier terminal buffers, similar to VSCode's terminal popup window.
 -- vim:fdm=marker
-
 local map = require('utils').map
 
 vim.cmd([[
@@ -139,7 +138,7 @@ endfor
 
 ]])
 
-map('n', '<M-`>', ':call g:ToggleTermWindow()<CR>', { silent = true })
-map('t', '<M-`>', '<C-\\><C-n>:call g:ToggleTermWindow()<CR>', { silent = true })
+map('n', '<M-`>', ':call g:ToggleTermWindow()<CR>', {silent = true})
+map('t', '<M-`>', '<C-\\><C-n>:call g:ToggleTermWindow()<CR>', {silent = true})
 
 -- }}}
