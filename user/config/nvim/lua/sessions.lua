@@ -18,16 +18,20 @@ local function deleteHiddenBuffers()
         local btype = vim.fn.getbufvar(bufnr, "&buftype")
         local bname = vim.fn.bufname(bufnr)
 
-        if (btype ~= 'terminal') -- if buffer is NOT a terminal (terminals break indices)
-        and ( -- and
-        (not (vim.api.nvim_buf_is_valid(bufnr) and
-            vim.fn.getbufvar(bufnr, '&buflisted') == 1)) -- if buffer is inactive
+        local isInformational = btype == 'help' or btype == 'quickfix' or
+                                    bname:sub(1, #manPrefix) == manPrefix
+        local isFileExplorer = btype == 'directory' or bname ==
+                                   'NetrwTreeListing' or
+                                   bname:sub(1, #fernPrefix) == fernPrefix
+        local isActive = vim.api.nvim_buf_is_loaded(bufnr) and
+                             vim.fn.getbufvar(bufnr, '&buflisted') == 1
+
+        if -- if
+        isInformational -- if buffer is informational
         or -- or
-            (btype == 'help' or btype == 'quickfix' or bname:sub(1, #manPrefix) ==
-                manPrefix) -- if buffer is informational
+        isFileExplorer -- if buffer is a file explorer
         or -- or
-        (btype == 'directory' or bname == 'NetrwTreeListing' or
-            bname:sub(1, #fernPrefix) == fernPrefix)) -- if buffer is a file explorer
+        ((not isActive) and btype ~= 'terminal') -- if buffer is inactive and NOT a terminal (terminals break indices)
         then vim.api.nvim_buf_delete(bufnr, {force = true}) end
     end
 end
