@@ -73,7 +73,7 @@ vim.cmd([[
 map('v', '<C-c>', '"+ygv')
 map('n', '<C-c>', '"+ygv')
 vim.api.nvim_create_user_command('File', function()
-    utils.copyToClipboard(utils.expand('%'))
+    utils.copyToClipboard(vim.fn.expand('%'))
 end, {})
 
 -- gx browser

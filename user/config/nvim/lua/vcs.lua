@@ -14,6 +14,15 @@ local function getSHA()
     return sha
 end
 
+local remoteHandle = io.popen('git config --get remote.origin.url')
+local remote = remoteHandle:read '*a':gsub('\r?\n', ''):gsub('.git$', '')
+remoteHandle:close()
+
+local domain, path = string.match(remote, "git%@(.*)%:(.*)")
+local remoteURL = remote
+if domain and path then remoteURL = 'https://' .. domain .. '/' .. path end
+local remoteURL = remoteURL:gsub(' ', '')
+
 -- gitgutter {{{
 
 local vcs = '│'
@@ -44,19 +53,25 @@ vim.api.nvim_create_user_command('CopySHA', 'GitBlameCopySHA', {})
 
 -- OpenGitUrl {{{
 
-local remoteHandle = io.popen('git config --get remote.origin.url')
-local remote = remoteHandle:read '*a':gsub('\r?\n', ''):gsub('.git$', '')
-remoteHandle:close()
-
 vim.api.nvim_create_user_command('OpenGitUrl', function()
     local sha = getSHA()
-
-    local baseURL = remote
-    local domain, path = string.match(remote, "git%@(.*)%:(.*)")
-    if domain and path then baseURL = 'https://' .. domain .. '/' .. path end
-
-    local url = baseURL .. '/commit/' .. sha
+    local url = remoteURL .. '/commit/' .. sha
     utils.openURL(url:gsub(' ', ''))
+end, {})
+
+-- }}}
+
+-- GitFile {{{
+
+vim.api.nvim_create_user_command('GitFile', function()
+    local latestSHACmd = 'git rev-parse HEAD'
+    local latestSHAHandle = io.popen(latestSHACmd)
+    local latestSHA = latestSHAHandle:read '*a'
+    latestSHAHandle:close()
+
+    local url = remoteURL .. '/tree/' .. latestSHA:gsub('\n', '') .. '/' ..
+                    vim.fn.expand('%')
+    utils.copyToClipboard(url:gsub(' ', ''))
 end, {})
 
 -- }}}
