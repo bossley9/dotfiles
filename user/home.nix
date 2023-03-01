@@ -35,22 +35,32 @@ in
   programs.firefox = {
     enable = true;
     policies = {
+      # https://github.com/mozilla/policy-templates/tree/07be9665c8adab27ae78075cbd1f25a3be91bd3b#extensionsettings
       ExtensionSettings = {
+        # ublock origin
         "uBlock0@raymondhill.net" = {
           "installation_mode" = "force_installed";
           "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
         };
+        # firefox multi-account containers
         "@testpilot-containers" = {
           "installation_mode" = "force_installed";
           "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
         };
+        # bitwarden
         "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
           "installation_mode" = "force_installed";
           "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
         };
+        # vimium-ff
         "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = {
           "installation_mode" = "force_installed";
           "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
+        };
+        # metamask
+        "webextension@metamask.io" = {
+          "installation_mode" = "force_installed";
+          "install_url" = "https://addons.mozilla.org/firefox/downloads/file/4037096/ether_metamask-latest.xpi";
         };
       };
     };
