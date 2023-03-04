@@ -61,16 +61,19 @@ end, {})
 
 -- }}}
 
--- GitFile {{{
+-- GitSelection {{{
 
-vim.api.nvim_create_user_command('GitFile', function()
+vim.api.nvim_create_user_command('GitSelection', function()
     local latestSHACmd = 'git rev-parse HEAD'
     local latestSHAHandle = io.popen(latestSHACmd)
     local latestSHA = latestSHAHandle:read('*a'):gsub('\n', '')
     latestSHAHandle:close()
 
     local url = remoteURL .. '/tree/' .. latestSHA .. '/' .. vim.fn.expand('%')
-    utils.copyToClipboard(url:gsub(' ', ''))
+    local url = url:gsub(' ', '')
+
+    utils.copyToClipboard(url)
+    utils.openURL(url)
 end, {})
 
 -- }}}
