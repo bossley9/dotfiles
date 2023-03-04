@@ -48,7 +48,9 @@ window#waybar {
 /* }}} */
 
 /* sway/window {{{ */
-/* nothing here! */
+#window {
+    font-weight: bold;
+}
 /* }}} */
 
 /* network {{{ */
