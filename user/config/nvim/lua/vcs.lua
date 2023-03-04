@@ -54,35 +54,42 @@ vim.api.nvim_create_user_command('CopySHA', 'GitBlameCopySHA', {})
 -- OpenGitUrl {{{
 
 vim.api.nvim_create_user_command('OpenGitUrl', function()
-    local sha = getSHA()
-    local url = remoteURL .. '/commit/' .. sha
-    utils.openURL(url:gsub(' ', ''))
+    utils.openURL(remoteURL .. '/commit/' .. getSHA())
 end, {})
 
 -- }}}
 
 -- GitSelection {{{
 
-vim.api.nvim_create_user_command('GitSelection', function()
+vim.api.nvim_create_user_command('GitSelection', function(args)
     local latestSHACmd = 'git rev-parse HEAD'
     local latestSHAHandle = io.popen(latestSHACmd)
     local latestSHA = latestSHAHandle:read('*a'):gsub('\n', '')
     latestSHAHandle:close()
 
     local url = remoteURL .. '/tree/' .. latestSHA .. '/' .. vim.fn.expand('%')
-    local url = url:gsub(' ', '')
+
+    if (args.range == 2) then
+        local startLn = vim.fn.getpos("'<")[2]
+        local endLn = vim.fn.getpos("'>")[2]
+
+        if (remoteURL:find('git.sr.ht')) then
+            url = url .. '?view-source#L' .. startLn .. '-' .. endLn
+        elseif (remoteURL:find('github.com')) then
+            url = url .. '?plan=1#L' .. startLn .. '-L' .. endLn
+        end
+    end
 
     utils.copyToClipboard(url)
-end, {})
+end, {range = '%'})
 
 -- }}}
 
 -- Diff{{{
 
 vim.api.nvim_create_user_command('Diff', function()
-    local diffCmd = 'git --no-pager diff HEAD'
-    local diffHandle = io.popen(diffCmd)
-    local diff = diffHandle:read '*a'
+    local diffHandle = io.popen('git --no-pager diff HEAD')
+    local diff = diffHandle:read('*a')
     diffHandle:close()
     utils.copyToClipboard(diff)
 end, {})
@@ -92,9 +99,8 @@ end, {})
 -- GoTo...Blame {{{
 
 local function goToBlame()
-    local sha = getSHA()
     os.execute('git reset --hard && git clean -fd')
-    os.execute('git -c advice.detachedHead=false checkout ' .. sha)
+    os.execute('git -c advice.detachedHead=false checkout ' .. getSHA())
 end
 
 vim.api.nvim_create_user_command('GoToBlame', goToBlame, {})
