@@ -73,7 +73,6 @@ vim.api.nvim_create_user_command('GitSelection', function()
     local url = url:gsub(' ', '')
 
     utils.copyToClipboard(url)
-    utils.openURL(url)
 end, {})
 
 -- }}}
