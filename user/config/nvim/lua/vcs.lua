@@ -76,7 +76,7 @@ vim.api.nvim_create_user_command('GitSelection', function(args)
         if (remoteURL:find('git.sr.ht')) then
             url = url .. '?view-source#L' .. startLn .. '-' .. endLn
         elseif (remoteURL:find('github.com')) then
-            url = url .. '?plan=1#L' .. startLn .. '-L' .. endLn
+            url = url .. '?plain=1#L' .. startLn .. '-L' .. endLn
         end
     end
 
