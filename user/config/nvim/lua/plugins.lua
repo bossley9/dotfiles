@@ -15,6 +15,8 @@ end
 
 local packer_bootstrap = ensure_packer()
 
+-- NOTE: do not move pinned pkg versions to flake.nix to allow
+-- this Neovim configuration to be used in other systems
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 

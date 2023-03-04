@@ -66,26 +66,22 @@ end, {})
 vim.api.nvim_create_user_command('GitFile', function()
     local latestSHACmd = 'git rev-parse HEAD'
     local latestSHAHandle = io.popen(latestSHACmd)
-    local latestSHA = latestSHAHandle:read '*a'
+    local latestSHA = latestSHAHandle:read('*a'):gsub('\n', '')
     latestSHAHandle:close()
 
-    local url = remoteURL .. '/tree/' .. latestSHA:gsub('\n', '') .. '/' ..
-                    vim.fn.expand('%')
+    local url = remoteURL .. '/tree/' .. latestSHA .. '/' .. vim.fn.expand('%')
     utils.copyToClipboard(url:gsub(' ', ''))
 end, {})
 
 -- }}}
 
--- DiffFile {{{
+-- Diff{{{
 
-vim.api.nvim_create_user_command('DiffFile', function()
-    local file = vim.fn.expand('%:p')
-
-    local diffCmd = 'git --no-pager diff ' .. file
+vim.api.nvim_create_user_command('Diff', function()
+    local diffCmd = 'git --no-pager diff HEAD'
     local diffHandle = io.popen(diffCmd)
     local diff = diffHandle:read '*a'
     diffHandle:close()
-
     utils.copyToClipboard(diff)
 end, {})
 
