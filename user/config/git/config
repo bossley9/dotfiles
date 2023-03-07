@@ -14,7 +14,7 @@
   mom = "merge origin main"
   mc = "merge --continue"
   dd = "branch -D"
-  zzz = "!git restore --staged : && git restore :"
+  zzz = "!git restore --staged : && git restore : && git clean -fd"
 
 [core]
   editor = "nvim"

@@ -54,7 +54,8 @@ vim.api.nvim_create_user_command('CopySHA', 'GitBlameCopySHA', {})
 -- OpenGitUrl {{{
 
 vim.api.nvim_create_user_command('OpenGitUrl', function()
-    utils.openURL(remoteURL .. '/commit/' .. getSHA())
+    local url = remoteURL .. '/commit/' .. getSHA()
+    utils.openURL(url:gsub(' ', ''))
 end, {})
 
 -- }}}
