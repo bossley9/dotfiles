@@ -13,7 +13,6 @@ let
   firefox = import ./config/browser/firefox.nix args;
   # packages
   sn = pkgs.callPackage ./packages/sn.nix { };
-  webcord = pkgs.callPackage ./packages/webcord.nix { };
   swayaudioidleinhibit = pkgs.callPackage ./packages/sway-audio-idle-inhibit.nix { };
   customncspot = pkgs.callPackage ./packages/ncspot.nix { };
   sc-im = pkgs.sc-im.overrideAttrs (finalAttrs: previousAttrs: {
