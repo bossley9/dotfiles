@@ -1,25 +1,58 @@
-# adapted from https://github.com/NixOS/nixpkgs/blob/994fa61c56c3be575eaa0680c93e829d231f8a85/pkgs/applications/audio/ncspot/default.nix
-# for share_clipboard capability
-{ dbus, fetchFromGitHub, lib, libpulseaudio, ncurses, openssl, pkg-config, python3, rustPlatform, xorg, ... }:
+# https://github.com/NixOS/nixpkgs/blob/32abfcc92306345b124aa2201d337d5c6f2a7469/pkgs/applications/audio/ncspot/default.nix
+# patched for share_clipboard build option
+{ stdenv
+, lib
+, fetchFromGitHub
+, rustPlatform
+, pkg-config
+, ncurses
+, openssl
+, withALSA ? true
+, alsa-lib
+, withPulseAudio ? false
+, libpulseaudio
+, withPortAudio ? false
+, portaudio
+, withMPRIS ? false
+, dbus
+, withShareClipboard ? false
+, xorg
+, python3
+}:
 
 rustPlatform.buildRustPackage rec {
   pname = "ncspot";
-  version = "0.11.0";
+  version = "0.13.0";
 
   src = fetchFromGitHub {
     owner = "hrkfdn";
     repo = "ncspot";
     rev = "v${version}";
-    sha256 = "sha256-mtveGRwadcct9R8CxLWCvT9FamK2PnicpeSvL4iT4oE=";
+    hash = "sha256-YWA8chp33SkMdo+XT/7qikIkgwt8pozC9wMFpY8Dv8Q=";
   };
 
-  cargoSha256 = "sha256-JqHJY91q2vm0x819zUkBBAObpnXN5aPde8m5UJ2NeNY=";
+  cargoHash = "sha256-DB3r6pPtustEQG8QXM6qT1hkd7msC//46bhVP/HMxnY=";
 
-  nativeBuildInputs = [ pkg-config python3 ];
+  nativeBuildInputs = [ pkg-config ]
+    ++ lib.optional withShareClipboard python3;
 
-  buildInputs = [ ncurses openssl libpulseaudio dbus xorg.libxcb ];
+  buildInputs = [ ncurses ]
+    ++ lib.optional stdenv.isLinux openssl
+    ++ lib.optional withALSA alsa-lib
+    ++ lib.optional withPulseAudio libpulseaudio
+    ++ lib.optional withPortAudio portaudio
+    ++ lib.optional withMPRIS dbus
+    ++ lib.optional withShareClipboard xorg.libxcb;
 
-  buildFeatures = [ "cursive/pancurses-backend" "pulseaudio_backend" "mpris" "share_clipboard" ];
+  buildNoDefaultFeatures = true;
+  buildFeatures = [ "cursive/pancurses-backend" ]
+    ++ lib.optional withALSA "alsa_backend"
+    ++ lib.optional withPulseAudio "pulseaudio_backend"
+    ++ lib.optional withPortAudio "portaudio_backend"
+    ++ lib.optional withMPRIS "mpris"
+    ++ lib.optional withShareClipboard "share_clipboard";
+
+  doCheck = false;
 
   meta = with lib; {
     description = "Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes";

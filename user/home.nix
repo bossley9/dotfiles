@@ -14,7 +14,11 @@ let
   # packages
   sn = pkgs.callPackage ./packages/sn.nix { };
   swayaudioidleinhibit = pkgs.callPackage ./packages/sway-audio-idle-inhibit.nix { };
-  customncspot = pkgs.callPackage ./packages/ncspot.nix { };
+  customncspot = pkgs.callPackage ./packages/ncspot.nix {
+    withPulseAudio = true;
+    withMPRIS = true;
+    withShareClipboard = true;
+  };
   sc-im = pkgs.sc-im.overrideAttrs (finalAttrs: previousAttrs: {
     postInstall = builtins.concatStringsSep "\n" [
       previousAttrs.postInstall
