@@ -7,7 +7,7 @@ in
 {
   imports = [ home-manager.nixosModules.home-manager ];
 
-  # append monitor configuration to existing configuration
+  # overwrite existing configuration with monitor configuration
   home-manager.users."${username}".home.file.".config/sway/config" = lib.mkForce {
     text = builtins.concatStringsSep "\n" [
       (builtins.readFile ../../user/config/sway/config)
@@ -22,6 +22,7 @@ in
           pos 1920 0
           transform normal
         }
+        exec_always wlr-randr --output DP-1 --preferred
       ''
     ];
   };
