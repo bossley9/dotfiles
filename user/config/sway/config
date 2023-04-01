@@ -144,7 +144,7 @@ exec swayidle -w \
 # cosmetics {{{
 
 # borders and gaps {{{
-smart_borders on
+smart_borders off
 default_border pixel 2
 # <class> <border> <background> <text> <indicator>
 # client.focused #2E3440 #2E3440 #E5E9F0 #2E3440
