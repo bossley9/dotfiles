@@ -60,9 +60,9 @@ end, {})
 
 -- }}}
 
--- GitSelection {{{
+-- GetRemoteSelection {{{
 
-vim.api.nvim_create_user_command('GitSelection', function(args)
+vim.api.nvim_create_user_command('GetRemoteSelection', function(args)
     local latestSHACmd = 'git rev-parse HEAD'
     local latestSHAHandle = io.popen(latestSHACmd)
     local latestSHA = latestSHAHandle:read('*a'):gsub('\n', '')
