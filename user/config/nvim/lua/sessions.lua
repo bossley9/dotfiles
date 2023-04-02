@@ -10,29 +10,31 @@ os.execute('mkdir -p ' .. sessionDir)
 
 -- deleteHiddenBuffers {{{
 
-local manPrefix = "man://"
-local fernPrefix = "fern://"
+local manPrefix = 'man://'
+local fernPrefix = 'fern://'
 
 local function deleteHiddenBuffers()
-    for _, bufnr in pairs(vim.api.nvim_list_bufs()) do
-        local btype = vim.fn.getbufvar(bufnr, "&buftype")
-        local bname = vim.fn.bufname(bufnr)
+    for _, binfo in pairs(vim.fn.getbufinfo()) do
+        local bname = binfo.name
+        local btype = vim.fn.getbufvar(binfo.bufnr, '&buftype')
 
-        local isInformational = btype == 'help' or btype == 'quickfix' or
-                                    bname:sub(1, #manPrefix) == manPrefix
-        local isFileExplorer = btype == 'directory' or bname ==
-                                   'NetrwTreeListing' or
-                                   bname:sub(1, #fernPrefix) == fernPrefix
-        local isActive = vim.api.nvim_buf_is_loaded(bufnr) and
-                             vim.fn.getbufvar(bufnr, '&buflisted') == 1
+        local isHiddenBuffer = binfo.hidden == 1
+        -- terminal buffers break indices if closed automatically
+        -- they will be closed anyways when parent process (nvim) closes
+        local isNotTerminalBuffer = btype ~= 'terminal'
+        local isScratchBuffer = bname == '' or btype == 'nofile'
+        local isInformationalBuffer = btype == 'help' or btype == 'quickfix' or
+                                          bname:sub(1, #manPrefix) == manPrefix
+        local isFileExplorerBuffer = btype == 'directory' or bname ==
+                                         'NetrwTreeListing' or
+                                         bname:sub(1, #fernPrefix) == fernPrefix
 
-        if -- if
-        isInformational -- if buffer is informational
-        or -- or
-        isFileExplorer -- if buffer is a file explorer
-        or -- or
-        ((not isActive) and btype ~= 'terminal') -- if buffer is inactive and NOT a terminal (terminals break indices)
-        then vim.api.nvim_buf_delete(bufnr, {force = true}) end
+        if (isNotTerminalBuffer and
+            (isHiddenBuffer or isScratchBuffer or isInformationalBuffer or
+                isFileExplorerBuffer)) then
+            -- delete the buffer
+            vim.api.nvim_buf_delete(binfo.bufnr, {force = true})
+        end
     end
 end
 
