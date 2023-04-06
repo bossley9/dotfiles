@@ -43,6 +43,7 @@ endfunction
 " default extensions to install
 let g:coc_global_extensions = [
   \ 'coc-json',
+  \ 'coc-prettier',
   \ ]
 " try the following:
 " coc-clangd

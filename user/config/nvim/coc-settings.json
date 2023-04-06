@@ -11,5 +11,6 @@
     "scss",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "prettier.requireConfig": true
 }
