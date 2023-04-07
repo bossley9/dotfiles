@@ -3,11 +3,11 @@
   "coc.preferences.extensionUpdateCheck": "never",
   "coc.preferences.messageLevel": "warning",
   "coc.preferences.formatOnSaveFiletypes": [
+    "astro",
     "cs",
     "css",
     "javascript",
     "json",
-    "markdown",
     "scss",
     "typescript",
     "typescriptreact"
