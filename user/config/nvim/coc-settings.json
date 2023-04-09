@@ -12,8 +12,9 @@
     "typescript",
     "typescriptreact"
   ],
-  "hover.floatConfig": {
-    "border": true
-  },
+  "diagnostic.floatConfig": { "border": true },
+  "hover.floatConfig": { "border": true },
+  "signature.floatConfig": { "border": true },
+  "suggest.floatConfig": { "border": true },
   "prettier.requireConfig": true
 }
