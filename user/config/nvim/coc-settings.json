@@ -12,5 +12,8 @@
     "typescript",
     "typescriptreact"
   ],
+  "hover.floatConfig": {
+    "border": true
+  },
   "prettier.requireConfig": true
 }

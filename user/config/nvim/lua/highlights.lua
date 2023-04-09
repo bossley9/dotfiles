@@ -51,8 +51,8 @@ hi NonText guibg=0 ctermfg=0
 " fix terminal background
 hi Pmenu guibg=none ctermbg=none
 
-" coc autocompletion menu
-hi CocMenuSel guifg=0 ctermfg=0 guifg=6 ctermbg=6
+" coc autocompletion menus
+hi CocMenuSel guifg=0 ctermfg=0 guibg=6 ctermbg=6
 hi FgCocNotificationProgressBgNormal guifg=7 ctermfg=7 guibg=none ctermbg=none
 
 " coc error messages
