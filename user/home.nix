@@ -117,6 +117,7 @@ in
       pdftk
       terminal-typeracer
       tesseract5
+      tty-clock
       # formatters
       nixpkgs-fmt
       rustfmt
