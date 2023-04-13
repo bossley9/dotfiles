@@ -68,4 +68,6 @@ return require('packer').startup(function(use)
     }
 
     if packer_bootstrap then require('packer').sync() end
+    -- always install missing packages on startup
+    require('packer').install()
 end)
