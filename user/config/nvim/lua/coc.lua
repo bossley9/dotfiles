@@ -42,12 +42,14 @@ endfunction
 
 " default extensions to install
 let g:coc_global_extensions = [
+  \ '@yaegassy/coc-astro',
+  \ 'coc-clangd',
+  \ 'coc-eslint',
+  \ 'coc-go',
   \ 'coc-json',
   \ 'coc-prettier',
+  \ 'coc-rust-analyzer',
+  \ 'coc-tsserver',
   \ ]
-" try the following:
-" coc-clangd
-" coc-go
-" coc-rust-analyzer
 
 ]])
