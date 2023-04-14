@@ -11,6 +11,9 @@
       # Startup
       "browser.startup.page" = 3; # Open previous windows and tabs
       "browser.shell.checkDefaultBrowser" = false; # Always check if Firefox is your default browser
+      # Tabs
+      "browser.tabs.warnOnClose" = false; # Confirm before closing multiple tabs
+      "browser.tabs.warnOnCloseOtherTabs" = false;
       # Language
       "layout.spellcheckDefault" = 0; # Check your spelling as you type
       # Digital Rights Management (DRM) Content
