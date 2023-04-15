@@ -140,6 +140,7 @@ augroup highlights
   au Filetype css setl iskeyword-=-
   au Filetype fern setl nonumber
   au BufRead,BufNewFile *.{gemini,gmi} set ft=gemini commentstring=-\ [\ ]\ %s
+  au BufRead,BufNewFile *.json setl ft=json
   au Filetype json5 setl commentstring=//\ %s
   au BufRead,BufNewFile *.m3u setl ft=m3u
   au Filetype nix setl iskeyword-=-
