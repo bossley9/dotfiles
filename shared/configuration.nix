@@ -189,11 +189,6 @@
       SystemMaxUse=250M
       MaxRetentionSec=7day
     '';
-  # automatically garbage collect nix
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-  };
   # }}}
 
   # keyboard layout {{{
