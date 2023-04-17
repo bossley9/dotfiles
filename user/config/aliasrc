@@ -42,6 +42,8 @@ alias \
 
 alias g="git"
 
+# }}}
+
 # navigation {{{
 
 fm() {
