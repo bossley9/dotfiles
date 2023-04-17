@@ -81,6 +81,8 @@
       "browser.urlbar.eventTelemetry.enabled" = false;
       "dom.security.unexpected_system_load_telemetry_enabled" = false;
       "network.trr.confirmation_telemetry_enabled" = false;
+      "privacy.resistFingerprinting" = true;
+      "privacy.resistFingerprinting.block_mozAddonManager" = true;
       "privacy.trackingprotection.origin_telemetry.enabled" = false;
       "security.app_menu.recordEventTelemetry" = false;
       "security.certerrors.recordEventTelemetry" = false;
