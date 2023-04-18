@@ -34,10 +34,12 @@
   boot.loader.timeout = 1;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.cleanTmpDir = true;
-  boot.tmpOnTmpfs = true;
-  # if too small, builds will fail with "no space left on device"
-  boot.tmpOnTmpfsSize = "30%";
+  boot.tmp = {
+    cleanOnBoot = true;
+    useTmpfs = true;
+    # if too small, builds will fail with "no space left on device"
+    tmpfsSize = "30%";
+  };
 
   hardware = {
     enableRedistributableFirmware = true;
