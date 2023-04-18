@@ -14,7 +14,6 @@ let
   # packages
   sn = pkgs.callPackage ./packages/sn.nix { };
   swayaudioidleinhibit = pkgs.callPackage ./packages/sway-audio-idle-inhibit.nix { };
-  mullvadbrowser = pkgs.callPackage ./packages/mullvad-browser.nix { };
   customncspot = pkgs.callPackage ./packages/ncspot.nix {
     withPulseAudio = true;
     withMPRIS = true;
@@ -172,7 +171,6 @@ in
       (writeShellScriptBin "chromium" "nix-shell -p chromium --run \"chromium --incognito\"")
       transmission-gtk
       scrcpy
-      mullvadbrowser
 
       # editing
       tenacity
