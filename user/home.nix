@@ -118,6 +118,7 @@ in
       terminal-typeracer
       tesseract5
       tty-clock
+      terraform
       # formatters
       nixpkgs-fmt
       rustfmt
