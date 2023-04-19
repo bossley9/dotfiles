@@ -118,6 +118,9 @@
       "browser.cache.disk.enable" = false;
       "browser.cache.memory.enable" = true;
       "dom.input.fallbackUploadDir" = "~/Downloads"; # set upload directory to help gtk find dirs
+      # ensure Firefox uses the correct system theme
+      "widget.content.allow-gtk-dark-theme" = true;
+      "widget.content.gtk-theme-override" = "Nordic";
       # }}}
 
     };
