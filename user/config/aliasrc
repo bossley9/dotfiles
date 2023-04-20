@@ -37,6 +37,7 @@ alias \
   search="w3m google.com" \
   sp="systemd-inhibit ncspot" \
   ss="sc-im" \
+  tf="terraform" \
   tm="systemd-inhibit tty-clock -sc -C 4" \
   zr=". ${ENV}"
 
