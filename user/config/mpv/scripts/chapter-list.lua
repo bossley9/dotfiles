@@ -42,11 +42,12 @@ mp.observe_property('chapter', 'number', function(_, curr_chapter)
             item.style = [[{\c&H8bcbeb&}]]
         end
 
-        -- Youtube returns '<Untitled Chapter 1>' for the first untitled chapter
+        -- Youtube returns '<Untitled Chapter 1>'
+        -- for the first (auto-generated) untitled chapter
         local title = chapter_list[i].title
         if (title == '<Untitled Chapter 1>') then title = 'Chapter 1' end
 
-        item.ass = list.ass_escape(title)
+        item.ass = list.ass_escape(i .. '. ' .. title)
         list.list[i] = item
     end
     list:update()

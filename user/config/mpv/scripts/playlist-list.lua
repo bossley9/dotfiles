@@ -39,43 +39,17 @@ function observe_change(_, current)
     if playlist_length < 2 then return end
 
     local playlist_current = mp.get_property_number('playlist-pos', 0)
+    local playlist = mp.get_property_native('playlist')
 
-    for i = 1, playlist_length do
+    for i = 1, #playlist do
         local item = {}
-        local str = i .. '. '
-        local index = i - 1
 
-        if (index == playlist_current) then
+        if (i - 1 == playlist_current) then
             -- color_13
             item.style = [[{\c&H8bcbeb&}]]
         end
 
-        local filename = mp.get_property('playlist/' .. index .. '/filename')
-        local name = filename
-
-        -- unable to retrieve video names without some sort of async call mechanism
-        -- for each video in the playlist (aka not worth my time)
-
-        -- local range = 1
-        -- if ((index == playlist_current - range) or (index == playlist_current + range)) then
-        --     local titlecmd = "youtube-dl --no-playlist --get-title " .. filename
-        --     local title = os.capture(titlecmd)
-
-        --     if title then
-        --         name = title
-        --     end
-        -- end
-
-        -- in other words, the best solution is no solution - instead we display any comment that
-        -- follows the url (if applicable)
-
-        if string.match(filename, "#") then
-            name = string.gsub(filename, "^.*#", "")
-        end
-
-        str = str .. name
-
-        item.ass = list.ass_escape(str)
+        item.ass = list.ass_escape(i .. '. ' .. playlist[i].title)
         list.list[i] = item
     end
     list:update()
