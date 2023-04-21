@@ -49,7 +49,12 @@ function observe_change(_, current)
             item.style = [[{\c&H8bcbeb&}]]
         end
 
-        item.ass = list.ass_escape(i .. '. ' .. playlist[i].title)
+        local title = i .. '.'
+        if (playlist[i].title ~= nil) then
+            title = title .. ' ' .. playlist[i].title
+        end
+
+        item.ass = list.ass_escape(title)
         list.list[i] = item
     end
     list:update()
