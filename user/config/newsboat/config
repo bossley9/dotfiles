@@ -2,7 +2,7 @@
 # vim: set syntax=dosini :
 
 urls-source "miniflux"
-miniflux-url "https://news.samukun.in"
+miniflux-url "https://news.bossley.us"
 miniflux-tokenfile "~/Data/Media/Feed/miniflux-token"
 
 auto-reload yes
