@@ -93,6 +93,7 @@ in
       sc-im
       bitwarden-cli
       yubikey-manager
+      sshfs
 
       # ui
       sway
