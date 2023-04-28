@@ -44,6 +44,7 @@ endfunction
 let g:coc_global_extensions = [
   \ '@yaegassy/coc-astro',
   \ 'coc-clangd',
+  \ 'coc-deno',
   \ 'coc-eslint',
   \ 'coc-go',
   \ 'coc-json',
