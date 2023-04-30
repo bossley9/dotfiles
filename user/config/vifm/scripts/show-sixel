@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-# TODO #!/bin/bash
-
 if [ "$#" -ne 3 ]; then
     echo "Usage: $0 filename width height"
     exit 1
