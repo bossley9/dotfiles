@@ -158,6 +158,8 @@ in
       (writeScriptBin "scene" (lib.strings.fileContents ./bin/scene))
       (writeScriptBin "swallow" (lib.strings.fileContents ./bin/swallow))
       imv
+      exiftool # for vifm image previews
+      libsixel # for vifm image previews
       pamixer
       pavucontrol
       mpv

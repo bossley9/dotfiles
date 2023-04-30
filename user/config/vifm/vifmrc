@@ -57,6 +57,7 @@ set invwrap
 
 " appearance {{{
 
+" for previews, open split pane (:vs) and toggle preview (:view)
 only
 set millerview
 set milleroptions=csize:2,rsize:1
@@ -68,7 +69,7 @@ colorscheme vifm_nord
 set timefmt=%a\ %Y-%m-%d\ %H:%M
 
 " set custom status line
-set statusline=" %A %7u:%g %= %d "
+set statusline=" %A %7u:%g %= %E %d "
 
 " }}}
 
@@ -143,6 +144,8 @@ nnoremap A cw
 " see commands section for macro definitions
 
 " images
+fileviewer {*.bmp,*.gif,*.jpg,*.jpeg,*.png,*.xpm}
+  \ show-sixel %c %pw %ph %pd
 exe 'filextype <image/*>{*.avif} '.expand('$BROWSER').' %c'
 filextype {*.avif,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.svg,*.webp,*.xpm}
   \ swallow imv %c,
