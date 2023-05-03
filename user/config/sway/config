@@ -131,13 +131,16 @@ exec wlr-randr --output eDP-1 --scale 1.3
 
 # locker {{{
 
-# lock screen after 3 min
+# lock screen after 5 min
 # suspend after 10 min
 # lock screen before suspending
 exec swayidle -w \
-  timeout 180 'swaylock -f' \
+  timeout 300 'swaylock -f' \
   timeout 600 'systemctl suspend' \
   before-sleep 'doas -L; wl-copy -c; swaylock -f'
+
+# do not inhibit when fullscreen applications exist (calls, games, documents)
+for_window [shell=".*"] inhibit_idle fullscreen
 
 # }}}
 
