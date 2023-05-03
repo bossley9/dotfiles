@@ -23,6 +23,17 @@ in
           transform normal
         }
         exec_always wlr-randr --output DP-1 --preferred
+
+        workspace 1 output "DP-1"
+        workspace 2 output "DP-1"
+        workspace 3 output "DP-1"
+        workspace 4 output "DP-1"
+        workspace 5 output "DP-1"
+        workspace 6 output "HDMI-A-1"
+        workspace 7 output "HDMI-A-1"
+        workspace 8 output "HDMI-A-1"
+        workspace 9 output "HDMI-A-1"
+        workspace 10 output "HDMI-A-1"
       ''
     ];
   };
