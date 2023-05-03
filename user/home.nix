@@ -195,7 +195,7 @@ in
 
     # shell initialization
     home.file.".profile" = {
-      source = ./.profile;
+      source = ./profile;
       executable = true;
     };
     home.file.".config/sh/shrc" = {
