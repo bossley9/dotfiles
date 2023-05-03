@@ -113,7 +113,6 @@ in
       # utils
       wev
       wlr-randr
-      dig
       wally-cli
       pdftk
       terminal-typeracer
@@ -135,7 +134,6 @@ in
       texlive.combined.scheme-full
       # web
       gnumake
-      hugo
       rsync
       aspell
       aspellDicts.en
@@ -186,10 +184,6 @@ in
       (writeShellScriptBin "zoom" "NIXPKGS_ALLOW_UNFREE=1 nix-shell --impure $DOTDIR/user/shells/zoom.nix --run \"firejail zoom\"") # requires xwayland
       (writeShellScriptBin "minecraft" "nix shell nixpkgs#jdk17_headless nixpkgs#prismlauncher -c prismlauncher") # requires xwayland
       (writeShellScriptBin "vedit" "nix-shell $DOTDIR/user/shells/videoediting.nix --run kdenlive")
-
-      # wine support
-      # wineWowPackages.stable
-      # winetricks
     ];
 
     # required for fontconfig to find home fonts
