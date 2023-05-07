@@ -34,7 +34,7 @@
       # Search Suggestions
       "browser.search.suggest.enabled" = false; # Provide search suggestions
       # Enhanced Tracking Protection
-      "privacy.donottrackheader.enabled" = true; # Always send websites a "Do Not Track" signal that you don't want to be tracked
+      "privacy.donottrackheader.enabled" = false; # do not send websites a "Do Not Track" signal that you don't want to be tracked
       # Cookies and Site Data
       # NOTE these settings delete cookies and site data when Firefox is closed
       "privacy.clearOnShutdown.downloads" = false;
@@ -75,14 +75,23 @@
       # }}}
 
       # telemetry and privacy {{{
+      # Copy Mullvad browser's user agent and platform:
+      # Test with https://amiunique.org/fp
+      "general.useragent.override" = "Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101 Firefox/102.0";
+      "general.useragent.enable_overrides" = true;
+      "general.platform.override" = "Win32";
       "browser.newtabpage.activity-stream.feeds.telemetry" = false;
       "browser.newtabpage.activity-stream.telemetry" = false;
       "browser.ping-centre.telemetry" = false;
       "browser.urlbar.eventTelemetry.enabled" = false;
       "dom.security.unexpected_system_load_telemetry_enabled" = false;
+      "network.http.sendRefererHeader" = 1;
       "network.trr.confirmation_telemetry_enabled" = false;
+      "privacy.firstparty.isolate" = true;
       "privacy.resistFingerprinting" = true;
       "privacy.resistFingerprinting.block_mozAddonManager" = true;
+      "privacy.resistFingerprinting.letterboxing" = true;
+      "privacy.trackingprotection.enabled" = true;
       "privacy.trackingprotection.origin_telemetry.enabled" = false;
       "security.app_menu.recordEventTelemetry" = false;
       "security.certerrors.recordEventTelemetry" = false;

@@ -208,7 +208,7 @@ in
       ENV = "$XDG_CONFIG_HOME/sh/shrc";
       PAGER = "less";
       MANPAGER = "nvim -u NORC +Man!";
-      BROWSER = "firejail firefox";
+      BROWSER = "TZ=UTC firejail firefox";
     };
     home.file.".config/aliasrc" = {
       source = ./config/aliasrc;
@@ -265,10 +265,10 @@ in
         name = "Nordic";
       };
       gtk3.extraConfig = {
-        gtk-application-prefer-dark-theme = 1;
+        gtk-application-prefer-dark-theme = true;
       };
       gtk4.extraConfig = {
-        gtk-application-prefer-dark-theme = 1;
+        gtk-application-prefer-dark-theme = true;
       };
     };
     # }}}
