@@ -208,7 +208,7 @@ in
       ENV = "$XDG_CONFIG_HOME/sh/shrc";
       PAGER = "less";
       MANPAGER = "nvim -u NORC +Man!";
-      BROWSER = "TZ=UTC firejail firefox";
+      BROWSER = "firejail firefox";
     };
     home.file.".config/aliasrc" = {
       source = ./config/aliasrc;
