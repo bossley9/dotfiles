@@ -116,6 +116,31 @@ After booting for the first time, there are a few configurations that are cannot
     sudo launchctl setenv NIX_SSL_CERT_FILE $NIX_SSL_CERT_FILE
     sudo launchctl kickstart -k system/org.nixos.nix-daemon
     ```
+2. Enable nix flakes.
+    ```sh
+    mkdir -p ~/.config/nix
+    echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
+    ```
+3. Install [nix-darwin](https://github.com/LnL7/nix-darwin) which allows us to declaratively manage an entire MacOS system*. We will convert this to a flake later since nix-darwin doesn't yet support flakes out of the box. (*MacOS is still pretty locked down but nix-darwin helps bridge the gap.)
+    ```sh
+    nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
+    ./result/bin/darwin-installer
+    Would you like to edit the default configuration.nix before starting? [y/n] n
+    Would you like to manage <darwin> with nix-channel? [y/n] y
+    Would you like to load darwin configuration in /etc/bashrc? [y/n] y
+    Would you like to load darwin configuration in /etc/zshrc? [y/n] y
+    Would you like to create /run? [y/n] y
+    ```
+    You can ignore any error pertaining `/etc/nix/nix.conf` linking.
+4. Clone these dotfiles.
+    ```sh
+    git clone https://github.com/bossley9/dotfiles
+    ```
+5. Copy the dotfiles darwin configuration to `~/.nixpkgs`:
+    ```sh
+    rm -rf ~/.nixpkgs/darwin-configuration.nix
+    cp -r ./darwin/darwin-configuration.nix ~/.nixpkgs/
+    ```
 
 ## Available Configurations
 
