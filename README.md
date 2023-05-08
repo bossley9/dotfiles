@@ -5,7 +5,8 @@
 1. [Foreward](#foreward)
 2. [Installation](#installation)
 3. [Post Install](#post-install)
-4. [Available Configurations](#available-configurations)
+4. [Installation (Darwin)](#installation-darwin)
+5. [Available Configurations](#available-configurations)
 
 ## Foreward
 
@@ -103,9 +104,23 @@ After booting for the first time, there are a few configurations that are cannot
     # see https://sam.bossley.us/thoughts/22/11/enhancing-security-with-yubikeys for details
     ```
 
+## Installation (Darwin)
+
+1. Install the [Nix package manager](https://nixos.org/download.html#nix-install-macos). At the time of writing, the current package manager version is 2.15.0. Afterwards I prefer to reboot to ensure a clean state even if this isn't strictly necessary.
+    ```sh
+    sh <(curl -L https://nixos.org/nix/install)
+    sudo reboot
+    ```
+    If ssl certificates aren't recognized by the nix daemon, you may need to manually modify the environment to make them visible:
+    ```sh
+    sudo launchctl setenv NIX_SSL_CERT_FILE $NIX_SSL_CERT_FILE
+    sudo launchctl kickstart -k system/org.nixos.nix-daemon
+    ```
+
 ## Available Configurations
 
 These are the configurations I have defined for my devices:
 
-* **bastion**: a powerful desktop with an AMD Ryzen 9 core and AMD Radeon GPU
-* **aegir**: an 11th-gen Framework laptop
+* **bastion**: a powerful desktop with an AMD Ryzen 9 3900x and AMD Radeon RX 6600
+* **aegir**: an 11th-gen 13 inch Framework laptop
+* **C02FL5MBMD6M**: an Intel i7 Macbook Pro for work
