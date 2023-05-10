@@ -8,9 +8,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, nixos-hardware, ... }@inputs:
+  outputs = { nixpkgs, home-manager, nixos-hardware, darwin, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -38,6 +42,14 @@
             (import ./shared/configuration.nix inputs)
             ./machines/aegir/aegir.nix
             (import ./user/home.nix inputs)
+          ];
+        };
+      };
+      darwinConfigurations = {
+        C02FL5MBMD6M = darwin.lib.darwinSystem {
+          system = "x86_64-darwin";
+          modules = [
+            ./darwin/darwin-configuration.nix
           ];
         };
       };

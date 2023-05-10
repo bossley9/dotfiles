@@ -1,12 +1,18 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = [
-    pkgs.htop
-    pkgs.neovim
+  environment.systemPackages = with pkgs; [
+    htop
+    neovim
+    nixpkgs-fmt
   ];
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    shellInit = ''
+      alias nrs="darwin-rebuild switch --flake .#"
+    '';
+  };
 
   services.nix-daemon.enable = true;
   nix.package = pkgs.nix;

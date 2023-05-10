@@ -136,10 +136,31 @@ After booting for the first time, there are a few configurations that are cannot
     ```sh
     git clone https://github.com/bossley9/dotfiles
     ```
-5. Copy the dotfiles darwin configuration to `~/.nixpkgs`:
+5. Create a basic configuration in `~/.nixpkgs/darwin-configuration.nix`. We need this first to bootstrap a non-flake configuration:
+    ```nix
+    { config, pkgs, ... }:
+
+    {
+    environment.systemPackages = with pkgs; [
+        htop
+        neovim
+    ];
+
+    programs.zsh.enable = true;
+
+    services.nix-daemon.enable = true;
+    nix.package = pkgs.nix;
+    system.stateVersion = 4;
+    }
+    ```
+6. Build the configuration.
     ```sh
-    rm -rf ~/.nixpkgs/darwin-configuration.nix
-    cp -r ./darwin/darwin-configuration.nix ~/.nixpkgs/
+    darwin-rebuild switch
+    ```
+7. Now build the new flake configuration.
+    ```sh
+    cd path/to/dotfiles
+    darwin-rebuild switch --flake .#
     ```
 
 ## Available Configurations
