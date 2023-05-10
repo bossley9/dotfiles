@@ -162,6 +162,10 @@ After booting for the first time, there are a few configurations that are cannot
     cd path/to/dotfiles
     darwin-rebuild switch --flake .#
     ```
+8. Optionally remove the password requirement for configuration rebuilds by editing the sudoers file with `visudo`:
+    ```sh
+    username ALL = NOPASSWD: /run/current-system/sw/bin/darwin-rebuild
+    ```
 
 ## Available Configurations
 

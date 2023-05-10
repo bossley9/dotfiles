@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+set -o vi
+umask 0077
+
+alias \
+  g="git" \
+  nrs="darwin-rebuild switch --flake .#" \
+  vim="nvim"

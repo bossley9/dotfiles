@@ -2,16 +2,18 @@
 
 {
   environment.systemPackages = with pkgs; [
-    htop
+    # functional
+    git
     neovim
+    htop
+
+    # formatters
     nixpkgs-fmt
   ];
 
   programs.zsh = {
     enable = true;
-    shellInit = ''
-      alias nrs="darwin-rebuild switch --flake .#"
-    '';
+    promptInit = builtins.readFile ../user/config/zsh/zshrc;
   };
 
   services.nix-daemon.enable = true;
