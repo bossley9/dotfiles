@@ -1,0 +1,47 @@
+#!/usr/bin/env sh
+# vim:fdm=marker
+
+umask 0077
+
+# xdg specification {{{
+
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_REPO_HOME="${HOME}/Repos"
+
+# }}}
+
+# environment variables {{{
+
+export SHELL="/bin/zsh"
+export EDITOR="nvim"
+export VISUAL="nvim"
+export PAGER="less"
+export MANPAGER="nvim -u NORC +Man!"
+
+# }}}
+
+# application variables {{{
+
+export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/rg/rgrc"
+export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config"
+# separator and spinner colors are invalid here
+export FZF_DEFAULT_OPTS="\
+--bind \"alt-k:up,\
+alt-j:down,\
+alt-u:half-page-up,\
+alt-d:half-page-down,\
+alt-h:backward-delete-char,\
+alt-q:abort,\
+alt-l:accept\" \
+--color \"bg+:-1,\
+pointer:#81A1C1,\
+hl:#81A1C1,\
+hl+:#B48EAD,\
+info:#A3BE8C\" \
+--ansi"
+export FZF_DEFAULT_COMMAND="rg --files"
+export STORYBOOK_DISABLE_TELEMETRY=1
+
+# }}}

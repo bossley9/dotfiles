@@ -211,7 +211,10 @@ in
       BROWSER = "firejail firefox";
     };
     home.file.".config/aliasrc" = {
-      source = ./config/aliasrc;
+      text = builtins.concatStringsSep "\n" [
+        (builtins.readFile ../shared/navigationrc)
+        (builtins.readFile ./config/aliasrc)
+      ];
       executable = true;
     };
     home.file.".config/rg/rgrc".source = ./config/rg/rgrc;

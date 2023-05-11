@@ -7,3 +7,9 @@ alias \
   g="git" \
   nrs="darwin-rebuild switch --flake .#" \
   vim="nvim"
+
+alias \
+  c1="yarn lint" \
+  c2="yarn validate:ts" \
+  c3="yarn test:watch" \
+  c="c1 && c2"

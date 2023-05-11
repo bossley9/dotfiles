@@ -56,37 +56,6 @@ fm() {
 }
 alias r="fm"
 
-b() {
-  bookmarkFile="${XDG_DATA_HOME}/sh/bookmarks"
-
-  md "$(dirname "$bookmarkFile")"
-  ! test -f "$bookmarkFile" && \
-    touch "$bookmarkFile"
-  if [ -n "$1" ]; then
-    $EDITOR "$bookmarkFile"
-    return
-  fi
-  bpath="$(cat "$bookmarkFile" | \
-    fzf | \
-    cut -d ',' -f 2)"
-  bpath="$(eval "echo $bpath")"
-
-  if ! test -e "$bpath"; then
-    echo \
-"Error: invalid bookmark.
-Add new bookmarks to ${bookmarkFile}
-with the format 'identifier, path'"
-  else
-    cd "$bpath"
-  fi
-}
-
-rp() {
-  md "$XDG_REPO_HOME"
-  repo="$(ls --color=no "$XDG_REPO_HOME" | fzf)"
-  cd "${XDG_REPO_HOME}/${repo}"
-}
-
 # }}}
 
 # security {{{
