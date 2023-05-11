@@ -21,6 +21,15 @@
     loginShellInit = builtins.readFile ../user/config/zsh/zprofile;
   };
 
+  system.defaults = {
+    NSGlobalDomain = {
+      InitialKeyRepeat = 10;
+      KeyRepeat = 1;
+    };
+  };
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
   system.stateVersion = 4;
