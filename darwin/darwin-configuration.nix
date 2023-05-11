@@ -29,6 +29,9 @@
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.extraOptions = ''
+    build-users-group = nixbld
+  '';
 
   services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
