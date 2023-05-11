@@ -45,3 +45,9 @@ export FZF_DEFAULT_COMMAND="rg --files"
 export STORYBOOK_DISABLE_TELEMETRY=1
 
 # }}}
+
+# final initialization {{{
+
+. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" # allow home-manager to manage shell
+
+# }}}

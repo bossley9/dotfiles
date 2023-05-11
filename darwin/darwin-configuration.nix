@@ -8,6 +8,10 @@
     neovim
     htop
 
+    # ui
+    jetbrains-mono
+    kitty
+
     # formatters
     nixpkgs-fmt
   ];

@@ -50,6 +50,7 @@
           system = "x86_64-darwin";
           modules = [
             ./darwin/darwin-configuration.nix
+            (import ./darwin/darwin-home.nix inputs)
           ];
         };
       };
