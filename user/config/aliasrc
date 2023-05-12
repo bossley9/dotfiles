@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # vim:fdm=marker
 
 # core {{{
@@ -99,6 +99,7 @@ cs() {
 
 pruneSystem() {
   rm -rvf ${XDG_DATA_HOME}/vifm/Trash/*
+  rm -rvf ${XDG_DATA_HOME}/nvim/sessions/*
   nix-collect-garbage -d
 }
 

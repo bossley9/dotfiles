@@ -1,15 +1,51 @@
 #!/usr/bin/env sh
+# vim:fdm=marker
 
 set -o vi
 umask 0077
+
+# core {{{
+
+alias \
+  bc="bc -w -q" \
+  cp="cp -v" \
+  ls="ls --color" \
+  md="mkdir -p" \
+  mv="mv -v" \
+  rm="rm -v"
+cd() {
+  builtin cd "$@" && ls
+}
+
+# }}}
+
+# common {{{
 
 alias \
   g="git" \
   nrs="darwin-rebuild switch --flake .#" \
   vim="nvim"
 
+# }}}
+
+# work {{{
+
 alias \
   c1="yarn lint" \
   c2="yarn validate:ts" \
   c3="yarn test:watch" \
   c="c1 && c2"
+
+# }}}
+
+# misc {{{
+
+pruneSystem() {
+  rm -rvf ${XDG_DATA_HOME}/nvim/sessions/*
+  rm -rvf ${HOME}/pictures/*.mov
+  rm -rvf ${HOME}/pictures/*.png
+  rm -rvf ${HOME}/Downloads/*
+  nix-collect-garbage -d
+}
+
+# }}}
