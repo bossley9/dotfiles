@@ -179,7 +179,7 @@ exec brightnessctl s 15%
 
 # application and config bindings {{{
 
-bindsym $mod+b exec "$BROWSER"
+bindsym $mod+b exec "TZ=UTC $BROWSER"
 bindsym $mod+u exec webcord
 
 # audio
