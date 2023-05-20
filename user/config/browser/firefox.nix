@@ -85,7 +85,6 @@
       "browser.ping-centre.telemetry" = false;
       "browser.urlbar.eventTelemetry.enabled" = false;
       "dom.security.unexpected_system_load_telemetry_enabled" = false;
-      "network.http.sendRefererHeader" = 1;
       "network.trr.confirmation_telemetry_enabled" = false;
       "privacy.firstparty.isolate" = true;
       "privacy.resistFingerprinting" = true;
