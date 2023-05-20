@@ -36,6 +36,10 @@ alias \
   c3="yarn test:watch" \
   c="c1 && c2"
 
+alias \
+  y1="echo \"checksumBehavior: update\" >> ./.yarnrc.yml" \
+  ya="y1; yarn; git checkout -- ./.yarnrc.yml ./yarn.lock"
+
 # }}}
 
 # misc {{{
