@@ -182,6 +182,8 @@ exec brightnessctl s 15%
 bindsym $mod+b exec "TZ=UTC $BROWSER"
 bindsym $mod+u exec webcord
 
+for_window [class="WebCord"] fullscreen
+
 # audio
 bindsym $mod+bracketright exec pamixer -ui 5
 bindsym $mod+bracketleft exec pamixer -ud 5
