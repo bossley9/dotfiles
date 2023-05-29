@@ -52,3 +52,6 @@ set.mouse = 'a' -- mouse input
 vim.cmd('au FileType * setlocal formatoptions-=cro')
 
 set.encoding = 'utf8' -- set encoding
+
+-- suppress certain number format detection with c-a and c-x
+set.nrformats = 'bin,unsigned'

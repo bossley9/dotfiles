@@ -89,3 +89,6 @@ vim.api.nvim_create_user_command('Nix', function()
     local path = utils.getcWORD():gsub('^<nixpkgs/', ''):gsub('>$', '')
     utils.openURL(baseURL .. path)
 end, {})
+
+-- disable default OpenAI bindings
+vim.g.ai_no_mappings = 1
