@@ -144,10 +144,11 @@ in
       aspellDicts.en
       aspellDicts.en-computers
       aspellDicts.en-science
+      nodejs
+      openai-whisper-cpp
       # projects
       go
       deno
-      nodejs
       python3 # webservers with python3 -m http.server
       cargo
       gcc # required for rust toolchain
@@ -158,6 +159,7 @@ in
       # multimedia
       grim
       slurp
+      (writeScriptBin "caption" (lib.strings.fileContents ./bin/caption))
       (writeScriptBin "scene" (lib.strings.fileContents ./bin/scene))
       (writeScriptBin "swallow" (lib.strings.fileContents ./bin/swallow))
       imv
