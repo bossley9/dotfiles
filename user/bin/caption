@@ -2,7 +2,7 @@
 # dependencies: ffmpeg, openai-whisper-cpp (whisper-cpp, whisper-cpp-download-ggml-model)
 
 INPUT="$1"
-NAME="${INPUT%\.mkv}"
+NAME="${INPUT%\.*}"
 AUDIO="${NAME}.wav"
 OUTPUT="${NAME}" # no extension, whisper-cpp adds it
 
