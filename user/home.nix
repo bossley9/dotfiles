@@ -180,6 +180,7 @@ in
       cava
       zathura
       mupdf
+      okular # for editing and digitally signing pdf forms
       amfora
       webcord
       (writeShellScriptBin "chromium" "nix-shell -p chromium --run \"chromium --incognito\"")
