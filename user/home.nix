@@ -34,7 +34,8 @@ in
 
   # }}}
 
-  # Firefox extensions
+  # Firefox extensions {{{
+
   programs.firefox = {
     enable = true;
     policies = {
@@ -74,6 +75,8 @@ in
     };
   };
 
+  # }}}
+
   programs.sway.enable = true;
   xdg.portal.wlr.enable = true; # wlroots screen sharing
   programs.firejail.enable = true;
@@ -107,6 +110,7 @@ in
       bat # for fzf previews
       jetbrains-mono
       open-sans # spotify playlist covers and typefaces
+      wqy_zenhei
       font-awesome
       waybar
       wofi
