@@ -316,6 +316,12 @@ in
 
     # }}}
 
+    # miscellaneous {{{
+
+    home.file.".config/nethack/nethackrc".source = ./config/nethack/nethackrc;
+
+    # }}}
+
     home.stateVersion = "22.05";
     programs.home-manager.enable = true;
   };
