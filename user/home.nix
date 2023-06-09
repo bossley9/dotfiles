@@ -128,6 +128,7 @@ in
       tesseract5
       tty-clock
       terraform
+      dig
       # formatters
       nixpkgs-fmt
       rustfmt
