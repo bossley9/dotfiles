@@ -10,7 +10,10 @@ in
   ];
 
   # username must be declared by config.users.users for home-manager detection
-  users.users."${username}".shell = [ pkgs.zsh ];
+  users.users."${username}" = {
+    shell = [ pkgs.zsh ];
+    home = "/Users/${username}";
+  };
   home-manager.users."${username}" = {
     home.file.".config/kitty/kitty.conf".source = ../user/config/kitty/kitty.conf;
 
