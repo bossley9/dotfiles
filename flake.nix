@@ -31,7 +31,7 @@
             (import ./shared/configuration.nix inputs)
             ./machines/bastion/bastion.nix
             (import ./user/home.nix inputs)
-            (import ./machines/bastion/display.nix inputs)
+            (import ./machines/bastion/io.nix inputs)
           ];
         };
         aegir = lib.nixosSystem {
@@ -42,6 +42,7 @@
             (import ./shared/configuration.nix inputs)
             ./machines/aegir/aegir.nix
             (import ./user/home.nix inputs)
+            (import ./machines/aegir/io.nix inputs)
           ];
         };
       };
