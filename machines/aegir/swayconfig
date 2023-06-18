@@ -2,7 +2,7 @@
 input "1452:613:Apple_Inc._Magic_Trackpad_Mouse" {
   natural_scroll enabled
   middle_emulation enabled
-  pointer_accel 0.5
+  pointer_accel 0.3
 }
 
 exec wlr-randr --output eDP-1 --scale 1.3
