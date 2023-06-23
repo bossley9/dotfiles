@@ -151,6 +151,7 @@ in
       aspellDicts.en-science
       nodejs
       openai-whisper-cpp
+      s3cmd
       # projects
       go
       deno
