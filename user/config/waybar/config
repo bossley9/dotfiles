@@ -89,7 +89,7 @@
 
   // clock {{{
   "clock": {
-    "timezone": "America/Los_Angeles",
+    "timezone": "America/Kentucky/Louisville",
     "format": "{:%a %b %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   }
