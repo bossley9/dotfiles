@@ -66,7 +66,7 @@
   networking.wireless.enable = false;
 
   services.timesyncd.enable = true; # slightly more lightweight than ntpd
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/Kentucky/Louisville";
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";
