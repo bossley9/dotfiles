@@ -3,7 +3,7 @@
 
 urls-source "miniflux"
 miniflux-url "https://news.bossley.us"
-miniflux-tokenfile "~/Data/Media/Feed/miniflux-token"
+miniflux-tokenfile "~/Media/Feeds/miniflux-token"
 
 auto-reload yes
 reload-threads 40
