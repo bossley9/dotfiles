@@ -92,6 +92,7 @@ in
 
     home.packages = with pkgs; [
       # functional
+      nodejs
       fzf
       ripgrep
       less
@@ -142,17 +143,8 @@ in
 
       # documents
       texlive.combined.scheme-full
-      # web
-      gnumake
-      rsync
-      aspell
-      aspellDicts.en
-      aspellDicts.en-computers
-      aspellDicts.en-science
-      nodejs
-      openai-whisper-cpp
-      s3cmd
       # projects
+      gnumake
       go
       deno
       python3 # webservers with python3 -m http.server
@@ -165,7 +157,6 @@ in
       # multimedia
       grim
       slurp
-      (writeScriptBin "caption" (lib.strings.fileContents ./bin/caption))
       (writeScriptBin "scene" (lib.strings.fileContents ./bin/scene))
       (writeScriptBin "swallow" (lib.strings.fileContents ./bin/swallow))
       imv
