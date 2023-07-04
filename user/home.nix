@@ -14,11 +14,11 @@ let
   # packages
   sn = pkgs.callPackage ./packages/sn.nix { };
   swayaudioidleinhibit = pkgs.callPackage ./packages/sway-audio-idle-inhibit.nix { };
-  customncspot = pkgs.callPackage ./packages/ncspot.nix {
+  ncspot = pkgs.ncspot.overrideAttrs (finalAttrs: prevAttrs: {
     withPulseAudio = true;
     withMPRIS = true;
     withShareClipboard = true;
-  };
+  });
   sc-im = pkgs.sc-im.overrideAttrs (finalAttrs: previousAttrs: {
     postInstall = builtins.concatStringsSep "\n" [
       previousAttrs.postInstall
@@ -169,7 +169,7 @@ in
       yt-dlp
       newsboat
       sn
-      customncspot
+      ncspot
       cava
       zathura
       mupdf
