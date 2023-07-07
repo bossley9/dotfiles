@@ -1,28 +1,34 @@
-{ fetchgit, pkgs, stdenv, ... }:
+# temporary solution until https://github.com/NixOS/nixpkgs/pull/241995 is merged
+{ lib
+, stdenv
+, cmake
+, libepoxy
+, extra-cmake-modules
+, fetchFromGitHub
+, glfw3
+, wayland
+, xorg
+}:
 
-let
+stdenv.mkDerivation rec {
   pname = "wlay";
   version = "ed316060ac3ac122c0d3d8918293e19dfe9a6c90";
-in
-stdenv.mkDerivation {
-  inherit pname version;
 
-  # fetchFromGitHub doesn't play nicely with submodules
-  src = fetchgit {
-    url = "https://github.com/atx/wlay.git";
+  src = fetchFromGitHub {
+    owner = "atx";
+    repo = "wlay";
     rev = version;
-    sha256 = "sha256-bKnY1vpZUXyoX9pa6WPtXQr4L7Lv9Q2oT/w8WoDEkL4=";
-    deepClone = true;
+    hash = "sha256-Lu+EyoDHiXK9QzD4jdwbllCOCl2aEU+uK6/KxC2AUGQ=";
     fetchSubmodules = true;
   };
 
   nativeBuildInputs = [
-    pkgs.cmake
-    pkgs.epoxy
-    pkgs.extra-cmake-modules
-    pkgs.glfw3
-    pkgs.wayland
-    pkgs.xorg.libX11
+    cmake
+    libepoxy
+    extra-cmake-modules
+    glfw3
+    wayland
+    xorg.libX11
   ];
 
   buildPhase = ''
@@ -36,4 +42,12 @@ stdenv.mkDerivation {
     cp $TMPDIR/wlay $out/bin/wlay
     chmod 555 $out/bin/wlay
   '';
+
+  meta = with lib; {
+    homepage = "https://github.com/atx/wlay";
+    description = "Graphical output management for Wayland";
+    license = licenses.mit;
+    maintainers = [ ];
+    platforms = platforms.linux;
+  };
 }
