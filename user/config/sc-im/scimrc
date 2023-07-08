@@ -1,6 +1,11 @@
 # case insensitive
 set ignorecase
 
+# clipboard
+set default_copy_to_clipboard_cmd="wl-copy <"
+set default_paste_from_clipboard_cmd="wl-paste"
+set copy_to_clipboard_delimited_tab=1
+
 # xlsx exporting
 set xlsx_readformulas
 
