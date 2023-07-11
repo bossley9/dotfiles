@@ -35,6 +35,7 @@ export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 
 # application variables {{{
 
+export BC_ENV_ARGS="${XDG_CONFIG_HOME}/bc/bcrc"
 export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/rg/rgrc"
 export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config"
 export FZF_DEFAULT_OPTS="\

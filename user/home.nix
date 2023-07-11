@@ -225,6 +225,7 @@ in
     };
     home.file.".config/rg/rgrc".source = ./config/rg/rgrc;
     home.file.".config/bat/config".source = ./config/bat/config;
+    home.file.".config/bc/bcrc".source = ./config/bc/bcrc;
 
     # editor
     programs.neovim = {

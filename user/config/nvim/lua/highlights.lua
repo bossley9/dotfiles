@@ -120,7 +120,9 @@ hi ErrorMsg guibg=none ctermbg=none guifg=1 ctermfg=1
 
 hi Special ctermfg=5
 hi Constant ctermfg=5
+hi Comment ctermfg=6
 hi Italic cterm=italic
+hi Visual cterm=reverse
 
 " }}}
 
