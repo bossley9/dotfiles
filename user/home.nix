@@ -179,6 +179,8 @@ in
       (writeShellScriptBin "chromium" "nix-shell -p chromium --run \"chromium --incognito\"")
       transmission-gtk
       scrcpy
+      pngquant
+      imagemagick
 
       # editing
       tenacity
