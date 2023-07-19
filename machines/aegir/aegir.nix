@@ -27,6 +27,10 @@
     wifi.scanRandMacAddress = false;
   };
   networking.interfaces.wlp170s0.useDHCP = true;
+  networking.firewall.allowedTCPPorts = [
+    19000 # expo server
+  ];
+
 
   # }}}
 
