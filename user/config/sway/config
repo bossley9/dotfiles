@@ -131,7 +131,8 @@ input type:touchpad {
 exec swayidle -w \
   timeout 300 'swaylock -f' \
   timeout 600 'systemctl suspend' \
-  before-sleep 'doas -L; wl-copy -c; swaylock -f'
+  before-sleep 'doas -L; wl-copy -c; swaylock -f' \
+  after-resume 'pgrep -f waybar || waybar &'
 
 # do not inhibit when fullscreen applications exist (calls, games, documents)
 for_window [shell=".*"] inhibit_idle fullscreen
