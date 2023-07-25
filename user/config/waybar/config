@@ -1,13 +1,10 @@
-// vim:ft=json5:sw=2:fdm=marker
+// vim:ft=json5:sw=2:fdm=indent
 
 {
-  // init {{{
   "layer": "top",
   "height": 24,
   "spacing": 16,
-  // }}}
 
-  // module listing {{{
   "modules-left": [
     "sway/workspaces",
     "sway/mode"
@@ -21,48 +18,38 @@
     "battery",
     "clock"
   ],
-  // }}}
 
-  // sway/workspaces {{{
   "sway/workspaces": {
     "format": "{name}",
     "disable-scroll": true,
     "tooltip": false,
   },
-  // }}}
 
-  // sway/mode {{{
   "sway/mode": {
     "format": "{}",
     "tooltip": false
   },
-  // }}}
 
-  // sway/window {{{
   "sway/window": {
     "format": "{title}",
     "tooltip": false,
   },
-  // }}}
 
-  // network {{{
   "network": {
     "format-icons": {
-      "linked": "",
-      "ethernet": "",
+      "linked": "",
+      "ethernet": "",
       "wifi": "",
     },
     "tooltip": false,
 
     "format-disconnected": "disconnected",
     "format-linked": "{ifname} (No IP) {icon}",
-    "format-ethernet": "{ipaddr}/{cidr} {icon}",
+    "format-ethernet": "{ifname}: {ipaddr}/{cidr} {icon}",
     "format-wifi": "{essid}/{signalStrength}% {icon}",
     "format-alt": "{ifname}: {ipaddr}/{cidr} {icon}"
   },
-  // }}}
 
-  // pulseaudio {{{
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
     "format-muted": " {format_source}",
@@ -75,9 +62,7 @@
     "scroll-step": 0,
     "on-click": "pavucontrol"
   },
-  // }}}
 
-  // battery {{{
   "battery": {
     "format": "{capacity}% {icon}",
     "format-charging": "{capacity}% ",
@@ -85,13 +70,10 @@
       "", "", "", "", ""
     ],
   },
-  // }}}
 
-  // clock {{{
   "clock": {
     "timezone": "America/Kentucky/Louisville",
     "format": "{:%a %b %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   }
-  // }}}
 }
