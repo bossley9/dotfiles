@@ -12,6 +12,8 @@
     # camera and microphone
     "v4l2loopback"
     "snd-aloop"
+    # focusrite audio interface
+    "snd_usb_audio"
   ];
   hardware.cpu.amd.updateMicrocode = true;
   # virtualization

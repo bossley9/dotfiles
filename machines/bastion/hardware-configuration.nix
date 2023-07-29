@@ -39,4 +39,8 @@
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  environment.etc."modprobe.d/scarlett.conf".text = ''
+    options snd_usb_audio vid=0x1235 pid=0x8211 device_setup=1
+  '';
 }

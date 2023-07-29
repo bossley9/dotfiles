@@ -62,7 +62,7 @@ export NETHACKOPTIONS="@${XDG_CONFIG_HOME}/nethack/nethackrc"
 
 # final initialization {{{
 
-export DOTDIR="/etc/nixos"
+export DOTDIR="/home/sam/Repos/dotfiles"
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" # allow home-manager to manage shell
 
 # }}}
