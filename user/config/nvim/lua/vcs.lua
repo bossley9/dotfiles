@@ -8,6 +8,7 @@ local function getSHA()
 
     local shaCmd = 'git --no-pager blame ' .. file .. ' -lL' .. ln .. ',' .. ln
     local shaHandle = io.popen(shaCmd)
+    if shaHandle == nil then return '' end
     local shaOutput = shaHandle:read '*a'
     local sha = shaOutput:sub(1, shaOutput:find(' '))
     shaHandle:close()
@@ -15,13 +16,16 @@ local function getSHA()
 end
 
 local remoteHandle = io.popen('git config --get remote.origin.url')
-local remote = remoteHandle:read '*a':gsub('\r?\n', ''):gsub('.git$', '')
-remoteHandle:close()
+local remote = ''
+if remoteHandle ~= nil then
+    remote = remoteHandle:read '*a':gsub('\r?\n', ''):gsub('.git$', '')
+    remoteHandle:close()
+end
 
 local domain, path = string.match(remote, "git%@(.*)%:(.*)")
 local remoteURL = remote
 if domain and path then remoteURL = 'https://' .. domain .. '/' .. path end
-local remoteURL = remoteURL:gsub(' ', '')
+remoteURL = remoteURL:gsub(' ', '')
 
 -- gitgutter {{{
 
@@ -65,8 +69,11 @@ end, {})
 vim.api.nvim_create_user_command('GetRemoteSelection', function(args)
     local latestSHACmd = 'git rev-parse HEAD'
     local latestSHAHandle = io.popen(latestSHACmd)
-    local latestSHA = latestSHAHandle:read('*a'):gsub('\n', '')
-    latestSHAHandle:close()
+    local latestSHA = ''
+    if latestSHAHandle ~= nil then
+        latestSHA = latestSHAHandle:read('*a'):gsub('\n', '')
+        latestSHAHandle:close()
+    end
 
     local url = remoteURL .. '/tree/' .. latestSHA .. '/' .. vim.fn.expand('%')
 
@@ -90,8 +97,11 @@ end, {range = '%'})
 
 vim.api.nvim_create_user_command('Diff', function()
     local diffHandle = io.popen('git --no-pager diff HEAD')
-    local diff = diffHandle:read('*a')
-    diffHandle:close()
+    local diff = ''
+    if diffHandle ~= nil then
+        diff = diffHandle:read('*a')
+        diffHandle:close()
+    end
     utils.copyToClipboard(diff)
 end, {})
 

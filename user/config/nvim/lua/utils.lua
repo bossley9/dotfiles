@@ -20,17 +20,17 @@ function M.openURL(url)
                 local handle = io.popen(string.format(
                                             'rundll32 url.dll,FileProtocolHandler "%s"',
                                             _url))
-                handle:close()
+                if handle ~= nil then handle:close() end
             end
         elseif (io.popen('uname -s'):read '*a'):match 'Darwin' then
             open_cmd = function(_url)
                 local handle = io.popen(string.format('open "%s"', _url))
-                handle:close()
+                if handle ~= nil then handle:close() end
             end
         else
             open_cmd = function(_url)
                 local handle = io.popen(string.format('xdg-open "%s"', _url))
-                handle:close()
+                if handle ~= nil then handle:close() end
             end
         end
     end
