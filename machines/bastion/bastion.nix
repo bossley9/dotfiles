@@ -14,6 +14,8 @@
     "snd-aloop"
     # focusrite audio interface
     "snd_usb_audio"
+    # usb devices
+    "usb_storage"
   ];
   hardware.cpu.amd.updateMicrocode = true;
   # virtualization
