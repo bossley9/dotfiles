@@ -27,7 +27,7 @@ vim.g.Format = function()
         vim.cmd("exe 'silent !rustfmt " .. file .. "'")
     else
         local prettier = vim.g.projectDir .. '/node_modules/.bin/prettier'
-        local handle = io.popen(prettier, 'r')
+        local handle = io.open(prettier, 'r')
         if handle ~= nil then
             io.close(handle)
             vim.cmd("exe 'silent !" .. prettier .. " --write " .. file .. "'")
