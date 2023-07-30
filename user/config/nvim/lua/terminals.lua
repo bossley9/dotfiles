@@ -48,9 +48,9 @@ local function openWindow()
     local fgOpts = {
         relative = 'editor',
         style = 'minimal',
-        col = col + 2,
-        row = row + 1,
-        width = width - 3,
+        col = col,
+        row = row,
+        width = width,
         height = height - 3,
         border = vim.g.border
     }
