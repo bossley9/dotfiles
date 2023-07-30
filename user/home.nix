@@ -92,6 +92,7 @@ in
 
     home.packages = with pkgs; [
       # functional
+      wget # required by Neovim LSP
       nodejs
       fzf
       ripgrep
@@ -103,6 +104,12 @@ in
       bitwarden-cli
       yubikey-manager
       sshfs
+      # LSP servers
+      nodePackages."@astrojs/language-server"
+      nodePackages.vscode-langservers-extracted # eslint, jsonls
+      lua-language-server
+      nixd
+      nodePackages.typescript-language-server
 
       # ui
       sway

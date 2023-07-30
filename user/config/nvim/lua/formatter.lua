@@ -25,6 +25,13 @@ vim.g.Format = function()
         vim.cmd("exe 'silent !nixpkgs-fmt " .. file .. "'")
     elseif ft == 'rust' then
         vim.cmd("exe 'silent !rustfmt " .. file .. "'")
+    else
+        local prettier = vim.g.projectDir .. '/node_modules/.bin/prettier'
+        local handle = io.popen(prettier, 'r')
+        if handle ~= nil then
+            io.close(handle)
+            vim.cmd("exe 'silent !" .. prettier .. " --write " .. file .. "'")
+        end
     end
     -- step 2: reload formatting changes
     vim.cmd 'e'
