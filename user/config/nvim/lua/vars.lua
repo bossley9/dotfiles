@@ -11,3 +11,9 @@ if argc == 0 then vim.g.openedWithDir = 1 end
 -- resolve() resolves any symbolic links.
 -- fnameescape() escapes paths with spaces, e.g. "My\ Docs/".
 vim.g.projectDir = vim.fn.fnameescape(vim.fn.resolve(vim.fn.getcwd()))
+
+vim.g.border = {
+    {"┌", "FloatBorder"}, {"─", "FloatBorder"}, {"┐", "FloatBorder"},
+    {"│", "FloatBorder"}, {"┘", "FloatBorder"}, {"─", "FloatBorder"},
+    {"└", "FloatBorder"}, {"│", "FloatBorder"}
+}

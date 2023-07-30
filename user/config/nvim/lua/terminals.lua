@@ -2,141 +2,110 @@
 -- vim:fdm=marker
 local map = require('utils').map
 
-vim.cmd([[
+-- setup and variables {{{
 
-" setup and variables {{{
+local numTerminals = 5
 
-let s:numTerminals = 4
+local shellName = vim.fn.expand('$SHELL')
+if #shellName == 0 then shellName = 'sh' end
 
-let s:shellName = expand('$SHELL')
-if len(s:shellName) == 0
-  let s:shellName = 'sh'
-endif
+local termList = {}
+for i = 0, numTerminals - 1 do termList[i] = -1 end
 
-let s:termList = map(range(s:numTerminals), -1)
+local window = {isOpen = false, win = -1, index = 0}
 
-let s:window = {
-  \ 'isOpen': 0,
-  \ 'win': -1,
-  \ 'index': 0,
-  \ 'bgwin': -1,
-  \ }
+-- }}}
 
-" }}}
+-- create and exit terminal buffers {{{
 
-" create and exit terminal buffers {{{
+local function createTerminal()
+    vim.fn.termopen(shellName, {
+        on_exit = function()
+            vim.api.nvim_buf_delete(0, {force = true}) -- kill terminal window
+            termList[window.index] = -1
+            window.isOpen = false
+            window.win = -1
+            window.index = 0
+        end,
+        cwd = vim.g.projectDir
+    })
+end
 
-fu! s:createTerminal()
-  call termopen(s:shellName, { 'on_exit': 'ExitTerminal', 'cwd': g:projectDir })
-endfunction
+-- }}}
 
-fu! g:ExitTerminal(job_id, code, event) dict
-  bw! " kill terminal window
-  bw! " kill bg window
-  let s:termList[s:window.index] = -1
-  let s:window.isOpen = 0
-  let s:window.win = -1
-  let s:window.index = 0
-  let s:window.bgwin = -1
-endfunction
+-- open window {{{
 
-" }}}
+local function openWindow()
+    local opts = {x = 0, y = 0, w = 1, h = 1}
+    local _columns = vim.go.columns
+    local _lines = vim.go.lines
 
-" open window {{{
+    local col = math.floor(_columns * opts.x)
+    local row = math.floor(_lines * opts.y)
+    local width = math.floor(_columns * opts.w)
+    local height = math.floor(_lines * opts.h)
 
-fu! s:openWindow()
-  let l:opts = { 'x': 0, 'y': 0, 'w': 1, 'h': 1 }
+    local fgOpts = {
+        relative = 'editor',
+        style = 'minimal',
+        col = col + 2,
+        row = row + 1,
+        width = width - 3,
+        height = height - 3,
+        border = vim.g.border
+    }
 
-  let l:col = float2nr(&columns * l:opts.x)
-  let l:row = float2nr(&lines * l:opts.y)
-  let l:width = float2nr(&columns * l:opts.w)
-  let l:height = float2nr(&lines * l:opts.h)
+    -- open with current buffer for now - we'll replace it with a terminal later
+    local win = vim.api.nvim_open_win(0, true, fgOpts)
 
-  " background
-  let l:bgb = nvim_create_buf(v:false, v:true)
-  let l:top = "┌" . repeat("─", l:width - 2) . "┐"
-  let l:mid = "│" . repeat(" ", l:width - 2) . "│"
-  let l:bot = "└" . repeat("─", l:width - 2) . "┘"
-  let l:lines = [l:top] + repeat([l:mid], l:height - 3) + [l:bot]
-  call nvim_buf_set_lines(l:bgb, 0, -1, v:true, l:lines)
-  let l:bgOpts = {
-    \ 'relative': 'editor',
-    \ 'style': 'minimal',
-    \ 'col': l:col,
-    \ 'row': l:row,
-    \ 'width': l:width,
-    \ 'height': l:height - 1
-    \ }
-  let l:bgwin = nvim_open_win(l:bgb, v:true, l:bgOpts)
-  call setwinvar(l:bgwin, '&winhl', 'Normal:WindowBorder')
+    window.win = win
+    window.isOpen = true
+end
 
-  let l:fgOpts = {
-    \ 'relative': 'editor',
-    \ 'style': 'minimal',
-    \ 'col': l:col + 2,
-    \ 'row': l:row + 1,
-    \ 'width': l:width - 4,
-    \ 'height': l:height - 3
-    \ }
+-- }}}
 
-  " open with current buffer for now - we'll replace it with a terminal later
-  let l:win = nvim_open_win(0, v:true, l:fgOpts)
+-- toggle terminal window {{{
 
-  let s:window.win = l:win
-  let s:window.bgwin = l:bgwin
-  let s:window.isOpen = 1
-endfunction
+vim.g.ToggleTermWindow = function()
+    if window.isOpen then -- if terminal window exists and is open
+        window.isOpen = false
+        vim.api.nvim_set_current_win(window.win)
+        vim.cmd('hide')
 
-" }}}
+    else -- if terminal window is closed or does not exist yet
+        window.isOpen = true
+        openWindow()
+        vim.g.FocusTerminal(window.index)
+    end
+end
 
-" toggle terminal window {{{
+-- }}}
 
-fu! g:ToggleTermWindow()
-  if s:window.isOpen " if terminal window exists and is open
-    let s:window.isOpen = 0
-    call nvim_set_current_win(s:window.win) | hide
-    " border buffer is deleted by default since it is unmodifiable
-    call nvim_set_current_win(s:window.bgwin) | hide
+-- focus terminal {{{
 
-  else " if terminal window is closed or does not exist yet
-    let s:window.isOpen = 1
-    call s:openWindow()
-    call FocusTerminal(s:window.index)
+vim.g.FocusTerminal = function(i)
+    window.index = i
+    local hasNoTermBuf = termList[window.index] < 0
 
-  endif
-endfunction
+    if hasNoTermBuf then
+        termList[window.index] = vim.api.nvim_create_buf(false, true)
+    end
 
-" }}}
+    vim.api.nvim_set_current_buf(termList[window.index])
 
-" focus terminal {{{
+    if hasNoTermBuf then createTerminal() end
 
-fu! g:FocusTerminal(i)
-  let s:window.index = a:i
-  let l:hasNoTermBuf = s:termList[s:window.index] < 0
+    vim.cmd('startinsert')
+end
 
-  if l:hasNoTermBuf
-    let s:termList[s:window.index] = nvim_create_buf(v:false, v:true)
-  endif
+-- }}}
 
-  call nvim_set_current_buf(s:termList[s:window.index])
+-- keymaps {{{
 
-  if l:hasNoTermBuf
-    call s:createTerminal()
-  endif
-
-  startinsert
-endfunction
-
-" }}}
-
-" keymaps {{{
-
-for i in range(s:numTerminals)
-  let s:n = i + 1
-  exe 'tnoremap <silent> <M-'.s:n.'> <C-\><C-n>:call g:FocusTerminal('.i.')<CR>' 
-endfor
-
-]])
+for i = 0, numTerminals - 1 do
+    map('t', '<M-' .. (i + 1) .. '>', function() vim.g.FocusTerminal(i) end,
+        {silent = true})
+end
 
 map('n', '<M-`>', ':call g:ToggleTermWindow()<CR>', {silent = true})
 map('t', '<M-`>', '<C-\\><C-n>:call g:ToggleTermWindow()<CR>', {silent = true})

@@ -32,10 +32,12 @@ end, {})
 
 -- }}}
 
-vim.cmd([[
+vim.cmd 'colorscheme nord'
 
-colorscheme nord
-" set termguicolors
+-- floating windows
+vim.api.nvim_set_hl(0, "FloatBorder", {fg = 15})
+
+vim.cmd([[
 
 " interface {{{
 
