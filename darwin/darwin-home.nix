@@ -11,10 +11,25 @@ in
 
   # username must be declared by config.users.users for home-manager detection
   users.users."${username}" = {
-    shell = [ pkgs.zsh ];
+    shell = [ pkgs.oksh ];
     home = "/Users/${username}";
   };
   home-manager.users."${username}" = {
+    home.file.".profile" = {
+      text = builtins.concatStringsSep "\n" [
+        (builtins.readFile ../user/config/zsh/zprofile)
+        ". /etc/zshenv"
+      ];
+      executable = true;
+    };
+    home.file.".config/sh/shrc" = {
+      text = builtins.concatStringsSep "\n" [
+        (builtins.readFile ../shared/navigationrc)
+        (builtins.readFile ../user/config/zsh/zshrc)
+      ];
+      executable = true;
+    };
+
     home.file.".config/kitty/kitty.conf".source = ../user/config/kitty/kitty.conf;
 
     home.file.".config/rg/rgrc".source = ../user/config/rg/rgrc;

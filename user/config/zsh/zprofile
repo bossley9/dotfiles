@@ -14,7 +14,8 @@ export XDG_REPO_HOME="${HOME}/Repos"
 
 # environment variables {{{
 
-export SHELL="/bin/zsh"
+export ENV="${XDG_CONFIG_HOME}/sh/shrc"
+export SHELL="/run/current-system/sw/bin/oksh"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export PAGER="less"

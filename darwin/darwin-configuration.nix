@@ -3,14 +3,22 @@
 {
   environment.systemPackages = with pkgs; [
     # functional
+    oksh
     fzf
     git
     neovim
     htop
+    # LSP servers
+    nodePackages.vscode-langservers-extracted # eslint, jsonls
+    nixd
+    nodePackages.typescript-language-server
 
     # ui
     jetbrains-mono
     kitty
+
+    # work tools
+    yarn
 
     # formatters
     nixpkgs-fmt
