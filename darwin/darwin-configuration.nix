@@ -19,9 +19,11 @@
 
     # work tools
     yarn
+    deno
 
     # formatters
     nixpkgs-fmt
+    luaformatter
   ];
 
   programs.zsh = {

@@ -91,6 +91,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- }}}
 
+-- formatting {{{
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '*',
+    callback = function()
+        if vim.g.isFormattingEnabled then vim.lsp.buf.format() end
+    end
+})
+
+-- }}}
+
 -- server configurations {{{
 
 local on_attach_ts = function(client)

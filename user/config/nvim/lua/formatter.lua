@@ -1,15 +1,13 @@
-local formattingEnabled = true
+vim.g.isFormattingEnabled = true
 
-vim.g.SetFormat = function(value) formattingEnabled = value end
+vim.api.nvim_create_user_command('FormatOn', function()
+    vim.g.isFormattingEnabled = true
+end, {nargs = 0})
+vim.api.nvim_create_user_command('FormatOff', function()
+    vim.g.isFormattingEnabled = false
+end, {nargs = 0})
 
-vim.api.nvim_create_user_command('FormatOn',
-                                 function() vim.g.SetFormat(true) end,
-                                 {nargs = 0})
-vim.api.nvim_create_user_command('FormatOff',
-                                 function() vim.g.SetFormat(false) end,
-                                 {nargs = 0})
-
-vim.g.Format = function()
+vim.g.CustomFormat = function()
     local ft = vim.bo.filetype
     local file = vim.fn.expand('%:p')
     -- step 1: silently format the file in place (silent !cmd expand(%:p))
@@ -43,5 +41,7 @@ end
 
 vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = '*',
-    callback = function() if formattingEnabled then vim.g.Format() end end
+    callback = function()
+        if vim.g.isFormattingEnabled then vim.g.CustomFormat() end
+    end
 })
