@@ -106,7 +106,8 @@ end, { nargs = 0 })
 vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = '*',
     callback = function()
-        if vim.g.isFormattingEnabled then
+        local clients = vim.lsp.buf_get_clients()
+        if vim.g.isFormattingEnabled and #clients > 0 then
             vim.lsp.buf.format()
             vim.cmd 'norm! zv' -- reopen current fold
         end
