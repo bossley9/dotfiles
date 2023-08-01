@@ -17,8 +17,8 @@ in
   home-manager.users."${username}" = {
     home.file.".profile" = {
       text = builtins.concatStringsSep "\n" [
-        (builtins.readFile ../user/config/zsh/zprofile)
         ". /etc/zshenv"
+        (builtins.readFile ../user/config/zsh/zprofile)
       ];
       executable = true;
     };

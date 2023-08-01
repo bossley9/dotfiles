@@ -17,7 +17,7 @@
   zzz = "!git restore --staged : && git restore : && git clean -fd"
 
 [core]
-  editor = "nvim"
+  editor = "nvim --clean"
 
 [init]
   defaultBranch = "main"
