@@ -134,7 +134,7 @@ vim.g.CustomFormat = function()
 end
 
 vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = '*',
+    pattern = '*.ts*',
     callback = function()
         if vim.g.isFormattingEnabled then vim.g.CustomFormat() end
     end
