@@ -1,7 +1,7 @@
 local M = {}
 
 function M.map(mode, lhs, rhs, opts)
-    local options = {noremap = true}
+    local options = { noremap = true }
     if opts then options = vim.tbl_extend("force", options, opts) end
     vim.keymap.set(mode, lhs, rhs, options)
 end
@@ -18,8 +18,8 @@ function M.openURL(url)
         if package.config:sub(1, 1) == '\\' then
             open_cmd = function(_url)
                 local handle = io.popen(string.format(
-                                            'rundll32 url.dll,FileProtocolHandler "%s"',
-                                            _url))
+                    'rundll32 url.dll,FileProtocolHandler "%s"',
+                    _url))
                 if handle ~= nil then handle:close() end
             end
         elseif (io.popen('uname -s'):read '*a'):match 'Darwin' then

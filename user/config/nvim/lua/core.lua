@@ -73,21 +73,21 @@ vim.cmd([[
 map('v', '<C-c>', '"+ygv')
 map('n', '<C-c>', '"+ygv')
 vim.api.nvim_create_user_command('File', function()
-    utils.copyToClipboard(vim.fn.expand('%'))
+  utils.copyToClipboard(vim.fn.expand('%'))
 end, {})
 
 -- gx browser
 vim.api.nvim_create_user_command('GXBrowse', function()
-    local url = utils.getcWORD()
-    utils.openURL(url)
+  local url = utils.getcWORD()
+  utils.openURL(url)
 end, {})
 map('n', 'gx', ":GXBrowse<CR>")
 
 -- Nixpkgs browser
 vim.api.nvim_create_user_command('Nix', function()
-    local baseURL = 'https://github.com/NixOS/nixpkgs/blob/master/'
-    local path = utils.getcWORD():gsub('^<nixpkgs/', ''):gsub('>$', '')
-    utils.openURL(baseURL .. path)
+  local baseURL = 'https://github.com/NixOS/nixpkgs/blob/master/'
+  local path = utils.getcWORD():gsub('^<nixpkgs/', ''):gsub('>$', '')
+  utils.openURL(baseURL .. path)
 end, {})
 
 -- disable default OpenAI bindings

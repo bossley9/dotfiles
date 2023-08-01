@@ -48,7 +48,7 @@ set.signcolumn = 'yes'
 
 -- gitblame {{{
 
-vim.g.gitblame_ignored_filetypes = {'fern', 'netrw'}
+vim.g.gitblame_ignored_filetypes = { 'fern', 'netrw' }
 vim.g.gitblame_date_format = '%a %d %b %Y %H:%M'
 
 vim.api.nvim_create_user_command('CopySHA', 'GitBlameCopySHA', {})
@@ -89,7 +89,7 @@ vim.api.nvim_create_user_command('GetRemoteSelection', function(args)
     end
 
     utils.copyToClipboard(url)
-end, {range = '%'})
+end, { range = '%' })
 
 -- }}}
 

@@ -1,7 +1,7 @@
 local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath('data') ..
-                             '/site/pack/packer/start/packer.nvim'
+        '/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
         fn.system({
             'git', 'clone', '--depth', '1',
@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
         'tpope/vim-surround',
         commit = 'bf3480dc9ae7bea34c78fbba4c65b4548b5b1fea'
     }
-    use {'lambdalisue/fern.vim', tag = 'v1.51.1'}
+    use { 'lambdalisue/fern.vim', tag = 'v1.51.1' }
     use {
         'preservim/vim-markdown',
         commit = 'c3f83ebb43b560af066d2a5d66bc77c6c05293b1'
@@ -71,7 +71,7 @@ return require('packer').startup(function(use)
         commit = 'c4e491a87eeacf0408902c32f031d802c7eafce8'
     }
     -- depends on $OPENAI_API_KEY https://beta.openai.com/account/api-keys
-    use {'aduros/ai.vim', commit = '7051afa7a5f43b3fe79b7ad20d976d75e07e4e48'}
+    use { 'aduros/ai.vim', commit = '7051afa7a5f43b3fe79b7ad20d976d75e07e4e48' }
     -- cosmetic
     use {
         'sheerun/vim-polyglot',

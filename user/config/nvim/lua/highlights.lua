@@ -1,15 +1,15 @@
 -- vim:fdm=marker
 -- debug {{{
 vim.api.nvim_create_user_command('DebugHighlights', function()
-    vim.cmd('so $VIMRUNTIME/syntax/hitest.vim')
+  vim.cmd('so $VIMRUNTIME/syntax/hitest.vim')
 end, {})
 
 vim.api.nvim_create_user_command('DebugColor', function()
-    vim.cmd('so $VIMRUNTIME/syntax/colortest.vim')
+  vim.cmd('so $VIMRUNTIME/syntax/colortest.vim')
 end, {})
 
 vim.api.nvim_create_user_command('DebugColor256', function()
-    vim.cmd([[
+  vim.cmd([[
       new
       let num = 255
       while num >= 0
@@ -24,7 +24,7 @@ vim.api.nvim_create_user_command('DebugColor256', function()
 end, {})
 
 vim.api.nvim_create_user_command('DebugSynGroup', function()
-    vim.cmd([[
+  vim.cmd([[
       let s = synID(line('.'), col('.'), 1)
       echo synIDattr(s, 'name') . ' -> ' . synIDattr(synIDtrans(s), 'name')
     ]])
@@ -35,7 +35,7 @@ end, {})
 vim.cmd 'colorscheme nord'
 
 -- floating windows
-vim.api.nvim_set_hl(0, "FloatBorder", {fg = 15})
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = 15 })
 
 vim.cmd([[
 
@@ -82,7 +82,7 @@ fu! g:SetStatusLine(is_focused)
 
   " hide statusline for file explorer
   if &ft == 'fern'
-    setlocal statusline=\ 
+    setlocal statusline=\
     return
   en
 

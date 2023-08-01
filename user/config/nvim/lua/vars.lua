@@ -13,7 +13,7 @@ if argc == 0 then vim.g.openedWithDir = 1 end
 vim.g.projectDir = vim.fn.fnameescape(vim.fn.resolve(vim.fn.getcwd()))
 
 vim.g.border = {
-    {"┌", "FloatBorder"}, {"─", "FloatBorder"}, {"┐", "FloatBorder"},
-    {"│", "FloatBorder"}, {"┘", "FloatBorder"}, {"─", "FloatBorder"},
-    {"└", "FloatBorder"}, {"│", "FloatBorder"}
+    { "┌", "FloatBorder" }, { "─", "FloatBorder" }, { "┐", "FloatBorder" },
+    { "│", "FloatBorder" }, { "┘", "FloatBorder" }, { "─", "FloatBorder" },
+    { "└", "FloatBorder" }, { "│", "FloatBorder" }
 }

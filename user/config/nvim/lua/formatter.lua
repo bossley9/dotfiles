@@ -2,10 +2,10 @@ vim.g.isFormattingEnabled = true
 
 vim.api.nvim_create_user_command('FormatOn', function()
     vim.g.isFormattingEnabled = true
-end, {nargs = 0})
+end, { nargs = 0 })
 vim.api.nvim_create_user_command('FormatOff', function()
     vim.g.isFormattingEnabled = false
-end, {nargs = 0})
+end, { nargs = 0 })
 
 vim.g.CustomFormat = function()
     local ft = vim.bo.filetype
@@ -17,8 +17,6 @@ vim.g.CustomFormat = function()
         vim.cmd("exe 'silent !gofmt -w " .. file .. "'")
     elseif ft == 'kotlin' then
         vim.cmd("exe 'silent !ktlint -F " .. file .. "'")
-    elseif ft == 'lua' then
-        vim.cmd("exe 'silent !lua-format -i " .. file .. "'")
     elseif ft == 'nix' then
         vim.cmd("exe 'silent !nixpkgs-fmt " .. file .. "'")
     elseif ft == 'rust' then

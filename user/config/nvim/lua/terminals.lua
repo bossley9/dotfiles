@@ -12,7 +12,7 @@ if #shellName == 0 then shellName = 'sh' end
 local termList = {}
 for i = 0, numTerminals - 1 do termList[i] = -1 end
 
-local window = {isOpen = false, win = -1, index = 0}
+local window = { isOpen = false, win = -1, index = 0 }
 
 -- }}}
 
@@ -21,7 +21,7 @@ local window = {isOpen = false, win = -1, index = 0}
 local function createTerminal()
     vim.fn.termopen(shellName, {
         on_exit = function()
-            vim.api.nvim_buf_delete(0, {force = true}) -- kill terminal window
+            vim.api.nvim_buf_delete(0, { force = true }) -- kill terminal window
             termList[window.index] = -1
             window.isOpen = false
             window.win = -1
@@ -36,7 +36,7 @@ end
 -- open window {{{
 
 local function openWindow()
-    local opts = {x = 0, y = 0, w = 1, h = 1}
+    local opts = { x = 0, y = 0, w = 1, h = 1 }
     local _columns = vim.go.columns
     local _lines = vim.go.lines
 
@@ -71,7 +71,6 @@ vim.g.ToggleTermWindow = function()
         window.isOpen = false
         vim.api.nvim_set_current_win(window.win)
         vim.cmd('hide')
-
     else -- if terminal window is closed or does not exist yet
         window.isOpen = true
         openWindow()
@@ -104,10 +103,10 @@ end
 
 for i = 0, numTerminals - 1 do
     map('t', '<M-' .. (i + 1) .. '>', function() vim.g.FocusTerminal(i) end,
-        {silent = true})
+        { silent = true })
 end
 
-map('n', '<M-`>', ':call g:ToggleTermWindow()<CR>', {silent = true})
-map('t', '<M-`>', '<C-\\><C-n>:call g:ToggleTermWindow()<CR>', {silent = true})
+map('n', '<M-`>', ':call g:ToggleTermWindow()<CR>', { silent = true })
+map('t', '<M-`>', '<C-\\><C-n>:call g:ToggleTermWindow()<CR>', { silent = true })
 
 -- }}}

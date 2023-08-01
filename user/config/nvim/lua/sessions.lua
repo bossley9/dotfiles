@@ -24,16 +24,16 @@ local function deleteHiddenBuffers()
         local isNotTerminalBuffer = btype ~= 'terminal'
         local isScratchBuffer = bname == '' or btype == 'nofile'
         local isInformationalBuffer = btype == 'help' or btype == 'quickfix' or
-                                          bname:sub(1, #manPrefix) == manPrefix
+            bname:sub(1, #manPrefix) == manPrefix
         local isFileExplorerBuffer = btype == 'directory' or bname ==
-                                         'NetrwTreeListing' or
-                                         bname:sub(1, #fernPrefix) == fernPrefix
+            'NetrwTreeListing' or
+            bname:sub(1, #fernPrefix) == fernPrefix
 
         if (isNotTerminalBuffer and
-            (isHiddenBuffer or isScratchBuffer or isInformationalBuffer or
-                isFileExplorerBuffer)) then
+                (isHiddenBuffer or isScratchBuffer or isInformationalBuffer or
+                    isFileExplorerBuffer)) then
             -- delete the buffer
-            vim.api.nvim_buf_delete(binfo.bufnr, {force = true})
+            vim.api.nvim_buf_delete(binfo.bufnr, { force = true })
         end
     end
 end
@@ -59,16 +59,16 @@ local function restoreSession()
     end
 end
 
-vim.api.nvim_create_autocmd({'VimEnter'}, {
-    pattern = {'*'},
+vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+    pattern = { '*' },
     nested = true,
     callback = function()
         if vim.g.openedWithDir == 1 then restoreSession() end
     end
 })
 
-vim.api.nvim_create_autocmd({'VimLeave'}, {
-    pattern = {'*'},
+vim.api.nvim_create_autocmd({ 'VimLeave' }, {
+    pattern = { '*' },
     callback = function() if vim.g.openedWithDir == 1 then saveSession() end end
 })
 

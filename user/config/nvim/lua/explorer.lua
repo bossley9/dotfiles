@@ -68,10 +68,10 @@ let g:fern#renderer#default#expanded_symbol = ""
 
 -- fuzzy finders {{{
 
-vim.g.fzf_layout = {window = {width = 1, height = 1, border = 'sharp'}}
+vim.g.fzf_layout = { window = { width = 1, height = 1, border = 'sharp' } }
 
-map('n', '<M-p>', ':GFiles<CR>', {silent = true})
-map('n', '<M-P>', ':Files<CR>', {silent = true})
-map('n', '<M-F>', ':Rg<CR>', {silent = true})
+map('n', '<M-p>', ':GFiles<CR>', { silent = true })
+map('n', '<M-P>', ':Files<CR>', { silent = true })
+map('n', '<M-F>', ':Rg<CR>', { silent = true })
 
 -- }}}
