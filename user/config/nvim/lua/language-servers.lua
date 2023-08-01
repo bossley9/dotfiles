@@ -106,14 +106,16 @@ end, { nargs = 0 })
 vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = '*',
     callback = function()
-        if vim.g.isFormattingEnabled then vim.lsp.buf.format() end
+        if vim.g.isFormattingEnabled then
+            vim.lsp.buf.format()
+            vim.cmd 'norm! zv' -- reopen current fold
+        end
     end
 })
 
 -- custom formatting for prettier projects
 
 vim.g.CustomFormat = function()
-    local ft = vim.bo.filetype
     local file = vim.fn.expand('%:p')
     -- step 1: silently format the file in place (silent !cmd expand(%:p))
     local prettier = vim.g.projectDir .. '/node_modules/.bin/prettier'
