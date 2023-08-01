@@ -37,6 +37,9 @@ vim.cmd 'colorscheme nord'
 -- floating windows
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = 15 })
 
+-- quickfix lists
+vim.api.nvim_set_hl(0, "QuickFixLine", { fg = 15, bg = 0 })
+
 vim.cmd([[
 
 " interface {{{

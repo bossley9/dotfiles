@@ -41,6 +41,9 @@ vim.g.gitgutter_sign_modified = vcs
 vim.g.gitgutter_sign_removed = vcs
 vim.g.gitgutter_sign_removed_first_line = vcs
 vim.g.gitgutter_sign_modified_removed = vcs
+-- prevent signs from covering LSP diagnostics
+vim.g.gitgutter_sign_priority = 0
+vim.g.gitgutter_sign_allow_clobber = 0
 
 set.signcolumn = 'yes'
 
