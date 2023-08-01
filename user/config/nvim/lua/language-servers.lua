@@ -94,10 +94,47 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- formatting {{{
 
+vim.g.isFormattingEnabled = true
+
+vim.api.nvim_create_user_command('FormatOn', function()
+    vim.g.isFormattingEnabled = true
+end, { nargs = 0 })
+vim.api.nvim_create_user_command('FormatOff', function()
+    vim.g.isFormattingEnabled = false
+end, { nargs = 0 })
+
 vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = '*',
     callback = function()
         if vim.g.isFormattingEnabled then vim.lsp.buf.format() end
+    end
+})
+
+-- custom formatting for prettier projects
+
+vim.g.CustomFormat = function()
+    local ft = vim.bo.filetype
+    local file = vim.fn.expand('%:p')
+    -- step 1: silently format the file in place (silent !cmd expand(%:p))
+    local prettier = vim.g.projectDir .. '/node_modules/.bin/prettier'
+    local handle = io.open(prettier, 'r')
+    if handle == nil then
+        return
+    end
+    io.close(handle)
+    vim.cmd("exe 'silent !" .. prettier .. " --write " .. file .. "'")
+    -- step 2: reload formatting changes
+    vim.cmd 'e'
+    -- step 3: reload syntax highlighting
+    vim.cmd 'redraw'
+    -- step 4: reopen the currently closed fold
+    vim.cmd 'norm! zv'
+end
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = '*',
+    callback = function()
+        if vim.g.isFormattingEnabled then vim.g.CustomFormat() end
     end
 })
 
