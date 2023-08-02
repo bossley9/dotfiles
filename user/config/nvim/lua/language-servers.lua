@@ -77,6 +77,13 @@ vim.keymap.set('n', '<F4>', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<F5>', vim.diagnostic.setloclist)
 vim.keymap.set('n', 'gj',
     function() vim.diagnostic.open_float(nil, { focus = false }) end)
+vim.keymap.set('n', '<ESC>', function()
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        if vim.api.nvim_win_get_config(win).relative == "win" then
+            vim.api.nvim_win_close(win, false)
+        end
+    end
+end)
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
