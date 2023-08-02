@@ -143,7 +143,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 vim.api.nvim_create_autocmd('VimLeave', {
     pattern = '*',
-    callback = function() vim.cmd("exe 'silent !pkill prettierd'") end
+    callback = function() os.execute('if pgrep prettierd; then pkill prettierd; fi') end
 })
 
 -- }}}
