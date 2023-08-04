@@ -132,7 +132,7 @@ vim.g.CustomFormat = function()
         return
     end
     io.close(handle)
-    vim.cmd("exe 'silent !echo \"$(cat " .. file .. " | prettierd " .. file .. ")\" > " .. file .. "'")
+    vim.cmd("exe 'silent !" .. prettier .. " --write " .. file .. "'")
     -- step 2: reload formatting changes
     vim.cmd 'e'
     -- step 3: reload syntax highlighting
@@ -142,15 +142,10 @@ vim.g.CustomFormat = function()
 end
 
 vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = '*.ts*',
+    pattern = '*.js,*.jsx,*.ts,*.tsx',
     callback = function()
         if vim.g.isFormattingEnabled then vim.g.CustomFormat() end
     end
-})
-
-vim.api.nvim_create_autocmd('VimLeave', {
-    pattern = '*',
-    callback = function() os.execute('if pgrep prettierd; then pkill prettierd; fi') end
 })
 
 -- }}}

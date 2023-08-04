@@ -11,7 +11,6 @@
     # LSP servers
     nodePackages.vscode-langservers-extracted # eslint, jsonls
     nixd
-    prettierd
     nodePackages.typescript-language-server
 
     # ui
