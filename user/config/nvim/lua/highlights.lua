@@ -1,5 +1,8 @@
 -- vim:fdm=marker
+local setl = vim.opt_local
+
 -- debug {{{
+
 vim.api.nvim_create_user_command('DebugHighlights', function()
   vim.cmd('so $VIMRUNTIME/syntax/hitest.vim')
 end, {})
@@ -143,10 +146,8 @@ let g:vim_markdown_strikethrough = 1 " enable strikethrough highlighting
 " setl iskeyword-=- overrides default behaviour of ignoring dashes as word boundaries
 augroup highlights
   au!
-  au BufRead,BufNewFile *.babel setl ft=javascript
   au Filetype css setl iskeyword-=-
   au Filetype fern setl nonumber
-  au BufRead,BufNewFile *.{gemini,gmi} set ft=gemini commentstring=-\ [\ ]\ %s
   au BufRead,BufNewFile *.json setl ft=json
   au Filetype json5 setl commentstring=//\ %s
   au BufRead,BufNewFile *.m3u setl ft=m3u
@@ -154,3 +155,15 @@ augroup highlights
 augroup end
 
 ]])
+
+-- custom filetype rules {{{
+
+local gid = vim.api.nvim_create_augroup('custom-filetypes', { clear = true })
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*.opml',
+  callback = function() setl.ft = 'xml' end,
+  group = gid,
+})
+
+-- }}}
