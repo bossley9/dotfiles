@@ -35,6 +35,8 @@ in
     home.file.".config/rg/rgrc".source = ../user/config/rg/rgrc;
     home.file.".config/bat/config".source = ../user/config/bat/config;
 
+    home.file.".hammerspoon/init.lua".source = ../user/config/hammerspoon/hammerspoon.lua;
+
     home.file.".config/nvim".source = ../user/config/nvim;
 
     home.file.".config/git/config".source = ../user/config/git/config;
