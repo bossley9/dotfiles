@@ -4,7 +4,6 @@ local bindings = {
   ['0'] = 'kitty',
   -- HS cannot differentiate multiple version of apps
   ['9'] = '/Applications/Google Chrome.app',
-  ['8'] = 'Slack',
   ['3'] = 'zoom.us',
   ['2'] = 'finder',
 }
