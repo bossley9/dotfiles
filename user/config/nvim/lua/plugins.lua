@@ -81,10 +81,6 @@ return require('packer').startup(function(use)
         'arcticicestudio/nord-vim',
         commit = '0748955e9e8d9770b44f2bec8456189430b37d9d'
     }
-    use {
-        'wuelnerdotexe/vim-astro',
-        commit = '34732be5e9a5c28c2409f4490edf92d46d8b55a9'
-    }
 
     if packer_bootstrap then require('packer').sync() end
     -- always install missing packages on startup

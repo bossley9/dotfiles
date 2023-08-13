@@ -160,6 +160,11 @@ augroup end
 
 local gid = vim.api.nvim_create_augroup('custom-filetypes', { clear = true })
 
+vim.api.nvim_create_autocmd('Filetype', {
+  pattern = 'astro',
+  callback = function() setl.commentstring = '// %s' end,
+  group = gid,
+})
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = '*.opml',
   callback = function() setl.ft = 'xml' end,
