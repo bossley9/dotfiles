@@ -12,7 +12,6 @@ let
   foot = import ./config/foot/foot.nix args;
   firefox = import ./config/browser/firefox.nix args;
   # packages
-  beeper = pkgs.callPackage ./packages/beeper.nix { };
   sn = pkgs.callPackage ./packages/sn.nix { };
   swayaudioidleinhibit = pkgs.callPackage ./packages/sway-audio-idle-inhibit.nix { };
   ncspot = pkgs.ncspot.overrideAttrs (finalAttrs: prevAttrs: {
@@ -83,9 +82,6 @@ in
   programs.firejail.enable = true;
   programs.wshowkeys.enable = true;
   nixpkgs.config.chromium.enableWideVine = true; # for DRM content
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "beeper"
-  ];
 
   programs.adb.enable = true;
 
@@ -193,7 +189,7 @@ in
       scrcpy
       pngquant
       imagemagick
-      beeper
+      darktable
 
       # editing
       tenacity
