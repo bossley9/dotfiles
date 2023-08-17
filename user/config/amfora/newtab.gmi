@@ -4,4 +4,3 @@ Welcome to Gemini!
 
 => about:about Internal Pages
 => gemini://gemini.circumlunar.space/ Project Gemini
-=> sam.bossley.us sam.bossley.us

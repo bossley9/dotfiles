@@ -101,7 +101,7 @@ After booting for the first time, there are a few configurations that are cannot
     mkdir -p ~/.ssh
     cd ~/.ssh
     ssh-keygen -K # without passphrase
-    # see https://sam.bossley.us/thoughts/22/11/enhancing-security-with-yubikeys for details
+    # see https://sam.bossley.xyz/thoughts/22/11/enhancing-security-with-yubikeys for details
     ```
 
 ## Installation (Darwin)
