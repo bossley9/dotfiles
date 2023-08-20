@@ -142,17 +142,6 @@ let g:vim_markdown_strikethrough = 1 " enable strikethrough highlighting
 
 " }}}
 
-" setl iskeyword-=- overrides default behaviour of ignoring dashes as word boundaries
-augroup highlights
-  au!
-  au Filetype css setl iskeyword-=-
-  au Filetype fern setl nonumber
-  au BufRead,BufNewFile *.json setl ft=json
-  au Filetype json5 setl commentstring=//\ %s
-  au BufRead,BufNewFile *.m3u setl ft=m3u
-  au Filetype nix setl iskeyword-=-
-augroup end
-
 ]])
 
 -- custom filetype rules {{{
@@ -164,9 +153,29 @@ vim.api.nvim_create_autocmd('Filetype', {
   callback = function() setl.commentstring = '// %s' end,
   group = gid,
 })
+vim.api.nvim_create_autocmd('Filetype', {
+  pattern = 'css',
+  callback = function() setl.iskeyword:remove('-') end,
+  group = gid,
+})
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = 'deno.lock',
   callback = function() setl.ft = 'json' end,
+  group = gid,
+})
+vim.api.nvim_create_autocmd('Filetype', {
+  pattern = 'fern',
+  callback = function() setl.number = false end,
+  group = gid,
+})
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*.m3u',
+  callback = function() setl.ft = 'm3u' end,
+  group = gid,
+})
+vim.api.nvim_create_autocmd('Filetype', {
+  pattern = 'nix',
+  callback = function() setl.iskeyword:remove('-') end,
   group = gid,
 })
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
