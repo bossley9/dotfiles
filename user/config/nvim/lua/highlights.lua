@@ -166,6 +166,11 @@ vim.api.nvim_create_autocmd('Filetype', {
   group = gid,
 })
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = 'deno.lock',
+  callback = function() setl.ft = 'json' end,
+  group = gid,
+})
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = '*.opml',
   callback = function() setl.ft = 'xml' end,
   group = gid,

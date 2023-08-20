@@ -167,7 +167,9 @@ local on_attach_ts = function(client)
     end
 end
 
-lspconfig.astro.setup {}
+lspconfig.astro.setup {
+    root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc', 'package.json')
+}
 lspconfig.denols.setup {
     on_attach = on_attach_ts,
     capabilities = capabilities,
