@@ -136,7 +136,6 @@ hi Visual cterm=reverse
 
 " vim-markdown {{{
 
-let g:vim_markdown_folding_disabled = 1 " disable header folding
 let g:vim_markdown_no_default_key_mappings = 1 " disable keybinds
 let g:vim_markdown_frontmatter = 1 " enable frontmatter highlighting
 let g:vim_markdown_strikethrough = 1 " enable strikethrough highlighting
