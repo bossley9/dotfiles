@@ -20,6 +20,8 @@
     # work tools
     yarn
     deno
+    docker
+    docker-compose
 
     # formatters
     nixpkgs-fmt
