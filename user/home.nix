@@ -93,16 +93,12 @@ in
 
     home.packages = with pkgs; [
       # functional
-      wget # required by Neovim LSP
-      nodejs
       fzf
       ripgrep
       less
       htop
-      neofetch # For asserting dominance
       vifm
       sc-im
-      bitwarden-cli
       yubikey-manager
       sshfs
       # LSP servers
@@ -133,15 +129,10 @@ in
       wlr-randr
       wally-cli
       pdftk
-      terminal-typeracer
       tesseract5
       tty-clock
       terraform
       dig
-      # formatters
-      nixpkgs-fmt
-      rustfmt
-      luaformatter
       # archiving utils
       unzip # *.zip
       zip
@@ -153,12 +144,8 @@ in
       texlive.combined.scheme-full
       # projects
       gnumake
-      go
       deno
       python3 # webservers with python3 -m http.server
-      cargo
-      gcc # required for rust toolchain
-      rustc
       # fun
       nethack
 

@@ -99,6 +99,7 @@ cs() {
 
 pruneSystem() {
   rm -rvf ${XDG_DATA_HOME}/vifm/Trash/*
+  rm -rvf ${XDG_DATA_HOME}/Trash/*
   rm -rvf ${XDG_DATA_HOME}/nvim/sessions/*
   rm -rvf ${HOME}/Downloads/*
   rm -rvf ${HOME}/Pictures/Snaps/*
