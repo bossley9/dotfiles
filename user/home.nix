@@ -146,8 +146,6 @@ in
       gnumake
       deno
       python3 # webservers with python3 -m http.server
-      # fun
-      nethack
 
       # multimedia
       grim
@@ -188,6 +186,10 @@ in
       (writeShellScriptBin "zoom" "NIXPKGS_ALLOW_UNFREE=1 nix-shell --impure $DOTDIR/user/shells/zoom.nix --run \"firejail zoom\"") # requires xwayland
       (writeShellScriptBin "minecraft" "nix shell nixpkgs#jdk17_headless nixpkgs#prismlauncher -c prismlauncher") # requires xwayland
       (writeShellScriptBin "vedit" "nix-shell $DOTDIR/user/shells/videoediting.nix --run kdenlive")
+
+      # games
+      nethack
+      (writeShellScriptBin "veloren" "nix shell nixpkgs#airshipper -c airshipper")
     ];
 
     # required for fontconfig to find home fonts
