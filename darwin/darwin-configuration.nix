@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  sn = pkgs.callPackage ../user/packages/sn.nix { };
+in
 {
   environment.systemPackages = with pkgs; [
     # functional
@@ -8,6 +11,7 @@
     git
     neovim
     htop
+    sn
     # LSP servers
     nodePackages.vscode-langservers-extracted # eslint, jsonls
     nixd
