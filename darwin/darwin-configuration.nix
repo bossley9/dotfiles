@@ -24,6 +24,7 @@ in
     # work tools
     yarn
     deno
+    jq
     docker
     docker-compose
 
