@@ -139,6 +139,7 @@ in
       p7zip
       libarchive # bsdtar - *.tar*
       unar # *.rar
+      smartmontools
 
       # documents
       texlive.combined.scheme-full
