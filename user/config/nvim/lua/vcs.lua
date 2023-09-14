@@ -52,18 +52,10 @@ set.signcolumn = 'yes'
 -- gitblame {{{
 
 vim.g.gitblame_ignored_filetypes = { 'fern', 'netrw' }
-vim.g.gitblame_date_format = '%a %d %b %Y %H:%M'
+vim.g.gitblame_date_format = '%a %Y-%m-%d %H:%M'
 
 vim.api.nvim_create_user_command('CopySHA', 'GitBlameCopySHA', {})
-
--- }}}
-
--- OpenGitUrl {{{
-
-vim.api.nvim_create_user_command('OpenGitUrl', function()
-    local url = remoteURL .. '/commit/' .. getSHA()
-    utils.openURL(url:gsub(' ', ''))
-end, {})
+vim.api.nvim_create_user_command('OpenGitUrl', 'GitBlameOpenCommitURL', {})
 
 -- }}}
 
