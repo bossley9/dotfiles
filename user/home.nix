@@ -14,11 +14,6 @@ let
   # packages
   sn = pkgs.callPackage ./packages/sn.nix { };
   swayaudioidleinhibit = pkgs.callPackage ./packages/sway-audio-idle-inhibit.nix { };
-  ncspot = pkgs.ncspot.overrideAttrs (finalAttrs: prevAttrs: {
-    withPulseAudio = true;
-    withMPRIS = true;
-    withShareClipboard = true;
-  });
   sc-im = pkgs.sc-im.overrideAttrs (finalAttrs: previousAttrs: {
     postInstall = builtins.concatStringsSep "\n" [
       previousAttrs.postInstall
@@ -163,7 +158,6 @@ in
       yt-dlp
       newsboat
       sn
-      ncspot
       cava
       zathura
       mupdf
@@ -287,8 +281,6 @@ in
     # multimedia {{{
 
     home.file.".config/imv/config".source = ./config/imv/config;
-
-    home.file.".config/ncspot/config.toml".source = ./config/ncspot/config.toml;
 
     # do not symlink entire mpv directory for watch_later feature to work properly
     home.file.".config/mpv/scripts".source = ./config/mpv/scripts;
