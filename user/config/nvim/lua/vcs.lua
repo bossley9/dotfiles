@@ -61,6 +61,9 @@ vim.api.nvim_create_user_command('OpenGitUrl', 'GitBlameOpenCommitURL', {})
 
 -- GetRemoteSelection {{{
 
+-- temporary command until GetRemoteSelection can be replaced
+vim.api.nvim_create_user_command('Bet', 'GitBlameCopyFileURL', {})
+
 vim.api.nvim_create_user_command('GetRemoteSelection', function(args)
     local latestSHACmd = 'git rev-parse HEAD'
     local latestSHAHandle = io.popen(latestSHACmd)
