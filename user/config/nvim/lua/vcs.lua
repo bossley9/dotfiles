@@ -15,18 +15,6 @@ local function getSHA()
     return sha
 end
 
-local remoteHandle = io.popen('git config --get remote.origin.url')
-local remote = ''
-if remoteHandle ~= nil then
-    remote = remoteHandle:read '*a':gsub('\r?\n', ''):gsub('.git$', '')
-    remoteHandle:close()
-end
-
-local domain, path = string.match(remote, "git%@(.*)%:(.*)")
-local remoteURL = remote
-if domain and path then remoteURL = 'https://' .. domain .. '/' .. path end
-remoteURL = remoteURL:gsub(' ', '')
-
 -- gitgutter {{{
 
 local vcs = '│'
@@ -56,38 +44,9 @@ vim.g.gitblame_date_format = '%a %Y-%m-%d %H:%M'
 
 vim.api.nvim_create_user_command('CopySHA', 'GitBlameCopySHA', {})
 vim.api.nvim_create_user_command('OpenGitUrl', 'GitBlameOpenCommitURL', {})
-
--- }}}
-
--- GetRemoteSelection {{{
-
--- temporary command until GetRemoteSelection can be replaced
-vim.api.nvim_create_user_command('Bet', 'GitBlameCopyFileURL', {})
-
-vim.api.nvim_create_user_command('GetRemoteSelection', function(args)
-    local latestSHACmd = 'git rev-parse HEAD'
-    local latestSHAHandle = io.popen(latestSHACmd)
-    local latestSHA = ''
-    if latestSHAHandle ~= nil then
-        latestSHA = latestSHAHandle:read('*a'):gsub('\n', '')
-        latestSHAHandle:close()
-    end
-
-    local url = remoteURL .. '/tree/' .. latestSHA .. '/' .. vim.fn.expand('%')
-
-    if (args.range == 2) then
-        local startLn = vim.fn.getpos("'<")[2]
-        local endLn = vim.fn.getpos("'>")[2]
-
-        if (remoteURL:find('git.sr.ht')) then
-            url = url .. '?view-source#L' .. startLn .. '-' .. endLn
-        elseif (remoteURL:find('github.com')) then
-            url = url .. '?plain=1#L' .. startLn .. '-L' .. endLn
-        end
-    end
-
-    utils.copyToClipboard(url)
-end, { range = '%' })
+vim.api.nvim_create_user_command('Get', function(args)
+    vim.cmd(args.line1 .. ',' .. args.line2 .. 'GitBlameCopyFileURL')
+end, { range = true })
 
 -- }}}
 
