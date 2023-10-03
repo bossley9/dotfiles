@@ -8,7 +8,6 @@
 
 let
   username = "sam";
-  email = "bossley.samuel@gmail.com";
   foot = import ./config/foot/foot.nix args;
   firefox = import ./config/browser/firefox.nix args;
   # packages

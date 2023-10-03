@@ -1,6 +1,6 @@
 " Vim syntax file
 " Language:     Markdown (customized)
-" Maintainer:   Sam Bossley <bossley.samueL@gmail.com>
+" Maintainer:   Sam Bossley <sam@bossley.xyz>
 " Filenames:    *.{markdown,md}
 " Last Change:  2022 Sep 24
 
