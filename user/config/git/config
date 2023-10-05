@@ -1,5 +1,6 @@
 [alias]
   a = "add"
+  ar = "apply --reject"
   aa = "add :"
   c = "commit -m"
   ca = "commit --amend"
