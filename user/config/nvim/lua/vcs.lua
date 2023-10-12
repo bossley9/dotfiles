@@ -39,8 +39,10 @@ set.signcolumn = 'yes'
 
 -- gitblame {{{
 
-vim.g.gitblame_ignored_filetypes = { 'fern', 'netrw' }
-vim.g.gitblame_date_format = '%a %Y-%m-%d %H:%M'
+require('gitblame').setup {
+    date_format = '%a %Y-%m-%d %H:%M',
+    ignored_filetypes = { 'fern', 'netrw' },
+}
 
 vim.api.nvim_create_user_command('CopySHA', 'GitBlameCopySHA', {})
 vim.api.nvim_create_user_command('OpenGitUrl', 'GitBlameOpenCommitURL', {})

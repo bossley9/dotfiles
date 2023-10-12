@@ -140,6 +140,7 @@ in
       # projects
       gnumake
       deno
+      lua
       python3 # webservers with python3 -m http.server
 
       # multimedia
