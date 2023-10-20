@@ -114,6 +114,7 @@
       # miscellaneous {{{
       "devtools.toolbox.host" = "right"; # open devtools to the right of the window
       "media.autoplay.enabled" = false; # do not autoplay media/videos
+      "network.IDN_show_punycode" = true; # always expand special characters in URL
       "browser.download.autohideButton" = false; # never hide download icon in bar
       "full-screen-api.warning.timeout" = 0; # hide fullscreen warning
       "browser.urlbar.placeholderName" = "Firefox";
