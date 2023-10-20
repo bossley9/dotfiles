@@ -100,6 +100,7 @@ in
       nodePackages.vscode-langservers-extracted # eslint, jsonls
       lua-language-server
       nixd
+      nixpkgs-fmt
       nodePackages.typescript-language-server
 
       # ui
