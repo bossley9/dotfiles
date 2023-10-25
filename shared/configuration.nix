@@ -33,6 +33,7 @@
   };
   boot.loader.timeout = 1;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "smb3" ];
 
   boot.tmp = {
     cleanOnBoot = true;
@@ -111,6 +112,7 @@
     isNormalUser = true;
     initialPassword = "test1234";
     extraGroups = [ "wheel" "network" "networkmanager" "plugdev" "adbusers" ];
+    uid = 1000;
   };
 
   # shell configuration

@@ -21,13 +21,14 @@
         inherit system;
       };
       lib = nixpkgs.lib;
+      smbShareName = "192.168.0.221/share";
     in
     {
       nixosConfigurations = {
         bastion = lib.nixosSystem {
           inherit system;
           modules = [
-            ./machines/bastion/hardware-configuration.nix
+            (import ./machines/bastion/hardware-configuration.nix smbShareName)
             (import ./shared/configuration.nix inputs)
             ./machines/bastion/bastion.nix
             (import ./user/home.nix inputs)
@@ -51,7 +52,7 @@
           system = "x86_64-darwin";
           modules = [
             ./darwin/darwin-configuration.nix
-            (import ./darwin/darwin-home.nix inputs)
+            (import ./darwin/darwin-home.nix smbShareName inputs)
           ];
         };
       };

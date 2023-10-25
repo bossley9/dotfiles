@@ -91,17 +91,17 @@ After booting for the first time, there are a few configurations that are cannot
     ```
 4. Open `about:preferences#search` in Firefox and set the default search engine to a more privacy-respecting search engine.
 5. Make sure all policy-installed extensions run in private windows if applicable.
-6. Set your Bitwarden server.
-    ```sh
-    bw config server https://myvault.example.com
-    bw login # be sure to log out after every use as it does not re-prompt MFA.
-    ```
-7. Copy over all Yubikey ECC/RSA keys.
+6. Copy over all Yubikey ECC/RSA keys.
     ```sh
     mkdir -p ~/.ssh
     cd ~/.ssh
     ssh-keygen -K # without passphrase
     # see https://sam.bossley.xyz/thoughts/22/11/enhancing-security-with-yubikeys for details
+    ```
+7. Create Samba credentials in `/etc/nixos/smb-credentials` in the format:
+    ```txt
+    user=USERNAME_HERE
+    password=PASSWORD_HERE
     ```
 
 ## Installation (Darwin)

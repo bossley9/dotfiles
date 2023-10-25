@@ -1,3 +1,4 @@
+smbShareName:
 { home-manager, ... }:
 { config, pkgs, ... }:
 
@@ -26,6 +27,7 @@ in
       text = builtins.concatStringsSep "\n" [
         (builtins.readFile ../shared/navigationrc)
         (builtins.readFile ../user/config/zsh/zshrc)
+        "alias drive=\"open smb://${smbShareName}\""
       ];
       executable = true;
     };

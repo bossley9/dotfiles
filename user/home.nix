@@ -95,6 +95,7 @@ in
       sc-im
       yubikey-manager
       sshfs
+      cifs-utils
       # LSP servers
       nodePackages."@astrojs/language-server"
       nodePackages.vscode-langservers-extracted # eslint, jsonls
