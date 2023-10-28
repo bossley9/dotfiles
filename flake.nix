@@ -21,7 +21,7 @@
         inherit system;
       };
       lib = nixpkgs.lib;
-      smbShareName = "192.168.0.221/share";
+      smbShareName = "192.168.0.220/share";
     in
     {
       nixosConfigurations = {
