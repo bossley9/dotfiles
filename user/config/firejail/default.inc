@@ -23,6 +23,7 @@
 blacklist /boot
 blacklist /efi
 blacklist /root
+blacklist /drive
 
 # executable
 blacklist /sbin
