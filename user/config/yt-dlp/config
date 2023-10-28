@@ -6,9 +6,9 @@
 
 --add-metadata
 
-# default
--f 22/bestvideo+bestaudio/best
+-f bv[height<=1080][ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best
 
+# --write-auto-subs
 --write-subs
 --sub-langs en
 --convert-subs srt
