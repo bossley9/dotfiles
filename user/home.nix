@@ -76,6 +76,10 @@ in
   programs.firejail.enable = true;
   programs.wshowkeys.enable = true;
   nixpkgs.config.chromium.enableWideVine = true; # for DRM content
+  nixpkgs.config.permittedInsecurePackages = [
+    # for sc-im
+    "libxls-1.6.2"
+  ];
 
   programs.adb.enable = true;
 
@@ -127,7 +131,6 @@ in
       pdftk
       tesseract5
       tty-clock
-      terraform
       dig
       # archiving utils
       unzip # *.zip
@@ -168,13 +171,8 @@ in
       webcord
       (writeShellScriptBin "chromium" "nix-shell -p chromium --run \"chromium --incognito\"")
       transmission-gtk
-      scrcpy
-      pngquant
-      imagemagick
-      darktable
 
       # editing
-      tenacity
       inkscape
       gimp # requires xwayland
 
