@@ -138,7 +138,6 @@ in
       p7zip
       libarchive # bsdtar - *.tar*
       unar # *.rar
-      smartmontools
 
       # documents
       texlive.combined.scheme-full
@@ -170,11 +169,6 @@ in
       amfora
       webcord
       (writeShellScriptBin "chromium" "nix-shell -p chromium --run \"chromium --incognito\"")
-      transmission-gtk
-
-      # editing
-      inkscape
-      gimp # requires xwayland
 
       # streaming
       (writeShellScriptBin "stream" "nix-shell $DOTDIR/user/shells/streamidle.nix --run obs")

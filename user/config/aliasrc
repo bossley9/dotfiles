@@ -102,7 +102,9 @@ pruneSystem() {
   rm -rvf ${XDG_DATA_HOME}/nvim/sessions/*
   rm -rvf ${HOME}/Downloads/*
   rm -rvf ${HOME}/Pictures/Snaps/*
-  nix-collect-garbage -d
+  rm -rvf ${HOME}/.cache/*
+  # run as root to additionally delete system profiles
+  doas nix-collect-garbage -d
 }
 
 # }}}

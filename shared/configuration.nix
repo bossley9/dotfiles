@@ -5,6 +5,8 @@
 { config, pkgs, ... }:
 
 {
+  # optimize storage space for new derivations
+  nix.optimise.automatic = true;
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # use the system configuration nixpkgs for flakes
