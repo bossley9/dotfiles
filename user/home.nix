@@ -55,11 +55,6 @@ in
           "installation_mode" = "force_installed";
           "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
         };
-        # metamask
-        "webextension@metamask.io" = {
-          "installation_mode" = "force_installed";
-          "install_url" = "https://addons.mozilla.org/firefox/downloads/file/4037096/ether_metamask-latest.xpi";
-        };
         # qwant lite
         "{7965226e-78d5-45c1-a1e9-2c9e6b80fff4}" = {
           "installation_mode" = "force_installed";
