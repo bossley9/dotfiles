@@ -55,10 +55,10 @@ in
           "installation_mode" = "force_installed";
           "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
         };
-        # qwant lite
-        "{7965226e-78d5-45c1-a1e9-2c9e6b80fff4}" = {
+        # qwant viprivacy
+        "qwantcomforfirefox@jetpack" = {
           "installation_mode" = "force_installed";
-          "install_url" = "https://addons.mozilla.org/firefox/downloads/file/3963572/qwant_lite-1.0.8.xpi";
+          "install_url" = "https://addons.mozilla.org/firefox/downloads/file/3996872/qwantcom_for_firefox-7.0.4.9.xpi";
         };
       };
     };
