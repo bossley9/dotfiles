@@ -12,7 +12,7 @@ buildGoModule rec {
   };
   tags = [ "production" ];
 
-  vendorSha256 = "sha256-2SmOOv66IfSR3bYBz8CaCKplUN3qyADbl79Wgd6zfds=";
+  vendorHash = "sha256-2SmOOv66IfSR3bYBz8CaCKplUN3qyADbl79Wgd6zfds=";
 
   meta = with lib; {
     description = "A Simplenote syncing CLI client written in Go";
