@@ -35,7 +35,7 @@ return require('packer').startup(function(use)
     }
     use {
         'f-person/git-blame.nvim',
-        commit = 'e4dafc79cc7dcf4eec0547dbc6f3f3821b2f2b14'
+        commit = 'f07e913b7143f19edd6787229f2d51759b478600'
     }
     use {
         'tpope/vim-commentary',
