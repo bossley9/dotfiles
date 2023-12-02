@@ -76,6 +76,9 @@ in
     "libxls-1.6.2"
   ];
 
+  services.gvfs.enable = true; # for thunar webdav
+  services.tumbler.enable = true; # for thunar thumbnails
+
   programs.adb.enable = true;
 
   home-manager.users."${username}" = {
@@ -163,6 +166,7 @@ in
       okular # for editing and digitally signing pdf forms
       amfora
       webcord
+      xfce.thunar # for webdav
       (writeShellScriptBin "chromium" "nix-shell -p chromium --run \"chromium --incognito\"")
 
       # streaming
