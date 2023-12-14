@@ -11,7 +11,7 @@ let g:netrw_banner=0 " hide banner
 let g:netrw_use_errorwindow = 0 " hide error window
 let g:netrw_list_hide = netrw_gitignore#Hide() . ',.git'
 
-let s:hide_dirs = '^\%(\.git\|node_modules\|public\|resources\|result\)$'
+let s:hide_dirs = '^\%(\.git\|dist\|node_modules\|result\)$'
 let s:hide_files = '\%(result\)\+'
 let g:fern#default_exclude = s:hide_dirs.'\|'.s:hide_files
 
