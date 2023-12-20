@@ -32,5 +32,13 @@
     19000 # expo server
   ];
 
+  # mDNS LAN discovery
+  services.resolved.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = false;
+    openFirewall = true;
+  };
+
   # }}}
 }
