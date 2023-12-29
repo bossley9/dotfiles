@@ -136,7 +136,6 @@ in
       p7zip
       libarchive # bsdtar - *.tar*
       unar # *.rar
-      avahi
 
       # documents
       texlive.combined.scheme-full
