@@ -29,6 +29,7 @@
   networking.networkmanager.enable = false;
   networking.interfaces.enp34s0.useDHCP = true;
   networking.firewall.allowedTCPPorts = [
+    3000 # web server
     19000 # expo server
   ];
 
