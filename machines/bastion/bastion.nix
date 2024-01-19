@@ -33,5 +33,15 @@
     19000 # expo server
   ];
 
+  # connect to vpn with systemctl start openvpn-home
+  # https://account.proton.me/u/1/vpn/OpenVpnIKEv2
+  services.openvpn.servers = {
+    home = {
+      autoStart = false;
+      config = '' config /etc/nixos/home.ovpn '';
+      updateResolvConf = true;
+    };
+  };
+
   # }}}
 }
