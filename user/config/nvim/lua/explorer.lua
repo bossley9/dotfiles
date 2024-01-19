@@ -11,7 +11,7 @@ let g:netrw_banner=0 " hide banner
 let g:netrw_use_errorwindow = 0 " hide error window
 let g:netrw_list_hide = netrw_gitignore#Hide() . ',.git'
 
-let s:hide_dirs = '^\%(\.git\|dist\|node_modules\|result\)$'
+let s:hide_dirs = '^\%(\.git\|dist\|node_modules\|vendor\|result\)$'
 let s:hide_files = '\%(result\)\+'
 let g:fern#default_exclude = s:hide_dirs.'\|'.s:hide_files
 
@@ -70,13 +70,7 @@ let g:fern#renderer#default#expanded_symbol = ""
 
 vim.g.fzf_layout = { window = { width = 1, height = 1, border = 'sharp' } }
 
-map('n', '<M-p>', function()
-  if os.execute('git rev-parse --show-toplevel') == 0 then
-    vim.cmd('GFiles')
-  else
-    vim.cmd('Files')
-  end
-end, { silent = true })
+map('n', '<M-p>', ':Files<CR>', { silent = true })
 
 map('n', '<M-F>', ':Rg<CR>', { silent = true })
 

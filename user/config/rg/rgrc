@@ -5,6 +5,7 @@
 --glob=!public
 --glob=!resources
 --glob=!result
+--glob=!vendor
 --glob=!*.gif
 --glob=!*.jpg
 --glob=!*.png
