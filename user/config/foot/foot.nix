@@ -37,7 +37,10 @@
       bright7 = "ECEFF4";
     };
     key-bindings = {
-      show-urls-launch = "Control+Shift+l"; # clear existing bindings we want to use
+      # clear existing bindings we want to use
+      unicode-input = "Control+Shift+z";
+
+      show-urls-launch = "Control+Shift+l";
       font-increase = "Control+Shift+k";
       font-decrease = "Control+Shift+j";
       scrollback-up-half-page = "Control+Shift+u";
