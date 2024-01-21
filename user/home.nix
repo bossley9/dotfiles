@@ -99,7 +99,6 @@ in
       sshfs
       cifs-utils
       # LSP servers
-      nodePackages."@astrojs/language-server"
       nodePackages.vscode-langservers-extracted # eslint, jsonls
       lua-language-server
       nixd
